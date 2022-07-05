@@ -1,0 +1,29 @@
+<!--data grid-->
+<table class="datagrid rowhover oneCellRow" style="width:90%;">
+
+	<col width='100%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="2" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th onclick="sortBy('cob_codigo','query-smncoberturas.sql')" class="sortable">${lbl:b_code}</th>
+		<th onclick="sortBy('cob_descripcion','query-smncoberturas.sql')" class="sortable">${lbl:b_description}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr onclick="selectItem('${fld:smn_coberturas_id}')" >
+		<td align="center"><span id="${fld:smn_coberturas_id}">${fld:cob_codigo}-${fld:cob_descripcion}</span></td>
+		<td align="center">${fld:cob_descripcion}</td>
+	</tr>
+	</rows>
+
+</table>
+

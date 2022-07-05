@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_estatus' type='varchar' required='true' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='rta_observacion' type='varchar' required='true' label='${lbl:b_observations}' maxlen='2'/>
+	<parameter id="smn_ruta_id" type="integer" required="false" label="ID" maxlen="10" />
+</validator>
+
+

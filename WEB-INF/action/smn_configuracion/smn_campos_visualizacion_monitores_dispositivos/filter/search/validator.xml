@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_series_id_name' type='varchar' required='false' label='${lbl:b_serie}'/>
+	<parameter id='smn_series_id' type='integer' required='false' label='${lbl:b_serie}' maxlen='10'/>
+	<parameter id='cvm_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

@@ -1,0 +1,3 @@
+<rows>
+acb_fecha_registro="${fld:acb_fecha_registro}"    acb_num_aba="${fld:acb_num_aba}"    efi_nombre="${fld:efi_nombre}"    acb_respons_cuenta="${fld:acb_respons_cuenta}"    tcb_descripcion="${fld:tcb_descripcion}"    acb_num_cuenta="${fld:acb_num_cuenta}"    
+</rows>

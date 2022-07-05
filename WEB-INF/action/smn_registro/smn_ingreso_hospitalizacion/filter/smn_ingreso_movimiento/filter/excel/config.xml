@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smningresomovimiento.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="2" cellStep="0" name="${lbl:b_ingreso_mov}"/>
+	
+	<excel 
+		recordset='query-smningresomovimiento.sql' 
+		sheetname='${lbl:b_ingreso_mov}' 
+		filename='${lbl:b_ingreso_mov}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_servicios_rf_combo' label='${lbl:b_service}' />
+		<col id='smn_prestador_servicio_rf_combo' label='${lbl:b_service_providers}' />
+		<col id='inm_num_orden_medica' label='${lbl:b_orden_medica}' />
+		<col id='inm_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

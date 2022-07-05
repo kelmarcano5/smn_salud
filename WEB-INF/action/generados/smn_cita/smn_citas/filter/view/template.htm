@@ -1,0 +1,55 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="11">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('cts_num_control','query-smncitas.sql')" >${lbl:b_code}</th>
+		<th class='sortable' onclick="sortBy('cts_num_doc_oficial','query-smncitas.sql')" >${lbl:b_official_document_number}</th>
+		<th class='sortable' onclick="sortBy('cla_nombre_combo','query-smncitas.sql')" >${lbl:b_auxiliary_class}</th>
+		<th class='sortable' onclick="sortBy('smn_item_combo','query-smncitas.sql')" >${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick="sortBy('prs_apellidos_combo','query-smncitas.sql')" >${lbl:b_applicant}</th>
+		<th class='sortable' onclick="sortBy('afi_apellidos_combo','query-smncitas.sql')" >${lbl:${lbl:b_titular}</th>
+		<th class='sortable' onclick="sortBy('cts_fecha_registro','query-smncitas.sql')" >${lbl:b_store_date}</th>
+		
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_citas_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_citas_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_citas_id}')" title="${lbl:b_edit_button}"></td>
+		<td align="left">${fld:cts_num_control}</td>
+		<td align="left">${fld:cts_num_doc_oficial}</td>
+		<td align="center">${fld:cla_nombre_combo}</td>
+		<td align="center">${fld:smn_item_combo}</td>
+		<td align="center">${fld:prs_apellidos_combo}</td>
+		<td align="center">${fld:afi_apellidos_combo}</td>
+		<td align="center">${fld:cts_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>

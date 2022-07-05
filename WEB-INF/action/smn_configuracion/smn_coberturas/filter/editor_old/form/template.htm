@@ -1,0 +1,287 @@
+<!doctype html>
+<html>
+
+<head>
+
+<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+	
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+${lbl:b_cobertura}
+<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">Añadir registro</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+				<tr>
+			<td>${lbl:b_cob_code}*</td>
+			<td>
+				<input id="cob_codigo" name="cob_codigo" type="text" maxlength="16" >
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_cob_des}*</td>
+			<td>
+				<input id="cob_descripcion" name="cob_descripcion" type="text" maxlength="56" >
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_descuento}*</td>
+			<td>
+				<input id="cob_descuento" name="cob_descuento" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_service_time}*</td>
+			<td>
+				<input id="cob_tiempo_servicio" name="cob_tiempo_servicio" type="text" maxlength="1" class="numeric">
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_cob_unidad_tiempo}*</td>
+		<td>
+			<select name="cob_unidad_tiempo_rf" id="cob_unidad_tiempo_rf" onchange="chgCombo(cob_unidad_tiempo_rf.options[cob_unidad_tiempo_rf.selectedIndex].text,'cob_unidad_tiempo_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<cob_unidad_tiempo_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cob_unidad_tiempo_rf_rows>
+			</select> 
+			<input id="cob_unidad_tiempo_rf_name" name="cob_unidad_tiempo_rf_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_deducible}*</td>
+			<td>
+				<input id="cob_deducible" name="cob_deducible" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_time_after_affiliation}*</td>
+			<td>
+				<input id="cob_time_desp_afil" name="cob_time_desp_afil" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_another_centers}*</td>
+			<td>
+				<select name="cob_otros_centros" id="cob_otros_centros">
+				<option value="S">${lbl:b_yes}</option>
+				<option value="N">${lbl:b_not}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_qty}*</td>
+			<td>
+				<input id="cob_cantidad_servicio" name="cob_cantidad_servicio" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_validation_date_from}*</td>
+			<td>
+				<input id="cob_vigencia_desde" name="cob_vigencia_desde" type="text" class="date" maxlength="10">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('cob_vigencia_desde')">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_validation_date_until}*</td>
+			<td>
+				<input id="cob_vigencia_hasta" name="cob_vigencia_hasta" type="text" class="date" maxlength="10">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('cob_vigencia_hasta')">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_coverage_from}*</td>
+			<td>
+				<input id="cob_cobertura_desde" name="cob_cobertura_desde" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_coverage_until}*</td>
+			<td>
+				<input id="cob_cobertura_hasta" name="cob_cobertura_hasta" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_deductible_center}*</td>
+			<td>
+				<input id="cob_deducible_centro" name="cob_deducible_centro" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_porcentaje_deducible}*</td>
+			<td>
+				<input id="cob_porc_deducible" name="cob_porc_deducible" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_localidad}*</td>
+			<td>
+				<smn_localidad_rows>
+				<input name="smn_localidad_id" id="smn_localidad_id" type="checkbox" value="${fld:smn_localidad_id}" style="width:10px"> ${fld:loc_codigo}<br>
+				</smn_localidad_rows>
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_horario}*</td>
+			<td>
+				<smn_horario_rows>
+				<input name="smn_horarios_id" id="smn_horarios_id" type="checkbox" value="${fld:smn_horarios_id}" style="width:10px"> ${fld:hor_codigo}<br>
+				</smn_horario_rows>
+			</td>
+		</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+	
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+		var txt_cob_descuento = new NumericInput(document.form1.cob_descuento);
+		var txt_cob_tiempo_servicio = new NumericInput(document.form1.cob_tiempo_servicio, 0);
+		var txt_cob_deducible = new NumericInput(document.form1.cob_deducible);
+		var txt_cob_time_desp_afil = new NumericInput(document.form1.cob_time_desp_afil, 0);
+		var txt_cob_cantidad_servicio = new NumericInput(document.form1.cob_cantidad_servicio, 0);
+		document.form1.cob_vigencia_desde.onkeypress = keypressDate;
+		document.form1.cob_vigencia_hasta.onkeypress = keypressDate;
+		var txt_cob_cobertura_desde = new NumericInput(document.form1.cob_cobertura_desde);
+		var txt_cob_cobertura_hasta = new NumericInput(document.form1.cob_cobertura_hasta);
+		var txt_cob_deducible_centro = new NumericInput(document.form1.cob_deducible_centro);
+		var txt_cob_porc_deducible = new NumericInput(document.form1.cob_porc_deducible);
+
+		if (id!="")
+			edit(id);
+	} 
+	
+
+
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "Añadir registro";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+		
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{	
+		
+
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+	
+
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+</script>	
+</body>
+</html>

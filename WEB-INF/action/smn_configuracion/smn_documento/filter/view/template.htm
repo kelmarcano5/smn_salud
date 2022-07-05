@@ -1,0 +1,62 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='3%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="13" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_tipo_documento_id_combo","query-smndocumento.sql")'>${lbl:b_tipo_documento}</th>
+		<th class='sortable' onclick='sortBy("smn_documento_general_rf_combo","query-smndocumento.sql")'>${lbl:b_general_documents}</th>
+		<th class='sortable' onclick='sortBy("doc_codigo","query-smndocumento.sql")'>${lbl:b_codigo_documento}</th>
+		<th class='sortable' onclick='sortBy("doc_nombre","query-smndocumento.sql")'>${lbl:b_nombre_documento}</th>
+		<th class='sortable' onclick='sortBy("tca_tipo_tasa","query-smndocumento.sql")'>Tipo de Tasa</th>
+		<th class='sortable' onclick='sortBy("doc_maneja_moneda_alt","query-smndocumento.sql")'>Maneja Moneda Alterna</th>
+		<th class='sortable' onclick='sortBy("doc_afiliacion_persona_natural","query-smndocumento.sql")'>Afiliacion Persona Natural</th>
+		<th class='sortable' onclick='sortBy("doc_contratante","query-smndocumento.sql")'>Contratante</th>
+		<th class='sortable' onclick='sortBy("doc_fecha_registro","query-smndocumento.sql")'>${lbl:b_store_date}</th>
+		<th>RDS</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_documento_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_documento_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_documento_id}')" title="${lbl:b_edit_button}"></td>
+		<td align='left'>${fld:smn_tipo_documento_id_combo}</td>
+		<td align='left'>${fld:smn_documento_general_rf_combo}</td>
+		<td align='left'>${fld:doc_codigo}</td>
+		<td align='left'>${fld:doc_nombre}</td>
+		<td align='center'>${fld:tca_tipo_tasa}</td>
+		<td align='center'>${fld:doc_maneja_moneda_alt}</td>
+		<td align='center'>${fld:doc_afiliacion_persona_natural}</td>
+		<td align='center'>${fld:doc_contratante}</td>
+		<td>${fld:doc_fecha_registro@dd-MM-yyyy}</td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png"  onclick="doc_servicio('${fld:smn_documento_id}')" title="Relacion Documento Servicio"></td>
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,43 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='33%'/>
+	<col width='33%'/>
+	<col width='33%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="6" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_id","query-smnauxiliarclase.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("smn_clase_auxiliar_id","query-smnauxiliarclase.sql")'>${lbl:b_auxiliary_class}</th>
+		<th class='sortable' onclick='sortBy("acl_fecha_registro","query-smnauxiliarclase.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_auxiliar_clase_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_auxiliar_clase_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_auxiliar_clase_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_auxiliar_id}</td>
+		<td>${fld:smn_clase_auxiliar_id}</td>
+		<td>${fld:acl_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_salud_plantilla_cabecera_id' type='integer' required='true' label='ID ${lbl:b_header_template}' maxlen='10'/>
+	<parameter id="smn_rel_cues_secc_preg_id" type="integer" required="true" label="ID ${lbl:b_relationship_questionnaire_section_question}" maxlen="10" />
+	<parameter id="smn_variable_rf" type="integer" required="true" label="ID ${lbl:b_variable}" maxlen="10" />
+	<parameter id="spd_valor_respuesta" type="varchar" required="false" label="ID ${lbl:b_reply}" maxlen="500" />
+</validator>

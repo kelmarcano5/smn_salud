@@ -1,0 +1,11 @@
+SELECT
+	smn_base.smn_servicios.svc_descripcion as smn_servicios_rf_combo,
+	smn_salud.smn_ordenes_medicas.omd_fecha_registro
+FROM
+	smn_salud.smn_rel_orden_medica_servicios
+	INNER JOIN
+	smn_salud.smn_ordenes_medicas ON smn_salud.smn_ordenes_medicas.smn_ordenes_medicas_id=smn_salud.smn_rel_orden_medica_servicios.smn_ordenes_medicas_id
+	INNER JOIN
+ 	smn_base.smn_servicios ON smn_base.smn_servicios.smn_servicios_id = smn_salud.smn_rel_orden_medica_servicios.smn_servicios_rf
+WHERE
+	smn_salud.smn_rel_orden_medica_servicios.smn_ordenes_medicas_id=${fld:id}

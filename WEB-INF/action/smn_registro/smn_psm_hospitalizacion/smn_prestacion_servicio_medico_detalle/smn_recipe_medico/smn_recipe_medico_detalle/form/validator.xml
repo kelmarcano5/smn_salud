@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert" id='detalle_id'>
+	<parameter id="recipe_medico_id" type="integer" required="false" label="${lbl:b_item}" maxlen="30" />
+	<parameter id="smn_ingreso_id" type="integer" required="false" label="ID" maxlen="60" />
+</validator>

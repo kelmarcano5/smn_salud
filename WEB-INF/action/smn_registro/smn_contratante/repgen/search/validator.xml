@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	
+	<parameter id='smn_documento_id' type='integer' required='false' label='${lbl:b_cnt_documento}' maxlen='10'/>
+	<parameter id='cnt_numero_control' type='integer' required='false' label='${lbl:b_cnt_num_control}' maxlen='10'/>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_plan_id' type='integer' required='false' label='${lbl:b_cnt_plan}' maxlen='10'/>
+	<parameter id='cnt_fecha_de_inicio' type='date' required='false' label='${lbl:b_cnt_fecha_inic}' maxlen='10'/>
+	<parameter id='cnt_cantidad_citas' type='integer' required='false' label='${lbl:b_cnt_cant_citas}' maxlen='4'/>
+
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generación del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

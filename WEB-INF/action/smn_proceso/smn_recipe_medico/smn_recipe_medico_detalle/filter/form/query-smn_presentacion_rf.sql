@@ -1,0 +1,1 @@
+select smn_inventario.smn_presentacion.smn_presentacion_id as id, smn_inventario.smn_presentacion.pre_codigo ||' - '|| smn_inventario.smn_presentacion.pre_descripcion as item from smn_inventario.smn_presentacion ORDER BY smn_inventario.smn_presentacion.pre_codigo asc

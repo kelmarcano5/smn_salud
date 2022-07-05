@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncoberturas.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_cobertura}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' align="left" />
+	<pdf-file-name>${lbl:b_cobertura}.pdf</pdf-file-name>
+
+	<pdf-report pageSize="letter" rotate="false" footer="true" header="true">
+		<record recordset='filter.params' title='${lbl:b_filter_find}' noFilterMsg='-- ${lbl:b_all_message} --' width='55' spacingBefore='15'>
+			<col name='cob_codigo' title='${lbl:b_cob_code}'  align='left' />
+			<col name='cob_descripcion' title='${lbl:b_cob_des}'  align='left' />
+			<col name='cob_fecha_registro' title='${lbl:b_store_date}'  format='dd-MM-yyyy' align='left' />
+
+		</record>
+		<record recordset='query-smncoberturas.sql' width='100' spacingBefore='10'>
+			<col name='cob_codigo' title='${lbl:b_cob_code}' width='14' align='left' />
+			<col name='cob_descripcion' title='${lbl:b_cob_des}' width='14' align='left' />
+			<col name='cob_tiempo_servicio' title='${lbl:b_service_time}' width='14' align='left'  />
+			<col name='unm_descripcion_combo' title='${lbl:b_cob_unidad_tiempo}' width='14' align='left'  />
+			<col name='cob_deducible' title='${lbl:b_deducible}' width='14' align='left' format='#,###,##0.00' />
+			<col name='cob_fecha_registro' title='${lbl:b_store_date}' width='14' align='left' format='dd-MM-yyyy' />
+
+		</record>
+
+	</pdf-report>
+</config>

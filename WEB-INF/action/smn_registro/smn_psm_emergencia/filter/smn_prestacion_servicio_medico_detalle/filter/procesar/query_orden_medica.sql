@@ -1,0 +1,16 @@
+SELECT
+smn_salud.smn_ordenes_medicas.smn_ordenes_medicas_id AS id,
+smn_salud.smn_ordenes_medicas.smn_ingreso_id AS smn_ingreso_id,
+smn_base.smn_rel_servicio_area_unidad.smn_unidades_servicios_rf,
+smn_salud.smn_ordenes_medicas.smn_prestador_servicio_rf
+FROM
+smn_salud.smn_ordenes_medicas
+INNER JOIN smn_salud.smn_rel_orden_medica_servicios ON smn_salud.smn_rel_orden_medica_servicios.smn_ordenes_medicas_id = smn_salud.smn_ordenes_medicas.smn_ordenes_medicas_id
+INNER JOIN smn_base.smn_rel_servicio_area_unidad ON smn_base.smn_rel_servicio_area_unidad.smn_servicios_id = smn_salud.smn_rel_orden_medica_servicios.smn_servicios_rf
+WHERE
+smn_salud.smn_ordenes_medicas.smn_ordenes_medicas_id = ${fld:smn_ordenes_medicas_id} AND
+smn_salud.smn_ordenes_medicas.smn_ingreso_id = ${fld:smn_ingreso_id}
+GROUP BY
+smn_base.smn_rel_servicio_area_unidad.smn_unidades_servicios_rf,
+id,
+ing_id

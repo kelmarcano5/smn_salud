@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax' id='smn_documento'>
+	<parameter id='afiliado' type='integer' required='false' label='${lbl:b_afiliado}' maxlen='10'/>
+	<parameter id='codigo' type='varchar' required='true' label='${lbl:b_afiliado}' maxlen='100'/>
+	<parameter id='descripcion' type='varchar' required='true' label='${lbl:b_afiliado}' maxlen='100'/>
+
+</validator>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnestatuscitas.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+	
+	<excel recordset='query-smnestatuscitas.sql' sheetname='${lbl:b_status}' filename='filter.xls'>
+		<col id='eci_num_secuencia' label='${lbl:b_code}' />
+		<col id='eci_descripcion' label='${lbl:b_description}' />
+		<col id='eci_aplica_combo' label='${lbl:b_apply}' />
+		<col id='eci_fecha_registro' label='${lbl:b_store_date}' />
+	</excel>
+
+</config>

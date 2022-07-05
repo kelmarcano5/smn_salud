@@ -1,0 +1,27 @@
+select
+		smn_salud.smn_documento.smn_persona_id,
+	smn_salud.smn_documento.doc_categoria,
+	smn_salud.smn_documento.doc_tipo_documento,
+	smn_salud.smn_documento.doc_codigo,
+	smn_salud.smn_documento.doc_descripcion,
+	smn_salud.smn_documento.doc_fecha_emision,
+	smn_salud.smn_documento.doc_fecha_venc,
+	smn_salud.smn_documento.doc_filename,
+	smn_salud.smn_documento.doc_content_type,
+	smn_salud.smn_documento.doc_image_size,
+	smn_salud.smn_documento.doc_image_data,
+	smn_salud.smn_documento.doc_verificado,
+	smn_salud.smn_documento.doc_observ_verif,
+	smn_salud.smn_documento.doc_aprobado,
+	smn_salud.smn_documento.doc_observ_aprob,
+	smn_salud.smn_documento.doc_fecha_registro,
+	smn_salud.smn_documento.smn_tipo_documento_id,
+	smn_salud.smn_documento.smn_documento_general_rf,
+	smn_salud.smn_documento.doc_codigo,
+	smn_salud.smn_documento.doc_nombre,
+	smn_salud.smn_documento.doc_secuencia,
+	smn_salud.smn_documento.doc_fecha_registro
+from
+	smn_salud.smn_documento 
+where
+	smn_salud.smn_documento.smn_documento_id = ${fld:id}

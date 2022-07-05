@@ -1,0 +1,34 @@
+INSERT INTO smn_salud.smn_control_quirofano
+(
+	smn_control_quirofano_id,
+	smn_agenda_rf,
+	smn_presupuesto_id,
+	smn_ingreso_id,
+	smn_prestacion_servicio_cabecera_id,
+	smn_prestación_servicio_medico_detalle_id,
+	smn_servicios_rf,
+	ccq_hora_entrada,
+	ccq_hora_salida,
+	ccq_fecha_quirofano,
+	smn_habitaciones_id,
+	ccq_cantidad_horas,
+	smn_unidad_medida_rf,
+	ccq_fecha_registro
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_control_quirofano},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	{d '${def:date}'}
+)

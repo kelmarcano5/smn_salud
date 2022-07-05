@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_seguimiento>
+	<detail>
+		<rows>		
+		<record seg_fecha_registro="${fld:seg_fecha_registro}"    seg_estatus="${fld:seg_estatus}"    seg_observacion="${fld:seg_observacion}"    seg_accion="${fld:seg_accion}"    seg_fecha="${fld:seg_fecha}"    smn_ingreso_id="${fld:smn_ingreso_id}"    />
+		</rows>
+	</detail>
+</smn_seguimiento>

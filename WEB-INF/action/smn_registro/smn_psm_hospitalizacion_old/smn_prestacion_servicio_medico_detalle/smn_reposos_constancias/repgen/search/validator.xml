@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	
+	<parameter id='smn_ingreso_id' type='integer' required='false' label='${lbl:b_income}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_diagnostico_rf' type='integer' required='false' label='${lbl:b_diagnostic}' maxlen='10'/>
+	<parameter id='rpc_fecha_desde' type='date' required='false' label='${lbl:b_init_date}' maxlen='10'/>
+	<parameter id='rpc_fecha_hasta' type='date' required='false' label='${lbl:b_end_date}' maxlen='10'/>
+	<parameter id='rpc_fecha_reintegro' type='date' required='false' label='${lbl:b_reintegro_date}' maxlen='10'/>
+	<parameter id='rpc_motivo' type='integer' required='false' label='${lbl:b_reason}' maxlen='10'/>
+	<parameter id='rpc_observacion' type='varchar' required='false' label='${lbl:b_observations}' maxlen='200'/>
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='rpc_observacion'
+		rule='contains' />
+
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generación del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

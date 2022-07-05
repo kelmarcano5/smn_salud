@@ -1,0 +1,3 @@
+<rows>
+trm_fecha_registro="${fld:trm_fecha_registro}"    trm_dia_semana="${fld:trm_dia_semana}"    trm_descripcion="${fld:trm_descripcion}"    trm_codigo="${fld:trm_codigo}"    
+</rows>

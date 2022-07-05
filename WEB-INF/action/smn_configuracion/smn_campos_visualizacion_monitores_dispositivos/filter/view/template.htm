@@ -1,0 +1,52 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="9" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('smn_series_id_combo','query-smncamposvisualizacionmonitoresdispositivos.sql')" >${lbl:b_serie}</th>
+		<th class='sortable' onclick="sortBy('cvm_datos_pac_combo','query-smncamposvisualizacionmonitoresdispositivos.sql')" >${lbl:b_aux_campos_vis_mon}</th>
+		<th class='sortable' onclick="sortBy('cvm_unidad_llamada_combo','query-smncamposvisualizacionmonitoresdispositivos.sql')" >${lbl:b_unidad_llamada}</th>
+		<th class='sortable' onclick="sortBy('cvm_pacientes_espera_combo','query-smncamposvisualizacionmonitoresdispositivos.sql')" >${lbl:b_paciente_espera}</th>
+		<th class='sortable' onclick="sortBy('cvm_tiempo_aprox_espera_combo','query-smncamposvisualizacionmonitoresdispositivos.sql')" >${lbl:b_tiempo_aprox_espera}</th>
+		<th class='sortable' onclick="sortBy('cvm_fecha_registro','query-smncamposvisualizacionmonitoresdispositivos.sql')" >${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_campos_visualizacion_monitores_dispositivos_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_campos_visualizacion_monitores_dispositivos_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_campos_visualizacion_monitores_dispositivos_id}')" title="${lbl:b_edit_button}"></td>
+		<td align="center">${fld:smn_series_id}</td>
+		<td align="left">${fld:cvm_datos_pac_combo}</td>
+		<td align="left">${fld:cvm_unidad_llamada_combo}</td>
+		<td align="left">${fld:cvm_pacientes_espera_combo}</td>
+		<td align="left">${fld:cvm_tiempo_aprox_espera_combo}</td>
+		<td align="center">${fld:cvm_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

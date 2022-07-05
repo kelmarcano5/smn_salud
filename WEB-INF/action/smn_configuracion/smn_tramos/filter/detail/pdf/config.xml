@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="session" scope="transaction" />
+
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_tramos}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_tramos}.pdf</pdf-file-name>
+
+	<pdf-report pageSize="letter" rotate="false" footer="true" header="true">
+		<record recordset='query.sql' title='${lbl:b_tramos}' width='60' spacingBefore='40'>
+			<col name='trm_codigo' title='${lbl:b_trm_cod}' align='left' />
+			<col name='trm_descripcion' title='${lbl:b_trm_des}' align='left' />
+			<col name='trm_dia_semana_combo' title='${lbl:b_dia_semana}' align='left' />
+			<col name='trm_hora_inicio' title='${lbl:b_trm_hora_inicio}' align='left' />
+			<col name='trm_hora_fin' title='${lbl:b_trm_hora_fin}' align='left' />
+		</record>
+
+
+	</pdf-report>
+</config>

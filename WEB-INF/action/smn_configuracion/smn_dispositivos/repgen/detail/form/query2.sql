@@ -1,0 +1,31 @@
+select
+		smn_salud.smn_dispositivos.dis_codigo,
+	smn_salud.smn_dispositivos.dis_nombre,
+	smn_salud.smn_dispositivos.dis_empresa,
+	smn_salud.smn_dispositivos.dis_sucursal,
+	smn_salud.smn_dispositivos.dis_area_servicio,
+	smn_salud.smn_dispositivos.dis_unidad_servicio,
+	smn_salud.smn_dispositivos.dis_tipo_dispositivo,
+	smn_salud.smn_dispositivos.dis_serial,
+	smn_salud.smn_dispositivos.dis_ip_address,
+	smn_salud.smn_dispositivos.dis_fecha_registro,
+	smn_salud.smn_dispositivos.dis_codigo,
+	smn_salud.smn_dispositivos.dis_nombre,
+	smn_salud.smn_dispositivos.smn_entidades_rf,
+	smn_salud.smn_dispositivos.smn_sucursales_rf,
+	smn_salud.smn_dispositivos.smn_areas_servicios_rf,
+	smn_salud.smn_dispositivos.dis_fecha_registro,
+	smn_salud.smn_dispositivos.smn_dispositivos_id,
+	smn_salud.smn_dispositivos.dis_codigo,
+	smn_salud.smn_dispositivos.dis_nombre,
+	smn_salud.smn_dispositivos.dis_tipo,
+	smn_salud.smn_dispositivos.dis_mac_address,
+	smn_salud.smn_dispositivos.smn_entidades_rf,
+	smn_salud.smn_dispositivos.smn_sucursales_rf,
+	smn_salud.smn_dispositivos.smn_areas_servicios_rf,
+	smn_salud.smn_dispositivos.smn_unidad_servicio_rf,
+	smn_salud.smn_dispositivos.dis_fecha_registro
+from
+	smn_salud.smn_dispositivos 
+where
+	smn_salud.smn_dispositivos.smn_dispositivos_id = ${fld:id}

@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica.css" />
+	
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+	<script type="text/javascript">
+		//invoca la generacion de un PDF en un popup
+		function openPDF()
+		{
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<!--banner-->
+	<div class="bannerDialog">
+		${lbl:b_cobertura}
+		<img src="${def:context}/images/pdf.png" onclick="openPDF()" title="Exportar a PDF" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="Cerrar" style="float:right; cursor:pointer;"/>
+	</div>
+
+	<table class="record" style="width:500px;">
+		<tr>
+			<td width="40%">${lbl:b_code}</td>
+			<td style="background-color: white">${fld:cob_codigo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_description}</td>
+			<td style="background-color: white">${fld:cob_descripcion}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_schedule_days}</td>
+			<td style="background-color: white">${fld:cob_horario_dias}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_schedule_hours}</td>
+			<td style="background-color: white">${fld:cob_horario_horas}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_coverage_area}</td>
+			<td style="background-color: white">${fld:cob_area_cobertura_combo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_discount}</td>
+			<td style="background-color: white">${fld:cob_descuento@#,###,##0.00}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_service_time}</td>
+			<td style="background-color: white">${fld:cob_tiempo_servicio}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_tipo_cobertura}</td>
+			<td style="background-color: white">${fld:smn_tipo_coberturas_id_combo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_deducible}</td>
+			<td style="background-color: white">${fld:cob_deducible@#,###,##0.00}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_time_after_affiliation}</td>
+			<td style="background-color: white">${fld:cob_time_desp_afil}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_another_centers}</td>
+			<td style="background-color: white">${fld:cob_otros_centros_combo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_qty}</td>
+			<td style="background-color: white">${fld:cob_cantidad_servicio}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_validation_date_from}</td>
+			<td style="background-color: white">${fld:cob_vigencia_desde@dd-MM-yyyy}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_validation_date_until}</td>
+			<td style="background-color: white">${fld:cob_vigencia_hasta@dd-MM-yyyy}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_coverage_from}</td>
+			<td style="background-color: white">${fld:cob_cobertura_desde@#,###,##0.00}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_coverage_until}</td>
+			<td style="background-color: white">${fld:cob_cobertura_hasta@#,###,##0.00}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_deductible_center}</td>
+			<td style="background-color: white">${fld:cob_deducible_centro@#,###,##0.00}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_porcentaje_deducible}</td>
+			<td style="background-color: white">${fld:cob_porc_deducible@#,###,##0.00}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:s_profile_lang}</td>
+			<td style="background-color: white">${fld:cob_idioma}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_users}</td>
+			<td style="background-color: white">${fld:cob_usuario}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_store_date}</td>
+			<td style="background-color: white">${fld:cob_fecha_registro@dd-MM-yyyy}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:s_loginhist_col2}</td>
+			<td style="background-color: white">${fld:cob_hora}</td>
+		</tr>
+
+	</table>
+
+
+
+</body>
+
+</html>

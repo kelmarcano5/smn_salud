@@ -1,0 +1,12 @@
+SELECT DISTINCT
+smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id as id, smn_base.smn_grupos_prestadores.gpp_descripcion as item,
+smn_base.smn_grupos_prestadores.gpp_is_pull as pull,
+smn_base.smn_grupos_prestadores.gpp_unidad_servicio as id_unidad
+
+FROM
+smn_base.smn_grupos_prestadores
+INNER JOIN smn_base.smn_grupo_prestador_servicio_frecuencia ON smn_base.smn_grupo_prestador_servicio_frecuencia.smn_grupos_prestadores_id = smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id
+inner join smn_base.smn_rel_servicio_area_unidad on smn_base.smn_rel_servicio_area_unidad.smn_servicios_id = smn_base.smn_grupo_prestador_servicio_frecuencia.smn_servicios_id --and  smn_base.smn_rel_servicio_area_unidad.smn_unidades_servicios_rf = smn_base.smn_grupos_prestadores.gpp_unidad_servicio
+
+WHERE
+smn_base.smn_grupo_prestador_servicio_frecuencia.smn_servicios_id=${fld:id} AND smn_base.smn_rel_servicio_area_unidad.smn_areas_servicios_rf=${fld:area_prestador} --and smn_base.smn_grupos_prestadores.gpp_is_pull='NO'

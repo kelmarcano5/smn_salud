@@ -1,0 +1,4 @@
+ <validator onerror="/action/error/validation/alert"  id="smn_honorarios">
+ 	<parameter id="id3" type="integer" required="false" label="ID" maxlen="10"/>
+        <parameter id="unidad_prestador" type="integer" required="true" label="ID" maxlen="50" />
+ </validator>

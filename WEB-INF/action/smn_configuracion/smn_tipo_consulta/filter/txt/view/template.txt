@@ -1,0 +1,3 @@
+<rows>
+tcs_fecha_registro="${fld:tcs_fecha_registro}"    tcs_nombre="${fld:tcs_nombre}"    tcs_codigo="${fld:tcs_codigo}"    
+</rows>

@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncitas.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_citas}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_citas}.pdf</pdf-file-name>
+
+	<pdf-report 
+		pageSize="letter" 
+		rotate="false"
+		footer="false" 
+		header="true">
+		<record recordset='query-smncitas.sql' width='100' spacingBefore='40'>
+			<col name='cts_num_control' title='${lbl:b_code}' width='14' align='left' />
+			<col name='cts_num_doc_oficial' title='${lbl:b_official_document_number}' width='14' align='left' />
+			<col name='cla_nombre_combo' title='${lbl:b_auxiliary_class}' width='14' align='left'  />
+			<col name='smn_item_combo' title='${lbl:b_auxiliary}' width='14' align='left'  />
+			<col name='prs_apellidos_combo' title='${lbl:b_applicant}' width='14' align='left'  />
+			<col name='afi_apellidos_combo' title='${lbl:${lbl:b_titular}' width='14' align='left'  />
+			<col name='cts_fecha_registro' title='${lbl:b_store_date}' width='14' align='left' format='dd-MM-yyyy' />
+
+		</record>
+
+	</pdf-report>
+</config>

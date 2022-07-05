@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_agenda_id' type='integer' required='true' label='${lbl:b_timetable}' maxlen='10'/>
+	<parameter id='smn_entidades_rf' type='integer' required='true' label='${lbl:b_entities}' maxlen='10'/>
+	<parameter id='smn_sucursales_rf' type='integer' required='false' label='${lbl:b_subsidiary}' maxlen='10'/>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='true' label='${lbl:b_service_areas}' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_rf' type='integer' required='true' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='smn_grupo_prestador_servicio_rf' type='integer' required='true' label='${lbl:b_group_of_provider}' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_service_providers}' maxlen='10'/>
+	<parameter id='smn_especialidad_rf' type='integer' required='true' label='${lbl:b_speciality}' maxlen='10'/>
+	<parameter id='agm_jornada_desde_rf' type='varchar' required='true' label='${lbl:b_jornada_desde}' maxlen='2'/>
+	<parameter id='agm_frecuencia' type='integer' required='true' label='${lbl:b_frecuency}' maxlen='10'/>
+	<parameter id='agm_cantidad_frecuencia' type='integer' required='true' label='${lbl:b_frecuency_quantity}' maxlen='10'/>
+	<parameter id='agm_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='smn_habitaciones_id' type='integer' required='false' label='${lbl:b_speciality}' maxlen='10'/>
+
+
+</validator>

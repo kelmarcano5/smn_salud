@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert">
+	
+	<parameter id="id_prestacion" type="integer" required="true" label="ID" maxlen="10" />
+	<parameter id="mov_id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="smn_servicios_rf" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="smn_componentes_rf" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="smn_unidades_servicios_rf" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="smn_proveedor_id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="nrs_monto_saldo_ml" type="double" required="false" label="ID" maxlen="10" />
+	<parameter id="nrs_monto_saldo_ma" type="double" required="false" label="ID" maxlen="10" />
+	<parameter id="nrs_monto_ml" type="double" required="false" label="ID" maxlen="10" />
+	<parameter id="nrs_monto_ma" type="double" required="false" label="ID" maxlen="10" />
+	<parameter id="smn_prestador_servicio_rf" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="smn_item_rf" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="psd_cantidad" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="grupo_impresion" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="tipo_gasto" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="sub_tipo_gasto" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="psd_tipo_componentes" type="varchar" required="false" label="ID" maxlen="10" />
+	<parameter id="ingreso" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="ingreso_id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="pedido_detalle" type="integer" required="false" label="ID" maxlen="10" />
+
+	<parameter id="prestador" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="servicios_id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="componentes_id" type="integer" required="false" label="ID" maxlen="10" />
+	
+</validator>

@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_ingreso_id' type='integer' required='true' label='${lbl:b_income}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_diagnostico_rf' type='integer' required='true' label='${lbl:b_diagnostic}' maxlen='10'/>
+	<parameter id='rpc_fecha_desde' type='date' required='true' label='${lbl:b_init_date}' maxlen='10'/>
+	<parameter id='rpc_fecha_hasta' type='date' required='true' label='${lbl:b_end_date}' maxlen='10'/>
+	<parameter id='rpc_fecha_reintegro' type='date' required='false' label='${lbl:b_reintegro_date}' maxlen='10'/>
+	<parameter id='rpc_motivo' type='integer' required='true' label='${lbl:b_reason}' maxlen='10'/>
+	<parameter id='rpc_observacion' type='varchar' required='false' label='${lbl:b_observations}' maxlen='200'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_constancy_rest}' maxlen='10'/>
+	<parameter id='rpc_estatus' type='varchar' required='false' label='${lbl:b_observations}' maxlen='2'/>
+
+	<parameter id='rpc_emision_certificacion' type='varchar' required='true' label='${lbl:b_observations}' maxlen='2'/>
+	<parameter id='rpc_numero_reposo_certificado' type='integer' required='false' label='${lbl:b_observations}' maxlen='10'/>
+	<parameter id='smn_medico_auxiliar_rf' type='integer' required='false' label='${lbl:b_observations}' maxlen='10'/>
+	<parameter id='rpc_numero_sanidad' type='integer' required='false' label='${lbl:b_observations}' maxlen='10'/>
+	<parameter id='rpc_entidad_emisora' type='integer' required='false' label='${lbl:b_observations}' maxlen='10'/>
+
+</validator>

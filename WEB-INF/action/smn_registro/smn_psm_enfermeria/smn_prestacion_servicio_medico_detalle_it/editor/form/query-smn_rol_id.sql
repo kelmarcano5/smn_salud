@@ -1,0 +1,1 @@
+select smn_salud.smn_rol.smn_rol_id as id, smn_salud.smn_rol.rol_tipo as item from smn_salud.smn_rol

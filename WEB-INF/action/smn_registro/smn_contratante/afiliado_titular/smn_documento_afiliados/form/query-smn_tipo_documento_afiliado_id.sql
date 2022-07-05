@@ -1,0 +1,1 @@
+select smn_salud.smn_tipo_documento_afiliado.smn_tipo_documento_afiliado_id as id, smn_salud.smn_tipo_documento_afiliado.tdo_codigo || ' - ' || smn_salud.smn_tipo_documento_afiliado.tdo_descripcion as item from smn_salud.smn_tipo_documento_afiliado order by smn_salud.smn_tipo_documento_afiliado.tdo_descripcion

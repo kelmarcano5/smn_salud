@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id="contratante_id" type="integer" required="true" label="ID" maxlen="10" />
+	<parameter id='afi_numero_control' type='integer' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_afiliado}' maxlen='16'/>
+
+	<parameter id='aux_num_doc_oficial' type='varchar' required='false' label='${lbl:b_num_doc_oficial}' maxlen='16'/>
+	<parameter id='smn_documento_id' type='integer' required='false' label='${lbl:b_code}' maxlen='16'/>	
+	<parameter id='afi_fecha_registro_ini' type='date' required='false' label='${lbl:b_store_date_grater_than}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.DateRangeValidator' 
+	on-error-label='[${lbl:b_store_date_grater_than} mayor o igual que] no puede ser mayor que 
+	[${lbl:b_store_date_less_than} menor o igual que].' date1='afi_fecha_registro_ini' 
+	date2='afi_fecha_registro_fin' id='afi_fecha_registro_ini' />
+	
+	<parameter id='afi_fecha_registro_fin' type='date' required='false' label='${lbl:b_store_date_less_than}' maxlen='10'/>
+</validator>

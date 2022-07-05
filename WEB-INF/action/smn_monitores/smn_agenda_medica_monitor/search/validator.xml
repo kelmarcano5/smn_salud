@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_agenda_id' type='integer' required='false' label='${lbl:b_timetable}' maxlen='10'/>
+	<parameter id='smn_entidades_rf' type='integer' required='false' label='${lbl:b_entities}' maxlen='10'/>
+	<parameter id='smn_sucursales_rf' type='integer' required='false' label='${lbl:b_subsidiary}' maxlen='10'/>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='false' label='${lbl:b_service_areas}' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_rf' type='integer' required='false' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='agm_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='smn_habitaciones_id' type='integer' required='false' label='Localidad Servicio*' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='agm_estatus' rule='like' />
+	<parameter id='agm_fecha_registro_ini' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.DateRangeValidator' on-error-label='[${lbl:b_store_date} mayor o igual que] no puede ser mayor que [${lbl:b_store_date} menor o igual que].' date1='agm_fecha_registro_ini' date2='agm_fecha_registro_fin' id='agm_fecha_registro_ini' />
+	<parameter id='agm_fecha_registro_fin' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='smn_grupo_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_service_units}' maxlen='10'/>
+</validator>

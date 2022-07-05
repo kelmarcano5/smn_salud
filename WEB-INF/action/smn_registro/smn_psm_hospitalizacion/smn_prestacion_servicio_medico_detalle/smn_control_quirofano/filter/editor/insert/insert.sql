@@ -1,0 +1,40 @@
+INSERT INTO smn_salud.smn_control_quirofano
+(
+	smn_control_quirofano_id,
+	smn_agenda_rf,
+	smn_presupuesto_id,
+	smn_ingreso_id,
+	smn_prestacion_servicio_cabecera_id,
+	smn_prestación_servicio_medico_detalle_id,
+	smn_servicios_rf,
+	ccq_hora_entrada,
+	ccq_hora_salida,
+	ccq_fecha_quirofano,
+	smn_habitaciones_id,
+	ccq_cantidad_horas,
+	smn_unidad_medida_rf,
+	ccq_idioma,
+	ccq_usuario,
+	ccq_fecha_registro,
+	ccq_hora
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_control_quirofano},
+	${fld:smn_agenda_rf},
+	${fld:smn_presupuesto_id},
+	${fld:smn_ingreso_id},
+	${fld:smn_prestacion_servicio_cabecera_id},
+	${fld:smn_prestación_servicio_medico_detalle_id},
+	${fld:smn_servicios_rf},
+	${fld:ccq_hora_entrada},
+	${fld:ccq_hora_salida},
+	${fld:ccq_fecha_quirofano},
+	${fld:smn_habitaciones_id},
+	${fld:ccq_cantidad_horas},
+	${fld:smn_unidad_medida_rf},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

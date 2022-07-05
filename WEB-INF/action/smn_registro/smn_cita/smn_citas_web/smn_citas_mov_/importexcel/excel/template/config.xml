@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncitasmov.sql" source="session" scope="transaction" />
+		<recordset id='query-smnestatuscitas.sql' source='sql' scope='transaction' />
+	<recordset id='query-smnobservaciones.sql' source='sql' scope='transaction' />
+	
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_appointment_movement}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_appointment_movement}">
+				<col id='smn_citas_id_combo' label='${lbl:smn_citas}' />
+		<col id='smn_documento_id_combo' label='${lbl:b_document}' />
+		<col id='ctm_num_control_cita' label='${lbl:b_num_control_citas}' />
+		<col id='ctm_consecutivo' label='${lbl:b_consecutivo}' />
+		<col id='smn_servicios_rf_combo' label='${lbl:b_service}' />
+		<col id='smn_componente_rf_combo' label='${lbl:b_component}' />
+		<col id='ctm_accion' label='${lbl:b_accion}' />
+		<col id='smn_tipo_consulta_id_combo' label='${lbl:b_tipo_consulta}' />
+		<col id='smn_grupo_prestador_servicio_rf_combo' label='${lbl:b_grupo_prestador_servicio}' />
+		<col id='smn_prestador_servicio_rf_combo' label='${lbl:b_service_providers}' />
+		<col id='ctm_fecha_cita' label='${lbl:b_appointment_date}' />
+		<col id='ctm_turno_cita' label='${lbl:b_turno_cita}' />
+		<col id='ctm_hora_cita' label='${lbl:b_hora_cita}' />
+		<col id='ctm_estatus_id_combo' label='${lbl:b_status}' />
+		<col id='smn_motivos_id_combo' label='${lbl:b_reason}' />
+		<col id='smn_clase_auxiliar_rf_combo' label='${lbl:b_auxiliary_class_mov_cita}' />
+		<col id='smn_auxiliar_rf_combo' label='${lbl:b_auxiliary_mov_citas}' />
+		<col id='cts_ordenante_descripcion' label='${lbl:b_ordenante_descripcion}' />
+		<col id='smn_sintoma_id_combo' label='${lbl:b_symptom}' />
+		<col id='cts_tipo_orden_combo' label='${lbl:b_tipo_orden}' />
+		<col id='cts_num_orden_medica' label='${lbl:b_orden_medica}' />
+		<col id='smn_entidades_rf_combo' label='${lbl:b_entities}' />
+		<col id='smn_sucursales_rf_combo' label='${lbl:b_subsidiaries}' />
+		<col id='smn_areas_servicios_rf_combo' label='${lbl:b_service_area}' />
+		<col id='smn_unidades_servicios_rf_combo' label='${lbl:b_service_units}' />
+		<col id='ctm_observaciones_id_combo' label='${lbl:b_observation}' />
+		<col id='ctm_idioma' label='${lbl:s_profile_lang}' />
+		<col id='ctm_usuario' label='${lbl:b_users}' />
+		<col id='ctm_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+		<sheet recordset='query-smnestatuscitas.sql' sheetname=''>
+		<col id='eci_descripcion' label='${lbl:b_description}' />
+	</sheet>
+
+	<sheet recordset='query-smnobservaciones.sql' sheetname=''>
+		<col id='obs_descripcion' label='${lbl:b_description}' />
+	</sheet>
+
+
+	</excel>
+
+</config>

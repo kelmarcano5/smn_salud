@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smntipodocumento.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_tipo_documento}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_tipo_documento}">
+				<col id='tdc_codigo' label='${lbl:b_tdc_codigo}' />
+		<col id='tdc_nombre' label='${lbl:b_tdc_nombre}' />
+		<col id='tdc_naturaleza_combo' label='${lbl:tdc_naturaleza}' />
+		<col id='tdc_codigo' label='${lbl:b_tdc_codigo}' />
+		<col id='tdc_nombre' label='${lbl:b_tdc_nombre}' />
+		<col id='tdc_naturaleza_combo' label='${lbl:tdc_naturaleza}' />
+		<col id='tdc_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

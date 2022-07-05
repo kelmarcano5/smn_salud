@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnsolicitudpresupuesto.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_budget_request}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_budget_request}">
+				<col id='spr_solicitud' label='${lbl:b_request_number}' />
+		<col id='smn_auxiliar' label='${lbl:b_auxiliary}' />
+		<col id='smn_contratante_id' label='${lbl:b_contratante_aux}' />
+		<col id='smn_patologia_id' label='${lbl:b_pathology}' />
+		<col id='spr_dias_hospitalizacion' label='${lbl:b_hospitalization_day}' />
+		<col id='spr_horas_quirofano' label='${lbl:b_operating_room_hours}' />
+		<col id='spr_instrumentales' label='${lbl:b_instrumentals}' />
+		<col id='spr_honorarios' label='${lbl:b_schedules}' />
+		<col id='spr_estatus' label='${lbl:b_estatus}' />
+		<col id='spr_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

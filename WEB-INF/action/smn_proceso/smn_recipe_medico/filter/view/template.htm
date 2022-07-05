@@ -1,0 +1,58 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="11" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('rec_fecha','query-smnrecipemedico.sql')" >${lbl:b_prescription_date}</th>
+		<th class='sortable' onclick="sortBy('smn_auxiliar_rf','query-smnrecipemedico.sql')" >${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick="sortBy('smn_patologia_id','query-smnrecipemedico.sql')" >${lbl:b_pathology}</th>
+		<th class='sortable' onclick="sortBy('smn_prestador_servicio_rf','query-smnrecipemedico.sql')" >${lbl:b_service_providers}</th>
+		<th class='sortable' onclick="sortBy('smn_farmaceuta_prestador_servicio_rf','query-smnrecipemedico.sql')" >${lbl:b_service_providers}</th>
+		<th class='sortable' onclick="sortBy('rec_fecha_aprobacion','query-smnrecipemedico.sql')" >${lbl:b_aprobated_date}</th>
+		<th class='sortable' onclick="sortBy('rec_estatus','query-smnrecipemedico.sql')" >${lbl:b_estatus}</th>
+		<th class='sortable' onclick="sortBy('rec_fecha_registro','query-smnrecipemedico.sql')" >${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_recipe_medico_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_recipe_medico_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_recipe_medico_id}')" title="${lbl:b_edit_button}"></td>
+		<td align="center">${fld:rec_fecha@dd-MM-yyyy}</td>
+		<td align="center">${fld:smn_auxiliar_rf}</td>
+		<td align="center">${fld:smn_patologia_id}</td>
+		<td align="center">${fld:smn_prestador_servicio_rf}</td>
+		<td align="center">${fld:smn_farmaceuta_prestador_servicio_rf}</td>
+		<td align="center">${fld:rec_fecha_aprobacion@dd-MM-yyyy}</td>
+		<td align="left">${fld:rec_estatus}</td>
+		<td align="center">${fld:rec_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

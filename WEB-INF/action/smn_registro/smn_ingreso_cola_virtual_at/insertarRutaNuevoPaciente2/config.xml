@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Return JS in order to fill a combobox depending of value that send to this action
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTableManager</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="nextval.sql" source="sql" scope="transaction" />
+		<recordset id="nextval2.sql" source="sql" scope="transaction" />
+			<recordset id="ingresocola" source="session" scope="transaction" />
+	</transaction>
+
+	<query>insertRuta.sql</query>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>ruta.js</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/javascript</content-type>
+		<print mode="form" recordset="nextval.sql" />
+		<print mode="form" recordset="nextval2.sql" />
+			<print mode="form" recordset="ingresocola" />
+	</output>
+
+</config>

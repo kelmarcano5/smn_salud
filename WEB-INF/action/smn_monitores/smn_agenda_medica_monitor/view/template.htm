@@ -1,0 +1,64 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<!-- <col width='3%'/>
+	<col width='3%'/> -->
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="11" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<!-- <th></th>
+		<th></th> -->
+		<th class='sortable' onclick='sortBy("smn_agenda_id","query-smnagendamedica.sql")'>${lbl:b_timetable}</th>
+		<th class='sortable' onclick='sortBy("smn_entidades_rf","query-smnagendamedica.sql")'>${lbl:b_entities}</th>
+		<th class='sortable' onclick='sortBy("smn_areas_servicios_rf","query-smnagendamedica.sql")'>${lbl:b_service_areas}</th>
+		<th class='sortable' onclick='sortBy("smn_unidades_servicios_rf","query-smnagendamedica.sql")'>${lbl:b_service_units}</th>
+		<th class='sortable' onclick='sortBy("smn_grupo_prestador_servicio_rf","query-smnagendamedica.sql")'>${lbl:b_group_of_provider}</th>
+		<th class='sortable' onclick='sortBy("smn_prestador_servicio_rf","query-smnagendamedica.sql")'>${lbl:b_service_providers}</th>
+		<th class='sortable' onclick='sortBy("smn_especialidad_rf","query-smnagendamedica.sql")'>${lbl:b_speciality}</th>
+		<th class='sortable' onclick='sortBy("consultorio","query-smnagendamedica.sql")'>Localidad Servicio</th>
+		<th class='sortable' onclick='sortBy("agm_estatus","query-smnagendamedica.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("agm_fecha_registro","query-smnagendamedica.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_agenda_medica_id}')" title="${lbl:b_view_detail}"></td>
+		<!-- <td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_agenda_medica_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_agenda_medica_id}')" title="${lbl:b_edit_button}"></td> -->
+		<td align="left">${fld:smn_agenda_id}</td>
+		<td align="left">${fld:smn_entidades_rf}</td>
+		<td align="left">${fld:smn_areas_servicios_rf}</td>
+		<td align="left">${fld:smn_unidades_servicios_rf}</td>
+		<td align="left">${fld:smn_grupo_prestador_servicio_rf}</td>
+		<td align="left">${fld:smn_prestador_servicio_rf}</td>
+		<td align="left">${fld:smn_especialidad_rf}</td>
+		<td align="left">${fld:consultorio}</td>
+		<td align='center'>${fld:agm_estatus}</td>
+		<td align="center">${fld:agm_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

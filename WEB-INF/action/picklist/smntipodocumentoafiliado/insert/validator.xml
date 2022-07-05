@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/ajax">
+
+
+	<parameter id='tdo_codigo2' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='tdo_descripcion2' type='varchar' required='true' label='${lbl:b_description}' maxlen='56'/>
+
+
+
+</validator>
+
+

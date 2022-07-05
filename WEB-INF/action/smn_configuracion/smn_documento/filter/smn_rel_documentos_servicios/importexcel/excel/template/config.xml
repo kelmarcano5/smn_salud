@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnreldocumentosservicios.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_relacion_documento_servicio}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_relacion_documento_servicio}">
+				<col id='smn_documentos_id' label='${lbl:b_contrato_doc}' />
+		<col id='smn_servicios_id' label='${lbl:b_service}' />
+		<col id='rdt_tipo_generacion' label='${lbl:b_tipo_generacion}' />
+		<col id='rdt_hora_generacion' label='${lbl:b_hora_generacion}' />
+		<col id='smn_documentos_id' label='${lbl:b_contrato_doc}' />
+		<col id='smn_servicios_id' label='${lbl:b_service}' />
+		<col id='rdt_tipo_generacion' label='${lbl:b_tipo_generacion}' />
+		<col id='rdt_hora_generacion' label='${lbl:b_hora_generacion}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

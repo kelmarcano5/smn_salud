@@ -1,0 +1,64 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="13" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('smn_contrato_base_rf','query-smncontratomodulo.sql')" >${lbl:b_contrato_base}</th>
+		<th class='sortable' onclick="sortBy('smn_documento_id','query-smncontratomodulo.sql')" >${lbl:b_contrato_doc}</th>
+		<th class='sortable' onclick="sortBy('ctm_numero_contrato','query-smncontratomodulo.sql')" >${lbl:b_number_contract}</th>
+		<th class='sortable' onclick="sortBy('smn_contratante_id','query-smncontratomodulo.sql')" >${lbl:b_contratante}</th>
+		<th class='sortable' onclick="sortBy('ctm_fecha_vigencia_desde','query-smncontratomodulo.sql')" >${lbl:b_vigency_start_date}</th>
+		<th class='sortable' onclick="sortBy('ctm_fecha_vigencia_hasta','query-smncontratomodulo.sql')" >${lbl:b_vigency_stop_date}</th>
+		<th class='sortable' onclick="sortBy('smn_planes_id','query-smncontratomodulo.sql')" >${lbl:b_planes}</th>
+		<th class='sortable' onclick="sortBy('ctm_monto_contrato','query-smncontratomodulo.sql')" >${lbl:b_amount_contract}</th>
+		<th class='sortable' onclick="sortBy('ctm_monto_cobertura_afiliado','query-smncontratomodulo.sql')" >${lbl:b_amount_coverage_afiliated}</th>
+		<th class='sortable' onclick="sortBy('ctm_fecha_registro','query-smncontratomodulo.sql')" >${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_contrato_modulo_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_contrato_modulo_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_contrato_modulo_id}')" title="${lbl:b_edit_button}"></td>
+		<td align="center">${fld:smn_contrato_base_rf}</td>
+		<td align="center">${fld:smn_documento_id}</td>
+		<td align="center">${fld:ctm_numero_contrato}</td>
+		<td align="center">${fld:smn_contratante_id}</td>
+		<td align="center">${fld:ctm_fecha_vigencia_desde@dd-MM-yyyy}</td>
+		<td align="center">${fld:ctm_fecha_vigencia_hasta@dd-MM-yyyy}</td>
+		<td align="center">${fld:smn_planes_id}</td>
+		<td align="right">${fld:ctm_monto_contrato@#,###,##0.00}</td>
+		<td align="right">${fld:ctm_monto_cobertura_afiliado@#,###,##0.00}</td>
+		<td align="center">${fld:ctm_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

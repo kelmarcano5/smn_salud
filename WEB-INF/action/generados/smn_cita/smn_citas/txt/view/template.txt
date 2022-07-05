@@ -1,0 +1,3 @@
+<rows>
+smn_citas_mov_id="${fld:smn_citas_mov_id}"    cts_fecha_registro="${fld:cts_fecha_registro}"  smn_relacionados_id="${fld:smn_relacionados_id}"    smn_estatus_citas_id="${fld:smn_estatus_citas_id}"    afi_apellidos="${fld:afi_apellidos}"    cts_tipo_orden="${fld:cts_tipo_orden}"    prs_apellidos="${fld:prs_apellidos}"    smn_origen_id="${fld:smn_origen_id}"    smn_item="${fld:smn_item}"    cla_nombre="${fld:cla_nombre}"    smn_motivos_id="${fld:smn_motivos_id}"    cts_num_doc_oficial="${fld:cts_num_doc_oficial}"    cts_num_control="${fld:cts_num_control}"    
+</rows>

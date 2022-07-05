@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_motivos>
+	<detail>
+		<rows>		
+		<record mtv_fecha_registro="${fld:mtv_fecha_registro}"    mtv_descripcion="${fld:mtv_descripcion}"    mtv_codigo="${fld:mtv_codigo}"    />
+		</rows>
+	</detail>
+</smn_motivos>

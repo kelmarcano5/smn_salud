@@ -1,0 +1,1 @@
+select smn_salud.smn_coberturas.smn_coberturas_id as id, smn_salud.smn_coberturas.cob_codigo || ' - ' || smn_salud.smn_coberturas.cob_descripcion as item from smn_salud.smn_coberturas order by smn_salud.smn_coberturas.cob_descripcion

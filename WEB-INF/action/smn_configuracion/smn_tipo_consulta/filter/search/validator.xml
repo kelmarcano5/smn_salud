@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='tcs_codigo' type='varchar' required='false' label='${lbl:b_tcs_codigo}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='tcs_codigo' rule='like' />
+	<parameter id='tcs_nombre' type='varchar' required='false' label='${lbl:b_tcs_nombre}' maxlen='100'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='tcs_nombre' rule='like' />
+	<parameter id='tcs_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

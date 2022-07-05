@@ -1,0 +1,79 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="18" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_ingreso_id","query-smncoberturaadmision.sql")'>${lbl:b_ingreso}</th>
+		<th class='sortable' onclick='sortBy("smn_presupuesto_id","query-smncoberturaadmision.sql")'>${lbl:b_presupuesto}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf","query-smncoberturaadmision.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("coa_hora_solicitada","query-smncoberturaadmision.sql")'>${lbl:b_solicited_hours}</th>
+		<th class='sortable' onclick='sortBy("coa_monto_aprobado_servicios_medicos_ml","query-smncoberturaadmision.sql")'>${lbl:b_monto_aprobado_sc_ml}</th>
+		<th class='sortable' onclick='sortBy("coa_monto_aprobado_medicinas_y_mmq_ml","query-smncoberturaadmision.sql")'>${lbl:b_monto_aprobado_mm_ml}</th>
+		<th class='sortable' onclick='sortBy("coa_monto_aprobado_honorarios_ml","query-smncoberturaadmision.sql")'>${lbl:b_monto_aprobado_ho_ml}</th>
+		<th class='sortable' onclick='sortBy("coa_monto_total_aprobado_ml","query-smncoberturaadmision.sql")'>${lbl:b_monto_aprobado_total_ml}</th>
+		<th class='sortable' onclick='sortBy("coa_monto_aprobado_servicios_medicos_ma","query-smncoberturaadmision.sql")'>${lbl:b_monto_aprobado_sc_ma}</th>
+		<th class='sortable' onclick='sortBy("coa_monto_aprobado_medicinas_y_mmq_ma","query-smncoberturaadmision.sql")'>${lbl:b_monto_aprobado_mm_ma}</th>
+		<th class='sortable' onclick='sortBy("coa_monto_aprobado_honorarios_ma","query-smncoberturaadmision.sql")'>${lbl:b_monto_aprobado_ho_ma}</th>
+		<th class='sortable' onclick='sortBy("coa_monto_total_aprobado_ma","query-smncoberturaadmision.sql")'>${lbl:b_monto_aprobado_total_ma}</th>
+		<th class='sortable' onclick='sortBy("coa_estatus_proceso","query-smncoberturaadmision.sql")'>${lbl:b_status_proceso}</th>
+		<th class='sortable' onclick='sortBy("coa_estatus_financiero","query-smncoberturaadmision.sql")'>${lbl:b_status_financiero}</th>
+		<th class='sortable' onclick='sortBy("coa_fecha_registro","query-smncoberturaadmision.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_cobertura_admision_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_cobertura_admision_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_cobertura_admision_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_ingreso_id}</td>
+		<td>${fld:smn_presupuesto_id}</td>
+		<td>${fld:smn_auxiliar_rf}</td>
+		<td>${fld:coa_hora_solicitada}</td>
+		<td align='right'>${fld:coa_monto_aprobado_servicios_medicos_ml@#,###,##0.00}</td>
+		<td align='right'>${fld:coa_monto_aprobado_medicinas_y_mmq_ml@#,###,##0.00}</td>
+		<td align='right'>${fld:coa_monto_aprobado_honorarios_ml@#,###,##0.00}</td>
+		<td align='right'>${fld:coa_monto_total_aprobado_ml@#,###,##0.00}</td>
+		<td align='right'>${fld:coa_monto_aprobado_servicios_medicos_ma@#,###,##0.00}</td>
+		<td align='right'>${fld:coa_monto_aprobado_medicinas_y_mmq_ma@#,###,##0.00}</td>
+		<td align='right'>${fld:coa_monto_aprobado_honorarios_ma@#,###,##0.00}</td>
+		<td align='right'>${fld:coa_monto_total_aprobado_ma@#,###,##0.00}</td>
+		<td align='left'>${fld:coa_estatus_proceso}</td>
+		<td align='left'>${fld:coa_estatus_financiero}</td>
+		<td>${fld:coa_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

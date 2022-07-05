@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_habitaciones_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_ingreso_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='had_fecha_ingreso' type='date' required='true' maxlen='10'/>
+	<parameter id='had_fecha_egreso' type='date' required='false' maxlen='10'/>
+	<parameter id='had_estatus' type='varchar' required='true' maxlen='2'/>
+
+
+
+</validator>

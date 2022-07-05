@@ -1,0 +1,46 @@
+INSERT INTO smn_salud.smn_ruta_paciente
+(
+	smn_ruta_id,
+	smn_clase_auxiliar_rf,
+	smn_auxiliar_rf,
+	rta_numero_documento_identidad,
+	smn_entidad_rf,
+	smn_sucursal_rf,
+	smn_area_servicio_rf,
+	smn_unidad_servicio_rf,
+	smn_grupo_prestador_rf,
+  	smn_prestador_servicio_rf,
+  	rta_estatus,
+	rta_secuencia,
+	smn_serie_id,
+	rta_ticket,
+	rta_hora_llegada_unidad,
+	rta_hora_salida_unidad,
+	rta_idioma,
+	rta_usuario,
+	rta_fecha_registro,
+	rta_hora
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_ruta_paciente},
+	${fld:smn_clase_auxiliar_rf},
+	${fld:smn_auxiliar_rf},
+	${fld:rta_numero_documento_identidad},
+	${fld:smn_entidad_rf},
+	${fld:smn_sucursal_rf},
+	${fld:smn_area_servicio_rf},
+	${fld:smn_unidad_servicio_rf},
+	${fld:smn_grupo_prestador_rf},
+  	${fld:smn_prestador_servicio_rf},
+  	${fld:rta_estatus},
+  	${seq:nextval@smn_salud.seq_smn_secuencia},
+	${fld:smn_serie_id},
+	${fld:rta_ticket},
+	${fld:rta_hora_llegada_unidad},
+	${fld:rta_hora_salida_unidad},
+	'${def:locale}',
+	'${def:user}',
+	'${def:date}',
+	'${def:time}'
+)

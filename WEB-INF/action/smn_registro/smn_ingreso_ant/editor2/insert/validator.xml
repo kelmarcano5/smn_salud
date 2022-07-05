@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_doc_orig' type='integer' required='false' label='${lbl:b_doc_orig}' maxlen='10'/>
+	<parameter id='smn_documento_id' type='integer' required='true' label='${lbl:b_document}' maxlen='10'/>
+	<parameter id='igs_doc_origen' type='integer' required='false' label='${lbl:b_num_doc_orig}' maxlen='10'/>
+	<parameter id='igs_num_ingreso' type='integer' required='true' label='${lbl:b_num_ingreso}' maxlen='10'/>
+	<parameter id='smn_entidades_rf' type='integer' required='false' label='${lbl:b_entities}' maxlen='10'/>
+	<parameter id='smn_sucursales_rf' type='integer' required='false' label='${lbl:b_subsidiaries}' maxlen='10'/>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='true' label='${lbl:b_service_area}' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_rf' type='integer' required='true' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='ctm_observaciones_id' type='varchar' required='false' label='${lbl:b_appointment_comment}' maxlen='100'/>
+	<parameter id='igs_ticket' type='integer' required='false' label='${lbl:b_num_ticket}' maxlen='10'/>
+	<parameter id='smn_clase_rf' type='integer' required='true' label='${lbl:b_auxiliary_class_pa}@(select smn_base.smn_clase_auxiliar.smn_clase_auxiliar_id as id, smn_base.smn_clase_auxiliar.cla_codigo|| ' - ' || smn_base.smn_clase_auxiliar.cla_nombre as item from smn_base.smn_clase_auxiliar where smn_base.smn_clase_auxiliar.cla_codigo = 'PA')' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' label='${lbl:b_auxiliary_pa}@(select smn_base.smn_auxiliar_persona_natural.smn_auxiliar_persona_natural_id as id, smn_base.smn_auxiliar_persona_natural.ant_num_doc_oficial || ' - ' || smn_base.smn_auxiliar_persona_natural.ant_nombres || ' - ' || smn_base.smn_auxiliar_persona_natural.ant_apellidos as item from smn_base.smn_auxiliar_persona_natural where smn_base.smn_auxiliar_persona_natural.smn_clase_auxiliar_id = 26 order by smn_base.smn_auxiliar_persona_natural.ant_num_doc_oficial)' maxlen='10'/>
+	<parameter id='smn_contratante_id' type='integer' required='true' label='${lbl:b_contratante_aux}' maxlen='10'/>
+	<parameter id='smn_auxiliar_sucursales_rf' type='integer' required='false' label='${lbl:b_aux_suc}' maxlen='10'/>
+	<parameter id='smn_auxiliar_areas_servicios_rf' type='integer' required='false' label='${lbl:b_cont_area}' maxlen='10'/>
+	<parameter id='smn_auxilia_unidad_servicio_rf' type='integer' required='false' label='${lbl:b_cont_uni_serv}' maxlen='10'/>
+	<parameter id='smn_motivos_id' type='integer' required='true' label='${lbl:b_reason}' maxlen='10'/>
+	<parameter id='smn_observaciones_ingresos_id' type='integer' required='false' label='${lbl:b_obs_ingresos}' maxlen='10'/>
+	<parameter id='igs_monto_moneda_local' type='double' required='true' label='${lbl:b_monto_mop}' maxlen='10'/>
+	<parameter id='smn_moneda_rf' type='integer' required='false' label='${lbl:b_mon_alt}' maxlen='10'/>
+	<parameter id='igs_monto_moneda_alterna' type='integer' required='false' label='${lbl:b_mon_mon_alt}' maxlen='10'/>
+	<parameter id='smn_sintoma_id' type='integer' required='true' label='${lbl:b_symptom}' maxlen='10'/>
+	<parameter id='igs_estatus_financiero' type='varchar' required='true' label='${lbl:b_estFinan_mop}' maxlen='2'/>
+
+
+</validator>

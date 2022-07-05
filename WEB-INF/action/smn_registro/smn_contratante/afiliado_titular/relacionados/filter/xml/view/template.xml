@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_relacionados>
+	<detail>
+		<rows>		
+		<record rel_fecha_registro="${fld:rel_fecha_registro}"    smn_numero_hijo="${fld:smn_numero_hijo}"    smn_parentesco_rf="${fld:smn_parentesco_rf}"    smn_auxiliar_rf="${fld:smn_auxiliar_rf}"    smn_clase_rf="${fld:smn_clase_rf}"    rel_numero_control="${fld:rel_numero_control}"    smn_documento_id="${fld:smn_documento_id}"    smn_afiliados_id="${fld:smn_afiliados_id}"    smn_relacionado_id="${fld:smn_relacionado_id}"    />
+		</rows>
+	</detail>
+</smn_relacionados>

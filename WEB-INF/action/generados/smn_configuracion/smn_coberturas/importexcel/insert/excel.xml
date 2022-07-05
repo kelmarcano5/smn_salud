@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='cob_codigo' type='varchar' required='true' maxlen='16'/>
+	<parameter id='cob_descripcion' type='varchar' required='false' maxlen='56'/>
+	<parameter id='cob_horario_dias' type='varchar' required='false' maxlen='32'/>
+	<parameter id='cob_horario_horas' type='integer' required='false' maxlen='32'/>
+	<parameter id='cob_area_cobertura' type='integer' required='false' maxlen='48'/>
+	<parameter id='cob_descuento' type='double' required='false' maxlen='10'/>
+	<parameter id='cob_tiempo_servicio' type='integer' required='false' maxlen='1'/>
+	<parameter id='smn_tipo_coberturas_id' type='integer' required='false' maxlen='2'/>
+	<parameter id='cob_deducible' type='double' required='false' maxlen='10'/>
+	<parameter id='cob_time_desp_afil' type='integer' required='false' maxlen='10'/>
+	<parameter id='cob_otros_centros' type='varchar' required='true' maxlen='1'/>
+	<parameter id='cob_cantidad_servicio' type='integer' required='false' maxlen='10'/>
+	<parameter id='cob_vigencia_desde' type='date' required='true' maxlen='10'/>
+	<parameter id='cob_vigencia_hasta' type='date' required='true' maxlen='10'/>
+	<parameter id='cob_cobertura_desde' type='double' required='false' maxlen='10'/>
+	<parameter id='cob_cobertura_hasta' type='double' required='false' maxlen='10'/>
+	<parameter id='cob_deducible_centro' type='double' required='false' maxlen='10'/>
+	<parameter id='cob_porc_deducible' type='double' required='false' maxlen='10'/>
+	<custom-validator classname="dinamica.validators.NoRecordsFound" on-error-label="Este valor no se encuentra registrado en la base de datos." sql="duplicated-smn_tipo_coberturas_id.sql"  id="smn_tipo_coberturas_id" />
+</validator>

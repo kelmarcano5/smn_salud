@@ -1,0 +1,34 @@
+INSERT INTO smn_salud.smn_agenda_medica
+(
+	smn_agenda_medica_id,
+	smn_agenda_id,
+	smn_entidades_rf,
+	smn_sucursales_rf,
+	smn_areas_servicios_rf,
+	smn_unidades_servicios_rf,
+	smn_grupo_prestador_servicio_rf,
+	smn_prestador_servicio_rf,
+	smn_especialidad_rf,
+	agm_jornada_desde_rf,
+	agm_frecuencia,
+	agm_cantidad_frecuencia,
+	agm_estatus,
+	agm_fecha_registro
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_agenda_medica},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	{d '${def:date}'}
+)

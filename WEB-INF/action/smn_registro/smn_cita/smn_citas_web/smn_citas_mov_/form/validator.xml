@@ -1,0 +1,5 @@
+ <validator onerror="/action/error/validation/alert" id="cita">
+ 	<parameter id="id" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="codigo" type="varchar" required="true" label="ID" maxlen="16" />
+ 	<parameter id="documento" type="varchar" required="false" label="ID" maxlen="100" />
+ </validator>

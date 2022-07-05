@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/crud'>
+	<parameter id='doc_desc_documento' type='varchar' required='false' label='${lbl:b_document}' maxlen='56'/>
+	<parameter id='doc_archivo' type='varchar' required='false' label='${lbl:b_file}' maxlen='400'/>
+	<parameter id='doc_contenido' type='varchar' required='false' label='${lbl:b_content}' maxlen='150'/>
+	<parameter id='doc_descripcion' type='varchar' required='false' label='${lbl:b_description}' maxlen='500'/>
+	<parameter id='doc_tamano' type='integer' required='false' label='${lbl:b_size}' maxlen='10'/>
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="doc_desc_documento" rule="like" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="doc_archivo" rule="like" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="doc_contenido" rule="like" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="doc_descripcion" rule="like" />
+</validator>

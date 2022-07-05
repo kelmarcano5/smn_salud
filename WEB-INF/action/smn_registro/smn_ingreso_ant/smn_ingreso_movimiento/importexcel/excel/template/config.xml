@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smningresomovimiento.sql" source="session" scope="transaction" />
+		<recordset id='query-smnestatuscitas.sql' source='sql' scope='transaction' />
+	
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_ingreso_mov}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_ingreso_mov}">
+				<col id='smn_ingreso_id' label='${lbl:b_ingreso}' />
+		<col id='smn_servicios_rf_combo' label='${lbl:b_service}' />
+		<col id='smn_componente_rf_combo' label='${lbl:b_component}' />
+		<col id='inm_accion' label='${lbl:b_accion}' />
+		<col id='smn_tipo_consulta_rf_combo' label='${lbl:b_tipo_consulta}' />
+		<col id='smn_grupo_prestador_servicio_rf_combo' label='${lbl:b_grupo_prestador_servicio}' />
+		<col id='smn_prestador_servicio_rf_combo' label='${lbl:b_service_providers}' />
+		<col id='smn_motivos_id_combo' label='${lbl:b_reason}' />
+		<col id='smn_clase_auxiliar_rf' label='${lbl:b_auxiliary_class_mov_cita}' />
+		<col id='smn_auxiliar_rf' label='${lbl:b_auxiliary_mov_citas}' />
+		<col id='inm_ordenante_descripcion' label='${lbl:b_ordenante_descripcion}' />
+		<col id='smn_sintoma_id_combo' label='${lbl:b_symptom}' />
+		<col id='inm_tipo_orden_combo' label='${lbl:b_tipo_orden}' />
+		<col id='inm_num_orden_medica' label='${lbl:b_orden_medica}' />
+		<col id='inm_estatus_combo' label='${lbl:b_status}' />
+		<col id='inm_idioma' label='${lbl:s_profile_lang}' />
+		<col id='inm_usuario' label='${lbl:b_users}' />
+		<col id='inm_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+		<sheet recordset='query-smnestatuscitas.sql' sheetname=''>
+		<col id='eci_descripcion' label='${lbl:b_description}' />
+	</sheet>
+
+
+	</excel>
+
+</config>

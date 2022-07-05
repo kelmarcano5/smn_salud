@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncitasmov.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_appointment_movement}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' align="left" />
+	<pdf-file-name>${lbl:b_appointment_movement}.pdf</pdf-file-name>
+
+	<pdf-report pageSize="letter" rotate="false" footer="true" header="true">
+		<record recordset='filter.params' title='${lbl:b_filter_find}' noFilterMsg='-- ${lbl:b_all_message} --' width='55' spacingBefore='15'>
+			<col name='ctm_num_control_cita' title='${lbl:b_num_control_citas}'   align='left' />
+			<col name='ctm_fecha_cita' title='${lbl:b_appointment_date}'  format='dd-MM-yyyy' align='left' />
+			<col name='smn_servicios_rf' title='${lbl:b_service}'   align='left' />
+			<col name='ctm_fecha_registro' title='${lbl:b_store_date}'  format='dd-MM-yyyy' align='left' />
+
+		</record>
+		<record recordset='query-smncitasmov.sql' width='100' spacingBefore='10'>
+			<col name='ctm_num_control_cita' title='${lbl:b_num_control_citas}' width='14' align='left'  />
+			<col name='smn_servicios_rf_combo' title='${lbl:b_service}' width='14' align='left'  />
+			<col name='smn_prestador_servicio_rf_combo' title='${lbl:b_service_providers}' width='14' align='left'  />
+			<col name='ctm_fecha_cita' title='${lbl:b_appointment_date}' width='14' align='left' format='dd-MM-yyyy' />
+			<col name='ctm_turno_cita' title='${lbl:b_turno_cita}' width='14' align='left'  />
+			<col name='ctm_estatus_id_combo' title='${lbl:b_status}' width='14' align='left'  />
+			<col name='ctm_fecha_registro' title='${lbl:b_store_date}' width='14' align='left' format='dd-MM-yyyy' />
+
+		</record>
+
+	</pdf-report>
+</config>

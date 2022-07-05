@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='eci_num_secuencia' type='varchar' required='true' maxlen='16'/>
+	<parameter id='eci_descripcion' type='varchar' required='true' maxlen='56'/>
+	<parameter id='eci_aplica' type='varchar' required='true' maxlen='2'/>
+</validator>

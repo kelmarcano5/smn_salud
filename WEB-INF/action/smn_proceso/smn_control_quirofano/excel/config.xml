@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncontrolquirofano.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="4" cellStep="0" name="${lbl:b_control_quirofano}"/>
+	
+	<excel 
+		recordset='query-smncontrolquirofano.sql' 
+		sheetname='${lbl:b_control_quirofano}' 
+		filename='${lbl:b_control_quirofano}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_agenda_rf' label='${lbl:b_schedule}' />
+		<col id='smn_ingreso_id' label='${lbl:b_ingreso}' />
+		<col id='smn_servicios_rf' label='${lbl:b_services}' />
+		<col id='ccq_hora_entrada' label='${lbl:b_entry_hour}' />
+		<col id='ccq_hora_salida' label='${lbl:b_exit_hour}' />
+		<col id='ccq_fecha_quirofano' label='${lbl:b_fecha_quirofano}' />
+		<col id='smn_habitaciones_id' label='${lbl:b_habitaciones}' />
+		<col id='ccq_cantidad_horas' label='${lbl:b_entry_hour}' />
+		<col id='ccq_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

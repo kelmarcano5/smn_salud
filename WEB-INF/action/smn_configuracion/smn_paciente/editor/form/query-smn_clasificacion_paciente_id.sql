@@ -1,0 +1,1 @@
+select smn_salud.smn_clasificacion_paciente.smn_clasificacion_paciente_id as id, smn_salud.smn_clasificacion_paciente.cpa_codigo|| ' - ' || smn_salud.smn_clasificacion_paciente.cpa_descripcion as item from smn_salud.smn_clasificacion_paciente order by smn_salud.smn_clasificacion_paciente.cpa_descripcion

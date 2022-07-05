@@ -1,0 +1,46 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+	<col width='5%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="8" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("inm_accion","query-smningresomovimiento.sql")'>Accion</th>
+		<th class='sortable' onclick='sortBy("smn_servicios_rf_combo","query-smningresomovimiento.sql")'>${lbl:b_service}</th>
+		<th class='sortable' onclick='sortBy("smn_prestador_servicio_rf_combo","query-smningresomovimiento.sql")'>${lbl:b_service_providers}</th>
+		<th class='sortable' onclick='sortBy("smn_grupo_prestador_servicio_rf_combo","query-smningresomovimiento.sql")'>${lbl:b_grupo_prestador_servicio}</th>
+		<th class='sortable' onclick='sortBy("inm_fecha_registro","query-smningresomovimiento.sql")'>${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_ingreso_movimiento_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_ingreso_movimiento_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_ingreso_movimiento_id}','${fld:smn_prestador_servicio_rf}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:inm_accion}</td>
+		<td>${fld:smn_servicios_rf_combo}</td>
+		<td>${fld:smn_prestador_servicio_rf_combo}</td>
+		<td>${fld:smn_grupo_prestador_servicio_rf_combo}</td>
+		<td>${fld:inm_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>

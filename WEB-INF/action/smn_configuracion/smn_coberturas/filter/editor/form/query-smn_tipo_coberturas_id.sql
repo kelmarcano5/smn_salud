@@ -1,0 +1,1 @@
+select smn_salud.smn_tipo_coberturas.smn_tipo_coberturas_id as id, smn_salud.smn_tipo_coberturas.tco_codigo ||' - '|| smn_salud.smn_tipo_coberturas.tco_descripcion as item from smn_salud.smn_tipo_coberturas order by smn_salud.smn_tipo_coberturas.tco_codigo asc

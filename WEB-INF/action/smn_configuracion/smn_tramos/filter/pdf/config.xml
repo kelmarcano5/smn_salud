@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smntramos.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_tramos}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' align="left" />
+	<pdf-file-name>${lbl:b_tramos}.pdf</pdf-file-name>
+
+	<pdf-report pageSize="letter" rotate="false" footer="true" header="true">
+		<record recordset='filter.params' title='${lbl:b_filter_find}' noFilterMsg='-- ${lbl:b_all_message} --' width='55' spacingBefore='15'>
+			<col name='trm_codigo' title='${lbl:b_trm_cod}'  align='left' />
+			<col name='trm_descripcion' title='${lbl:b_trm_des}'  align='left' />
+			<col name='trm_fecha_registro' title='${lbl:b_store_date}'  format='dd-MM-yyyy' align='left' />
+
+		</record>
+		<record recordset='query-smntramos.sql' width='100' spacingBefore='10'>
+			<col name='trm_codigo' title='${lbl:b_trm_cod}' width='16' align='left' />
+			<col name='trm_descripcion' title='${lbl:b_trm_des}' width='16' align='left' />
+			<col name='trm_dia_semana_combo' title='${lbl:b_dia_semana}' width='16' align='left' />
+			<col name='trm_hora_inicio' title='${lbl:b_trm_hora_inicio}' width='16' align='left' />
+			<col name='trm_hora_fin' title='${lbl:b_trm_hora_fin}' width='16' align='left' />
+			<col name='trm_fecha_registro' title='${lbl:b_store_date}' width='16' align='left' format='dd-MM-yyyy' />
+
+		</record>
+
+	</pdf-report>
+</config>

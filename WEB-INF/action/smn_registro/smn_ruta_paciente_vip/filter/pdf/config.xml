@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnrutapaciente.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_ruta_paciente1}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' align="left" />
+	<pdf-file-name>${lbl:b_ruta_paciente1}.pdf</pdf-file-name>
+
+	<pdf-report pageSize="letter" rotate="false" footer="true" header="true">
+		<record recordset='filter.params' title='${lbl:b_filter_find}' noFilterMsg='-- ${lbl:b_all_message} --' width='55' spacingBefore='15'>
+			<col name='rta_ticket' title='${lbl:b_rta_ticket}'  format='######' align='left' />
+			<col name='rta_numero_documento_identidad' title='${lbl:b_rta_documento}'  align='left' />
+			<col name='rta_fecha_registro' title='${lbl:b_store_date}'  format='dd-MM-yyyy' align='left' />
+
+		</record>
+		<record recordset='query-smnrutapaciente.sql' width='100' spacingBefore='10'>
+			<col name='smn_ingreso_cola_virtual_id_combo' title='${lbl:b_ingreso_cola_virtual}' width='14' align='left' format='######' />
+			<col name='smn_clase_auxiliar_rf_combo' title='${lbl:b_auxiliary_class}' width='14' align='left' format='######' />
+			<col name='smn_auxiliar_rf_combo' title='${lbl:b_auxiliary}' width='14' align='left' format='######' />
+			<col name='rta_numero_documento_identidad' title='${lbl:b_rta_documento}' width='14' align='left' />
+			<col name='smn_serie_id' title='${lbl:b_serie}' width='14' align='left' />
+			<col name='rta_ticket' title='${lbl:b_rta_ticket}' width='14' align='left' format='######' />
+			<col name='rta_fecha_registro' title='${lbl:b_store_date}' width='14' align='left' format='dd-MM-yyyy' />
+
+		</record>
+
+	</pdf-report>
+</config>

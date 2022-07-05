@@ -1,0 +1,9 @@
+select DISTINCT
+	smn_salud.smn_presupuesto_detalle.smn_presupuesto_detalle_id,
+	smn_salud.smn_presupuesto.smn_presupuesto_id,
+	smn_salud.smn_presupuesto_detalle.smn_servicios_rf
+from smn_salud.smn_presupuesto_detalle
+	INNER JOIN smn_salud.smn_presupuesto ON smn_salud.smn_presupuesto.smn_presupuesto_id = smn_salud.smn_presupuesto_detalle.smn_presupuesto_id
+WHERE
+	smn_salud.smn_presupuesto_detalle.smn_presupuesto_id=${fld:smn_presupuesto_id} and smn_salud.smn_presupuesto.smn_baremo_rf=${fld:smn_baremos_id}
+ORDER BY smn_salud.smn_presupuesto_detalle.smn_presupuesto_detalle_id ASC

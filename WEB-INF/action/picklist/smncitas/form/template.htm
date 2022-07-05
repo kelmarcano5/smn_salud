@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+
+<head>
+
+<link rel="stylesheet" type="text/css" href="${def:context}/dinamica.css" />
+
+
+
+<!--biblioteca generica JS/Dinamica-->
+<script type="text/javascript" src="${def:context}/action/script">
+</script>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+		
+		
+		//inicializacion de la pagina cuando carga
+		onload = function()
+		{ 
+			document.form1.elements[0].focus();
+			document.getElementById("status").style.display='none';
+			
+			
+		} 
+	
+		//mostrar filtro de busqueda
+		function showFilter()
+		{
+			document.form1.elements[0].focus();			
+		}
+
+		//ejecutar consulta
+		function search()
+		{
+
+			//llamada Ajax...
+			return ajaxCall(	httpMethod="POST", 
+								uri="${def:actionroot}/search", 
+								divResponse="response", 
+								divProgress="status", 
+								formName="form1", 
+								afterResponseFn=showFilter, 
+								onErrorFn=showFilter);
+		
+		}
+	
+		//leer una pagina del grid
+		function viewPage()
+		{
+			var url = "${def:actionroot}/view";
+			gotoPage(url);
+		}
+
+		//retornar el item seleccionado a la pagina que llamo al picklist
+		function selectItem(id) {
+			var description = document.getElementById(id).innerHTML;
+			parent.pickSelect(id, description);
+			parent.pickClose();
+		}
+		
+</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog">
+	Seleccionar un registro
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.pickClose()" title="Cerrar" style="float:right; cursor:pointer;">
+	<img id="status" src="${def:context}/images/progbar.gif" style="display:inline; float:right;">
+</div>
+
+
+<!--formulario de filtro-->
+<form id="form" name="form1" onsubmit="return search()" style="width:90%; margin-top:10px;">
+	<table>
+
+	<!--ancho de la columna de etiquetas-->
+	<col width="30%">
+
+	<!--campos-->
+			<tr>
+			<td>${lbl:b_code}</td>
+			<td>
+				<input id="cts_num_control" name="cts_num_control" type="text" maxlength="16" ${class}>
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_official_document_number}</td>
+			<td>
+				<input id="cts_num_doc_oficial" name="cts_num_doc_oficial" type="text" maxlength="12" ${class}>
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_auxiliary_class}</td>
+		<td>
+			<select name="cts_clase_auxiliar" id="cts_clase_auxiliar" onchange="chgCombo(cts_clase_auxiliar.options[cts_clase_auxiliar.selectedIndex].text,'cts_clase_auxiliar_name');">
+				<option value="">[Cualquiera]</option>
+				<cts_clase_auxiliar_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cts_clase_auxiliar_rows>
+			</select> 
+			<input id="cts_clase_auxiliar_name" name="cts_clase_auxiliar_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_auxiliary}</td>
+		<td>
+			<select name="cts_auxiliar" id="cts_auxiliar" onchange="chgCombo(cts_auxiliar.options[cts_auxiliar.selectedIndex].text,'cts_auxiliar_name');">
+				<option value="">[Cualquiera]</option>
+				<cts_auxiliar_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cts_auxiliar_rows>
+			</select> 
+			<input id="cts_auxiliar_name" name="cts_auxiliar_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_applicant}</td>
+		<td>
+			<select name="cts_ordenante" id="cts_ordenante" onchange="chgCombo(cts_ordenante.options[cts_ordenante.selectedIndex].text,'cts_ordenante_name');">
+				<option value="">[Cualquiera]</option>
+				<cts_ordenante_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cts_ordenante_rows>
+			</select> 
+			<input id="cts_ordenante_name" name="cts_ordenante_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_order_type}</td>
+		<td>
+			<select name="cts_tipo_orden" id="cts_tipo_orden">
+				<option value="UG">Urgente</option>
+				<option value="NR">Normal</option>
+
+			</select> 
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:${lbl:b_titular}</td>
+		<td>
+			<select name="cts_titular" id="cts_titular" onchange="chgCombo(cts_titular.options[cts_titular.selectedIndex].text,'cts_titular_name');">
+				<option value="">[Cualquiera]</option>
+				<cts_titular_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cts_titular_rows>
+			</select> 
+			<input id="cts_titular_name" name="cts_titular_name" type="hidden">
+		</td>
+	</tr>
+
+	
+	</table>
+	<input type="submit" value="Buscar" class="button" style="font-size: 9pt">	
+</form>
+
+<!--panel de respuesta AJAX-->
+<div id="response" style="display: none; width:100%; margin-top:15px;">
+</div>
+
+</body>
+
+</html>

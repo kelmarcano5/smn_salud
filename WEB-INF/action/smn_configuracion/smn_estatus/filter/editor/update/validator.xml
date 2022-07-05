@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='sta_codigo' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='sta_descripcion' type='varchar' required='true' label='${lbl:b_description}' maxlen='64'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_status}' maxlen='10'/>
+	<parameter id='sta_cod_siguiente' type='varchar' required='true' label='${lbl:b_next_code}' maxlen='2'/>
+
+</validator>

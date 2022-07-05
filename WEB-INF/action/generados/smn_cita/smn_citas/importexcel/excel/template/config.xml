@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncitas.sql" source="session" scope="transaction" />
+		<recordset id='query-smnvauxiliar.sql' source='sql' scope='transaction' />
+	<recordset id='query-smnclaseauxiliar.sql' source='sql' scope='transaction' />
+	<recordset id='query-smnprestadoresservicios.sql' source='sql' scope='transaction' />
+	<recordset id='query-smnafiliados.sql' source='sql' scope='transaction' />
+	
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_citas}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_citas}">
+				<col id='cts_num_control' label='${lbl:b_code}' />
+		<col id='cts_num_doc_oficial' label='${lbl:b_official_document_number}' />
+		<col id='smn_motivos_id_combo' label='${lbl:b_reason}' />
+		<col id='cts_clase_auxiliar_combo' label='${lbl:b_auxiliary_class}' />
+		<col id='cla_nombre_combo' label='${lbl:b_auxiliary}' />
+		<col id='smn_origen_id_combo' label='${lbl:b_origin}' />
+		<col id='cts_ordenante_combo' label='${lbl:b_applicant}' />
+		<col id='cts_tipo_orden_combo' label='${lbl:b_order_type}' />
+		<col id='cts_titular_combo' label='${lbl:${lbl:b_titular}' />
+		<col id='smn_estatus_citas_id_combo' label='${lbl:b_status_appointment}' />
+		<col id='smn_relacionados_id_combo' label='${lbl:b_relacionados}' />
+		<col id='smn_observaciones_citas_id_combo' label='${lbl:b_appointment_comment}' />
+		<col id='cts_idioma' label='${lbl:s_profile_lang}' />
+		<col id='cts_usuario' label='${lbl:b_users}' />
+		<col id='cts_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+		<sheet recordset='query-smnvauxiliar.sql' sheetname=''>
+		<col id='smn_item' label='${lbl:}' />
+	</sheet>
+
+	<sheet recordset='query-smnclaseauxiliar.sql' sheetname=''>
+		<col id='cla_nombre' label='${lbl:b_name}' />
+	</sheet>
+
+	<sheet recordset='query-smnprestadoresservicios.sql' sheetname=''>
+		<col id='prs_apellidos' label='${lbl:}' />
+	</sheet>
+
+	<sheet recordset='query-smnafiliados.sql' sheetname=''>
+		<col id='afi_apellidos' label='${lbl:}' />
+	</sheet>
+
+
+	</excel>
+
+</config>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='nfi_num_control' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='nfi_apellidos' type='varchar' required='true' label='${lbl:s_profile_lname}' maxlen='56'/>
+	<parameter id='nfi_nombres' type='varchar' required='true' label='${lbl:s_profile_fname}' maxlen='56'/>
+	<parameter id='nfi_sexo' type='varchar' required='true' label='${lbl:b_sex}' maxlen='2'/>
+	<parameter id='nfi_telefono_fijo' type='varchar' required='true' label='${lbl:b_fixed_phone}' maxlen='24'/>
+	<parameter id='nfi_telefono_movil' type='varchar' required='false' label='${lbl:b_mobile_phone}' maxlen='24'/>
+	<parameter id='nfi_email' type='varchar' required='true' label='${lbl:s_profile_email}' maxlen='96'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_afiliados}' maxlen='10'/>
+</validator>
+

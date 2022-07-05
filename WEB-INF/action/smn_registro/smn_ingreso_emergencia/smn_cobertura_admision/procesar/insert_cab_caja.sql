@@ -1,0 +1,60 @@
+INSERT INTO smn_caja.smn_mov_caja_cabecera
+(
+	smn_mov_caja_cabecera_id,
+	smn_caja_id,
+	smn_modulo_rf,
+	mcc_documento_rf,
+	mcc_cod_descripcion_orig,
+	smn_num_doc_origen_rf,
+	mcc_doc_referencia,
+	smn_documento_id,
+	mcc_documento_numero,
+	smn_clase_auxiliar_rf,
+	smn_auxiliar_rf,
+	smn_clase_auxiliar_pagador_rf,
+	smn_auxiliar_pagador_rf,
+	mcc_monto_ml_documento,
+	mcc_saldo_ml_documento,
+	mcc_monto_ma_documento,
+	mcc_saldo_ma_documento,
+	smn_moneda_rf,
+	smn_tasa_rf,
+	smn_estatus_cobro,
+	mcc_estatus_registro,
+	mcc_idioma,
+	mcc_usuario,
+	mcc_fecha_registro,
+	mcc_hora
+)
+VALUES
+(
+	${seq:nextval@smn_caja.seq_smn_mov_caja_cabecera},
+	(select smn_salud.smn_documento.smn_caja_rf from smn_salud.smn_documento where smn_salud.smn_documento.smn_documento_id = ${fld:smn_documento_id}),
+	(select smn_base.smn_modulos.smn_modulos_id from smn_base.smn_modulos where smn_base.smn_modulos.mod_codigo = 'SMN_ADM'),
+	${fld:smn_documento_id},
+	(select smn_salud.smn_documento.doc_codigo ||'-'|| smn_salud.smn_documento.doc_nombre as descripcion from smn_salud.smn_ingresos 
+	inner join smn_salud.smn_documento on smn_salud.smn_documento.smn_documento_id = smn_salud.smn_ingresos.smn_documento_id 
+	inner join smn_base.smn_documentos_generales on smn_base.smn_documentos_generales.smn_documentos_generales_id = smn_salud.smn_documento.smn_documento_general_rf where smn_salud.smn_ingresos.smn_ingresos_id=${fld:smn_ingresos_id}),
+	${fld:igs_num_ingreso},
+	0,
+	(select smn_caja.smn_documento.smn_documento_id from smn_caja.smn_documento
+	inner join smn_base.smn_documentos_generales on smn_base.smn_documentos_generales.smn_documentos_generales_id = smn_caja.smn_documento.smn_documento_general_rf
+	where smn_base.smn_documentos_generales.smn_documentos_generales_id = (select smn_salud.smn_documento.smn_documento_general_rf from smn_salud.smn_ingresos inner join smn_salud.smn_documento on smn_salud.smn_documento.smn_documento_id = smn_salud.smn_ingresos.smn_documento_id where smn_salud.smn_ingresos.smn_ingresos_id=${fld:smn_ingresos_id})),
+	${seq:nextval@smn_caja.seq_documento_numero},
+	${fld:smn_clase_rf},
+	${fld:smn_auxiliar_rf},
+	(select smn_salud.smn_contratante.smn_clase_auxiliar_rf from smn_salud.smn_contratante where smn_salud.smn_contratante.smn_contratante_id=${fld:smn_contratante_id}),
+	(select smn_salud.smn_contratante.smn_auxiliar_rf from smn_salud.smn_contratante where smn_salud.smn_contratante.smn_contratante_id=${fld:smn_contratante_id}),
+	${fld:igs_monto_moneda_local},
+	${fld:igs_monto_moneda_local},
+	${fld:igs_monto_moneda_alterna},
+	${fld:igs_monto_moneda_alterna},
+	${fld:smn_moneda_rf},
+	(select smn_salud.smn_ingreso_movimiento.smn_tasa_rf from smn_salud.smn_ingreso_movimiento where smn_salud.smn_ingreso_movimiento.smn_ingreso_id=(select smn_salud.smn_ingresos.smn_ingresos_id from smn_salud.smn_ingresos where smn_salud.smn_ingresos.igs_num_ingreso=${fld:igs_num_ingreso} limit 1) limit 1),
+	'PE',
+	'RE',
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+) RETURNING smn_mov_caja_cabecera_id, smn_documento_id, ${fld:igs_monto_moneda_local} as igs_monto_moneda_local, ${fld:igs_monto_moneda_alterna} as igs_monto_moneda_alternal, smn_moneda_rf, smn_tasa_rf;

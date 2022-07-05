@@ -1,0 +1,23 @@
+select
+		smn_salud.smn_recipe_medico_detalle.smn_recipe_medico_detalle_id,
+	smn_salud.smn_patologia.pat_descripcion as smn_recipe_medico_id,
+	smn_inventario.smn_principio_activo.pac_descripcion as smn_principio_activo_rf,
+	smn_base.smn_item.itm_nombre as smn_item_rf,
+	smn_inventario.smn_presentacion.pre_descripcion as smn_presentacion_rf,
+	smn_base.smn_unidad_medida.unm_descripcion as smn_unidad_medida_rf,
+	smn_salud.smn_recipe_medico_detalle.rmd_dosis,
+	smn_salud.smn_recipe_medico_detalle.rmd_frecuencia,
+	smn_salud.smn_recipe_medico_detalle.rmd_especificacion,
+	smn_salud.smn_recipe_medico_detalle.rmd_dias_tratamiento,
+	smn_salud.smn_recipe_medico_detalle.rmd_fecha_registro
+	
+from
+	smn_salud.smn_recipe_medico_detalle
+	inner join smn_salud.smn_recipe_medico on smn_salud.smn_recipe_medico.smn_recipe_medico_id = smn_salud.smn_recipe_medico_detalle.smn_recipe_medico_id
+	left join smn_base.smn_unidad_medida on smn_base.smn_unidad_medida.smn_unidad_medida_id = smn_salud.smn_recipe_medico_detalle.smn_unidad_medida_rf
+	inner join smn_inventario.smn_presentacion on smn_inventario.smn_presentacion.smn_presentacion_id = smn_salud.smn_recipe_medico_detalle.smn_presentacion_rf
+	inner join smn_base.smn_item on smn_base.smn_item.smn_item_id = smn_salud.smn_recipe_medico_detalle.smn_item_rf
+	inner join smn_inventario.smn_principio_activo on smn_inventario.smn_principio_activo.smn_principio_activo_id = smn_salud.smn_recipe_medico_detalle.smn_principio_activo_rf
+	inner join smn_salud.smn_patologia on smn_salud.smn_patologia.smn_patologia_id = smn_salud.smn_recipe_medico.smn_patologia_id
+where
+	smn_salud.smn_recipe_medico_detalle.smn_recipe_medico_id=${fld:recipe_medico_id}

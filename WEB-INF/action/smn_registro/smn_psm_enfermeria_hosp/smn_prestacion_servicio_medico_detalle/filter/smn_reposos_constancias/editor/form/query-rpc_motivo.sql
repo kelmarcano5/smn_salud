@@ -1,0 +1,1 @@
+select smn_salud.smn_motivos.smn_motivos_id as id, smn_salud.smn_motivos.mtv_descripcion as item from smn_salud.smn_motivos

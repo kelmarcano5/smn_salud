@@ -1,0 +1,49 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="8" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_usuario_rf_combo","query-smnrelusuariosentidad.sql")'>${lbl:b_usuario}</th>
+		<th class='sortable' onclick='sortBy("smn_entidades_rf_combo","query-smnrelusuariosentidad.sql")'>${lbl:b_entidades_rol}</th>
+		<th class='sortable' onclick='sortBy("smn_sucursales_rf_combo","query-smnrelusuariosentidad.sql")'>${lbl:b_sucursal_rol}</th>
+		<th class='sortable' onclick='sortBy("smn_area_servicio_rf_combo","query-smnrelusuariosentidad.sql")'>${lbl:b_area_rol}</th>
+		<th class='sortable' onclick='sortBy("smn_unidad_servicio_rf_combo","query-smnrelusuariosentidad.sql")'>${lbl:b_unidad_rol}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_rel_usuario_entidad_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_rel_usuario_entidad_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_usuario_entidad_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_usuario_rf_combo}</td>
+		<td>${fld:smn_entidades_rf_combo}</td>
+		<td>${fld:smn_sucursales_rf_combo}</td>
+		<td>${fld:smn_area_servicio_rf_combo}</td>
+		<td>${fld:smn_unidad_servicio_rf_combo}</td>
+
+	</tr>
+	</rows>
+
+</table>

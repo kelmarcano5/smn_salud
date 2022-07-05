@@ -1,0 +1,52 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('cob_codigo','query-smncoberturas.sql')" >${lbl:b_code}</th>
+		<th class='sortable' onclick="sortBy('cob_descripcion','query-smncoberturas.sql')" >${lbl:b_description}</th>
+		<th class='sortable' onclick="sortBy('cob_vigencia_desde','query-smncoberturas.sql')" >${lbl:b_validation_date_from}</th>
+		<th class='sortable' onclick="sortBy('cob_vigencia_hasta','query-smncoberturas.sql')" >${lbl:b_validation_date_until}</th>
+		<th class='sortable' onclick="sortBy('cob_cobertura_desde','query-smncoberturas.sql')" >${lbl:b_coverage_from}</th>
+		<th class='sortable' onclick="sortBy('cob_cobertura_hasta','query-smncoberturas.sql')" >${lbl:b_coverage_until}</th>
+		<th class='sortable' onclick="sortBy('cob_fecha_registro','query-smncoberturas.sql')" >${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_coberturas_id}')" title="Ver detalle"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_coberturas_id}')" title="Eliminar"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_coberturas_id}')" title="Editar"></td>
+		<td align="left">${fld:cob_codigo}</td>
+		<td align="left">${fld:cob_descripcion}</td>
+		<td align="center">${fld:cob_vigencia_desde@dd-MM-yyyy}</td>
+		<td align="center">${fld:cob_vigencia_hasta@dd-MM-yyyy}</td>
+		<td align="right">${fld:cob_cobertura_desde@#,###,##0.00}</td>
+		<td align="right">${fld:cob_cobertura_hasta@#,###,##0.00}</td>
+		<td align="center">${fld:cob_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>

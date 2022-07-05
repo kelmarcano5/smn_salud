@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert" id='item_id'>
+	<parameter id="patologia_id" type="integer" required="false" label="${lbl:b_item}" maxlen="10" />
+	<!-- <parameter id="pat_codigo" type="varchar" required="false" label="${lbl:b_item}" maxlen="30" /> -->
+			<parameter id="pat_descripcion" type="varchar" required="false" label="${lbl:b_item}" maxlen="30" />
+</validator>

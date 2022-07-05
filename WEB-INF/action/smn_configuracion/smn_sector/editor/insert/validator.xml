@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='sec_codigo' type='varchar' required='true' label='${lbl:b_cod_sector}' maxlen='16'/>
+	<parameter id='sec_descripcion' type='varchar' required='true' label='${lbl:b_desc_sector}' maxlen='48'/>
+	<parameter id='smn_pais_rf' type='integer' required='true' label='${lbl:b_pais_sector}' maxlen='10'/>
+	<parameter id='smn_entidades_federales_rf' type='integer' required='false' label='${lbl:b_entidad_sector}' maxlen='10'/>
+	<parameter id='smn_ciudades_rf' type='integer' required='false' label='${lbl:b_cdad_sector}' maxlen='10'/>
+	<parameter id='smn_municipios_rf' type='integer' required='false' label='${lbl:b_municipios_sector}' maxlen='10'/>
+	<parameter id='smn_parroquias_rf' type='integer' required='false' label='${lbl:b_parroquias_sector}' maxlen='10'/>
+	<parameter id='smn_zonas_postales_rf' type='integer' required='false' label='${lbl:b_zonas_sector}' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='sec_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='sec_descripcion'/>
+
+
+</validator>

@@ -1,0 +1,46 @@
+INSERT INTO smn_salud.smn_coberturas
+(
+	smn_coberturas_id,
+	cob_codigo,
+	cob_descripcion,
+	cob_descuento,
+	cob_tiempo_servicio,
+	cob_unidad_tiempo_rf,
+	cob_deducible,
+	cob_time_desp_afil,
+	cob_otros_centros,
+	cob_cantidad_servicio,
+	cob_vigencia_desde,
+	cob_vigencia_hasta,
+	cob_cobertura_desde,
+	cob_cobertura_hasta,
+	cob_deducible_centro,
+	cob_porc_deducible,
+	cob_idioma,
+	cob_usuario,
+	cob_fecha_registro,
+	cob_hora
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_coberturas},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

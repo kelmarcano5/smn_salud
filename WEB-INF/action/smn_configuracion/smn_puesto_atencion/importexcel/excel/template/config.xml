@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnpuestoatencion.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_puesto_atencion}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_puesto_atencion}">
+				<col id='put_codigo' label='${lbl:b_code}' />
+		<col id='put_descripcion' label='${lbl:b_description}' />
+		<col id='put_estatus_combo' label='${lbl:b_estatus}' />
+		<col id='put_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

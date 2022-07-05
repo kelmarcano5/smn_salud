@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_documento_id' type='integer' required='true' label='${lbl:b_cnt_documento}' maxlen='10'/>
+	<parameter id='cnt_numero_control' type='integer' required='false' label='${lbl:b_cnt_num_control}' maxlen='10'/>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_plan_id' type='integer' required='true' label='${lbl:b_cnt_plan}' maxlen='10'/>
+	<parameter id='cnt_fecha_de_inicio' type='date' required='true' label='${lbl:b_cnt_fecha_inic}' maxlen='10'/>
+	<parameter id='cnt_cantidad_citas' type='integer' required='false' label='${lbl:b_cnt_cant_citas}' maxlen='4'/>
+	<parameter id='smn_estructura_organizacional_rf' type='integer' required='false' label='${lbl:b_organizational_structure}' maxlen='10'/>
+	<parameter id='smn_baremos_id' type='integer' required='true' label='${lbl:b_cnt_plan}' maxlen='10'/>
+	<parameter id='smn_clase_baremos_rf' type='integer' required='true' label='${lbl:b_baremo_class}' maxlen='10'/>
+	<parameter id='smn_documento_ingreso_id' type='integer' required='true' label='${lbl:b_cnt_documento}' maxlen='10'/>
+	
+
+
+</validator>

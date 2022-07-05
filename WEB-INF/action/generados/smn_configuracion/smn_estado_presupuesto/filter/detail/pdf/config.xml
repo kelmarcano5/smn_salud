@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_estado_presupuesto}</pdf-title>
+	<pdf-logo url='/images/logo-dinamica.png' scale='100' />
+
+	<pdf-report pageSize="letter" rotate="false">
+		<record recordset='query.sql' title='${lbl:b_estado_presupuesto}' width='60' spacingBefore='40'>
+			<col name='epr_codigo' title='${lbl:b_code}' align='left' />
+			<col name='epr_descripcion' title='${lbl:b_description}' align='left' />
+			<col name='epr_idioma' title='${lbl:s_profile_lang}' align='left' />
+			<col name='epr_usuario' title='${lbl:b_users}' align='left' />
+			<col name='epr_fecha_registro' title='${lbl:b_store_date}' align='left' format='dd-MM-yyyy' />
+			<col name='epr_hora' title='${lbl:s_loginhist_col2}' align='left' />
+		</record>
+
+	</pdf-report>
+</config>

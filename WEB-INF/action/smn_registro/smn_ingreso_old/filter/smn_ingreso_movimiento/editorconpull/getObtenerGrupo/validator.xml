@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/ajax">
+	<parameter id="id" type="integer" required="true" label="ID ${lbl:b_corporation}" />
+	<parameter id="prestador" type="integer" required="false" label="ID ${lbl:b_corporation}" />
+	<parameter id="pool" type="integer" required="false" label="ID ${lbl:b_corporation}" />
+	<parameter id="id_unidad" type="integer" required="false" label="ID ${lbl:b_entities}"/>
+	<parameter id="prestador" type="integer" required="false" label="ID ${lbl:b_corporation}" />
+</validator>

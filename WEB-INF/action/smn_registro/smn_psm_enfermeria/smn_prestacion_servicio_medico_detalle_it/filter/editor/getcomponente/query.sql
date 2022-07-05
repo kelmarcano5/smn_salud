@@ -1,0 +1,3 @@
+select smn_base.smn_servicios_componentes.smn_componentes_id as id, smn_base.smn_componentes.cmp_descripcion as item, smn_base.smn_componentes.cmp_tipo_componente as tipo from smn_base.smn_servicios_componentes
+inner join smn_base.smn_componentes on smn_base.smn_componentes.smn_componentes_id = smn_base.smn_servicios_componentes.smn_componentes_id
+where smn_base.smn_servicios_componentes.smn_servicios_id=(select smn_salud.smn_documento.smn_servicio_mmq_rf from smn_salud.smn_documento where smn_salud.smn_documento.smn_documento_id=${fld:smn_documento_id}) 

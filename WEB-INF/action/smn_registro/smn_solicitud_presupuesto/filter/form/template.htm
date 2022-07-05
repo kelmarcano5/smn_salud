@@ -1,0 +1,324 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="banner" id="encabezado_tabla">
+	${lbl:b_budget_request}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario de filtro-->
+<form name="form1" onsubmit="return search()" style="width:650px;">
+
+	<!--titulo-->
+	<h1>${lbl:b_filter_find}</h1>
+
+	<table>
+	
+	<!--ancho de la columna de etiquetas-->
+	<col style="width:40%">
+
+	<!--campos-->
+		<tr>
+		<td>N&ordm; Solicitud</td>
+		<td>
+			<input id="spr_solicitud" name="spr_solicitud" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>Paciente*</td>
+		<td>
+			<select class="auxiliar" name="smn_auxiliar" id="smn_auxiliar" onchange="chgCombo(smn_auxiliar.options[smn_auxiliar.selectedIndex].text,'smn_auxiliar_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_auxiliar_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_auxiliar_rows>
+			</select> 
+			<input id="smn_auxiliar_name" name="smn_auxiliar_name" type="hidden">
+		</td>
+		<td>
+			<!-- Incorporado manualmente para mostrar icono de inclusion de elementos al combo -->
+			<img src="/smn_base/images/list-add2.png" align="left" class="button" onclick="add_aux_pa()" title="Paciente">
+		</td>
+	</tr>
+	<tr>
+		<td>Contratante</td>
+		<td>
+			<select class="contratante" name="smn_contratante_id" id="smn_contratante_id" onchange="chgCombo(smn_contratante_id.options[smn_contratante_id.selectedIndex].text,'smn_contratante_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_contratante_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_contratante_id_rows>
+			</select> 
+			<input id="smn_contratante_id_name" name="smn_contratante_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_pathology}*</td>
+		<td>
+			<select class="patologia" name="smn_patologia_id" id="smn_patologia_id" onchange="chgCombo(smn_patologia_id.options[smn_patologia_id.selectedIndex].text,'smn_patologia_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_patologia_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_patologia_id_rows>
+			</select> 
+			<input id="smn_patologia_id_name" name="smn_patologia_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_estatus}</td>
+		<td>
+			<select class="estatus" name="spr_estatus" id="spr_estatus">
+				<option value="">[Cualquiera]</option>
+				<option value="RE">Registrado</option>
+				<option value="SO">${lbl:b_solicitado}</option>
+				<option value="NA">Nivel Aprobacion</option>
+				<option value="GE">${lbl:b_generado}</option>
+				<option value="AP">${lbl:b_aprobado}</option>
+				<option value="EN">${lbl:b_enviado}</option>
+				<option value="IN">Ingresado</option>
+				<option value="CE">Cerrado</option>
+
+			</select> 
+		</td>
+	</tr>
+	<tr>
+		<td>Fecha Inicio</td>
+		<td>
+			<input id="spr_fecha_registro_ini" name="spr_fecha_registro_ini" type="text" class="date" maxlength="10">
+			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('spr_fecha_registro_ini')">
+		</td>
+	</tr>
+	<tr>
+		<td>Fecha Fin</td>
+		<td>
+			<input id="spr_fecha_registro_fin" name="spr_fecha_registro_fin" type="text" class="date" maxlength="10">
+			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('spr_fecha_registro_fin')">
+		</td>
+	</tr>
+
+	
+	</table>
+
+	
+	<!--botones-->	
+	<input type="submit" value="${lbl:b_find_button}" class="button">
+	<input id="grabar" type="submit" value="${lbl:b_add_button}"  onclick="showEditor()" class="button">
+	<input type="button" value="${lbl:b_clean_button}" class="button" onclick="clearForm('form1')">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">
+	
+</form>
+
+<!--panel de respuesta AJAX #1-->
+<div id="response" style="display:none; width:100%; margin-top:10px;"></div>
+	
+</body>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	//inicializacion de la pagina cuando carga
+	onload = function()
+	{ 
+		showFilter();
+		$('.auxiliar').select2();
+		$('.contratante').select2();
+		$('.patologia').select2();
+		$('.estatus').select2();
+		//document.form1.spr_fecha_registro_ini.onkeypress = keypressDate;
+		//document.form1.spr_fecha_registro_fin.onkeypress = keypressDate;
+
+		search();
+	} 
+	
+	
+		
+	//mostrar filtro de busqueda
+	function showFilter()
+	{
+		document.getElementById("response").style.display='none';
+		setFocusOnForm("form1");
+	}
+	
+	//ejecutar consulta
+	function search()
+	{
+		var url = "${def:actionroot}/search";
+		
+		//determina si refresca y se para en la pagina actual o en la pagina 1
+		if (currentPage > 0)
+			url = "${def:actionroot}/search?currentpage=" + currentPage;
+
+		//definir funcion goBack()
+		_goBackFn = showFilter;
+		
+		clearErrorMessages();
+
+		//llamada Ajax...
+		return ajaxCall(	httpMethod="POST", 
+							uri=url, 
+							divResponse="response", 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=showFilter);
+
+	}
+
+	//mostrar una pagina del grid
+	function viewPage()
+	{
+		var url = "${def:actionroot}/view";
+		//llama a la funcion para ir a la pagina indicada 
+		gotoPage(url);
+	}		
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//invoca la generacion de un PDF en un popup
+	function openPDF()
+	{
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+
+	//invoca la generacion de un Excel en un popup
+	function openExcel()
+	{
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+	
+	//exportar a xml
+	function openXml() {
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/xml/search?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+	
+	//exportar a texto
+	function openTxt() {
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/txt/search?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+	
+	//envio de emails
+	function openEmails() {
+		var uri = "${def:context}${def:actionroot}/email/form";					
+		openDialog("editor0", uri, 950, 600);	
+	}
+	
+	//mostrar el detalle de un registro
+	function getDetail(id)
+	{
+//		//alert('Colocar su código aquí.')
+		
+		var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
+		openDialog("dialog", uri, 650, 510);
+		
+	}
+	
+	//muestra un DIV+IFRAME con el formulario de CRUD
+	function showEditor(id, estatus)
+	{
+//		//alert('Colocar su código aquí.')
+		
+		var uri = "";
+		if (id==null){
+
+		 	uri = "${def:context}${def:actionroot}/../editor/form";
+		 	openDialog("editor", uri, 650, 510);
+		}
+		else{
+			if (estatus=='GE' || estatus=='Generado') {
+				alertBox('No se puede editar este registro', 'Continuar', null, null);
+			}else{
+				uri = "${def:context}${def:actionroot}/../editor/form?id=" + id;
+				openDialog("editor", uri, 650, 510);
+			}
+		}
+			
+
+		
+	}
+			
+	function deleteRecord(id, estatus) {
+//			//alert('Colocar su código aquí.')
+		if (estatus=='GE' || estatus=='Generado') {
+			alertBox('No se puede eliminar este registro', 'Continuar', null, null);
+		}else{
+			alertBox('${lbl:b_delete_record_button}', '${lbl:b_delete_button}', '${lbl:b_cancel_button}', 'deleteRecordOK(' + id + ')');
+		}		
+	}
+	
+	//eliminar un registro
+	function deleteRecordOK(id) {
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/../delete?id=" + id,
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+
+	function presupuesto(id_Spre, pre_id) {
+		uri = "${def:context}${def:actionroot}/../smn_presupuesto/form?id="+ id_Spre + "&id_presupuesto=" + pre_id;		
+		//alert(uri);
+		openDialog("dialog", uri, 1350, 700);
+	}
+
+
+	function generar(id, estatus) {
+		//if (estatus=='GE' || estatus=='Generado') {
+		//	alertBox('No se puede eliminar este registro', 'Continuar', null, null);
+		//}else{
+			alertBox('Desea generar este registro?', '${lbl:b_yes}', '${lbl:b_not}', 'generateRecordOK(' + id + ')');
+		//}		
+	}
+
+	//eliminar un registro
+	function generateRecordOK(id) {
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/../generar?id=" + id,
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+
+			
+</script>
+
+</html>

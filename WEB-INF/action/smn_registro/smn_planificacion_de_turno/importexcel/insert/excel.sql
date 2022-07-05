@@ -1,0 +1,32 @@
+INSERT INTO smn_salud.smn_planificacion_de_turno
+(
+	smn_plan_turno_id,
+	smn_usuario_id,
+	smn_rol_id,
+	ptu_fecha,
+	smn_serie_id,
+	smn_entidades_rf,
+	smn_sucursales_rf,
+	smn_areas_servicios_rf,
+	ptu_estatus,
+	ptu_idioma,
+	ptu_usuario,
+	ptu_fecha_registro,
+	ptu_hora
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_planificacion_de_turno},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

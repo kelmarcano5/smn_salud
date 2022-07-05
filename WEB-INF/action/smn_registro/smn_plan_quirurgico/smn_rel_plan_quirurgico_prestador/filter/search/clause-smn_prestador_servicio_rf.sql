@@ -1,0 +1,2 @@
+ and
+ 	smn_salud.smn_rel_plan_quirurgico_prestador.smn_prestador_servicio_rf=${fld:smn_prestador_servicio_rf}

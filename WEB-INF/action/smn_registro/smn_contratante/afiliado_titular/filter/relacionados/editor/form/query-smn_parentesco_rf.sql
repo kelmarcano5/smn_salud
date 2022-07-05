@@ -1,0 +1,1 @@
+select smn_base.smn_parentezco.smn_parentezco_id as id, smn_base.smn_parentezco.ptz_codigo|| ' - ' || smn_base.smn_parentezco.ptz_descripcion as item from smn_base.smn_parentezco order by smn_base.smn_parentezco.ptz_descripcion

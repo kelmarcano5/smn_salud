@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncitasmov.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_appointment_movement}</pdf-title>
+	<pdf-logo url='/images/logo-dinamica.png' scale='100' />
+
+	<pdf-report pageSize="letter" rotate="false">
+		<record recordset='filter.params' title='Filtro de Búsqueda' noFilterMsg='-- Sin filtro de búsqueda --' width='55' spacingBefore='15'>
+			<col name='ctm_num_control_cita' title='${lbl:b_code}'  align='center' />
+			<col name='ctm_fecha' title='${lbl:b_appointment_date}'  format='dd-MM-yyyy' align='center' />
+		</record>
+		<table recordset='query-smncitasmov.sql' width='100' spacingBefore='10'>
+			<col name='ctm_num_control_cita' title='${lbl:b_code}' width='14' align='left' />
+			<col name='ctm_fecha' title='${lbl:b_appointment_date}' width='14' align='center' format='dd-MM-yyyy' />
+			<col name='ctm_localidad' title='${lbl:b_location}' width='14' align='left' />
+			<col name='ctm_servicio_combo' title='${lbl:b_service}' width='14' align='center' format='######' />
+			<col name='ctm_prestador_servicio_combo' title='${lbl:b_service_providers}' width='14' align='center' format='######' />
+			<col name='ctm_estatus_combo' title='${lbl:b_status}' width='14' align='center' format='######' />
+			<col name='ctm_fecha_registro' title='${lbl:b_store_date}' width='14' align='center' format='dd-MM-yyyy' />
+		</table>
+
+	</pdf-report>
+</config>

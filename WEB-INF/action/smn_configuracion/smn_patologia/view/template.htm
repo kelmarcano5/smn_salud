@@ -1,0 +1,50 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+		<col width='3%'/>
+	<col width='3%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="9" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("pat_codigo","query-smnpatologia.sql")'>${lbl:b_code}</th>
+		<th class='sortable' onclick='sortBy("pat_descripcion","query-smnpatologia.sql")'>${lbl:b_description}</th>
+		<th class='sortable' onclick='sortBy("pat_estatus","query-smnpatologia.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("pat_fecha_registro","query-smnpatologia.sql")'>${lbl:b_store_date}</th>
+		<th>RPS</th>
+		<th>RPI</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_patologia_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_patologia_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_patologia_id}')" title="${lbl:b_edit_button}"></td>
+		<td align='left'>${fld:pat_codigo}</td>
+		<td align='left'>${fld:pat_descripcion}</td>
+		<td align='left'>${fld:pat_estatus}</td>
+		<td>${fld:pat_fecha_registro@dd-MM-yyyy}</td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png"  onclick="rps('${fld:smn_patologia_id}')" title="${lbl:b_rel_services_pathology}"></td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png"  onclick="rpi('${fld:smn_patologia_id}')" title="${lbl:b_rel_item_pathology}"></td>
+
+	</tr>
+	</rows>
+
+</table>

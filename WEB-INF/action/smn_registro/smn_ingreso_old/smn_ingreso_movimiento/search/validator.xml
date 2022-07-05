@@ -1,0 +1,3 @@
+ <validator onerror="/action/error/validation/alert">
+ 	<parameter id="id_ingreso" type="integer" required="true" label="ID" maxlen="10" />
+ </validator>

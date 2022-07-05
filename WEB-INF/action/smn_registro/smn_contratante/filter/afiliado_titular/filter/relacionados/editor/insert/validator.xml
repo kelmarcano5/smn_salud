@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_afiliados_id' type='integer' required='true' label='${lbl:b_rel_afiliado}' maxlen='10'/>
+	<parameter id='smn_documento_id' type='integer' required='true' label='${lbl:b_rel_documento}' maxlen='10'/>
+	<parameter id='rel_numero_control' type='integer' required='true' label='${lbl:b_rel_num_control}' maxlen='10'/>
+	<parameter id='smn_clase_rf' type='integer' required='true' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_parentesco_rf' type='integer' required='true' label='${lbl:b_rel_parentesco}' maxlen='10'/>
+	<parameter id='smn_numero_hijo' type='integer' required='true' label='${lbl:b_rel_num_hijo}' maxlen='2'/>
+
+
+</validator>

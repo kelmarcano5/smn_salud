@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+	<!--codigo especifico de este modulo--> 
+	<script type="text/javascript">
+		//inicializacion de la pagina cuando carga
+		onload = function() { 
+			search();
+		} 
+	
+		//ejecutar consulta
+		function search() {
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/search?id_afiliado=${fld:id_afiliado}", 
+							divResponse="response", 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);
+		}
+	
+		//recuperar una pagina X del grid
+		function viewPage() {
+			var url = "${def:actionroot}/view";
+			gotoPage(url);
+		}
+		
+		//exportar a PDF
+		function openPDF() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+	
+		//exportar a excel
+		function openExcel() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a xml
+		function openXml() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/xml/search?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a texto
+		function openTxt() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/txt/search?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//envio de emails
+		function openEmails() {
+			var uri = "${def:context}${def:actionroot}/email/form";					
+			openDialog("editor0", uri, 950, 600);	
+		}
+		
+		//mostrar el detalle de un registro
+		function getDetail(id)
+		{
+//			//alert('Colocar su código aquí.')
+			
+			var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
+			openDialog("dialog", uri, 650, 450);			
+		}
+		
+		//muestra un DIV+IFRAME con el formulario de CRUD
+		function showEditor(id)
+		{
+//			//alert('Colocar su código aquí.')
+						
+			//editor a nivel de panel iconográfico
+			if (id == 'editor')
+			{					
+				var uri = "${def:context}${def:actionroot}/editor/form?id_afiliado=${fld:id_afiliado}&num_control_afi=${fld:num_control_afi}";					
+				openDialog("editor1", uri, 650, 450);					
+			}
+			else if (id == 'filter')
+			{
+				var uri = "${def:context}${def:actionroot}/filter/form";					
+				openDialog("editor2", uri, 950, 600);		
+			} 
+			else if (id == 'importexcel')
+			{
+				var uri = "${def:context}${def:actionroot}/importexcel/form";					
+				openDialog("editor3", uri, 950, 600);		
+			} 
+			else if (id == 'repgen')
+			{
+				var uri = "${def:context}${def:actionroot}/repgen/form";		
+				openDialog("editor4", uri, 950, 600);		
+			}
+			//editor a nivel de registros
+			else {				
+				var uri = "";
+				if (id==null)
+					uri = "${def:context}${def:actionroot}/editor/form";
+				else
+					uri = "${def:context}${def:actionroot}/editor/form?id=" + id + "&id_afiliado=${fld:id_afiliado}&num_control_afi=${fld:num_control_afi}";
+					
+				openDialog("editor5", uri, 650, 450);
+			}
+			
+		}
+
+		function deleteRecord(id) {
+//			//alert('Colocar su código aquí.')
+			
+			alertBox('${lbl:b_delete_record_button}', '${lbl:b_delete_button}', '${lbl:b_cancel_button}', 'deleteRecordOK(' + id + ')')
+					
+		}
+		
+		//eliminar un registro
+		function deleteRecordOK(id) {
+				ajaxCall(httpMethod="GET", 
+								uri="${def:actionroot}/delete?id=" + id,
+								divResponse=null, 
+								divProgress="status", 
+								formName=null, 
+								afterResponseFn=null, 
+								onErrorFn=null);	
+		}
+		
+	</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="banner">
+	${lbl:b_relacionado}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario de filtro-->
+<form name="form1" onsubmit="return search()" style="width:650px;">
+
+	<!--titulo-->
+	<h1>${lbl:b_filter_find}</h1>
+
+	<table>
+	
+	<!--ancho de la columna de etiquetas-->
+	<col style="width:40%">
+
+	<!--campos-->
+		<tr>
+		<td>${lbl:b_rel_afiliado}</td>
+		<td>
+			<select name="smn_afiliados_id" id="smn_afiliados_id" onchange="chgCombo(smn_afiliados_id.options[smn_afiliados_id.selectedIndex].text,'smn_afiliados_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_afiliados_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_afiliados_id_rows>
+			</select> 
+			<input id="smn_afiliados_id_name" name="smn_afiliados_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_rel_num_control}</td>
+		<td>
+			<input id="rel_numero_control" name="rel_numero_control" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_store_date}@{${def:date}}</td>
+		<td>
+			<input id="rel_fecha_registro" name="rel_fecha_registro" type="text" class="date" maxlength="10">
+			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('rel_fecha_registro')">
+		</td>
+	</tr>
+
+	
+	</table>
+
+	
+	<!--botones-->	
+	<input type="submit" value="${lbl:b_find_button}" class="button">
+	<input id="grabar" type="submit" value="${lbl:b_add_button}"  onclick="showEditor()" class="button">
+	<input type="button" value="${lbl:b_clean_button}" class="button" onclick="clearForm('form1')">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">
+	
+</form>
+
+<!--panel de respuesta AJAX #1-->
+<div id="response" style="display:none; width:100%; margin-top:10px;"></div>
+	
+</body>
+
+</html>

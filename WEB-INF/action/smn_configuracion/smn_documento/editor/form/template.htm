@@ -1,0 +1,343 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_document}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+	<tr>
+		<td>${lbl:b_tipo_documento}*</td>
+		<td>
+			<select class="tipo" name="smn_tipo_documento_id" id="smn_tipo_documento_id" onchange="chgCombo(smn_tipo_documento_id.options[smn_tipo_documento_id.selectedIndex].text,'smn_tipo_documento_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_tipo_documento_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_tipo_documento_id_rows>
+			</select> 
+			<input id="smn_tipo_documento_id_name" name="smn_tipo_documento_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_general_documents}*</td>
+		<td>
+			<select class="documento" name="smn_documento_general_rf" id="smn_documento_general_rf" onchange="chgCombo(smn_documento_general_rf.options[smn_documento_general_rf.selectedIndex].text,'smn_documento_general_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_documento_general_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_documento_general_rf_rows>
+			</select> 
+			<input id="smn_documento_general_rf_name" name="smn_documento_general_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_pre_entidades}*</td>
+		<td>
+			<select name="smn_entidades_rf" id="smn_entidades_rf" onchange="chgCombo(smn_entidades_rf.options[smn_entidades_rf.selectedIndex].text,'smn_entidades_rf_name');">
+				<option value="0">[Cualquiera]</option>
+				<smn_entidades_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_entidades_rf_rows>
+			</select> 
+			<input id="smn_entidades_rf_name" name="smn_entidades_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_pre_sucursal}*</td>
+		<td>
+			<select name="smn_sucursales_rf" id="smn_sucursales_rf" onchange="chgCombo(smn_sucursales_rf.options[smn_sucursales_rf.selectedIndex].text,'smn_sucursales_rf_name');">
+				<option value="0">[Cualquiera]</option>
+				<smn_sucursales_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_sucursales_rf_rows>
+			</select> 
+			<input id="smn_sucursales_rf_name" name="smn_sucursales_rf_name" type="hidden">
+		</td>
+	</tr>		
+	<tr>
+		<td>${lbl:b_codigo_documento}*</td>
+		<td>
+			<input id="doc_codigo" name="doc_codigo" type="text" maxlength="10" >
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_nombre_documento}*</td>
+		<td>
+			<input id="doc_nombre" name="doc_nombre" type="text" maxlength="100" >
+		</td>
+	</tr>
+	<tr>
+		<td>Maneja Moneda Alterna</td>
+		<td>
+			<select class="manejamon" name="doc_maneja_moneda_alt" id="doc_maneja_moneda_alt" onchange="verificartasa();">
+				<option value="NO">${lbl:b_not}</option>
+				<option value="SI">${lbl:b_yes}</option>
+			</select> 
+		</td>
+	</tr>
+	<tr id="tasa">
+		<td>${lbl:b_type}*</td>
+		<td>
+			<select class="tipo" name="tca_tipo_tasa" id="tca_tipo_tasa" >
+			<option value="">[${lbl:b_choose}]</option>
+			<option value="OF">${lbl:b_oficial}</option>
+			<option value="LI">${lbl:b_libre}</option>
+			<option value="PR">${lbl:b_proyectada}</option>
+
+			</select> 
+		</td>
+	</tr>
+	<tr>
+		<td>Maneja Contratante</td>
+		<td>
+			<select class="contra" name="doc_contratante" id="doc_contratante">
+				<option value="">[${lbl:b_choose}]</option>
+				<option value="NO">${lbl:b_not}</option>
+				<option value="SI">${lbl:b_yes}</option>
+			</select> 
+		</td>
+	</tr>
+	<tr>
+		<td>Afiliación Persona Natural</td>
+		<td>
+			<select class="afi" name="doc_afiliacion_persona_natural" id="doc_afiliacion_persona_natural">
+				<option value="">[${lbl:b_choose}]</option>
+				<option value="NO">${lbl:b_not}</option>
+				<option value="SI">${lbl:b_yes}</option>
+			</select> 
+		</td>
+	</tr>
+
+	<!-- <tr id="tasa">
+		<td>${lbl:b_exchange_rate}</td>
+		<td>
+			<select class="tasa" name="smn_tasa_rf" id="smn_tasa_rf" onchange="chgCombo(smn_tasa_rf.options[smn_tasa_rf.selectedIndex].text,'smn_tasa_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_tasa_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_tasa_rf_rows>
+			</select> 
+			<input id="smn_tasa_rf_name" name="smn_tasa_rf_name" type="hidden">
+		</td>
+	</tr> -->
+	<tr>
+		<td>${lbl:b_service} Cobertura*</td>
+		<td>
+			<select class="servicios" name="smn_servicios_cobertura" id="smn_servicios_cobertura" onchange="chgCombo(smn_servicios_cobertura.options[smn_servicios_cobertura.selectedIndex].text,'smn_servicios_cobertura_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_servicios_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_servicios_rf_rows>
+			</select> 
+			<input id="smn_servicios_cobertura_name" name="smn_servicios_cobertura_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>Caja*</td>
+		<td>
+			<select class="caja" name="smn_caja_rf" id="smn_caja_rf" onchange="chgCombo(smn_caja_rf.options[smn_caja_rf.selectedIndex].text,'smn_caja_rf_name');">
+				<option value="0">[Cualquiera]</option>
+				<smn_caja_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_caja_rf_rows>
+			</select> 
+			<input id="smn_caja_rf_name" name="smn_caja_rf_name" type="hidden">
+		</td>
+	</tr>		
+
+	<tr>
+		<td>Categoria de Justificacion*</td>
+		<td>
+			<select class="catego" name="smn_categoria_justificacion_rf" id="smn_categoria_justificacion_rf" onchange="chgCombo(smn_categoria_justificacion_rf.options[smn_categoria_justificacion_rf.selectedIndex].text,'smn_categoria_justificacion_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_categoria_justificacion_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_categoria_justificacion_rf_rows>
+			</select> 
+			<input id="smn_categoria_justificacion_rf_name" name="smn_categoria_justificacion_rf_name" type="hidden">
+		</td>
+	</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+
+		$(document).ready(function() {
+	    	$('.tipo').select2();
+	    	$('.documento').select2();
+	    	$('.catego').select2();
+	    	$('.tasa').select2();
+	    	$('.servicios').select2();
+
+	    	$('.entidad').select2();
+	    	$('.sucursal').select2();
+	    	$('.caja').select2();
+
+	    	$('.manejamon').select2();
+	    	$('.contra').select2();
+	    	$('.afi').select2();
+
+	    	$('#tasa').hide();
+		});
+
+		if (id!="")
+			edit(id);
+	} 
+
+	function verificartasa() {
+		var tas = $('#doc_maneja_moneda_alt').val();
+		//alert("si")
+		if (tas == 'SI') {
+			$('#tasa').show();
+		}else{
+			$('#tasa').hide();
+		}
+	}
+	
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+	
+</script>	
+</body>
+</html>

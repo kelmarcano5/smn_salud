@@ -1,0 +1,3 @@
+ <validator onerror="/action/error/validation/alert">
+ 	<parameter id="id_prestacion_det" type="integer" required="false" label="ID" maxlen="30" />
+ </validator>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_naturaleza_servicio>
+	<detail>
+		<rows>		
+		<record nts_fecha_registro="${fld:nts_fecha_registro}"    nts_naturaleza="${fld:nts_naturaleza}"    smn_tipo_servicio_rf="${fld:smn_tipo_servicio_rf}"    />
+		</rows>
+	</detail>
+</smn_naturaleza_servicio>

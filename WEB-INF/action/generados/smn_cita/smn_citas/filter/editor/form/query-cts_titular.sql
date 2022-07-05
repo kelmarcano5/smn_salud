@@ -1,0 +1,1 @@
+select smn_salud.smn_afiliados.smn_afiliados_id as id, smn_salud.smn_afiliados.afi_nombres || ' ' || smn_salud.smn_afiliados.afi_apellidos as item from smn_salud.smn_afiliados order by  smn_salud.smn_afiliados.afi_nombres

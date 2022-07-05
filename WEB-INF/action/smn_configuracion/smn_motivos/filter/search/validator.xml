@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='mtv_codigo' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='mtv_codigo' rule='like' />
+	<parameter id='mtv_descripcion' type='varchar' required='false' label='${lbl:b_description}' maxlen='56'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='mtv_descripcion' rule='like' />
+</validator>

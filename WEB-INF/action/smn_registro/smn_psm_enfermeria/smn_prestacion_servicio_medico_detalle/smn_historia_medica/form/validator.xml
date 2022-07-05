@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert" id='smn_honorarios'>
+	<!-- <parameter id="id" type="integer" required="true" label="ID" maxlen="10" /> -->
+	<parameter id="id_prestacion" type="integer" required="false" label="CODIGO" maxlen="10" />
+	<parameter id="nombrepaciente" type="varchar" required="false" label="DESCRIPCION" maxlen="100" />
+	<parameter id="codigopaciente" type="integer" required="false" label="DESCRIPCION" maxlen="100" />
+</validator>

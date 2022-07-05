@@ -1,0 +1,9 @@
+SELECT smn_comercial.smn_pedido_cabecera.smn_pedido_cabecera_id,
+smn_caja.smn_mov_caja_cabecera.smn_mov_caja_cabecera_id
+FROM
+smn_salud.smn_recipe_medico
+INNER JOIN smn_salud.smn_ingresos ON smn_salud.smn_recipe_medico.smn_ingreso_id = smn_salud.smn_ingresos.smn_ingresos_id
+INNER JOIN smn_caja.smn_mov_caja_cabecera ON smn_salud.smn_ingresos.igs_num_ingreso = smn_caja.smn_mov_caja_cabecera.smn_num_doc_origen_rf
+INNER JOIN smn_comercial.smn_pedido_cabecera ON smn_caja.smn_mov_caja_cabecera.smn_mov_caja_cabecera_id = smn_comercial.smn_pedido_cabecera.smn_mov_caja_cabecera_id
+WHERE
+smn_salud.smn_recipe_medico.smn_ingreso_id=${fld:ingresoid} limit 1

@@ -1,0 +1,350 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_budget_request}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+	<tr id="numerosolicitud">
+		<td>${lbl:b_request_number}*</td>
+		<td>
+			<input id="spr_solicitud" name="spr_solicitud" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_pre_documento}*</td>
+		<td>
+			<select class="documento" name="smn_documento_id" id="smn_documento_id" onchange="chgCombo(smn_documento_id.options[smn_documento_id.selectedIndex].text,'smn_documento_id_name');">
+				<smn_documento_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_documento_id_rows>
+			</select> 
+			<input id="smn_documento_id_name" name="smn_documento_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>Paciente*</td>
+		<td>
+			<select class="auxiliar" name="smn_auxiliar" id="smn_auxiliar" onchange="chgCombo(smn_auxiliar.options[smn_auxiliar.selectedIndex].text,'smn_auxiliar_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_auxiliar_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_auxiliar_rows>
+			</select> 
+			<input id="smn_auxiliar_name" name="smn_auxiliar_name" type="hidden">
+		</td>
+		<td>
+			<!-- Incorporado manualmente para mostrar icono de inclusion de elementos al combo -->
+			<img src="/smn_base/images/list-add2.png" align="left" class="button" onclick="add_aux_pa()" title="Paciente">
+		</td>
+	</tr>
+	<tr>
+		<td>Contratante</td>
+		<td>
+			<select class="contratante" name="smn_contratante_id" id="smn_contratante_id" onchange="chgCombo(smn_contratante_id.options[smn_contratante_id.selectedIndex].text,'smn_contratante_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_contratante_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_contratante_id_rows>
+			</select> 
+			<input id="smn_contratante_id_name" name="smn_contratante_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_pathology}*</td>
+		<td>
+			<select class="patologia" name="smn_patologia_id" id="smn_patologia_id" onchange="chgCombo(smn_patologia_id.options[smn_patologia_id.selectedIndex].text,'smn_patologia_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_patologia_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_patologia_id_rows>
+			</select> 
+			<input id="smn_patologia_id_name" name="smn_patologia_id_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_hospitalization_day}*</td>
+			<td>
+				<input id="spr_dias_hospitalizacion" name="spr_dias_hospitalizacion" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_operating_room_hours}*</td>
+			<td>
+				<input id="spr_horas_quirofano" name="spr_horas_quirofano" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>Material e Instrumental</td>
+			<td>
+				<textarea id="spr_instrumentales" name="spr_instrumentales" cols="30" rows="3"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>Monto ${lbl:b_schedules}*</td>
+			<td>
+				<input id="spr_honorarios" name="spr_honorarios" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="estatus">
+			<td>${lbl:b_estatus}*</td>
+			<td>
+				<select name="spr_estatus" id="spr_estatus">
+				<option value="SO">${lbl:b_solicitado}</option>
+				<option value="GE">${lbl:b_generado}</option>
+				<option value="AP">${lbl:b_aprobado}</option>
+				<option value="EN">${lbl:b_enviado}</option>
+
+				</select> 
+			</td>
+		</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+
+		$('.auxiliar').select2();
+		$('.contratante').select2();
+		$('.patologia').select2();
+		$('.documento').select2();
+
+		$('#estatus').hide();
+		$('#numerosolicitud').hide();
+
+		if (id!="")
+			edit(id);
+	} 
+	
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+		//Author     : SIMONE
+	//Description: Add new value to combo box
+	//Return     : None
+	function addValueToComboAux(code, description, field) {
+	    var combo = document.getElementById(field);	    
+
+	    insertComboBoxAux(code, combo, description);
+	}
+
+	// CODIGO NUEVOOOO VEHICULO 
+	//Author     : SIMONE
+	//Description: Insert new value into combo box
+	//Return     : None
+	function insertComboBoxAux(code, combo, description, field) {
+		var bdID = code;
+		var valueText = description;
+
+		if (description != null){
+			 bdID = bdID;
+			valueText = description;
+		}
+       
+		var option = document.createElement("option");
+		option.text = valueText; 
+		option.value = bdID;
+		console.log("VALUE: "+bdID);
+		document.form1.smn_auxiliar.add(option, combo.options.length);
+		 $("#smn_auxiliar option[value="+ bdID +"]").attr("selected",true);
+		document.form1.smn_auxiliar.disabled=true;
+		
+	}
+
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndexAux(code, combo, description) {
+	    for (var i = 0; i < combo.options.length; i++) {
+			var valueText = code;
+			if (description != null){
+				valueText = valueText + ' - ' + description;
+			}
+	        if (combo.options[i].text == valueText) {
+	        	combo.options[i].selected = true;
+	            return;
+	        }
+	    }
+	}
+	
+	//Author     : SIMONE
+	//Description: Get text valueof selected index
+	//Return     : Text associated to index
+	function getSelectedIndexAux(combo) {
+	    for (var i = 0; i < combo.options.length; i++) {
+	        if (combo.options[i].selected == true) {
+	            return combo.options[i].text;
+	        }
+	    }
+	}
+
+	function getIDSelectedIndexAux(combo) {
+	    for (var i = 0; i < combo.options.length; i++) {
+	        if (combo.options[i].selected == true) {
+	            return combo.options[i].value;
+	        }
+	    }
+	}
+	
+
+	//Author     : SIMONE
+	//Description: Set value to combo box
+	//Parameters : code - it is code associated into each database table 
+	//             descripcion - it is description associated into each database table 
+	//             field - name combo field
+	//             id - identifier retrieved after transaction
+	//             linked - flag indicates 'true' when combos are linked and 'false' otherwise
+	//Return     : None
+	function setValueComboBoxAux(code, description, field, linked){
+		addValueToComboAux(code,description,field);
+		var combo = document.getElementById(field);
+		var valueText = getSelectedIndexAux(combo);	
+		setSelectedIndexAux(bdID, combo, valueText); 
+	}
+
+	function add_aux_pa(){
+
+		var uri = "/smn_salud/action/smn_registro/smn_solicitud_presupuesto/editor_pa/form?reference=true&source=address";
+		console.log(uri);
+		openDialog("editor_pa", uri, 850, 700);
+	}
+
+	
+</script>	
+</body>
+</html>

@@ -1,0 +1,19 @@
+select
+		smn_salud.smn_citas.cts_num_control,
+	smn_salud.smn_citas.cts_num_doc_oficial,
+	smn_salud.smn_citas.smn_motivos_id,
+	smn_salud.smn_citas.cts_clase_auxiliar,
+	smn_salud.smn_citas.cts_auxiliar,
+	smn_salud.smn_citas.smn_origen_id,
+	smn_salud.smn_citas.cts_ordenante,
+	smn_salud.smn_citas.cts_tipo_orden,
+	smn_salud.smn_citas.cts_titular,
+	smn_salud.smn_citas.smn_estatus_citas_id,
+	smn_salud.smn_citas.smn_relacionados_id,
+	smn_salud.smn_citas.smn_observaciones_citas_id,
+	smn_salud.smn_citas.cts_fecha_registro,
+	smn_salud.smn_citas.smn_citas_mov_id
+from
+	smn_salud.smn_citas 
+where
+	smn_salud.smn_citas.smn_citas_id = ${fld:id}

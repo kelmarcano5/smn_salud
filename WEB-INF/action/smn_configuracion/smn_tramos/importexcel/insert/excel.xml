@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='trm_codigo' type='varchar' required='true' maxlen='16'/>
+	<parameter id='trm_descripcion' type='varchar' required='true' maxlen='100'/>
+	<parameter id='trm_dia_semana' type='varchar' required='true' maxlen='2'/>
+	<parameter id='trm_hora_inicio' type='varchar' required='true' maxlen='5'/>
+	<parameter id='trm_hora_fin' type='varchar' required='true' maxlen='5'/>
+
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='trm_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='trm_descripcion'/>
+
+
+</validator>

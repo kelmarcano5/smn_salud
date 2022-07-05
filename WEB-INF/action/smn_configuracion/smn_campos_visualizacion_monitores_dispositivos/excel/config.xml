@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncamposvisualizacionmonitoresdispositivos.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="3" cellStep="0" name="${lbl:b_campo_vis_mon}"/>
+	
+	<excel 
+		recordset='query-smncamposvisualizacionmonitoresdispositivos.sql' 
+		sheetname='${lbl:b_campo_vis_mon}' 
+		filename='${lbl:b_campo_vis_mon}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_series_id_combo' label='${lbl:b_serie}' />
+		<col id='cvm_datos_pac_combo' label='${lbl:b_aux_campos_vis_mon}' />
+		<col id='cvm_unidad_llamada_combo' label='${lbl:b_unidad_llamada}' />
+		<col id='cvm_pacientes_espera_combo' label='${lbl:b_paciente_espera}' />
+		<col id='cvm_tiempo_aprox_espera_combo' label='${lbl:b_tiempo_aprox_espera}' />
+		<col id='cvm_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

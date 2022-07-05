@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Actualiza valores de un formulario en una tabla
+	</summary>
+
+	<log>false</log>
+
+	<!--soporte de auditoria-->
+	<audit>
+		<!--de donde saca los datos, por defecto es "_request"-->
+		<recordset></recordset>
+		<!--que campos extrae para el registro descriptivo-->
+		<cols>
+			<colname>smn_ingreso_id</colname>
+			<colname>smn_presupuesto_id</colname>
+			<colname>smn_auxiliar_rf</colname>
+			<colname>coa_hora_solicitada</colname>
+			<colname>coa_ejecutivo_atención_pagador</colname>
+			<colname>coa_observación_inicial</colname>
+			<colname>coa_monto_solicitado_servicios_clinicos_ml</colname>
+			<colname>coa_monto_solicitado_medicinas_y_mmq_ml</colname>
+			<colname>coa_monto_solicitado_honorarios_ml</colname>
+			<colname>coa_monto_total_solicitado_ml</colname>
+			<colname>smn_moneda_rf</colname>
+			<colname>smn_tasa_rf</colname>
+			<colname>coa_monto_solicitado_servicios_clinicos_ma</colname>
+			<colname>coa_monto_solicitado_medicinas_y_mmq_ma</colname>
+			<colname>coa_monto_solicitado_honorarios_ma</colname>
+			<colname>coa_monto_total_solicitado_ma</colname>
+			<colname>coa_fecha_aprobación</colname>
+			<colname>coa_hora_aprobación</colname>
+			<colname>coa_monto_aprobado_servicios_medicos_ml</colname>
+			<colname>coa_monto_aprobado_medicinas_y_mmq_ml</colname>
+			<colname>coa_monto_aprobado_honorarios_ml</colname>
+			<colname>coa_monto_total_aprobado_ml</colname>
+			<colname>coa_monto_aprobado_servicios_medicos_ma</colname>
+			<colname>coa_monto_aprobado_medicinas_y_mmq_ma</colname>
+			<colname>coa_monto_aprobado_honorarios_ma</colname>
+			<colname>coa_monto_total_aprobado_ma</colname>
+			<colname>coa_estatus_proceso</colname>
+			<colname>coa_estatus_financiero</colname>
+		
+		</cols>
+		<table>smn_salud.smn_cobertura_admision</table>
+		<oper>ACTUALIZAR</oper>
+		<area>Carga de datos</area>
+		<!--
+			query para obtener el ID generado o nombre de 
+			la columna que contiene el pkey, si es query, 
+			el alias del campo debe ser "id"
+		-->
+		<pkey>id</pkey>
+	</audit>
+
+	<transaction>
+		<classname>dinamica.audit.AuditableTransaction</classname>
+		<validator>true</validator>
+		<transaction>true</transaction>
+		<jdbc-log>false</jdbc-log>
+	</transaction>
+
+	<query>update.sql</query>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>script.js</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/javascript; charset=iso-8859-1</content-type>
+		<expiration>0</expiration>
+	</output>
+
+</config>

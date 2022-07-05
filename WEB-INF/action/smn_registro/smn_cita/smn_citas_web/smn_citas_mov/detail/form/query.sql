@@ -1,0 +1,32 @@
+select	
+	smn_salud.smn_citas.smn_citas_id, 
+	smn_salud.smn_citas.cts_num_control as cts_num_control_pl0,
+	(select smn_salud.smn_citas.cts_num_control from  smn_salud.smn_citas  where smn_salud.smn_citas.smn_citas_id is not null  and smn_salud.smn_citas.smn_citas_id=smn_salud.smn_citas_mov.smn_citas_id  order by smn_salud.smn_citas.cts_num_control ) as smn_citas_id_combo,
+	(select smn_salud.smn_documento.doc_codigo || ' - ' || smn_salud.smn_documento.doc_nombre from  smn_salud.smn_documento  where smn_salud.smn_documento.smn_documento_id is not null  and smn_salud.smn_documento.smn_documento_id=smn_salud.smn_citas_mov.smn_documento_id  order by smn_salud.smn_documento.doc_nombre ) as smn_documento_id_combo,
+	(select smn_base.smn_servicios.svc_codigo || ' - ' || smn_base.smn_servicios.svc_descripcion from  smn_base.smn_servicios  where smn_base.smn_servicios.smn_servicios_id is not null  and smn_base.smn_servicios.smn_servicios_id=smn_salud.smn_citas_mov.smn_servicios_rf  order by smn_base.smn_servicios.svc_descripcion ) as smn_servicios_rf_combo,
+	(select smn_base.smn_componentes.cmp_codigo || ' - ' || smn_base.smn_componentes.cmp_descripcion from  smn_base.smn_componentes  where smn_base.smn_componentes.smn_componentes_id is not null  and smn_base.smn_componentes.smn_componentes_id=smn_salud.smn_citas_mov.smn_componente_rf  order by smn_base.smn_componentes.cmp_descripcion ) as smn_componente_rf_combo,
+	(select smn_salud.smn_tipo_consulta.tcs_codigo || ' - ' || smn_salud.smn_tipo_consulta.tcs_nombre from  smn_salud.smn_tipo_consulta  where smn_salud.smn_tipo_consulta.smn_tipo_consulta_id is not null  and smn_salud.smn_tipo_consulta.smn_tipo_consulta_id=smn_salud.smn_citas_mov.smn_tipo_consulta_id  order by smn_salud.smn_tipo_consulta.tcs_nombre ) as smn_tipo_consulta_id_combo,
+	(select smn_base.smn_grupos_prestadores.gpp_codigo || ' - ' || smn_base.smn_grupos_prestadores.gpp_descripcion from  smn_base.smn_grupos_prestadores  where smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id is not null  and smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id=smn_salud.smn_citas_mov.smn_grupo_prestador_servicio_rf  order by smn_base.smn_grupos_prestadores.gpp_descripcion ) as smn_grupo_prestador_servicio_rf_combo,
+	(select smn_salud.smn_estatus_citas.eci_num_secuencia || ' - ' || smn_salud.smn_estatus_citas.eci_descripcion from  smn_salud.smn_estatus_citas  where smn_salud.smn_estatus_citas.smn_estatus_citas_id is not null  and smn_salud.smn_estatus_citas.smn_estatus_citas_id=smn_salud.smn_citas_mov.ctm_estatus_id  order by smn_salud.smn_estatus_citas.eci_descripcion ) as ctm_estatus_id_combo,
+	(select smn_salud.smn_motivos.mtv_codigo || ' - ' || smn_salud.smn_motivos.mtv_descripcion from  smn_salud.smn_motivos  where smn_salud.smn_motivos.smn_motivos_id is not null  and smn_salud.smn_motivos.smn_motivos_id=smn_salud.smn_citas_mov.smn_motivos_id  order by smn_salud.smn_motivos.mtv_descripcion ) as smn_motivos_id_combo,
+	(select smn_base.smn_auxiliar_medico.aam_codigo|| ' - ' || smn_base.smn_auxiliar_medico.aam_nombres from  smn_base.smn_auxiliar_medico  where smn_base.smn_auxiliar_medico.smn_auxiliar_medico_id is not null  and smn_base.smn_auxiliar_medico.smn_auxiliar_medico_id=smn_salud.smn_citas_mov.smn_clase_auxiliar_rf  order by smn_base.smn_auxiliar_medico.aam_nombres ) as smn_clase_auxiliar_rf_combo,
+	(select smn_base.smn_auxiliar_terceros.atr_codigo || ' - ' ||  smn_base.smn_auxiliar_terceros.atr_descripcion from  smn_base.smn_auxiliar_terceros  where smn_base.smn_auxiliar_terceros.smn_auxiliar_terceros_id is not null  and smn_base.smn_auxiliar_terceros.smn_auxiliar_terceros_id=smn_salud.smn_citas_mov.smn_auxiliar_rf  order by smn_base.smn_auxiliar_terceros.atr_descripcion ) as smn_auxiliar_rf_combo,
+	(select smn_salud.smn_sintoma.stm_codigo || ' - ' || smn_salud.smn_sintoma.stm_descripcion from  smn_salud.smn_sintoma  where smn_salud.smn_sintoma.smn_sintoma_id is not null  and smn_salud.smn_sintoma.smn_sintoma_id=smn_salud.smn_citas_mov.smn_sintoma_id  order by smn_salud.smn_sintoma.stm_descripcion ) as smn_sintoma_id_combo,
+	case
+		when smn_salud.smn_citas_mov.cts_tipo_orden='Urg' then '${lbl:b_Urgente}'
+		when smn_salud.smn_citas_mov.cts_tipo_orden='Con' then '${lbl:b_control}'
+		when smn_salud.smn_citas_mov.cts_tipo_orden='Seg' then '${lbl:b_segunda_opinion}'
+	end as cts_tipo_orden_combo,
+	(select smn_base.smn_entidades.ent_codigo || ' - ' ||  smn_base.smn_entidades.ent_descripcion_corta from  smn_base.smn_entidades  where smn_base.smn_entidades.smn_entidades_id is not null  and smn_base.smn_entidades.smn_entidades_id=smn_salud.smn_citas_mov.smn_entidades_rf  order by smn_base.smn_entidades.ent_descripcion_corta ) as smn_entidades_rf_combo,
+	(select smn_base.smn_sucursales.suc_codigo || ' - ' ||  smn_base.smn_sucursales.suc_nombre from  smn_base.smn_sucursales  where smn_base.smn_sucursales.smn_sucursales_id is not null  and smn_base.smn_sucursales.smn_sucursales_id=smn_salud.smn_citas_mov.smn_sucursales_rf  order by smn_base.smn_sucursales.suc_nombre ) as smn_sucursales_rf_combo,
+	(select smn_base.smn_areas_servicios.ase_codigo || ' - ' ||  smn_base.smn_areas_servicios.ase_descripcion from  smn_base.smn_areas_servicios  where smn_base.smn_areas_servicios.smn_areas_servicios_id is not null  and smn_base.smn_areas_servicios.smn_areas_servicios_id=smn_salud.smn_citas_mov.smn_areas_servicios_rf  order by smn_base.smn_areas_servicios.ase_descripcion ) as smn_areas_servicios_rf_combo,
+	(select smn_base.smn_unidades_servicios.uns_codigo || ' - ' ||  smn_base.smn_unidades_servicios.uns_descripcion from  smn_base.smn_unidades_servicios  where smn_base.smn_unidades_servicios.smn_unidades_servicios_id is not null  and smn_base.smn_unidades_servicios.smn_unidades_servicios_id=smn_salud.smn_citas_mov.smn_unidades_servicios_rf  order by smn_base.smn_unidades_servicios.uns_descripcion ) as smn_unidades_servicios_rf_combo,
+	(select smn_salud.smn_observaciones.obs_codigo || ' - ' || smn_salud.smn_observaciones.obs_descripcion from  smn_salud.smn_observaciones  where smn_salud.smn_observaciones.smn_observaciones_id is not null  and smn_salud.smn_observaciones.smn_observaciones_id=smn_salud.smn_citas_mov.ctm_observaciones_id  order by smn_salud.smn_observaciones.obs_descripcion ) as ctm_observaciones_id_combo,
+	smn_salud.smn_citas_mov.*
+from
+	smn_salud.smn_citas,
+	smn_salud.smn_citas_mov 
+where
+	smn_salud.smn_citas.smn_citas_id=smn_salud.smn_citas_mov.smn_citas_id 
+ and 
+	smn_citas_mov_id = ${fld:id}

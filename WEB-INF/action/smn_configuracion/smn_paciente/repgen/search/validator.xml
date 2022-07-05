@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	
+	<parameter id='smn_clasificacion_paciente_id' type='integer' required='false' label='${lbl:b_clasificacion_cliente}' maxlen='10'/>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_clasificacion_abc_rf' type='integer' required='false' label='${lbl:b_abc_clasification}' maxlen='10'/>
+	<parameter id='smn_sector_economico_rf' type='integer' required='false' label='${lbl:b_economic_sectors}' maxlen='10'/>
+	<parameter id='pac_nacional_ext' type='varchar' required='false' label='${lbl:b_cliente_nacional_extranjero}' maxlen='1'/>
+	<parameter id='pac_vigencia' type='date' required='false' label='${lbl:b_validation_date}' maxlen='13'/>
+	<parameter id='pac_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='smn_forma_pago_rf' type='integer' required='false' label='${lbl:b_way_to_pay}' maxlen='10'/>
+	<parameter id='smn_condicion_financiera_rf' type='integer' required='false' label='${lbl:b_financial_condition}' maxlen='10'/>
+	<parameter id='pac_requiere_aut_previa' type='varchar' required='false' label='${lbl:b_required_aut_preview}' maxlen='2'/>
+	<parameter id='smn_promotor_rf' type='integer' required='false' label='${lbl:b_promotor}' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='pac_nacional_ext'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='pac_estatus'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='pac_requiere_aut_previa'
+		rule='contains' />
+
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generación del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

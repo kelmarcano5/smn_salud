@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id="cita" onerror='/action/error/validation/ajax'>
+	<parameter id='ctm_num_control_cita' type='integer' required='false' label='${lbl:b_num_control_citas}' maxlen='10'/>
+	<parameter id='ctm_fecha_cita' type='date' required='false' label='${lbl:b_appointment_date}' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='integer' required='false' label='${lbl:b_service}' maxlen='10'/>
+	<parameter id='ctm_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+ 	<parameter id="id_cita" type="integer" required="true" label="ID" maxlen="10" />	
+</validator>

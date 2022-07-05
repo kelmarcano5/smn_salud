@@ -1,0 +1,46 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+	<col width='18%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="8">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('smn_presupuesto_id','query-smnpresupuestodetalle.sql')" >${lbl:smn_presupuesto}</th>
+		<th class='sortable' onclick="sortBy('prd_servicio_combo','query-smnpresupuestodetalle.sql')" >${lbl:b_service}</th>
+		<th class='sortable' onclick="sortBy('prd_cantidad','query-smnpresupuestodetalle.sql')" >${lbl:b_amount}</th>
+		<th class='sortable' onclick="sortBy('prd_monto','query-smnpresupuestodetalle.sql')" >${lbl:b_monto_presupuesto}</th>
+		<th class='sortable' onclick="sortBy('prd_fecha_registro','query-smnpresupuestodetalle.sql')" >${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_presupuesto_detalle_id}')" title="Ver detalle"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_presupuesto_detalle_id}')" title="Eliminar"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_presupuesto_detalle_id}')" title="Editar"></td>
+		<td align="center">${fld:smn_presupuesto_id}</td>
+		<td align="center">${fld:prd_servicio_combo}</td>
+		<td align="center">${fld:prd_cantidad}</td>
+		<td align="right">${fld:prd_monto@#,###,##0.00}</td>
+		<td align="center">${fld:prd_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>

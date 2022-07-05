@@ -1,0 +1,5 @@
+ <validator onerror="/action/error/validation/alert" id="ingreso">
+ 	<parameter id="documento_id" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="servicio_id" type="integer" required="false" label="ID" maxlen="10" />
+ 
+ </validator>

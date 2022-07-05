@@ -1,0 +1,7 @@
+select
+	${field}
+from
+	smn_salud.smn_tipo_coberturas
+where
+		smn_salud.smn_tipo_coberturas.smn_tipo_coberturas_id = ${fld:id}
+	

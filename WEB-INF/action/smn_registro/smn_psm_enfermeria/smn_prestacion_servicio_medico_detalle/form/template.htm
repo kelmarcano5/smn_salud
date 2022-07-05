@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+	<!--codigo especifico de este modulo--> 
+	<script type="text/javascript">
+		//inicializacion de la pagina cuando carga
+		onload = function() { 
+			search();
+		} 
+	
+		//ejecutar consulta
+		function search() {
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/search?id2=${fld:id2}&codigopaciente=${fld:codigopaciente}&ingresoid=${fld:ingresoid}", 
+							divResponse="response", 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);
+		}
+	
+		//recuperar una pagina X del grid
+		function viewPage() {
+			var url = "${def:actionroot}/view";
+			gotoPage(url);
+		}
+		
+		//exportar a PDF
+		function openPDF() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+	
+		//exportar a excel
+		function openExcel() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a xml
+		function openXml() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/xml/search?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a texto
+		function openTxt() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/txt/search?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//envio de emails
+		function openEmails() {
+			var uri = "${def:context}${def:actionroot}/email/form";					
+			openDialog("editor0", uri, 950, 600);	
+		}
+		
+		//mostrar el detalle de un registro
+		function getDetail(id)
+		{
+			//alert('Colocar su código aquí.')	
+			var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
+			openDialog("dialog", uri, 650, 600);			
+		}
+		
+		//muestra un DIV+IFRAME con el formulario de CRUD
+		function showEditor(id)
+		{
+//			//alert('Colocar su código aquí.')
+						
+			//editor a nivel de panel iconográfico
+			if (id == 'editor')
+			{					
+				var uri = "${def:context}${def:actionroot}/editor/form";					
+				openDialog("editor1", uri, 650, 600);					
+			}
+			else if (id == 'filter')
+			{
+				var uri = "${def:context}${def:actionroot}/filter/form";					
+				openDialog("editor2", uri, 1150, 650);		
+			} 
+			else if (id == 'importexcel')
+			{
+				var uri = "${def:context}${def:actionroot}/importexcel/form";					
+				openDialog("editor3", uri, 950, 600);		
+			} 
+			else if (id == 'repgen')
+			{
+				var uri = "${def:context}${def:actionroot}/repgen/form";		
+				openDialog("editor4", uri, 950, 600);		
+			}
+			else if (id == 'orden'){
+				var uri = "${def:context}${def:actionroot}/smn_ordenes_medicas/editor/form?id2=${fld:id2}&paciente_id=${fld:codigopaciente}&ingreso=${fld:ingresoid}";
+				//alert(uri);
+				openDialog("dialog", uri, 1100, 650);	
+			} 
+			else if (id == 'recipe'){
+				var uri = "${def:context}${def:actionroot}/smn_recipe_medico/editor/form?id2=${fld:id2}&paciente_id=${fld:codigopaciente}&ingreso=${fld:ingresoid}";
+				//alert(uri);
+				openDialog("dialog", uri, 1100, 650);	
+			} 
+			else if (id == 'historia'){
+				var uri = "${def:context}${def:actionroot}/smn_historia_medica/editor/form?id2=${fld:id2}&paciente_id=${fld:codigopaciente}&ingreso=${fld:ingresoid}}";
+				alert(uri);
+				openDialog("dialog", uri, 1100, 650);	
+			}
+					//editor a nivel de registros
+			else {				
+				var uri = "";
+				if (id==null)
+					uri = "${def:context}${def:actionroot}/editor/form";
+				else
+					uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
+					
+				openDialog("editor5", uri, 650, 600);
+			}
+			
+		}
+
+		function showHistory(id){
+			uri = "${def:context}${def:actionroot}/smn_historia_medica/form?id=" + id;
+					
+				openDialog("editor5", uri, 650, 600);
+		}
+
+		function showEditor_aprobar(id, status){
+			//alert(status);
+			if(status=='PE'){
+				var uri = "${def:context}${def:actionroot}/editor_aprobar/form?id=" + id;					
+				openDialog("editor1", uri, 650, 600);					
+			}else{
+				alertBox ('Registro Pendiente el mismo no puede ser aprobado', '${lbl:b_continue_button}', null, null);
+			}								
+		}
+
+		function showEditor_rechazar(id){
+			//editor a nivel de panel iconográfico		
+			var uri = "${def:context}${def:actionroot}/editor_rechazar/form?id=" + id;					
+			openDialog("editor1", uri, 650, 600);									
+		}
+
+		function deleteRecord(id) {
+			//alert('Colocar su código aquí.')
+			alertBox('${lbl:b_delete_record_button}', '${lbl:b_delete_button}', '${lbl:b_cancel_button}', 'deleteRecordOK(' + id + ')')		
+		}
+		
+		//eliminar un registro
+		function deleteRecordOK(id) {
+				ajaxCall(httpMethod="GET", 
+								uri="${def:actionroot}/delete?id=" + id,
+								divResponse=null, 
+								divProgress="status", 
+								formName=null, 
+								afterResponseFn=null, 
+								onErrorFn=null);	
+		}
+
+		function showEditor_procesar(id, id2, ingreso_id)
+		{
+			var uri = "${def:context}${def:actionroot}/procesar?id="+id+"&id_prestacion=${fld:id2}&ingreso_id="+ingreso_id;
+			//alert(uri); 
+			openDialog("editor6", uri, 650, 600);	
+			
+		}
+
+		function plantilla(id , tipo) {
+			//alert(tipo);
+			if (tipo == 'CO') {
+				var uri = "${def:context}${def:actionroot}/plantilla/form?smn_prestacion_servicio_medico_detalle_id="+id;
+				//alert(uri);
+				openDialog("editor6", uri, 1000, 600);
+			} 
+
+			if (tipo == 'EX' || tipo == 'ES') {
+				var uri = "${def:context}${def:actionroot}/plantilla/form?smn_prestacion_servicio_medico_detalle_id="+id;
+				//alert(uri);
+				openDialog("editor6", uri, 1000, 600);
+			} 
+
+			if (tipo == 'HO' || tipo=='CI' || tipo=='PR') {
+				var uri = "${def:context}${def:actionroot}/plantilla/form?smn_prestacion_servicio_medico_detalle_id="+id;
+				//alert(uri);
+				openDialog("editor6", uri, 1000, 600);
+			} 
+		}
+
+		function recipemedico(id2, nombre, cedula, ingreso, paciente, tipo) {
+			console.log(tipo);
+		//	if (tipo == 'CO') {
+				var uri = "${def:context}${def:actionroot}/smn_recipe_medico/form?id2="+ id2 + "&nombre=" + nombre + "&cedula=" + cedula + "&ingreso="+ ingreso + "&paciente_id=" + paciente + "&nombre_paciente=${fld:nombre_paciente}&num_ingreso=${fld:num_ingreso}&sexo=${fld:sexo}&edad=${fld:edad}&fecha_ingreso=${fld:fecha_ingreso@dd-MM-yyyy}";	
+					console.log("uri de recipe: "+uri);		
+				//alert(uri);
+				openDialog("dialog", uri, 1150, 650);	
+			//}
+
+			
+			if (tipo == 'HO' || tipo=='CI' || tipo=='PR') {
+				var uri = "${def:context}${def:actionroot}/smn_recipe_medico/form?id2="+ id2 + "&nombre=" + nombre + "&cedula=" + cedula + "&ingreso="+ ingreso + "&paciente_id=" + paciente + "&nombre_paciente=${fld:nombre_paciente}&num_ingreso=${fld:num_ingreso}&sexo=${fld:sexo}&edad=${fld:edad}&fecha_ingreso=${fld:fecha_ingreso@dd-MM-yyyy}";	
+					console.log("uri de recipe: "+uri);		
+				//alert(uri);
+				openDialog("dialog", uri, 1150, 650);	
+			}
+	
+		} 
+
+		function ordenmedica(id2, nombre, cedula, ingreso, paciente, tipo) {
+			console.log(tipo);
+			//if (tipo == 'CO') {
+				var uri = "${def:context}${def:actionroot}/smn_ordenes_medicas/form?id2="+ id2 + "&nombre=" + nombre + "&cedula=" + cedula + "&ingreso="+ ingreso + "&paciente_id=" + paciente + "&nombre_paciente=${fld:nombre_paciente}&num_ingreso=${fld:num_ingreso}&sexo=${fld:sexo}&edad=${fld:edad}&fecha_ingreso=${fld:fecha_ingreso@dd-MM-yyyy}&area_prestador=${fld:area_prestador}&unidad_prestador=${fld:unidad_prestador}";
+					console.log("uri de orden medica: "+uri);
+				//alert(uri);
+				openDialog("dialog", uri, 1100, 650);	
+			//}
+
+			if (tipo == 'HO' || tipo=='CI' || tipo=='PR') {
+				var uri = "${def:context}${def:actionroot}/smn_ordenes_medicas/form?id2="+ id2 + "&nombre=" + nombre + "&cedula=" + cedula + "&ingreso="+ ingreso + "&paciente_id=" + paciente + "&nombre_paciente=${fld:nombre_paciente}&num_ingreso=${fld:num_ingreso}&sexo=${fld:sexo}&edad=${fld:edad}&fecha_ingreso=${fld:fecha_ingreso@dd-MM-yyyy}";
+					console.log("uri de orden medica: "+uri);
+				//alert(uri);
+				openDialog("dialog", uri, 1100, 650);	
+			}
+		} 
+
+		function reposos(id2, nombre, cedula, ingreso, paciente, tipo) {
+			console.log(tipo);
+			if (tipo == 'CO') {
+				var uri = "${def:context}${def:actionroot}/smn_reposos_constancias/form?id2="+ id2 + "&nombre=" + nombre + "&cedula=" + cedula + "&ingreso="+ ingreso + "&paciente_id=" + paciente + "&nombre_paciente=${fld:nombre_paciente}&num_ingreso=${fld:num_ingreso}&sexo=${fld:sexo}&edad=${fld:edad}&fecha_ingreso=${fld:fecha_ingreso@dd-MM-yyyy}";	
+				console.log("uri de reposos: "+uri);
+				openDialog("dialog", uri, 1100, 650);	
+			}
+
+			if (tipo == 'HO' || tipo=='CI' || tipo=='PR') {
+	
+				var uri = "${def:context}${def:actionroot}/smn_reposos_constancias/form?id2="+ id2 + "&nombre=" + nombre + "&cedula=" + cedula + "&ingreso="+ ingreso + "&paciente_id=" + paciente + "&nombre_paciente=${fld:nombre_paciente}&num_ingreso=${fld:num_ingreso}&sexo=${fld:sexo}&edad=${fld:edad}&fecha_ingreso=${fld:fecha_ingreso@dd-MM-yyyy}";	
+				console.log("uri de reposos: "+uri);
+				openDialog("dialog", uri, 1100, 650);	
+			}
+		} 
+	
+		//eliminar un registro
+		function actualizar_prestador(id) {
+				ajaxCall(httpMethod="GET", 
+								uri="${def:actionroot}/actualizar_prestador?id=" + id,
+								divResponse=null, 
+								divProgress="status", 
+								formName=null, 
+								afterResponseFn=null, 
+								onErrorFn=null);	
+		}
+		
+	</script>
+
+</head>
+
+<body>
+
+	<!--banner-->
+	<div class="welcome" style="padding-right:50px; margin-top: 20px;"><br>
+        <b>${lbl:b_welcome}</b> ${fld:fname} ${fld:lname} ${req:progress}<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+        <div class="" style="width: 100%; border-bottom: solid 6px #1d61a0; border-radius: 30px; margin-top: 4px;">
+        </div>
+    </div>
+    <br>
+    <div class="titulo-negocios">
+        <div style="padding-top: 15px;">PSM Enfermeria Detalle</div>
+    </div>
+
+	<!--incluir el menu iconografico de SIMONE-->
+	${inc:${def:actionroot}/panel/view}
+
+	<table class="record" style="width:500px;">
+		<tr>
+			<td width="40%">ID de Ingreso</td>
+ 			<td style="background-color: white">${fld:num_ingreso}</td>
+ 		</tr>
+ 		<tr>
+ 			<td width="40%">Nombre del Paciente</td>
+ 			<td style="background-color: white">${fld:nombre_paciente}</td>
+ 		</tr>
+ 		<tr>
+ 			<td width="40%">Cedula</td>
+ 			<td style="background-color: white">${fld:cedula}</td>
+ 		</tr>
+ 		<tr>
+ 			<td width="40%">Sexo</td>
+ 			<td style="background-color: white">${fld:sexo}</td>
+ 		</tr>
+ 		<tr>
+ 			<td width="40%">Edad</td>
+ 			<td style="background-color: white">${fld:edad}</td>
+ 		</tr>
+ 		<tr>
+ 			<td width="40%">Fecha Ingreso</td>
+ 			<td style="background-color: white">${fld:fecha_ingreso@dd-MM-yyyy}</td>
+ 		</tr>
+	</table>
+
+	<br>
+	<br>
+	
+	<!--panel de respuesta AJAX #1-->
+	<div id="response" style="display: none; width: 100%"></div>
+    <input type="hidden" name="paciente_id" id="paciente_id" value="">
+    <input type="hidden" name="ingreso" id="ingreso" value="">
+</body>
+
+</html>

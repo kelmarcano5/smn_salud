@@ -1,0 +1,3 @@
+<rows>
+obs_fecha_registro="${fld:obs_fecha_registro}"    obs_tipo="${fld:obs_tipo}"    obs_descripcion="${fld:obs_descripcion}"    obs_codigo="${fld:obs_codigo}"    
+</rows>

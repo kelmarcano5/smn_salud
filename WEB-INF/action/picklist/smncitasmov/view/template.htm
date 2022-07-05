@@ -1,0 +1,43 @@
+<!--data grid-->
+<table class="datagrid rowhover oneCellRow" style="width:90%;">
+
+	<col width='100%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="9">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th onclick="sortBy('ctm_num_control_cita','query-smncitasmov.sql')" class="sortable">${lbl:b_code}</th>
+		<th onclick="sortBy('ctm_fecha','query-smncitasmov.sql')" class="sortable">${lbl:b_appointment_date}</th>
+		<th onclick="sortBy('ctm_localidad','query-smncitasmov.sql')" class="sortable">${lbl:b_location}</th>
+		<th onclick="sortBy('ctm_servicio','query-smncitasmov.sql')" class="sortable">${lbl:b_service}</th>
+		<th onclick="sortBy('ctm_componente','query-smncitasmov.sql')" class="sortable">${lbl:b_component}</th>
+		<th onclick="sortBy('ctm_prestador_servicio','query-smncitasmov.sql')" class="sortable">${lbl:b_service_providers}</th>
+		<th onclick="sortBy('ctm_tipo_componente','query-smncitasmov.sql')" class="sortable">${lbl:b_component_type}</th>
+		<th onclick="sortBy('ctm_estatus','query-smncitasmov.sql')" class="sortable">${lbl:b_status}</th>
+		<th onclick="sortBy('ctm_observ_cita','query-smncitasmov.sql')" class="sortable">${lbl:${lbl:b_appointment_comment}}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr onclick="selectItem('${fld:smn_citas_mov_id}')" >
+		<td align="center"><span id="${fld:smn_citas_mov_id}">${fld:ctm_num_control_cita}</span></td>
+		<td align="center">${fld:ctm_fecha@dd-MM-yyyy}</td>
+		<td align="center">${fld:ctm_localidad}</td>
+		<td align="center">${fld:ctm_servicio}</td>
+		<td align="center">${fld:ctm_componente}</td>
+		<td align="center">${fld:ctm_prestador_servicio}</td>
+		<td align="center">${fld:ctm_tipo_componente}</td>
+		<td align="center">${fld:ctm_estatus}</td>
+		<td align="center">${fld:ctm_observ_cita}</td>
+	</tr>
+	</rows>
+
+</table>
+

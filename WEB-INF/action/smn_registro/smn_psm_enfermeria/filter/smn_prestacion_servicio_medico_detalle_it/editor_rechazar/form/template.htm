@@ -1,0 +1,494 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_detail_medic_provider_services}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+		<tr>
+		<td>${lbl:b_header_medic_provider_services}*</td>
+		<td>
+			<select name="smn_prestacion_servicio_medico_cabecera_id" id="smn_prestacion_servicio_medico_cabecera_id" onchange="chgCombo(smn_prestacion_servicio_medico_cabecera_id.options[smn_prestacion_servicio_medico_cabecera_id.selectedIndex].text,'smn_prestacion_servicio_medico_cabecera_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_prestacion_servicio_medico_cabecera_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_prestacion_servicio_medico_cabecera_id_rows>
+			</select> 
+			<input id="smn_prestacion_servicio_medico_cabecera_id_name" name="smn_prestacion_servicio_medico_cabecera_id_name" type="hidden">
+		</td>
+		</tr>		
+	<tr>
+		<td>${lbl:b_movement_caj_detail}*</td>
+		<td>
+			<select name="smn_mov_caja_detalle_id" id="smn_mov_caja_detalle_id" onchange="chgCombo(smn_mov_caja_detalle_id.options[smn_mov_caja_detalle_id.selectedIndex].text,'smn_mov_caja_detalle_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_mov_caja_detalle_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_mov_caja_detalle_id_rows>
+			</select> 
+			<input id="smn_mov_caja_detalle_id_name" name="smn_mov_caja_detalle_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_appointment_movement}*</td>
+		<td>
+			<select name="smn_ingresos_mov_id" id="smn_ingresos_mov_id" onchange="chgCombo(smn_ingresos_mov_id.options[smn_ingresos_mov_id.selectedIndex].text,'smn_ingresos_mov_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_ingresos_mov_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_ingresos_mov_id_rows>
+			</select> 
+			<input id="smn_ingresos_mov_id_name" name="smn_ingresos_mov_id_name" type="hidden">
+		</td>
+	</tr>
+		
+	<tr>
+		<td>${lbl:b_service_units}*</td>
+		<td>
+			<select name="smn_unidades_servicios_rf" id="smn_unidades_servicios_rf" onchange="chgCombo(smn_unidades_servicios_rf.options[smn_unidades_servicios_rf.selectedIndex].text,'smn_unidades_servicios_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_unidades_servicios_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_unidades_servicios_rf_rows>
+			</select> 
+			<input id="smn_unidades_servicios_rf_name" name="smn_unidades_servicios_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_store_code}</td>
+		<td>
+			<select name="smn_almacen_rf" id="smn_almacen_rf" onchange="chgCombo(smn_almacen_rf.options[smn_almacen_rf.selectedIndex].text,'smn_almacen_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_almacen_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_almacen_rf_rows>
+			</select> 
+			<input id="smn_almacen_rf_name" name="smn_almacen_rf_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_components_types}*</td>
+			<td>
+				<select name="psd_tipo_componentes" id="psd_tipo_componentes" onchange="seleccionartipo();">
+				<option value="">[Cualquiera]</option>
+				 <option value="IT">${lbl:b_item}</option>
+				<!--<option value="SE">${lbl:b_services}</option> 
+				<option value="HO">${lbl:b_honorary}</option>-->
+
+				</select> 
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_component}*</td>
+		<td>
+			<select name="smn_componentes_rf" id="smn_componentes_rf" onchange="chgCombo(smn_componentes_rf.options[smn_componentes_rf.selectedIndex].text,'smn_componentes_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_componentes_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_componentes_rf_rows>
+			</select> 
+			<input id="smn_componentes_rf_name" name="smn_componentes_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr id="services" style="display:none">
+		<td>${lbl:b_services}</td>
+		<td>
+			<select name="smn_servicios_rf" id="smn_servicios_rf" onchange="chgCombo(smn_servicios_rf.options[smn_servicios_rf.selectedIndex].text,'smn_servicios_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_servicios_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_servicios_rf_rows>
+			</select> 
+			<input id="smn_servicios_rf_name" name="smn_servicios_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr id="item" style="display:none">
+		<td>${lbl:b_item}</td>
+		<td>
+			<select name="smn_item_rf" id="smn_item_rf" onchange="chgCombo(smn_item_rf.options[smn_item_rf.selectedIndex].text,'smn_item_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_item_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_item_rf_rows>
+			</select> 
+			<input id="smn_item_rf_name" name="smn_item_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_service_provider}*</td>
+		<td>
+			<select name="smn_prestador_servicio_rf" id="smn_prestador_servicio_rf" onchange="chgCombo(smn_prestador_servicio_rf.options[smn_prestador_servicio_rf.selectedIndex].text,'smn_prestador_servicio_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_prestador_servicio_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_prestador_servicio_rf_rows>
+			</select> 
+			<input id="smn_prestador_servicio_rf_name" name="smn_prestador_servicio_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_coins}</td>
+		<td>
+			<select name="smn_moneda_rf" id="smn_moneda_rf" onchange="chgCombo(smn_moneda_rf.options[smn_moneda_rf.selectedIndex].text,'smn_moneda_rf_name');seleccionarmoneda();">
+				<option value="">[Cualquiera]</option>
+				<smn_moneda_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_moneda_rf_rows>
+			</select> 
+			<input id="smn_moneda_rf_name" name="smn_moneda_rf_name" type="hidden">
+		</td>
+	</tr>
+		<tr id="quantity" style="display:none">
+			<td>${lbl:b_quantity}*</td>
+			<td>
+				<input id="psd_cantidad" name="psd_cantidad" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="pri_ml" style="display:none">
+			<td>${lbl:b_price_ml}*</td>
+			<td>
+				<input id="psd_precio_propuesto_ml" name="psd_precio_propuesto_ml" type="text" maxlength="10" class="numeric" onchange="calcularmontoml();">
+			</td>
+		</tr>
+		<tr id="amoun_ml" style="display:none">
+			<td>${lbl:b_amount_ml}*</td>
+			<td>
+				<input id="psd_monto_propuesto_ml" name="psd_monto_propuesto_ml" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="disc_ml" style="display:none">
+			<td>${lbl:b_discount_ml}</td>
+			<td>
+				<input id="smn_descuento_ml_rf" name="smn_descuento_ml_rf" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="disamoun_ml" style="display:none">
+			<td>${lbl:b_discount_amount_ml}*</td>
+			<td>
+				<input id="psd_monto_descuento_propuesto_ml" name="psd_monto_descuento_propuesto_ml" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="netam_ml" style="display:none">
+			<td>${lbl:b_net_amount_ml}*</td>
+			<td>
+				<input id="psd_monto_neto_propuesto_ml" name="psd_monto_neto_propuesto_ml" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		
+		<tr id="pri_ma" style="display:none">
+			<td>${lbl:b_price_ma}</td>
+			<td>
+				<input id="psd_precio_propuesto_ma" name="psd_precio_propuesto_ma" type="text" maxlength="10" class="numeric" onchange="calcularmontoma();">
+			</td>
+		</tr>
+		<tr id="amou_ma" style="display:none">
+			<td>${lbl:b_amount_ma}</td>
+			<td>
+				<input id="psd_monto_propuesto_ma" name="psd_monto_propuesto_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		
+		<tr id="disc_ma" style="display:none">
+			<td>${lbl:b_discount_amount_ma}</td>
+			<td>
+				<input id="psd_monto_descuento_propuesto_ma" name="psd_monto_descuento_propuesto_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		
+		<tr id="netam_ma" style="display:none">
+			<td>${lbl:b_net_amount_ma}</td>
+			<td>
+				<input id="psd_monto_neto_propuesto_ma" name="psd_monto_neto_propuesto_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_status}</td>
+			<td>
+				<select name="psd_estatus" id="psd_estatus">
+				<option value="RZ">${lbl:b_not_aprobated}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_user_add}*</td>
+			<td>
+				<select name="psd_agregado_usuario" id="psd_agregado_usuario">
+				<option value="SI">${lbl:b_yes}</option>
+				<option value="NO">${lbl:b_not}</option>
+
+				</select> 
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_observations}</td>
+		<td>
+			<select name="psd_observaciones_rf" id="psd_observaciones_rf" onchange="chgCombo(psd_observaciones_rf.options[psd_observaciones_rf.selectedIndex].text,'psd_observaciones_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<psd_observaciones_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</psd_observaciones_rf_rows>
+			</select> 
+			<input id="psd_observaciones_rf_name" name="psd_observaciones_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_rol}</td>
+		<td>
+			<select name="smn_rol_id" id="smn_rol_id" onchange="chgCombo(smn_rol_id.options[smn_rol_id.selectedIndex].text,'smn_rol_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_rol_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_rol_id_rows>
+			</select> 
+			<input id="smn_rol_id_name" name="smn_rol_id_name" type="hidden">
+		</td>
+	</tr>
+		
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();				
+
+		if (id!="")
+			edit(id);
+	} 
+
+	function calcularmontoml(){
+		var cant = document.getElementById("psd_cantidad").value;
+		var prec = document.getElementById("psd_precio_propuesto_ml").value;
+		var mont ="";
+
+		mont = cant * prec;
+		document.getElementById("psd_monto_propuesto_ml").value = mont;
+
+
+	}
+
+	function calcularmontoma(){
+		var cant = document.getElementById("psd_cantidad").value;
+		var prec = document.getElementById("psd_precio_propuesto_ma").value;
+		var mont ="";
+
+		mont = cant * prec;
+		document.getElementById("psd_monto_propuesto_ma").value = mont;
+
+
+	}
+
+	function seleccionartipo(){
+		var typ = document.getElementById("psd_tipo_componentes").value;
+
+		if(typ == "SE"){
+			document.getElementById("services").style="";
+			document.getElementById("item").style="display:none";
+		}
+
+		if(typ == "IT"){
+			document.getElementById("item").style="";
+			document.getElementById("services").style="display:none";
+		}
+
+	}
+	
+	function seleccionarmoneda() {
+		var mon = document.getElementById("smn_moneda_rf").value;
+
+		if(mon == 360){
+			//MUESTRA CAMPOS PARA MONEDA ALTERNA
+			document.getElementById("quantity").style="";
+			document.getElementById("pri_ml").style="";
+			document.getElementById("amoun_ml").style="";
+			document.getElementById("psd_monto_propuesto_ml").disabled=true;
+			document.getElementById("disc_ml").style="";
+			document.getElementById("disamoun_ml").style="";
+			document.getElementById("netam_ml").style="";
+			document.getElementById("psd_monto_neto_propuesto_ml").disabled=true;
+
+			document.getElementById("pri_ma").style="display:none";
+			document.getElementById("amou_ma").style="display:none";
+			document.getElementById("disc_ma").style="display:none";
+			document.getElementById("netam_ma").style="display:none";
+
+		}else if(mon ==""){
+			document.getElementById("pri_ma").style="display:none";
+			document.getElementById("amou_ma").style="display:none";
+			document.getElementById("disc_ma").style="display:none";
+			document.getElementById("netam_ma").style="display:none";
+			document.getElementById("quantity").style="display:none";
+		}else{
+			document.getElementById("quantity").style="";
+			document.getElementById("pri_ml").style="display:none";
+			document.getElementById("amoun_ml").style="display:none";
+			document.getElementById("disc_ml").style="display:none";
+			document.getElementById("disamoun_ml").style="display:none";
+			document.getElementById("netam_ml").style="display:none";
+			//MUESTRA CAMPOS PARA MONEDA ALTERNA
+			document.getElementById("pri_ma").style="";
+			document.getElementById("amou_ma").style="";
+			document.getElementById("psd_monto_propuesto_ma").disabled=true;
+			document.getElementById("disc_ma").style="";
+			document.getElementById("netam_ma").style="";
+			document.getElementById("psd_monto_neto_propuesto_ma").disabled=true;
+			
+		}
+	}
+
+
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			document.getElementById("quantity").style="";
+				document.getElementById("pri_ml").style="";
+				document.getElementById("amoun_ml").style="";
+				document.getElementById("psd_monto_propuesto_ml").disabled=true;
+				document.getElementById("disc_ml").style="";
+				document.getElementById("disamoun_ml").style="";
+				document.getElementById("netam_ml").style="";
+				document.getElementById("psd_monto_neto_propuesto_ml").disabled=true;
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+	
+</script>	
+</body>
+</html>

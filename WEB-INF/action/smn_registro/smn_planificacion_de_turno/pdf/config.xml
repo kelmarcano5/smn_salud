@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="false">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnplanificaciondeturno.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_plan_turnos}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_plan_turnos}.pdf</pdf-file-name>
+
+	<pdf-report 
+		pageSize="letter" 
+		rotate="false"
+		footer="false" 
+		header="true">
+		<record recordset='query-smnplanificaciondeturno.sql' width='100' spacingBefore='40'>
+			<col name='smn_usuario_id' title='${lbl:b_users}' width='14' align='left' format='######' />
+			<col name='smn_rol_id' title='${lbl:b_role}' width='14' align='left' format='######' />
+			<col name='ptu_fecha' title='${lbl:b_fecha_atencion}' width='14' align='left' format='dd-MM-yyyy' />
+			<col name='smn_serie_id' title='${lbl:b_serie}' width='14' align='left' format='######' />
+			<col name='smn_entidades_rf' title='${lbl:b_entities}' width='14' align='left' format='######' />
+			<col name='smn_sucursales_rf' title='${lbl:b_subsidiaries}' width='14' align='left' format='######' />
+			<col name='smn_areas_servicios_rf' title='${lbl:b_service_area}' width='14' align='left' format='######' />
+
+		</record>
+
+	</pdf-report>
+</config>

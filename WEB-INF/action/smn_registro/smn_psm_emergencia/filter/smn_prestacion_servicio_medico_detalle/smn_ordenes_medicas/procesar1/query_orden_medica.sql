@@ -1,0 +1,27 @@
+SELECT
+	smn_salud.smn_ordenes_medicas.smn_ordenes_medicas_id,
+	case
+	 when smn_salud.smn_rel_orden_medica_servicios.smn_grupo_prestador_rf is null then 0 else smn_salud.smn_rel_orden_medica_servicios.smn_grupo_prestador_rf
+	end as smn_grupos_prestadores_id,
+	smn_salud.smn_ordenes_medicas.smn_ingreso_id AS smn_ingreso_id,
+	smn_base.smn_grupos_prestadores.gpp_unidad_servicio as smn_unidades_servicios_rf,
+	case 
+		when smn_salud.smn_rel_orden_medica_servicios.smn_prestador_servicio_referido_rf is null then 0 else smn_salud.smn_rel_orden_medica_servicios.smn_prestador_servicio_referido_rf
+	end as smn_prestador_servicio_rf
+FROM
+	smn_salud.smn_ordenes_medicas
+	INNER JOIN smn_salud.smn_rel_orden_medica_servicios ON smn_salud.smn_rel_orden_medica_servicios.smn_ordenes_medicas_id = smn_salud.smn_ordenes_medicas.smn_ordenes_medicas_id
+	INNER JOIN smn_base.smn_rel_servicio_area_unidad ON smn_base.smn_rel_servicio_area_unidad.smn_servicios_id = smn_salud.smn_rel_orden_medica_servicios.smn_servicios_rf
+	inner join smn_base.smn_grupo_prestador_servicio_frecuencia on smn_base.smn_grupo_prestador_servicio_frecuencia.smn_servicios_id = smn_salud.smn_rel_orden_medica_servicios.smn_servicios_rf
+	inner join smn_salud.smn_ingresos on smn_salud.smn_ingresos.smn_ingresos_id = smn_salud.smn_ordenes_medicas.smn_ingreso_id
+	inner join smn_base.smn_grupos_prestadores on smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id = smn_salud.smn_rel_orden_medica_servicios.smn_grupo_prestador_rf
+
+WHERE
+	smn_salud.smn_ordenes_medicas.smn_ordenes_medicas_id = ${fld:smn_ordenes_medicas_id} AND smn_salud.smn_ordenes_medicas.smn_ingreso_id = ${fld:smn_ingreso_id}
+GROUP BY
+	smn_base.smn_rel_servicio_area_unidad.smn_unidades_servicios_rf,
+	smn_salud.smn_ordenes_medicas.smn_ordenes_medicas_id,
+	smn_salud.smn_ordenes_medicas.smn_ingreso_id,
+	smn_salud.smn_rel_orden_medica_servicios.smn_grupo_prestador_rf,
+	smn_base.smn_grupos_prestadores.gpp_unidad_servicio,
+	smn_salud.smn_rel_orden_medica_servicios.smn_prestador_servicio_referido_rf

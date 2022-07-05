@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Return JS in order to fill a combobox depending of value that send to this action
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="sql" scope="transaction"/>
+		<recordset id="afectaComponente.sql" source="sql" scope="transaction"/>
+		<recordset id="tipoConsulta.sql" source="sql" scope="transaction"/>
+		<recordset id="afectaPrestador.sql" source="sql" scope="transaction"/>
+		<recordset id="query2.sql" source="sql" scope="transaction"/>
+		<recordset id='query-smn_prestador_servicio_rf.sql' source='sql' scope='transaction'/>
+		<recordset id='query-smn_grupo_prestador_servicio_rf.sql' source='sql' scope='transaction'/>
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>info.js</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/javascript</content-type>
+		<print mode="table" recordset="query.sql" tag="smn_auxilia_unidad_servicio_rf_rows"/>
+		<print mode="form" recordset="afectaComponente.sql"/>
+		<print mode="form" recordset="tipoConsulta.sql"/>
+		<print mode="form" recordset="afectaPrestador.sql"/>
+		<print mode="table" recordset="query2.sql" tag="smn_componente_rf_rows"/>
+		<print mode='table' recordset='query-smn_prestador_servicio_rf.sql' tag='smn_prestador_servicio_rf_rows'/>
+		<print mode='table' recordset='query-smn_grupo_prestador_servicio_rf.sql' tag='smn_grupo_prestador_servicio_rf_rows'/>
+		
+		
+	</output>
+
+</config>

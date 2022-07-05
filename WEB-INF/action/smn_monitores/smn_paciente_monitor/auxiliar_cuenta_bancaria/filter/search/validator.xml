@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='false' label='${lbl:b_class_auxiliary}' maxlen='10'/>
+	<parameter id='acb_num_cuenta' type='varchar' required='false' label='${lbl:b_account_number}' maxlen='24'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='acb_num_cuenta' rule='like' />
+	<parameter id='acb_tipo_cta_banco' type='integer' required='false' label='${lbl:b_account_bank_type}' maxlen='1'/>
+	<parameter id='acb_banco_pertenece' type='integer' required='false' label='${lbl:b_bank}' maxlen='3'/>
+	<parameter id='acb_fecha_registro_ini' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.DateRangeValidator' on-error-label='[${lbl:b_store_date} mayor o igual que] no puede ser mayor que [${lbl:b_store_date} menor o igual que].' date1='acb_fecha_registro_ini' date2='acb_fecha_registro_fin' id='acb_fecha_registro_ini' />
+	<parameter id='acb_fecha_registro_fin' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

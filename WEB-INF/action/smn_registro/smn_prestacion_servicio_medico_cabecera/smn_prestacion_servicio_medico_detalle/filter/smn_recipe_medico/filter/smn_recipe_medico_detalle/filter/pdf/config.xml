@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnrecipemedicodetalle.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_detail_prescription_medic}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' align="left" />
+	<pdf-file-name>${lbl:b_detail_prescription_medic}.pdf</pdf-file-name>
+
+	<pdf-report pageSize="letter" rotate="false" footer="true" header="true">
+		<record recordset='filter.params' title='${lbl:b_filter_find}' noFilterMsg='-- ${lbl:b_all_message} --' width='55' spacingBefore='15'>
+			<col name='smn_recipe_medico_id_name' title='${lbl:b_prescription_medic}'  align='left' />
+			<col name='smn_principio_activo_rf' title='${lbl:b_active_ingredient}'  format='######' align='left' />
+			<col name='smn_item_rf' title='${lbl:b_item}'  format='######' align='left' />
+			<col name='smn_presentacion_rf' title='${lbl:b_presentacion}'  format='######' align='left' />
+			<col name='smn_unidad_medida_rf' title='${lbl:b_measurement_unit}'  format='######' align='left' />
+			<col name='rmd_tiempo_frecuencia' title='${lbl:b_frecuency_time}'  align='left' />
+			<col name='rmd_fecha_registro_ini' title='${lbl:b_store_date}'  format='dd-MM-yyyy' align='left' />
+			<col name='rmd_fecha_registro_fin' title='${lbl:b_store_date}'  format='dd-MM-yyyy' align='left' />
+
+		</record>
+		<record recordset='query-smnrecipemedicodetalle.sql' width='100' spacingBefore='10'>
+			<col name='rec_estatus_pl0' title='${lbl:b_prescription_medic}' width='10' align='left' />
+			<col name='smn_principio_activo_rf' title='${lbl:b_active_ingredient}' width='10' align='left' format='######' />
+			<col name='smn_item_rf' title='${lbl:b_item}' width='10' align='left' format='######' />
+			<col name='smn_presentacion_rf' title='${lbl:b_presentacion}' width='10' align='left' format='######' />
+			<col name='smn_unidad_medida_rf' title='${lbl:b_measurement_unit}' width='10' align='left' format='######' />
+			<col name='rmd_dosis' title='${lbl:b_dose}' width='10' align='left' format='#,###,##0.00' />
+			<col name='rmd_frecuencia' title='${lbl:b_frecuency}' width='10' align='left' format='######' />
+			<col name='rmd_especificacion' title='${lbl:b_especification}' width='10' align='left' />
+			<col name='rmd_dias_tratamiento' title='${lbl:b_treatment_day}' width='10' align='left' format='######' />
+			<col name='rmd_fecha_registro' title='${lbl:b_store_date}' width='10' align='left' format='dd-MM-yyyy' />
+
+		</record>
+
+	</pdf-report>
+</config>

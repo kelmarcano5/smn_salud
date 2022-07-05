@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="false">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smningresos.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="4" cellStep="0" name="${lbl:b_ingreso}"/>
+	
+	<excel 
+		recordset='query-smningresos.sql' 
+		sheetname='${lbl:b_ingreso}' 
+		filename='${lbl:b_ingreso}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_doc_orig' label='${lbl:b_doc_orig}' />
+		<col id='smn_documento_id_combo' label='${lbl:b_document}' />
+		<col id='igs_num_ingreso' label='${lbl:b_num_ingreso}' />
+		<col id='smn_unidades_servicios_rf_combo' label='${lbl:b_service_units}' />
+		<col id='igs_ticket' label='${lbl:b_num_ticket}' />
+		<col id='smn_auxiliar_rf' label='${lbl:b_auxiliary_pa}' />
+		<col id='igs_estatus_financiero' label='Estatus Financiero' />
+		<col id='rta_estatus' label='Estatus Proceso' />
+		<col id='igs_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

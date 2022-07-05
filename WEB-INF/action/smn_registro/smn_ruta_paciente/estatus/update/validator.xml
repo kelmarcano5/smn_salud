@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id="id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id='estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='ticket' type='integer' required='false' label='${lbl:b_rta_ticket}' maxlen='10'/>
+	<parameter id='observacion' type='integer' required='false' label='${lbl:b_rta_ticket}' maxlen='10'/>
+	<parameter id='auxiliar' type='integer' required='false' label='${lbl:b_rta_ticket}' maxlen='10'/>
+</validator>
+
+

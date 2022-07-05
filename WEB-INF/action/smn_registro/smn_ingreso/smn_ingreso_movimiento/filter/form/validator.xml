@@ -1,0 +1,6 @@
+ <validator onerror="/action/error/validation/alert" id="ingreso">
+ 	<parameter id="id_ingreso" type="integer" required="true" label="ID" maxlen="10" />
+	<parameter id="igs_num_ingreso" type="integer" required="true" label="ID" maxlen="10" />
+	<parameter id="igs_estatus_financiero" type="varchar" required="true" label="Estatus" maxlen="10" />
+ 	<parameter id="igs_fecha_registro" type="varchar" required="true" label="Fecha" maxlen="10" />
+ </validator>

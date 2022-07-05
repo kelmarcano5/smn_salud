@@ -1,0 +1,46 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="7" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("eci_num_secuencia","query-smnestatuscitas.sql")'>${lbl:b_code_estcitas}</th>
+		<th class='sortable' onclick='sortBy("eci_descripcion","query-smnestatuscitas.sql")'>${lbl:b_description_estcitas}</th>
+		<th class='sortable' onclick='sortBy("eci_aplica_combo","query-smnestatuscitas.sql")'>${lbl:b_apply}</th>
+		<th class='sortable' onclick='sortBy("eci_fecha_registro","query-smnestatuscitas.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_estatus_citas_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_estatus_citas_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_estatus_citas_id}')" title="${lbl:b_edit_button}"></td>
+		<td align='left'>${fld:eci_num_secuencia}</td>
+		<td align='left'>${fld:eci_descripcion}</td>
+		<td align='left'>${fld:eci_aplica_combo}</td>
+		<td>${fld:eci_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

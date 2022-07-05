@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_tipo_coberturas>
+	<detail>
+		<rows>		
+		<record tco_fecha_registro="${fld:tco_fecha_registro}"    tco_descripcion="${fld:tco_descripcion}"    tco_codigo="${fld:tco_codigo}"    />
+		</rows>
+	</detail>
+</smn_tipo_coberturas>

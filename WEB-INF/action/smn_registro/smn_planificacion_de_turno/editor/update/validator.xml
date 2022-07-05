@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_usuario_id' type='integer' required='true' label='${lbl:b_users}' maxlen='10'/>
+	<parameter id='smn_rol_id' type='integer' required='true' label='${lbl:b_role}' maxlen='10'/>
+	<parameter id='ptu_fecha' type='date' required='true' label='${lbl:b_fecha_atencion}' maxlen='10'/>
+	<parameter id='smn_serie_id' type='integer' required='true' label='${lbl:b_serie}' maxlen='10'/>
+	<parameter id='smn_entidades_rf' type='integer' required='true' label='${lbl:b_entities}' maxlen='10'/>
+	<parameter id='smn_sucursales_rf' type='integer' required='true' label='${lbl:b_subsidiaries}' maxlen='10'/>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='true' label='${lbl:b_service_area}' maxlen='10'/>
+	<parameter id='smn_unidad_servicio_rf' type='integer' required='true' label='${lbl:b_service_unit}@' maxlen='10'/>
+	<parameter id='ptu_estatus' type='varchar' required='true' label='${lbl:b_status}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_clave}' maxlen='10'/>
+	<parameter id='smn_puesto_atencion_id' type='integer' required='true' label='${lbl:b_puesto_atencion}' maxlen='10'/>
+
+
+</validator>

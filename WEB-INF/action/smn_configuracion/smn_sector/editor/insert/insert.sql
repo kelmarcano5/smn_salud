@@ -1,0 +1,32 @@
+INSERT INTO smn_salud.smn_sector
+(
+	smn_sector_id,
+	sec_codigo,
+	sec_descripcion,
+	smn_pais_rf,
+	smn_entidades_federales_rf,
+	smn_ciudades_rf,
+	smn_municipios_rf,
+	smn_parroquias_rf,
+	smn_zonas_postales_rf,
+	sec_idioma,
+	sec_usuario_id,
+	sec_fecha_registro,
+	sec_hora
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_sector},
+	${fld:sec_codigo},
+	${fld:sec_descripcion},
+	${fld:smn_pais_rf},
+	${fld:smn_entidades_federales_rf},
+	${fld:smn_ciudades_rf},
+	${fld:smn_municipios_rf},
+	${fld:smn_parroquias_rf},
+	${fld:smn_zonas_postales_rf},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

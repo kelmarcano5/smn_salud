@@ -1,0 +1,47 @@
+.banner{
+	display: flex;
+    justify-content: space-between;
+}
+
+.subir{
+	padding: 0;
+    margin: 0;
+    margin-top: 30px;
+}
+
+.datos p{
+    padding: 0;
+    margin: 0;
+	font-size: 12px;
+}
+
+p{
+    font-weight: bold;
+    font-size: 12px;
+}
+
+table{
+    width: 100%;
+	font-weight: bold;
+	font-size: 14px;
+} 
+
+tr{
+    display: flex;
+    justify-content: space-between;
+}
+
+.final{
+    border-bottom: 1px solid black;
+}
+
+.datoss{
+	padding: 0;
+    margin: 0;
+	font-size: 12px;
+}
+
+.detalle_tab{
+
+	font-size: 12px;
+} 

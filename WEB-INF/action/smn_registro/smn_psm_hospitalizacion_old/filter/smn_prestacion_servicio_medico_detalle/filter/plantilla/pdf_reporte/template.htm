@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>${lbl:b_health_template}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />	
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+   	<script type="text/javascript" src="${def:context}/action/jqueryi"></script>
+</head>
+<body>
+	<div id="plantilla_salud" style="width:100%">
+		<br>
+		<div align="center"><img src="${def:context}/images/logo_vistacalifornia.png" border="0" alt="" vspace="0" hspace="0" width="200" height="100"></div></img>
+
+		<table class="record" style="width:500px;">
+			<tr>
+				<td width="40%">${lbl:b_num_ingreso}</td>
+	 			<td style="background-color: white">${fld:igs_num_ingreso}</td>
+	 		</tr>
+	 		<tr>
+	 			<td width="40%">${lbl:b_patient}</td>
+	 			<td style="background-color: white">${fld:smn_auxiliar_rf_combo}</td>
+	 		</tr>
+	 		<tr>
+	 			<td width="40%">Cedula</td>
+	 			<td style="background-color: white">${fld:cedula}</td>
+	 		</tr>
+	 		<tr>
+	 			<td width="40%">Sexo</td>
+	 			<td style="background-color: white">${fld:sexo}</td>
+	 		</tr>
+	 		<tr>
+	 			<td width="40%">Edad</td>
+	 			<td style="background-color: white">${fld:edad}</td>
+	 		</tr>
+	 		<tr>
+	 			<td width="40%">Fecha Ingreso</td>
+	 			<td style="background-color: white">${fld:fecha_ingreso@dd-MM-yyyy}</td>
+	 		</tr>
+		</table>
+
+		<div id="cuestionario">
+			<div id="text_cue">
+					
+			</div>
+			<div id="seccion">
+				
+			</div>
+		</div>
+	</div>
+	<div style="text-align: center;"><button onclick="$('#plantilla_salud').printThis();">Imprimir</button></div>
+</body>
+</html>
+
+<script type="text/javascript" >
+  	onload = function() {
+  		document.getElementById('cuestionario').style.width = '90%';
+		document.getElementById('cuestionario').style.margin = 'auto';
+		document.getElementById('cuestionario').style.marginTop = '20px';
+		document.getElementById('cuestionario').style.border = '${fld:color_formulario}';
+		document.getElementById('cuestionario').style.background = '${fld:cue_color_formulario}';
+		document.getElementById('text_cue').style.fontSize = '${fld:tamano_letra2}';
+		document.getElementById('text_cue').style.color = '${fld:cue_color_letra}';
+		document.getElementById('text_cue').style.fontFamily = '${fld:cue_tipo_letra}';
+		document.getElementById('text_cue').innerHTML = '${fld:cue_descripcion}';
+
+		<row>
+			addTable('seccion${fld:smn_rel_cuestionario_seccion_id}');
+			// Llama a addRow() con el ID de la tabla 
+			addRow('seccion${fld:smn_rel_cuestionario_seccion_id}','${fld:seccion_combo}','${fld:rcs_color_sombreado}','${fld:rcs_tipo_letra}','${fld:rcs_color_letra}','${fld:tamano_letra}','${fld:identacion}','${fld:smn_rel_cuestionario_seccion_id}');
+			getPreguntas('${fld:smn_rel_cuestionario_seccion_id}','${fld:seccion_combo}');
+		</row>
+  	}
+
+  	function getPreguntas(id,text)
+	{
+		if (id!=null && id!="") 
+		{
+			return ajaxCall(	
+						httpMethod="GET", 
+						uri="${def:actionroot}/pdf_reporte/preguntas?id=" +id+"&seccion="+text+"&plantilla_salud_id=${fld:id}", 
+						divResponse=null, 
+						divProgress="status", 
+						formName=null, 
+						afterResponseFn=null, //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}	
+	}
+
+	function addTable(id) 
+	{
+		var body = document.getElementsByTagName("body")[0];
+		var seccion = document.getElementById('seccion');
+		var tabla = document.createElement("table");
+		var tblBody = document.createElement("tbody");
+		tabla.appendChild(tblBody);
+		body.appendChild(tabla);
+		tabla.setAttribute("id",id);
+		tabla.setAttribute("style","width:100%;");
+		seccion.appendChild(tabla);
+	}
+
+	function addRow(tableID,texto,background,text_font,text_color,size,indent,seccion_id) 
+	{
+		if (background == null)
+			background = 'white';
+		if (text_font==null)
+			text_font=='Calibri';
+		if (text_color==null)
+			text_color=='black';
+		if (size==null)
+			size=='10px';
+		if (indent==null)
+			indent=='0px';
+
+		// Obtiene una referencia a la tabla
+		var tableRef = document.getElementById(tableID);
+
+		// Inserta una fila en la tabla, en el índice 0
+		var newRow   = tableRef.insertRow(0);
+		newRow.style.background = background;
+
+		// Inserta una celda en la fila, en el índice 0
+		var newCell  = newRow.insertCell(0);
+		var newText  = document.createTextNode(texto);
+		newCell.appendChild(newText);
+		newCell.style.fontFamily = text_font;
+		newCell.style.color = text_color;
+		newCell.style.fontSize = size;
+		newCell.style.textIndent = indent;
+		newCell.setAttribute("id","preguntas"+seccion_id);
+	}
+</script>
+
+

@@ -1,0 +1,30 @@
+INSERT INTO smn_salud.smn_no_registrados
+(
+	smn_no_registrados_id,
+	nfi_num_control,
+	nfi_apellidos,
+	nfi_nombres,
+	nfi_sexo,
+	nfi_telefono_fijo,
+	nfi_telefono_movil,
+	nfi_email,
+	nfi_idioma,
+	nfi_usuario,
+	nfi_fecha_registro,
+	nfi_hora
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_no_registrados},
+	${fld:nfi_num_control},
+	${fld:nfi_apellidos},
+	${fld:nfi_nombres},
+	${fld:nfi_sexo},
+	${fld:nfi_telefono_fijo},
+	${fld:nfi_telefono_movil},
+	${fld:nfi_email},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

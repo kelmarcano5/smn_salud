@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='afi_nro_doc_oficial' type='varchar' required='false' label='${lbl:b_official_document_number}
+' maxlen='12'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='afi_nro_doc_oficial' rule='like' />
+	<parameter id='afi_apellidos' type='varchar' required='false' label='${lbl:s_profile_lname}' maxlen='56'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='afi_apellidos' rule='like' />
+	<parameter id='afi_nombres' type='varchar' required='false' label='${lbl:s_profile_fname}' maxlen='56'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='afi_nombres' rule='like' />
+</validator>

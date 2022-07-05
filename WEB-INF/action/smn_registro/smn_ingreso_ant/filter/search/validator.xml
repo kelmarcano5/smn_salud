@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_documento_id' type='integer' required='false' label='${lbl:b_document}' maxlen='10'/>
+	<parameter id='igs_num_ingreso' type='integer' required='false' label='${lbl:b_num_ingreso}' maxlen='10'/>
+	<parameter id='rta_numero_documento_identidad' type='varchar' required='false' label='${lbl:b_rta_documento}' maxlen='20'/>
+	<!-- <custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='rta_numero_documento_identidad' rule='like' /> -->
+	<parameter id='smn_entidades_rf' type='integer' required='false' label='${lbl:b_entities}' maxlen='10'/>
+	<parameter id='smn_sucursales_rf' type='integer' required='false' label='${lbl:b_subsidiaries}' maxlen='10'/>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='false' label='${lbl:b_service_area}' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_rf' type='integer' required='false' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='igs_ticket' type='integer' required='false' label='${lbl:b_num_ticket}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary_pa}' maxlen='10'/>
+	<parameter id='igs_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	
+	<parameter id='smn_contratante_id' type='integer' required='false' label='${lbl:b_auxiliary_pa}' maxlen='10'/>
+	<parameter id="entidad_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="sucursal_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="area_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="unidad_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="usuario" type="varchar" required="true" label="ID" maxlen="10" />
+ 	
+ 	<parameter id='rta_estatus' type='varchar' required='false' label='${lbl:b_estatus}' maxlen='20'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='rta_estatus' rule='like' />
+</validator>

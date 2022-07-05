@@ -1,0 +1,3 @@
+<rows>
+acc_fecha_registro="${fld:acc_fecha_registro}"    acc_descripcion="${fld:acc_descripcion}"    acc_codigo="${fld:acc_codigo}"    
+</rows>

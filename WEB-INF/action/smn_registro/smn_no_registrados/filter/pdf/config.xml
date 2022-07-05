@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnnoregistrados.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_afiliados}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' align="left" />
+	<pdf-file-name>${lbl:b_afiliados}.pdf</pdf-file-name>
+
+	<pdf-report pageSize="letter" rotate="false" footer="true" header="true">
+		<record recordset='filter.params' title='${lbl:b_filter_find}' noFilterMsg='-- ${lbl:b_all_message} --' width='55' spacingBefore='15'>
+			<col name='nfi_num_control' title='${lbl:b_code}'  align='left' />
+			<col name='nfi_apellidos' title='${lbl:s_profile_lname}'  align='left' />
+			<col name='nfi_nombres' title='${lbl:s_profile_fname}'  align='left' />
+
+		</record>
+		<record recordset='query-smnnoregistrados.sql' width='100' spacingBefore='10'>
+			<col name='nfi_num_control' title='${lbl:b_code}' width='9' align='left' />
+			<col name='nfi_apellidos' title='${lbl:s_profile_lname}' width='9' align='left' />
+			<col name='nfi_nombres' title='${lbl:s_profile_fname}' width='9' align='left' />
+			<col name='nfi_sexo_combo' title='${lbl:b_sex}' width='9' align='left' />
+			<col name='nfi_telefono_fijo' title='${lbl:b_fixed_phone}' width='9' align='left' />
+			<col name='nfi_telefono_movil' title='${lbl:b_mobile_phone}' width='9' align='left' />
+			<col name='nfi_email' title='${lbl:s_profile_email}' width='9' align='left' />
+			<col name='nfi_idioma' title='${lbl:s_profile_lang}' width='9' align='left' />
+			<col name='nfi_usuario' title='${lbl:b_users}' width='9' align='left' />
+			<col name='nfi_fecha_registro' title='${lbl:b_store_date}' width='9' align='left' format='dd-MM-yyyy' />
+			<col name='nfi_hora' title='${lbl:s_loginhist_col2}' width='9' align='left' />
+
+		</record>
+
+	</pdf-report>
+</config>

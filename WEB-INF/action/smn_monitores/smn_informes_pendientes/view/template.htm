@@ -1,0 +1,53 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='3%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		
+		<th class='sortable' onclick="sortBy('smn_entidades_rf','query-smnrutapaciente.sql')" >Entidad</th>
+		<th class='sortable' onclick="sortBy('smn_sucursales_rf','query-smnrutapaciente.sql')" >Sucursal</th>
+		<th class='sortable' onclick="sortBy('smn_grupo_prestador_rf','query-smnrutapaciente.sql')" >Grupo Prestador</th>
+		<th class='sortable' onclick="sortBy('smn_prestador_servicio_rf','query-smnrutapaciente.sql')" >Prestador de Servicio</th>
+		<th class='sortable' onclick="sortBy('smn_auxiliar_rf','query-smnrutapaciente.sql')" >Paciente</th>
+		<th class='sortable' onclick="sortBy('igs_fecha_ingreso','query-smnrutapaciente.sql')" >Fecha Ingreso</th>
+		<th class='sortable' onclick="sortBy('igs_num_ingreso','query-smnrutapaciente.sql')" >Num. Ingreso</th>
+		<th class='sortable' onclick="sortBy('smn_cuestionario_rf','query-smnrutapaciente.sql')" >Cuestionario</th>
+		<th class='sortable' onclick="sortBy('psd_estatus','query-smnrutapaciente.sql')" >Estatus</th>
+		<th></th>
+		
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td align="left">${fld:smn_entidades_rf}</td>
+		<td align="left">${fld:smn_sucursales_rf}</td>
+		<td align="left">${fld:smn_grupo_prestador_rf}</td>
+		<td align="left">${fld:smn_prestador_servicio_rf}</td>
+		<td align="left">${fld:smn_auxiliar_rf}</td>
+		<td align="center">${fld:igs_fecha_ingreso@dd-MM-yyyy}</td>
+		<td align="center">${fld:igs_num_ingreso}</td>
+		<td align="left">${fld:smn_cuestionario_rf}</td>
+		<td align="center">${fld:psd_estatus}</td>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_prestacion_servicio_medico_detalle_id}')" title="Ver detalle"></td>
+	</tr>
+	</rows>
+
+</table>

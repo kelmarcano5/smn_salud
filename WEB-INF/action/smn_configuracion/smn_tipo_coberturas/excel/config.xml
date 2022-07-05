@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smntipocoberturas.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="3" cellStep="0" name="${lbl:b_tipo_coberturas}"/>
+	
+	<excel 
+		recordset='query-smntipocoberturas.sql' 
+		sheetname='${lbl:b_tipo_coberturas}' 
+		filename='${lbl:b_tipo_coberturas}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='tco_codigo' label='${lbl:b_code}' />
+		<col id='tco_descripcion' label='${lbl:b_description}' />
+		<col id='tco_idioma' label='${lbl:s_profile_lang}' />
+		<col id='tco_usuario' label='${lbl:b_users}' />
+		<col id='tco_fecha_registro' label='${lbl:b_store_date}' />
+		<col id='tco_hora' label='${lbl:s_loginhist_col2}' />
+
+	</excel>
+
+</config>

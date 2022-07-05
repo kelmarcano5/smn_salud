@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_habitaciones_id' type='integer' required='false' label='${lbl:b_activo_fijo}' maxlen='10'/>
+	<parameter id='smn_ingreso_id' type='integer' required='false' label='${lbl:b_ingreso}' maxlen='10'/>
+	<parameter id='had_fecha_ingreso' type='date' required='false' label='${lbl:b_date_ing}' maxlen='10'/>
+	<parameter id='had_fecha_egreso' type='date' required='false' label='${lbl:b_date_egr}' maxlen='10'/>
+	<parameter id='had_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='had_estatus' rule='like' />
+	<parameter id='had_fecha_registro_ini' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.DateRangeValidator' on-error-label='[${lbl:b_store_date} mayor o igual que] no puede ser mayor que [${lbl:b_store_date} menor o igual que].' date1='had_fecha_registro_ini' date2='had_fecha_registro_fin' id='had_fecha_registro_ini' />
+	<parameter id='had_fecha_registro_fin' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

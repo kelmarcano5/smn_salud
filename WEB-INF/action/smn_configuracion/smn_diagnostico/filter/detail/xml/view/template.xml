@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_diagnostico>
+	<detail>
+		<rows>		
+		<record dgn_tipo="${fld:dgn_tipo}"    dgn_fecha_registro="${fld:dgn_fecha_registro}"    dgn_descripcion="${fld:dgn_descripcion}"    dgn_codigo="${fld:dgn_codigo}"    />
+		</rows>
+	</detail>
+</smn_diagnostico>

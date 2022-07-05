@@ -1,0 +1,1 @@
+select smn_salud.smn_horario.smn_horarios_id as id, smn_salud.smn_horario.hor_codigo || ' - ' ||  smn_salud.smn_horario.hor_descripcion as item from smn_salud.smn_horario order by smn_salud.smn_horario.hor_descripcion

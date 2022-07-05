@@ -1,0 +1,1 @@
+select smn_salud.smn_observaciones_citas.smn_observaciones_citas_id as id, smn_salud.smn_observaciones_citas.obc_codigo || ' ' || smn_salud.smn_observaciones_citas.obc_descripcion as item from smn_salud.smn_observaciones_citas order by smn_salud.smn_observaciones_citas.obc_descripcion

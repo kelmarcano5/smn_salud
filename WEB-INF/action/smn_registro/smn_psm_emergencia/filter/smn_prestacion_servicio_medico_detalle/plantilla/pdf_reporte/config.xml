@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		PagedView generic configuration
+	</summary>
+
+	<log>false</log>
+	
+	<set-request-attribute id="progress" value="file:/WEB-INF/action/progress/progress.htm"/>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>true</validator>
+		<transaction>true</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="sql" scope="session" />
+		<recordset id="cuestionario.sql" source="sql" scope="session" />
+		<recordset id="cabecera.sql" source="sql" scope="session" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>template.htm</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/html</content-type>
+		<print mode="table" recordset="query.sql" tag="row"/>
+		<print mode="form" recordset="cuestionario.sql"/>
+		<print mode="form" recordset="cabecera.sql"/>
+		<print mode="form" recordset="_request" /> 
+	</output>
+
+</config>

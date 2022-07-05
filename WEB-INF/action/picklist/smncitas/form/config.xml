@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		${lbl:b_citas}
+	</summary>
+
+	<log>false</log>
+	
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id='query-smn_motivos_id.sql' source='sql' scope='transaction'/><recordset id='query-cts_clase_auxiliar.sql' source='sql' scope='transaction'/><recordset id='query-cts_auxiliar.sql' source='sql' scope='transaction'/><recordset id='query-smn_origen_id.sql' source='sql' scope='transaction'/><recordset id='query-cts_ordenante.sql' source='sql' scope='transaction'/><recordset id='query-cts_titular.sql' source='sql' scope='transaction'/><recordset id='query-smn_estatus_citas_id.sql' source='sql' scope='transaction'/><recordset id='query-smn_familiar_id.sql' source='sql' scope='transaction'/><recordset id='query-smn_observaciones_citas_id.sql' source='sql' scope='transaction'/>
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>template.htm</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/html</content-type>
+		<print mode='table' recordset='query-smn_motivos_id.sql' tag='smn_motivos_id_rows'/><print mode='table' recordset='query-cts_clase_auxiliar.sql' tag='cts_clase_auxiliar_rows'/><print mode='table' recordset='query-cts_auxiliar.sql' tag='cts_auxiliar_rows'/><print mode='table' recordset='query-smn_origen_id.sql' tag='smn_origen_id_rows'/><print mode='table' recordset='query-cts_ordenante.sql' tag='cts_ordenante_rows'/><print mode='table' recordset='query-cts_titular.sql' tag='cts_titular_rows'/><print mode='table' recordset='query-smn_estatus_citas_id.sql' tag='smn_estatus_citas_id_rows'/><print mode='table' recordset='query-smn_familiar_id.sql' tag='smn_familiar_id_rows'/><print mode='table' recordset='query-smn_observaciones_citas_id.sql' tag='smn_observaciones_citas_id_rows'/>
+	</output>
+
+</config>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_habitaciones_disponibles>
+	<detail>
+		<rows>		
+		<record had_fecha_registro="${fld:had_fecha_registro}"    had_estatus="${fld:had_estatus}"    had_fecha_egreso="${fld:had_fecha_egreso}"    had_fecha_ingreso="${fld:had_fecha_ingreso}"    smn_ingreso_id="${fld:smn_ingreso_id}"    smn_habitaciones_id="${fld:smn_habitaciones_id}"    />
+		</rows>
+	</detail>
+</smn_habitaciones_disponibles>

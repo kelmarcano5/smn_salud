@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnagendamedica.sql" source="session" scope="transaction" />
+		<recordset id='query-smnagenda.sql' source='sql' scope='transaction' />
+	
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_medical_timetable}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_medical_timetable}">
+				<col id='smn_agenda_id' label='${lbl:b_timetable}' />
+		<col id='smn_entidades_rf' label='${lbl:b_entities}' />
+		<col id='smn_sucursales_rf' label='${lbl:b_subsidiary}' />
+		<col id='smn_areas_servicios_rf' label='${lbl:b_service_areas}' />
+		<col id='smn_unidades_servicios_rf' label='${lbl:b_service_units}' />
+		<col id='smn_grupo_prestador_servicio_rf' label='${lbl:b_group_of_provider}' />
+		<col id='smn_prestador_servicio_rf' label='${lbl:b_service_providers}' />
+		<col id='smn_especialidad_rf' label='${lbl:b_speciality}' />
+		<col id='agm_jornada_desde_rf' label='${lbl:b_jornada_desde}' />
+		<col id='agm_frecuencia' label='${lbl:b_frecuency}' />
+		<col id='agm_cantidad_frecuencia' label='${lbl:b_frecuency_quantity}' />
+		<col id='agm_estatus' label='${lbl:b_status}' />
+		<col id='agm_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+		<sheet recordset='query-smnagenda.sql' sheetname=''>
+		<col id='age_descripcion' label='${lbl:b_description}' />
+	</sheet>
+
+
+	</excel>
+
+</config>

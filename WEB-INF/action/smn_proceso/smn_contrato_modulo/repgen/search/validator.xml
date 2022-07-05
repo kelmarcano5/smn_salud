@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	
+	<parameter id='smn_contrato_base_rf' type='integer' required='false' label='${lbl:b_contrato_base}' maxlen='10'/>
+	<parameter id='smn_documento_id' type='integer' required='false' label='${lbl:b_contrato_doc}' maxlen='10'/>
+	<parameter id='ctm_numero_contrato' type='integer' required='false' label='${lbl:b_number_contract}' maxlen='10'/>
+	<parameter id='smn_contratante_id' type='integer' required='false' label='${lbl:b_contratante}' maxlen='10'/>
+	<parameter id='ctm_fecha_vigencia_desde' type='date' required='false' label='${lbl:b_vigency_start_date}' maxlen='10'/>
+	<parameter id='ctm_fecha_vigencia_hasta' type='date' required='false' label='${lbl:b_vigency_stop_date}' maxlen='10'/>
+	<parameter id='smn_planes_id' type='integer' required='false' label='${lbl:b_planes}' maxlen='10'/>
+	<parameter id='ctm_cantidad_afiliados' type='integer' required='false' label='${lbl:b_quantity_afiliated}' maxlen='10'/>
+	<parameter id='ctm_monto_contrato' type='double' required='false' label='${lbl:b_amount_contract}' maxlen='10'/>
+	<parameter id='ctm_monto_cobertura_afiliado' type='double' required='false' label='${lbl:b_amount_coverage_afiliated}' maxlen='10'/>
+	<parameter id='ctm_cantidad_servicio_afiliado' type='integer' required='false' label='${lbl:b_quantity_afiliated_services}' maxlen='10'/>
+	<parameter id='ctm_cantidad_dias_cobertura' type='integer' required='false' label='${lbl:b_quantity_coverage_days}' maxlen='10'/>
+	<parameter id='ctm_cantidad_citas' type='integer' required='false' label='${lbl:b_quantity_citas}' maxlen='10'/>
+	<parameter id='smn_descuento_rf' type='varchar' required='false' label='${lbl:b_discount}' maxlen='2'/>
+	<parameter id='ctm_dia_factura' type='integer' required='false' label='${lbl:b_days_bill}' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='smn_descuento_rf'
+		rule='contains' />
+
+
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generación del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

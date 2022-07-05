@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smningreso.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="4" cellStep="0" name="${lbl:b_ingreso}"/>
+	
+	<excel 
+		recordset='query-smningreso.sql' 
+		sheetname='${lbl:b_ingreso}' 
+		filename='${lbl:b_ingreso}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='igs_num_ingreso' label='Num. Ingreso' />
+		<col id='medico' label='Medico' />
+		<col id='cubiculo' label='Cubiculo' />
+		<col id='paciente' label='Paciente' />
+		<col id='monto_ingreso_ml' label='Monto Ingreso ML' />
+		<col id='monto_ingreso_ma' label='Monto Ingreso MA' />
+		<col id='monto_cobertura_ml' label='Monto Cobertura ML' />
+		<col id='monto_cobertura_ma' label='Monto Cobertura MA' />
+		<col id='monto_saldo_ml' label='Monto Saldo ML' />
+		<col id='monto_saldo_ma' label='Monto Saldo MA' />
+		<col id='igs_estatus_financiero' label='Estatus' />
+		<col id='igs_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

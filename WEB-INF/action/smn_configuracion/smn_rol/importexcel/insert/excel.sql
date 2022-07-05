@@ -1,0 +1,32 @@
+INSERT INTO smn_salud.smn_rol
+(
+	smn_rol_id,
+	smn_usuario_id,
+	rol_tipo,
+	smn_corporacion_rf,
+	smn_entidad_rf,
+	smn_sucursal_rf,
+	smn_area_servicio_rf,
+	smn_unidad_servicio_rf,
+	smn_estructura_organizacional_rf,
+	rol_idioma,
+	rol_usuario_id,
+	rol_fecha_registro,
+	rol_hora
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_rol},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

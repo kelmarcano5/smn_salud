@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_tipo_servicio_rf' type='integer' required='false' label='${lbl:b_types_services}' maxlen='10'/>
+	<parameter id='nts_naturaleza' type='varchar' required='false' label='${lbl:b_nature}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='nts_naturaleza' rule='like' />
+	<parameter id='nts_fecha_registro_ini' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.DateRangeValidator' on-error-label='[${lbl:b_store_date} mayor o igual que] no puede ser mayor que [${lbl:b_store_date} menor o igual que].' date1='nts_fecha_registro_ini' date2='nts_fecha_registro_fin' id='nts_fecha_registro_ini' />
+	<parameter id='nts_fecha_registro_fin' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

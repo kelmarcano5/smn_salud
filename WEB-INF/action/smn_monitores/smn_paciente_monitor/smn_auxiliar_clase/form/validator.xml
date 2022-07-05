@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert" id='smn_auxiliar_id'>
+	<parameter id="id" type="integer" required="true" label="ID" maxlen="10" />
+	<parameter id="id2" type="integer" required="true" label="ID2" maxlen="10" />
+
+</validator>

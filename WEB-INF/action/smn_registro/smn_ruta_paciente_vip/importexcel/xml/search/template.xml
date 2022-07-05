@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_ruta_paciente>
+	<detail>
+		<rows>		
+		<record rta_fecha_registro="${fld:rta_fecha_registro}"    rta_ticket="${fld:rta_ticket}"    smn_serie_id="${fld:smn_serie_id}"    rta_numero_documento_identidad="${fld:rta_numero_documento_identidad}"    smn_auxiliar_rf="${fld:smn_auxiliar_rf}"    smn_clase_auxiliar_rf="${fld:smn_clase_auxiliar_rf}"    smn_ingreso_cola_virtual_id="${fld:smn_ingreso_cola_virtual_id}"    smn_ruta_id="${fld:smn_ruta_id}"    />
+		</rows>
+	</detail>
+</smn_ruta_paciente>

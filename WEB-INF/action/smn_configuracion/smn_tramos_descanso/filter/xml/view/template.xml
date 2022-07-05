@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_tramos_descanso>
+	<detail>
+		<rows>		
+		<record trd_fecha_registro="${fld:trd_fecha_registro}"    smn_tramos_id="${fld:smn_tramos_id}"    smn_tramo_descanso_id="${fld:smn_tramo_descanso_id}"    />
+		</rows>
+	</detail>
+</smn_tramos_descanso>

@@ -1,0 +1,59 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='8%'/>
+	<col width='16%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='2%' id="plantilla"/>
+	<col width='2%' id="orden"/>
+	<col width='2%' id="recipe"/>
+    <col width='2%' id="recipe"/>
+	<!--toolbar-->
+	<tr>
+		<th colspan="13" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th>AP</th>
+		<th>RZ</th>
+		<th>GE</th>
+		<th class='sortable' onclick='sortBy("tipo_servicio","query-smnprestacionserviciomedicodetalle.sql")'>Tipo Servicio</th>
+		<th class='sortable' onclick='sortBy("servicio","query-smnprestacionserviciomedicodetalle.sql")'>Servicio</th>
+		<th class='sortable' onclick='sortBy("componentes","query-smnprestacionserviciomedicodetalle.sql")'>Componentes</th>
+		<th class='sortable' onclick='sortBy("estatus","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("psd_fecha_registro","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_store_date}</th>
+		<th id="plantilla">HM</th>
+		<th id="orden">OM</th>
+		<th id="recipe">RM</th>
+		<th id="recipe">CQ</th>
+	</tr>
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png" onclick="getDetail('${fld:smn_prestacion_servicio_medico_detalle_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/accept.png" onclick="actualizar_prestador('${fld:smn_prestacion_servicio_medico_detalle_id}','${fld:psd_estatus_cabecera}')" title="Actualizar Prestador"></td>
+		<td><img src="${def:context}/images/reject.png" onclick="showEditor_rechazar('${fld:smn_prestacion_servicio_medico_detalle_id}')" title="Rechazar"></td>
+		<td><img src="${def:context}/images/icongrid/Procesarg.png" onclick="showEditor_procesar('${fld:smn_prestacion_servicio_medico_detalle_id}','${fld:smn_prestacion_servicio_medico_cabecera_id}','${fld:num_ingreso}')" title="Procesar"></td>
+		<td align='center'>${fld:tipo_servicio}</td>
+		<td align='left'>${fld:servicio}</td>
+		<td align='left'>${fld:componentes}</td>
+		<td align='center'>${fld:estatus}</td>
+		<td>${fld:psd_fecha_registro@dd-MM-yyyy}</td>
+		<td  ><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="plantilla('${fld:smn_prestacion_servicio_medico_detalle_id}','${fld:nts_naturaleza}')" title="${lbl:b_dinamic_template}"></td>
+		<td  ><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="ordenmedica('${fld:smn_prestacion_servicio_medico_cabecera_id}','${fld:nombre_paciente}','${fld:cedula}','${fld:num_ingreso}','${fld:paciente_id}','${fld:nts_naturaleza}')" title="Orden Medico"></td>
+		<td  ><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="recipemedico('${fld:smn_prestacion_servicio_medico_cabecera_id}','${fld:nombre_paciente}','${fld:cedula}','${fld:num_ingreso}','${fld:paciente_id}','${fld:nts_naturaleza}')" title="Recipe Medico"></td>
+		<td  ><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="control('${fld:smn_prestacion_servicio_medico_cabecera_id}','${fld:smn_prestacion_servicio_medico_detalle_id}','${fld:num_ingreso}')" title="Control Quirofano"></td>
+	</tr>
+	</rows>
+
+</table>

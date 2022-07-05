@@ -1,0 +1,1 @@
+select smn_salud.smn_diagnostico.smn_diagnostico_id as id, smn_salud.smn_diagnostico.dgn_descripcion as item from smn_salud.smn_diagnostico

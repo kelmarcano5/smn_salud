@@ -1,0 +1,37 @@
+UPDATE smn_salud.smn_cobertura_admision SET
+	smn_ingreso_id=${fld:smn_ingreso_id},
+	smn_presupuesto_id=${fld:smn_presupuesto_id},
+	smn_auxiliar_rf=${fld:smn_auxiliar_rf},
+	coa_hora_solicitada=${fld:coa_hora_solicitada},
+	coa_ejecutivo_atención_pagador=${fld:coa_ejecutivo_atención_pagador},
+	coa_observación_inicial=${fld:coa_observación_inicial},
+	coa_monto_solicitado_servicios_clinicos_ml=${fld:coa_monto_solicitado_servicios_clinicos_ml},
+	coa_monto_solicitado_medicinas_y_mmq_ml=${fld:coa_monto_solicitado_medicinas_y_mmq_ml},
+	coa_monto_solicitado_honorarios_ml=${fld:coa_monto_solicitado_honorarios_ml},
+	coa_monto_total_solicitado_ml=${fld:coa_monto_total_solicitado_ml},
+	smn_moneda_rf=${fld:smn_moneda_rf},
+	smn_tasa_rf=${fld:smn_tasa_rf},
+	coa_monto_solicitado_servicios_clinicos_ma=${fld:coa_monto_solicitado_servicios_clinicos_ma},
+	coa_monto_solicitado_medicinas_y_mmq_ma=${fld:coa_monto_solicitado_medicinas_y_mmq_ma},
+	coa_monto_solicitado_honorarios_ma=${fld:coa_monto_solicitado_honorarios_ma},
+	coa_monto_total_solicitado_ma=${fld:coa_monto_total_solicitado_ma},
+	coa_fecha_aprobación=${fld:coa_fecha_aprobación},
+	coa_hora_aprobación=${fld:coa_hora_aprobación},
+	coa_monto_aprobado_servicios_medicos_ml=${fld:coa_monto_aprobado_servicios_medicos_ml},
+	coa_monto_aprobado_medicinas_y_mmq_ml=${fld:coa_monto_aprobado_medicinas_y_mmq_ml},
+	coa_monto_aprobado_honorarios_ml=${fld:coa_monto_aprobado_honorarios_ml},
+	coa_monto_total_aprobado_ml=${fld:coa_monto_total_aprobado_ml},
+	coa_monto_aprobado_servicios_medicos_ma=${fld:coa_monto_aprobado_servicios_medicos_ma},
+	coa_monto_aprobado_medicinas_y_mmq_ma=${fld:coa_monto_aprobado_medicinas_y_mmq_ma},
+	coa_monto_aprobado_honorarios_ma=${fld:coa_monto_aprobado_honorarios_ma},
+	coa_monto_total_aprobado_ma=${fld:coa_monto_total_aprobado_ma},
+	coa_estatus_proceso=${fld:coa_estatus_proceso},
+	coa_estatus_financiero=${fld:coa_estatus_financiero},
+	coa_idioma='${def:locale}',
+	coa_usuario='${def:user}',
+	coa_fecha_registro={d '${def:date}'},
+	coa_hora='${def:time}'
+
+WHERE
+	smn_cobertura_admision_id=${fld:id}
+

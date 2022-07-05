@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnrutapaciente.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+	
+	<excel recordset='query-smnrutapaciente.sql' sheetname='${lbl:b_ruta_paciente}' filename='smn_ruta3.xls'>
+		<col id='smn_entidad_rf_combo' label='${lbl:b_entidades_rp}' />
+		<col id='smn_sucursal_rf_combo' label='${lbl:b_sucursal_rp}' />
+		<col id='smn_area_servicio_rf_combo' label='${lbl:b_area_rp}' />
+		<col id='smn_serie_id_combo' label='${lbl:b_serie}' />
+		<col id='igs_num_ingreso' label='${lbl:b_igs_num_ingreso}' />
+		<col id='rta_ticket' label='${lbl:b_rta_ticket}' />
+		<col id='rta_secuencia' label='${lbl:b_rta_sequence}' />
+		<col id='smn_unidad_servicio_rf_combo' label='${lbl:b_units_service}' />
+		<col id= 'aux_descripcion' label='${lbl:b_contratante}'/>
+		<col id='rta_numero_documento_identidad' label='${lbl:b_rta_numero_documento_identidad}' />
+		<col id='smn_auxiliar_rf_combo' label='${lbl:b_auxiliary}' />
+		<col id='rta_estatus_combo' label='${lbl:b_status}' />
+		<col id='rta_hora_llegada_unidad' label='${lbl:b_time_end}' />
+		<col id='rta_hora_salida_unidad' label='${lbl:b_time_exit}' />
+		<col id='rta_ejecutivo_asignado_combo' label='${lbl:b_ejecutivo_asignado}' />
+		<col id='rta_fecha_registro' label='${lbl:b_store_date}' />
+	</excel>
+
+</config>

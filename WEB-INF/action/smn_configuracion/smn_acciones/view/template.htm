@@ -1,0 +1,43 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='33%'/>
+	<col width='33%'/>
+	<col width='33%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="6" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("acc_codigo","query-smnacciones.sql")'>${lbl:b_code}</th>
+		<th class='sortable' onclick='sortBy("acc_descripcion","query-smnacciones.sql")'>${lbl:b_description}</th>
+		<th class='sortable' onclick='sortBy("acc_fecha_registro","query-smnacciones.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_acciones_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_acciones_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_acciones_id}')" title="${lbl:b_edit_button}"></td>
+		<td align='left'>${fld:acc_codigo}</td>
+		<td align='left'>${fld:acc_descripcion}</td>
+		<td>${fld:acc_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

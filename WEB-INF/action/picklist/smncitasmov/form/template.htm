@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+
+<head>
+
+<link rel="stylesheet" type="text/css" href="${def:context}/dinamica.css" />
+
+<!--biblioteca generica JS/Dinamica-->
+<script type="text/javascript" src="${def:context}/action/script">
+</script>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+		
+		
+		
+
+		//inicializacion de la pagina cuando carga
+		onload = function()
+		{ 
+			document.form1.elements[0].focus();
+			document.getElementById("status").style.display='none';
+					document.form2.ctm_fecha2.onkeypress = keypressDate;
+
+					document.form1.ctm_fecha.onkeypress = keypressDate;
+
+			search();
+		} 
+	
+		//mostrar filtro de busqueda
+		function showFilter()
+		{
+			document.form1.elements[0].focus();			
+		}
+
+		//ejecutar consulta
+		function search()
+		{
+
+			//llamada Ajax...
+			return ajaxCall(	httpMethod="POST", 
+								uri="${def:actionroot}/search", 
+								divResponse="response", 
+								divProgress="status", 
+								formName="form1", 
+								afterResponseFn=showFilter, 
+								onErrorFn=showFilter);
+		
+		}
+	
+		//leer una pagina del grid
+		function viewPage()
+		{
+			var url = "${def:actionroot}/view";
+			gotoPage(url);
+		}
+
+		//retornar el item seleccionado a la pagina que llamo al picklist
+		function selectItem(id) {
+			var description = document.getElementById(id).innerHTML;
+			parent.pickSelect(id, description);
+			parent.pickClose();
+		}
+		
+		//mostrar formulario para addnew
+		function addNew() {
+			document.getElementById("addnew").style.display="block";
+			document.getElementById("form").style.display="none";
+			document.getElementById("response").style.display="none";
+			document.form2.elements[0].focus();
+		}
+		
+		function cancelAddnew() {
+			document.getElementById("addnew").style.display="none";
+			document.getElementById("form").style.display="block";
+			document.getElementById("response").style.display="block";
+			document.form1.name.focus();
+		}
+		
+		//ejecutar consulta
+		function insert()
+		{
+			//llamada Ajax...
+			return ajaxCall(	httpMethod="POST", 
+								uri="${def:actionroot}/insert", 
+								divResponse=null, 
+								divProgress="status", 
+								formName="form2", 
+								afterResponseFn=null, 
+								onErrorFn=addNew);
+		}		
+		
+</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog">
+	Seleccionar un registro
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.pickClose()" title="Cerrar" style="float:right; cursor:pointer;">
+	<img id="status" src="${def:context}/images/progbar.gif" style="display:inline; float:right;">
+</div>
+
+
+<!--formulario de filtro-->
+<form id="form" name="form1" onsubmit="return search()" style="width:90%; margin-top:10px;">
+	<table>
+
+	<!--ancho de la columna de etiquetas-->
+	<col width="30%">
+
+	<!--campos-->
+			<tr>
+			<td>${lbl:b_code}</td>
+			<td>
+				<input id="ctm_num_control_cita" name="ctm_num_control_cita" type="text" maxlength="16" ${class}>
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_appointment_date}</td>
+		<td>
+			<input id="ctm_fecha" name="ctm_fecha" type="text" class="date" maxlength="10">
+			<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('ctm_fecha')">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_location}</td>
+			<td>
+				<input id="ctm_localidad" name="ctm_localidad" type="text" maxlength="56" ${class}>
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_service}</td>
+		<td>
+			<select name="ctm_servicio" id="ctm_servicio" onchange="chgCombo(ctm_servicio.options[ctm_servicio.selectedIndex].text,'ctm_servicio_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_servicio_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_servicio_rows>
+			</select> 
+			<input id="ctm_servicio_name" name="ctm_servicio_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_component}</td>
+		<td>
+			<select name="ctm_componente" id="ctm_componente" onchange="chgCombo(ctm_componente.options[ctm_componente.selectedIndex].text,'ctm_componente_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_componente_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_componente_rows>
+			</select> 
+			<input id="ctm_componente_name" name="ctm_componente_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_service_providers}</td>
+		<td>
+			<select name="ctm_prestador_servicio" id="ctm_prestador_servicio" onchange="chgCombo(ctm_prestador_servicio.options[ctm_prestador_servicio.selectedIndex].text,'ctm_prestador_servicio_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_prestador_servicio_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_prestador_servicio_rows>
+			</select> 
+			<input id="ctm_prestador_servicio_name" name="ctm_prestador_servicio_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_component_type}</td>
+		<td>
+			<select name="ctm_tipo_componente" id="ctm_tipo_componente">
+				<option value="RE">Relacionado</option>
+				<option value="IN">Independiente</option>
+
+			</select> 
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_status}</td>
+		<td>
+			<select name="ctm_estatus" id="ctm_estatus" onchange="chgCombo(ctm_estatus.options[ctm_estatus.selectedIndex].text,'ctm_estatus_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_estatus_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_estatus_rows>
+			</select> 
+			<input id="ctm_estatus_name" name="ctm_estatus_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:${lbl:b_appointment_comment}}</td>
+		<td>
+			<select name="ctm_observ_cita" id="ctm_observ_cita" onchange="chgCombo(ctm_observ_cita.options[ctm_observ_cita.selectedIndex].text,'ctm_observ_cita_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_observ_cita_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_observ_cita_rows>
+			</select> 
+			<input id="ctm_observ_cita_name" name="ctm_observ_cita_name" type="hidden">
+		</td>
+	</tr>
+
+	
+	</table>
+	<input type="submit" value="Buscar" class="button" style="font-size: 9pt">	
+	<input type="button" value="Añadir" class="button" style="font-size: 9pt" title="Añadir un nuevo item" onclick="addNew()">
+</form>
+
+<!--formulario para añadir nuevo registro-->
+<form id="addnew" name="form2" onsubmit="return insert()" style="display:none; margin-top:10px; width:90%">
+	<table>
+	<h1>Añadir registro</h1>
+	<!--ancho de la columna de etiquetas-->
+	<col width="30%">
+	<!--campos-->
+	
+	
+			<tr>
+			<td>${lbl:b_code}*</td>
+			<td>
+				<input id="ctm_num_control_cita2" name="ctm_num_control_cita2" type="text" maxlength="16" >
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_appointment_date}*</td>
+		<td>
+			<input id="ctm_fecha2" name="ctm_fecha2" type="text" class="date" maxlength="10">
+			<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('ctm_fecha2')">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_location}*</td>
+			<td>
+				<input id="ctm_localidad2" name="ctm_localidad2" type="text" maxlength="56" >
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_service}*</td>
+		<td>
+			<select name="ctm_servicio2" id="ctm_servicio2" onchange="chgCombo(ctm_servicio2.options[ctm_servicio2.selectedIndex].text,'ctm_servicio2_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_servicio2_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_servicio2_rows>
+			</select> 
+			<input id="ctm_servicio2_name" name="ctm_servicio2_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_component}*</td>
+		<td>
+			<select name="ctm_componente2" id="ctm_componente2" onchange="chgCombo(ctm_componente2.options[ctm_componente2.selectedIndex].text,'ctm_componente2_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_componente2_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_componente2_rows>
+			</select> 
+			<input id="ctm_componente2_name" name="ctm_componente2_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_service_providers}*</td>
+		<td>
+			<select name="ctm_prestador_servicio2" id="ctm_prestador_servicio2" onchange="chgCombo(ctm_prestador_servicio2.options[ctm_prestador_servicio2.selectedIndex].text,'ctm_prestador_servicio2_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_prestador_servicio2_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_prestador_servicio2_rows>
+			</select> 
+			<input id="ctm_prestador_servicio2_name" name="ctm_prestador_servicio2_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_component_type}</td>
+		<td>
+			<select name="ctm_tipo_componente2" id="ctm_tipo_componente2">
+				<option value="RE">Relacionado</option>
+				<option value="IN">Independiente</option>
+
+			</select> 
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_status}*</td>
+		<td>
+			<select name="ctm_estatus2" id="ctm_estatus2" onchange="chgCombo(ctm_estatus2.options[ctm_estatus2.selectedIndex].text,'ctm_estatus2_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_estatus2_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_estatus2_rows>
+			</select> 
+			<input id="ctm_estatus2_name" name="ctm_estatus2_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:${lbl:b_appointment_comment}}*</td>
+		<td>
+			<select name="ctm_observ_cita2" id="ctm_observ_cita2" onchange="chgCombo(ctm_observ_cita2.options[ctm_observ_cita2.selectedIndex].text,'ctm_observ_cita2_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_observ_cita2_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_observ_cita2_rows>
+			</select> 
+			<input id="ctm_observ_cita2_name" name="ctm_observ_cita2_name" type="hidden">
+		</td>
+	</tr>
+
+	</table>
+	<input type="submit" value="Grabar" class="button" style="font-size: 9pt">
+	<input 	type="button" value="Cancelar" class="button" style="font-size: 9pt" onclick="cancelAddnew()">
+</form>			
+
+<!--panel de respuesta AJAX-->
+<div id="response" style="display: none; width:100%; margin-top:15px;">
+</div>
+
+</body>
+
+</html>

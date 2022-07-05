@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+	
+<script type="text/javascript">
+
+	$(document).ready(function() { 
+		function carga(){
+			//const audio = new Audio("https://freesound.org/data/previews/501/501690_1661766-lq.mp3");
+  			//audio.play();
+			$("#tabla th[name='th1']").remove();
+			$("#tabla2 th[name='th2']").remove();
+			$("#tabla th[name='th3']").remove();
+			$("#tabla2 th[name='th4']").remove();
+			$("#tabla th[name='th5']").remove();
+			$("#tabla2 th[name='th6']").remove();
+			$("#tabla th[name='th7']").remove();
+			$("#tabla2 th[name='th8']").remove();
+			$("#tabla th[name='th9']").remove();
+
+			$("#smn_auxiliar_rf_combo").remove();
+			$("#smn_auxiliar_rf_combo2").remove();
+			$("#smn_unidad_servicio_rf").remove();
+			$("#smn_unidad_servicio_rf2").remove();
+			$("#smn_unidad_servicio_rf").remove();
+			$("#smn_unidad_servicio_rf2").remove();
+			$("#saldo").remove();
+			$("#saldo2").remove();
+			$("#tiempo").remove();
+			$("#tiempo2").remove();
+
+			$("tr[name='tr1']").remove();
+			$("tr[name='tr2']").remove();
+			$("tr[name='tr3']").remove();
+			$("tr[name='tr4']").remove();
+			$("tr[name='tr5']").remove();
+			$("tr[name='tr6']").remove();
+			$("tr[name='tr7']").remove();
+			$("tr[name='tr8']").remove();
+			$("tr[name='tr9']").remove();
+	  	
+		  	var serie = document.getElementById("sri_codigo").value;
+		  	var datosPaciente = document.getElementById("cvm_datos_pac").value;
+		  	var unidad = document.getElementById("cvm_unidad_llamada").value;
+		  	var pacienteEspera = document.getElementById("cvm_pacientes_espera").value;
+		  	var tiempo = document.getElementById("cvm_tiempo_aprox_espera").value;
+
+		  	if (datosPaciente.trim() == 'S'){
+				console.log(datosPaciente);
+		  		var tr = document.getElementById('tabla').tHead.children[0],
+				th = document.createElement('th');
+				th.setAttribute('name','th1');
+				th.innerHTML = "Puesto de Atencion";
+				tr.appendChild(th);
+
+				var tbl =  document.getElementById('tabla').getElementsByTagName('tbody')[0];
+				var tr = tbl.getElementsByTagName('tr')[0];
+
+				td = document.createElement('td');
+				td.setAttribute('id',"smn_auxiliar_rf_combo");
+				td.innerHTML = "${fld:smn_auxiliar_rf_combo}";
+				tr.appendChild(td);
+
+				var tr = document.getElementById('tabla2').tHead.children[0],
+				th = document.createElement('th');
+				th.setAttribute('name','th2');
+				th.innerHTML = "Puesto de Atencion";
+				tr.appendChild(th);
+
+				var tbl =  document.getElementById('tabla2').getElementsByTagName('tbody')[0];
+				var tr = tbl.getElementsByTagName('tr')[0];
+
+				td = document.createElement('td');
+				td.setAttribute('id',"smn_auxiliar_rf_combo2");
+				td.innerHTML = "${fld:smn_auxiliar_rf_combo}";
+				tr.appendChild(td);	
+		  	}
+
+			if (unidad.trim() == 'S'){
+				console.log(unidad);
+				// var tr = document.getElementById('tabla').tHead.children[0],
+				// th = document.createElement('th');
+				// th.setAttribute('name','th3');
+				// th.innerHTML = "${lbl:b_unidad_servicio}";
+				// tr.appendChild(th);
+
+				// var tbl =  document.getElementById('tabla').getElementsByTagName('tbody')[0];
+				// var tr = tbl.getElementsByTagName('tr')[0];
+
+				// td = document.createElement('td');
+				// td.setAttribute('id',"smn_unidad_servicio_rf");
+				// td.innerHTML = "${fld:smn_unidad_servicio_rf}";
+				// tr.appendChild(td);
+
+				// var tr = document.getElementById('tabla2').tHead.children[0],
+				// th = document.createElement('th');
+				// th.setAttribute('name','th4');
+				// th.innerHTML = "${lbl:b_unidad_servicio}";
+				// tr.appendChild(th);
+
+				// var tbl =  document.getElementById('tabla2').getElementsByTagName('tbody')[0];
+				// var tr = tbl.getElementsByTagName('tr')[0];
+
+				// td = document.createElement('td');
+				// td.setAttribute('id',"smn_unidad_servicio_rf2");
+				// td.innerHTML = "${fld:smn_unidad_servicio_rf}";
+				// tr.appendChild(td);
+		  	}
+
+		  	if (pacienteEspera.trim() == 'S'){
+				console.log(pacienteEspera);
+		  // 		var tr = document.getElementById('tabla').tHead.children[0],
+				// th = document.createElement('th');
+				// th.setAttribute('name','th5');
+				// th.innerHTML = "${lbl:b_pac_espera}";
+				// tr.appendChild(th);
+
+				var tbl =  document.getElementById('tabla').getElementsByTagName('tbody')[0];
+				var tr = tbl.getElementsByTagName('tr')[0];
+
+				td = document.createElement('td');
+				td.setAttribute('id',"saldo");
+				td.innerHTML = "${fld:saldo}";
+				tr.appendChild(td);
+
+				// var tr = document.getElementById('tabla2').tHead.children[0],
+				// th = document.createElement('th');
+				// th.setAttribute('name','th6');
+				// th.innerHTML = "${lbl:b_pac_espera}";
+				// tr.appendChild(th);
+
+				var tbl =  document.getElementById('tabla2').getElementsByTagName('tbody')[0];
+				var tr = tbl.getElementsByTagName('tr')[0];
+
+				td = document.createElement('td');
+				td.setAttribute('id',"saldo2");
+				td.innerHTML = "${fld:saldo}";
+				tr.appendChild(td);
+		  	}
+
+		  	if (tiempo.trim() == 'S'){
+				console.log(tiempo);
+		  // 		var tr = document.getElementById('tabla').tHead.children[0],
+				// th = document.createElement('th');
+				// th.setAttribute('name','th7');
+				// th.innerHTML = "${lbl:b_tiempo_espera}";
+				// tr.appendChild(th);
+
+				var tbl =  document.getElementById('tabla').getElementsByTagName('tbody')[0];
+				var tr = tbl.getElementsByTagName('tr')[0];
+
+				td = document.createElement('td');
+				td.setAttribute('id',"tiempo");
+				td.innerHTML = "${fld:tiempo}";
+				tr.appendChild(td);
+
+				// var tr = document.getElementById('tabla2').tHead.children[0],
+				// th = document.createElement('th8');
+				// th.innerHTML = "${lbl:b_tiempo_espera}";
+				// tr.appendChild(th);
+
+				var tbl =  document.getElementById('tabla2').getElementsByTagName('tbody')[0];
+				var tr = tbl.getElementsByTagName('tr')[0];
+
+				td = document.createElement('td');
+				td.setAttribute('id',"tiempo2");
+				td.innerHTML = "${fld:tiempo}";
+				tr.appendChild(td);
+		  	}
+			
+			return ajaxCall(
+				httpMethod="POST", 
+				uri="${def:actionroot}/infoRutaPaciente?serie=" + serie+"&smn_areas_servicios=${fld:smn_areas_servicios}&smn_unidad_servicios=${fld:smn_unidad_servicios}", 
+				divResponse=null, 
+				divProgress="status", 
+				formName="form1", 
+				afterResponseFn=null, 
+				onErrorFn=null
+			);	
+  		}   
+	
+		setInterval(carga, 20000);
+	});
+
+  </script>
+
+
+</head>
+
+<body>
+	<!--banner-->
+	<!--banner-->
+	<div class="welcome" style="padding-right:50px; margin-top: 20px;"><br>
+        <b>${lbl:b_welcome}</b> ${fld:fname} ${fld:lname} ${req:progress} <img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+        <div class="" style="width: 100%; border-bottom: solid 6px #1d61a0; border-radius: 30px; margin-top: 4px;">
+        </div>
+    </div>
+    <br>
+    <!-- <div class="titulo-negocios">
+        <div style="padding-top: 15px;">${lbl:b_monitor}</div>
+    </div> -->
+
+<form name="form1" style= "display: none;">
+	<input id="smn_entidades_rf" name="smn_entidades_rf" type="hidden" value= '${fld:smn_entidades_rf}'>
+	<input id="smn_sucursales_rf" name="smn_sucursales_rf" type="hidden" value= '${fld:smn_sucursales_rf}'>
+	<input id="smn_areas_servicios_rf" name="smn_areas_servicios_rf" type="hidden" value= '${fld:smn_areas_servicios_rf}'>
+	<input id="smn_unidad_servicio_rf" name="smn_unidad_servicio_rf" type="hidden" value= '${fld:smn_unidad_servicio_rf}'>
+	<input id="sri_codigo" name="sri_codigo" type="hidden" value= '${fld:sri_codigo}'>
+	<input id="cvm_datos_pac" name="cvm_datos_pac" type="hidden" value= '${fld:cvm_datos_pac}'>
+	<input id="cvm_unidad_llamada" name="cvm_unidad_llamada" type="hidden" value= '${fld:cvm_unidad_llamada}'>
+	<input id="cvm_pacientes_espera" name="cvm_pacientes_espera" type="hidden" value= '${fld:cvm_pacientes_espera}'>
+	<input id="cvm_tiempo_aprox_espera" name="cvm_tiempo_aprox_espera" type="hidden" value= '${fld:cvm_tiempo_aprox_espera}'>
+</form>
+
+<!--<h1 style = "position: fixed; top:0; left:42%; ">MONITOR</h1>-->
+<h2 class="datagrid" style = "position: fixed; top:100px; left:42%; ">PACIENTE EN ATENCION</h2>
+	
+<table class="datagrid" id= "tabla" style="width:60%; position: fixed; top:20%; left:20%;">
+
+	<thead>
+		<th style = "font-weight: bold; font-size: 10pt">${lbl:b_rta_ticket}</th>
+		<th>${lbl:b_rta_documento}</th>
+		<th>Paciente</th>
+	</thead>
+	
+	<tbody>
+		<rows>
+		<tr style="display:none;">
+			<td id="rta_ticket">${fld:rta_ticket}</td>
+			<td id="rta_numero_documento_identidad">${fld:rta_numero_documento_identidad}</td>
+			<td id="paciente">${fld:smn_auxiliar_rf_combo}</td>
+		</tr>
+		</rows>
+	</tbody>
+		
+	
+
+</table>
+
+<br>
+<br>
+<br>
+<br>
+
+<!--<h2 style = "position: fixed; top:250px; left:38%; ">PROXIMOS PACIENTES A ATENDER </h2>-->
+<h2 class="datagrid" style = "position: fixed; top:450px; left:40%; ">PROXIMOS PACIENTES A ATENDER</h2>
+<table class="datagrid" id= "tabla2" style="width:60%; position: fixed; top:60%; left:20%;" >
+
+	<thead>
+
+		<th style = "font-weight: bold; font-size: 10pt">${lbl:b_rta_ticket}</th>
+		<th>${lbl:b_rta_documento}</th>
+		<th>Paciente</th>
+		<!-- <th>Ejecutivo</th>
+		<th>Unidad de Servicio</th> -->
+
+	</thead>
+		
+	<!--data-->
+	<tbody>
+		<rowsRuta>
+			<tr style="display:none;">
+			<td id="rta_ticket2">${fld:rta_ticket}</td>
+			<td id="rta_numero_documento_identidad2">${fld:rta_numero_documento_identidad}</td>
+			<td id="paciente2">${fld:smn_auxiliar_rf_combo}</td>
+			<!-- <td id="ejecutivo2">${fld:rta_ejecutivo_asignado}</td>
+			<td id="unidaddeservicio2">${fld:smn_unidad_servicio_rf}</td> -->
+			</tr>
+		</rowsRuta>
+	</tbody>
+
+</table>
+</body>
+</html>

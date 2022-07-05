@@ -1,0 +1,34 @@
+INSERT INTO smn_salud.smn_planes
+(
+	smn_planes_id,
+	pla_codigo,
+	pla_descripcion,
+	pla_vigencia_desde,
+	pla_vigencia_hasta,
+	pla_inactivo,
+	pla_modelo_contrato,
+	pla_empresa,
+	pla_clase_auxiliar,
+	pla_auxiliar,
+	pla_idioma,
+	pla_usuario,
+	pla_fecha_registro,
+	pla_hora
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_planes},
+	${fld:pla_codigo2},
+	${fld:pla_descripcion2},
+	${fld:pla_vigencia_desde2},
+	${fld:pla_vigencia_hasta2},
+	${fld:pla_inactivo2},
+	${fld:pla_modelo_contrato2},
+	${fld:pla_empresa2},
+	${fld:pla_clase_auxiliar2},
+	${fld:pla_auxiliar2},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

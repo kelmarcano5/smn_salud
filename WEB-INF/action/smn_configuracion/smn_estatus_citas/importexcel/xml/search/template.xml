@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_estatus_citas>
+	<detail>
+		<rows>		
+		<record eci_fecha_registro="${fld:eci_fecha_registro}"    eci_aplica="${fld:eci_aplica}"    eci_descripcion="${fld:eci_descripcion}"    eci_num_secuencia="${fld:eci_num_secuencia}"    />
+		</rows>
+	</detail>
+</smn_estatus_citas>

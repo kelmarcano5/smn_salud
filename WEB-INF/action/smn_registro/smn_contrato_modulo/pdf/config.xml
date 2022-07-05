@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncontratomodulo.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_contrato_modulo}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_contrato_modulo}.pdf</pdf-file-name>
+
+	<pdf-report 
+		pageSize="letter" 
+		rotate="false"
+		footer="false" 
+		header="true">
+		<record recordset='query-smncontratomodulo.sql' width='100' spacingBefore='40'>
+			<col name='smn_contrato_base_rf' title='${lbl:b_contrato_base}' width='8' align='left' format='######' />
+			<col name='smn_documento_id' title='${lbl:b_contrato_doc}' width='8' align='left' format='######' />
+			<col name='ctm_numero_contrato' title='${lbl:b_number_contract}' width='8' align='left' format='######' />
+			<col name='smn_contratante_id' title='${lbl:b_contratante}' width='8' align='left' format='######' />
+			<col name='smn_planes_id' title='${lbl:b_planes}' width='8' align='left' format='######' />
+			<col name='ctm_cantidad_afiliados' title='${lbl:b_quantity_afiliated}' width='8' align='left' format='######' />
+			<col name='ctm_monto_contrato' title='${lbl:b_amount_contract}' width='8' align='left' format='#,###,##0.00' />
+			<col name='ctm_monto_cobertura_afiliado' title='${lbl:b_amount_coverage_afiliated}' width='8' align='left' format='#,###,##0.00' />
+			<col name='ctm_cantidad_citas' title='${lbl:b_quantity_citas}' width='8' align='left' format='######' />
+			<col name='ctm_estatus_proceso' title='${lbl:b_status_process}' width='8' align='left' />
+			<col name='ctm_estatus_financiero' title='Estatus Financiero' width='8' align='left' />
+			<col name='ctm_fecha_registro' title='${lbl:b_store_date}' width='8' align='left' format='dd-MM-yyyy' />
+
+		</record>
+
+	</pdf-report>
+</config>

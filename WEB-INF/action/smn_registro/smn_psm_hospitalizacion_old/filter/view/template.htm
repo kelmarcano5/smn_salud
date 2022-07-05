@@ -1,0 +1,60 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<!-- <col width='12%'/> -->
+	<col width='9%'/>
+	<col width='20%'/>
+<!-- 	<col width='10%'/>-->
+	<col width='10%'/> 
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='10%'/>
+	<col width='15%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="11" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th class='sortable' onclick='sortBy("document_num_ingreso","query-smnprestacionserviciomedicocabecera.sql")'>Num. Ingreso</th>
+		<th class='sortable' onclick='sortBy("cubiculo","query-smnprestacionserviciomedicocabecera.sql")'>Cubiculo</th>
+		<th class='sortable' onclick='sortBy("medico","query-smnprestacionserviciomedicocabecera.sql")'>Medico Cabecera</th>
+		<!--<th class='sortable' onclick='sortBy("ticket","query-smnprestacionserviciomedicocabecera.sql")'>TICKET</th> -->
+		<th class='sortable' onclick='sortBy("documento_identidad","query-smnprestacionserviciomedicocabecera.sql")'>Documento Identidad</th>
+		<th class='sortable' onclick='sortBy("nombre_paciente","query-smnprestacionserviciomedicocabecera.sql")'>Nombre Paciente</th>
+		<th class='sortable' onclick='sortBy("sintoma","query-smnprestacionserviciomedicocabecera.sql")'>Sintoma</th>
+		<th class='sortable' onclick='sortBy("psc_estatus","query-smnprestacionserviciomedicocabecera.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("psc_fecha_registro","query-smnprestacionserviciomedicocabecera.sql")'>${lbl:b_store_date}</th>
+		<th>PSD</th>
+		<th>IT</th>
+		<!-- <th>SE</th> -->
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_prestacion_servicio_medico_cabecera_id}')" title="${lbl:b_view_detail}"></td>
+		<td>${fld:document_num_ingreso}</td>
+		<td>${fld:cubiculo}</td>
+		<td>${fld:medico}</td>
+		<td>${fld:documento_identidad}</td>
+		<td>${fld:nombre_paciente}</td>
+		<td>${fld:sintoma}</td>
+		<td align='center'>${fld:psc_estatus}</td>
+		<td>${fld:psc_fecha_registro@dd-MM-yyyy}</td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalle('${fld:smn_prestacion_servicio_medico_cabecera_id}','${fld:nombre_paciente}','${fld:codigopaciente}','${fld:document_num_ingreso}','${fld:nombre_paciente}','${fld:cedula}','${fld:sexo}','${fld:edad@#######}','${fld:fecha_ingreso}','${fld:psc_estatus_financiero}','${fld:ingreso_id}')" title="${lbl:b_detail_medic_provider_services}"></td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalle_it('${fld:smn_prestacion_servicio_medico_cabecera_id}','${fld:nombre_paciente}')" title="${lbl:b_detail_medic_provider_services}"></td>
+
+	</tr>
+	</rows>
+
+</table>

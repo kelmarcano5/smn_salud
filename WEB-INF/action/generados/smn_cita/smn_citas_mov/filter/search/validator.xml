@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='ctm_fecha' type='date' required='false' label='${lbl:b_appointment_date}' maxlen='10'/>
+	<parameter id='ctm_num_control_cita' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='ctm_num_control_cita' rule='like' />
+</validator>

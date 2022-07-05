@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	
+	<parameter id='smn_area_servicio_rf' type='integer' required='false' label='${lbl:b_service_area}' maxlen='10'/>
+	<parameter id='smn_unidad_servicio_rf' type='integer' required='false' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='smn_paso_rf' type='integer' required='false' label='${lbl:b_paso}' maxlen='10'/>
+	<parameter id='smn_serie_id' type='integer' required='false' label='${lbl:b_serie}' maxlen='10'/>
+	<parameter id='rup_secuencia ' type='integer' required='false' label='${lbl:b_rel_uni_paso_sec}' maxlen='3'/>
+	<parameter id='rup_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='rup_vigencia' type='date' required='false' label='${lbl:b_vigencia}' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='rup_estatus'
+		rule='contains' />
+
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generación del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

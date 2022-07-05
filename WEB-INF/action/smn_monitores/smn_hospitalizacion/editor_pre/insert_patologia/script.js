@@ -1,0 +1,6 @@
+var patologia = $('#patologia').val();
+console.log("ID DE ORDEN DESDE INSERT PATOLOGIA: "+patologia);
+generarPatologia(patologia);
+// addNew();
+// alertBox ('${lbl:b_record_added}: ${fld:id}', '${lbl:b_continue_button}', null, 'search(); setFocusOnForm("form1");');
+

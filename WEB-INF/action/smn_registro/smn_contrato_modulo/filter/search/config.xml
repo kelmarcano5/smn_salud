@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Ejecutar consulta y enrutar dependiendo de que un recordset
+		tenga o no registros
+	</summary>
+
+	<log>false</log>
+
+	<!--configura el control de paginacion-->
+	<set-request-attribute id="paging.recordset" value="query-smncontratomodulo.sql" />
+	<set-request-attribute id="paging.pagesize" value="10" />
+
+	<!--soporte de auditoria-->
+	<audit>
+		<!--de donde saca los datos, por defecto es "_request"-->
+		<recordset></recordset>
+		<!--que campos extrae para el registro descriptivo-->
+		<cols>
+			<colname>smn_contrato_base_rf</colname>
+			<colname>smn_documento_id</colname>
+			<colname>ctm_numero_contrato</colname>
+			<colname>smn_contratante_id</colname>
+			<colname>smn_planes_id</colname>
+			<colname>ctm_estatus_proceso</colname>
+			<colname>ctm_estatus_financiero</colname>
+			<colname>ctm_fecha_registro_ini</colname>
+			<colname>ctm_fecha_registro_fin</colname>
+		
+		</cols>
+		<table>smn_salud.smn_contrato_modulo</table>
+		<oper>CONSULTA</oper>
+		<area>Consulta</area>
+		<!-- 
+ 			para auditoria de consulta permite obtener la cantidad de registro obtenidos
+ 			de la busqueda (opcional)
+ 		-->
+		<recordCount recordset="query-smncontratomodulo.sql"/>
+	</audit>
+
+	<transaction>
+		<classname>dinamica.audit.AuditableSearch</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+	</transaction>
+	
+	<searchCols>smn_contrato_base_rf;smn_documento_id;ctm_numero_contrato;smn_contratante_id;smn_planes_id;ctm_estatus_proceso;ctm_estatus_financiero;ctm_fecha_registro_ini;ctm_fecha_registro_fin;</searchCols>
+
+	<on-exit return-code="0" forward-to="/action/initview" />
+	<on-exit return-code="1" forward-to="${def:actionroot}/notfound" />
+
+</config>

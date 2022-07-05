@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+	<!--codigo especifico de este modulo--> 
+	<script type="text/javascript">
+		//inicializacion de la pagina cuando carga
+		onload = function() { 
+			search();
+		} 
+	
+		//ejecutar consulta
+		function search() {
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/search", 
+							divResponse="response", 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);
+		}
+	
+		//recuperar una pagina X del grid
+		function viewPage() {
+			var url = "${def:actionroot}/view";
+			gotoPage(url);
+		}
+		
+		//exportar a PDF
+		function openPDF() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+	
+		//exportar a excel
+		function openExcel() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<!--banner-->
+	<div class="welcome" style="padding-right:50px; margin-top: 20px;"><br>
+        <b>${lbl:b_welcome}</b> ${fld:fname} ${fld:lname} ${req:progress}
+        <div class="" style="width: 100%; border-bottom: solid 6px #1d61a0; border-radius: 30px; margin-top: 4px;">
+        </div>
+    </div>
+    <br>
+    <div class="titulo-negocios">
+        <div style="padding-top: 15px;">${lbl:b_coverage_services}</div>
+    </div>
+	
+	<!--panel de respuesta AJAX #1-->
+	<div id="response" style="display: none; width: 100%"></div>
+
+</body>
+
+</html>

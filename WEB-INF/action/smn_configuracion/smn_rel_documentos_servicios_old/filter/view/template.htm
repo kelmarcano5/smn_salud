@@ -1,0 +1,43 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='22%'/>
+	<col width='22%'/>
+	<col width='22%'/>
+	<col width='22%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="7">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('smn_documentos_id_combo','query-smnreldocumentosservicios.sql')" >${lbl:b_contrato_doc}</th>
+		<th class='sortable' onclick="sortBy('smn_servicios_id_combo','query-smnreldocumentosservicios.sql')" >${lbl:b_service}</th>
+		<th class='sortable' onclick="sortBy('rdt_tipo_generacion_combo','query-smnreldocumentosservicios.sql')" >${lbl:b_tipo_generacion}</th>
+		<th class='sortable' onclick="sortBy('rdt_hora_generacion','query-smnreldocumentosservicios.sql')" >${lbl:b_hora_generacion}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_rel_documentos_servicios_id}')" title="Ver detalle"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_rel_documentos_servicios_id}')" title="Eliminar"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_documentos_servicios_id}')" title="Editar"></td>
+		<td align="center">${fld:smn_documentos_id_combo}</td>
+		<td align="center">${fld:smn_servicios_id_combo}</td>
+		<td align="center">${fld:rdt_tipo_generacion_combo}</td>
+		<td align="left">${fld:rdt_hora_generacion}</td>
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,46 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="7" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_patologia_id","query-smnrelpatologiaitem.sql")'>${lbl:b_pathology}</th>
+		<th class='sortable' onclick='sortBy("smn_item_rf","query-smnrelpatologiaitem.sql")'>${lbl:b_item}</th>
+		<th class='sortable' onclick='sortBy("rps_cantidad","query-smnrelpatologiaitem.sql")'>${lbl:b_quantity}</th>
+		<th class='sortable' onclick='sortBy("rps_fecha_registro","query-smnrelpatologiaitem.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_rel_patologia_item_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_rel_patologia_item_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_patologia_item_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_patologia_id}</td>
+		<td>${fld:smn_item_rf}</td>
+		<td>${fld:rps_cantidad}</td>
+		<td>${fld:rps_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

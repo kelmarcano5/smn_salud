@@ -1,0 +1,1 @@
+document.form1.smn_presupuesto_id.disabled=true;

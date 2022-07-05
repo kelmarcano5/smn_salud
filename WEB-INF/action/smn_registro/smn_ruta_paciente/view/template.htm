@@ -1,0 +1,70 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="14" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<!--<th></th>
+		<th></th>-->
+		<th>ST</th>
+		<th>RE</th>
+		<th>OS</th>
+		<th class='sortable' onclick='sortBy("smn_grupo_prestador_rf","query-smnrutapaciente.sql")'>${lbl:b_group_of_provider}</th>
+		<th class='sortable' onclick='sortBy("smn_prestador_servicio_rf","query-smnrutapaciente.sql")'>${lbl:b_services_providers}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf_combo","query-smnrutapaciente.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("rta_numero_documento_identidad","query-smnrutapaciente.sql")'>${lbl:b_rta_documento}</th>
+		<th class='sortable' onclick='sortBy("smn_serie_id","query-smnrutapaciente.sql")'>${lbl:b_serie}</th>
+		<th class='sortable' onclick='sortBy("rta_secuencia","query-smnrutapaciente.sql")'>${lbl:b_rta_sequence}</th>
+		<th class='sortable' onclick='sortBy("rta_ticket","query-smnrutapaciente.sql")'>${lbl:b_rta_ticket}</th>
+		<th class='sortable' onclick='sortBy("smn_unidad_servicio_rf","query-smnrutapaciente.sql")'>${lbl:b_units_service}</th>
+		<th class='sortable' onclick='sortBy("rta_estatus","query-smnrutapaciente.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("rta_fecha_registro","query-smnrutapaciente.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_ruta_id}')" title="${lbl:b_view_detail}"></td>
+		<!--<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_ruta_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_ruta_id}')" title="${lbl:b_edit_button}"></td>-->
+		<td><img src="${def:context}/images/view-list-details.png"  onclick="estatus('${fld:smn_ruta_id}','${fld:estatus}','${fld:rta_ticket}','${fld:auxiliar}')" title="${lbl:b_change_status}"></td>
+		<td><img src="${def:context}/images/view-list-details.png"  onclick="ejecutivo('${fld:smn_ruta_id}')" title="${lbl:b_executive}"></td>
+		<td><img src="${def:context}/images/view-list-details.png"  onclick="ordensecuencia('${fld:smn_ruta_id}')" title="${lbl:b_order_sequence}"></td>
+		<td align='left'>${fld:smn_grupo_prestador_rf}</td>
+		<td align='left'>${fld:smn_prestador_servicio_rf}</td>
+		<td align='left'>${fld:smn_auxiliar_rf_combo}</td>
+		<td align='center'>${fld:rta_numero_documento_identidad}</td>
+		<td align='center'>${fld:smn_serie_id}</td>
+		<td align='center'>${fld:rta_secuencia}</td>
+		<td align='center'>${fld:rta_ticket}</td>
+		<td align='left'>${fld:smn_unidad_servicio_rf}</td>
+		<td align='center'>${fld:rta_estatus}</td>
+		<td align='center'>${fld:rta_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_ingreso_id' type='integer' required='true' label='${lbl:b_ingreso}' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='integer' required='true' label='${lbl:b_service}' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_rf' type='integer' required='true' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='smn_componente_rf' type='integer' required='false' label='${lbl:b_component}' maxlen='10'/>
+	<parameter id='inm_accion' type='varchar' required='false' label='${lbl:b_accion}' maxlen='40'/>
+	<parameter id='smn_tipo_consulta_rf' type='integer' required='false' label='${lbl:b_tipo_consulta}' maxlen='10'/>
+	<parameter id='smn_grupo_prestador_servicio_rf' type='integer' required='true' label='${lbl:b_grupo_prestador_servicio}' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='true' label='${lbl:b_service_providers}' maxlen='10'/>
+	<parameter id='smn_motivos_id' type='integer' required='false' label='${lbl:b_reason}' maxlen='10'/>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary_class_mov_cita}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary_mov_citas}' maxlen='10'/>
+	<parameter id='inm_ordenante_descripcion' type='varchar' required='false' label='${lbl:b_ordenante_descripcion}' maxlen='100'/>
+	<parameter id='smn_sintoma_id' type='integer' required='false' label='${lbl:b_symptom}' maxlen='10'/>
+	<parameter id='inm_tipo_orden' type='varchar' required='true' label='${lbl:b_tipo_orden}' maxlen='2'/>
+	<parameter id='inm_num_orden_medica' type='integer' required='false' label='${lbl:b_orden_medica}' maxlen='10'/>
+	<!-- <parameter id='inm_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/> -->
+
+	 <custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='smn_servicios_rf'/>
+			
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:parameter_required}'
+			sql='afectaTipoConsulta.sql'
+			id='smn_tipo_consulta_rf'/>
+			
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:parameter_required}'
+			sql='afectaPrestador.sql'
+			id='smn_prestador_servicio_rf'/>
+			
+<!-- 	<custom-validator
+	classname='dinamica.validators.DuplicatedKeyValidator'
+		on-error-label='${lbl:parameter_required}'
+		sql='afectaComponente.sql'
+		id='smn_componente_rf'/> -->
+		
+		<custom-validator
+	classname='dinamica.validators.DuplicatedKeyValidator'
+		on-error-label='${lbl:parameter_required}'
+		sql='afectaComponente2.sql'
+		id='inm_accion'/>
+
+
+</validator>

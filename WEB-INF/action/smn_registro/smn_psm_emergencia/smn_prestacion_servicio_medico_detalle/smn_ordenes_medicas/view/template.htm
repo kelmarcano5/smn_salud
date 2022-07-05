@@ -1,0 +1,61 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<!-- <col width='10%'/> -->
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='3%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="11" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th>VR</th>
+		<th>GE</th>
+		<th class='sortable' onclick='sortBy("omd_numero_orden","query-smnordenesmedicas.sql")'>Numero</th>
+		<th class='sortable' onclick='sortBy("omd_indicaciones","query-smnordenesmedicas.sql")'>${lbl:b_indications}</th>
+		<th class='sortable' onclick='sortBy("smn_prestador_servicio_rf","query-smnordenesmedicas.sql")'>Medico</th>
+		<!-- <th class='sortable' onclick='sortBy("smn_servicios_rf","query-smnordenesmedicas.sql")'>Servicio</th> -->
+		<th class='sortable' onclick='sortBy("omd_estatus","query-smnordenesmedicas.sql")'>${lbl:b_estatus}</th>
+		<th class='sortable' onclick='sortBy("omd_fecha_registro","query-smnordenesmedicas.sql")'>${lbl:b_store_date}</th>
+        <th>ROS</th>
+	</tr>
+	
+	<!--data-->
+	<rows>
+	<tr>
+
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_ordenes_medicas_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_ordenes_medicas_id}','${fld:omd_estatus}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_ordenes_medicas_id}')" title="${lbl:b_edit_button}"></td>
+		<td><img src="${def:context}/images/search.png"  onclick="reporte('${fld:smn_ordenes_medicas_id}')" title="Ver Reporte Orden Medica"></td>
+		<td><img src="${def:context}/images/icongrid/Generar.png"  onclick="procesar('${fld:smn_ordenes_medicas_id}', '${fld:smn_ingreso_id}','${fld:omd_estatus}')" title="Generar Orden Medica"></td>
+		<td align='center'>${fld:omd_numero_orden}</td>
+		<td align='left'>${fld:omd_indicaciones}</td>
+		<td>${fld:smn_prestador_servicio_rf}</td>
+		<!-- <td>${fld:smn_servicios_rf}</td> -->
+		<td align='left'>${fld:omd_estatus}</td>
+		<td>${fld:omd_fecha_registro@dd-MM-yyyy}</td>
+			<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalle('${fld:smn_ordenes_medicas_id}','${fld:omd_estatus}')" title="${lbl:b_rel_order_medical_services}"></td>
+
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_origen>
+	<detail>
+		<rows>		
+		<record ori_fecha_registro="${fld:ori_fecha_registro}"    ori_tipo="${fld:ori_tipo}"    ori_descripcion="${fld:ori_descripcion}"    ori_codigo="${fld:ori_codigo}"    />
+		</rows>
+	</detail>
+</smn_origen>

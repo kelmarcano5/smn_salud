@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncoberturas.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+	
+	<excel recordset='query-smncoberturas.sql' sheetname='${lbl:b_cobertura}' filename='smn_coberturas.xls'>
+		<col id='cob_codigo' label='${lbl:b_code}' />
+		<col id='cob_descripcion' label='${lbl:b_description}' />
+		<col id='cob_vigencia_desde' label='${lbl:b_validation_date_from}' />
+		<col id='cob_vigencia_hasta' label='${lbl:b_validation_date_until}' />
+		<col id='cob_cobertura_desde' label='${lbl:b_coverage_from}' />
+		<col id='cob_cobertura_hasta' label='${lbl:b_coverage_until}' />
+		<col id='cob_fecha_registro' label='${lbl:b_store_date}' />
+	</excel>
+
+</config>

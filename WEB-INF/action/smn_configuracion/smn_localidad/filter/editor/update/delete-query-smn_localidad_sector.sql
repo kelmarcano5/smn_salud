@@ -1,0 +1,1 @@
+delete from smn_salud.smn_localidad_sector WHERE smn_localidad_id= ${fld:id}

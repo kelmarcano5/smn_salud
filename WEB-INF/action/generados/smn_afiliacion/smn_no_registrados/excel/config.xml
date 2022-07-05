@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnnoregistrados.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+	
+	<excel recordset='query-smnnoregistrados.sql' sheetname='${lbl:b_afiliados}' filename='smn_no_registrados.xls'>
+		<col id='nfi_num_control' label='${lbl:b_code}' />
+		<col id='nfi_apellidos' label='${lbl:s_profile_lname}' />
+		<col id='nfi_nombres' label='${lbl:s_profile_fname}' />
+		<col id='nfi_sexo_combo' label='${lbl:b_sex}' />
+		<col id='nfi_telefono_fijo' label='${lbl:b_fixed_phone}' />
+		<col id='nfi_telefono_movil' label='${lbl:b_mobile_phone}' />
+		<col id='nfi_email' label='${lbl:s_profile_email}' />
+		<col id='nfi_idioma' label='${lbl:s_profile_lang}' />
+		<col id='nfi_usuario' label='${lbl:b_users}' />
+		<col id='nfi_fecha_registro' label='${lbl:b_store_date}' />
+		<col id='nfi_hora' label='${lbl:s_loginhist_col2}' />
+	</excel>
+
+</config>

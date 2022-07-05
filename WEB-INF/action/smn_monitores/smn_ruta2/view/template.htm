@@ -1,0 +1,98 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<!-- <col width='6%'/> -->
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="15" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+	<tr>
+		<th colspan="4"></th>
+		<th colspan="2">${lbl:b_pend}</th>
+		<th colspan="2">${lbl:b_atend}</th>
+		<th colspan="2">${lbl:b_enaten}</th>
+		<th colspan="2">${lbl:b_informado}</th>
+		<th>${lbl:b_retirado}</th>
+		<th>${lbl:b_total_paciente}</th>
+		<th>${lbl:b_total_tiempo_servicio}</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>		
+		<th>${lbl:b_entidades_rp}</th>
+		<th>${lbl:b_sucursal_rp}</th>
+		<th>${lbl:b_area_rp}</th>
+		<th>${lbl:b_units_service}</th>
+		<!-- <th>${lbl:b_serie}</th> -->
+		<th>${lbl:b_auxiliary_pa}</th>
+		<th>${lbl:b_tiempo_servicio}</th>
+		<th>${lbl:b_auxiliary_pa}</th>
+		<th>${lbl:b_tiempo_servicio}</th>
+		<th>${lbl:b_auxiliary_pa}</th>
+		<th>${lbl:b_tiempo_servicio}</th>
+		<th>${lbl:b_auxiliary_pa}</th>
+		<th>${lbl:b_tiempo_servicio}</th>
+		
+		<th colspan="3"></th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>		
+		<td align="center">${fld:smn_entidad_rf_combo}</td>
+		<td align="center">${fld:smn_sucursal_rf_combo}</td>
+		<td align="center">${fld:smn_area_servicio_rf_combo}</td>
+		<td align="center">${fld:smn_unidad_servicio_rf_combo}</td>
+		<!-- <td align="center">${fld:smn_serie_id_combo}</td> -->
+		<td align="center">${fld:pacientes_pendientes}</td>
+		<td align="center">${fld:tiempo_pacientes_pendientes}</td>
+		<td align="center">${fld:pacientes_atendidos}</td>
+		<td align="center">${fld:tiempo_pacientes_atendidos}</td>
+		<td align="center">${fld:pacientes_en_atencion}</td>
+		<td align="center">${fld:tiempo_pacientes_en_atencion}</td>
+		<td align="center">${fld:pacientes_informados}</td>
+		<td align="center">${fld:tiempo_pacientes_informado}</td>
+		<td align="center">${fld:pacientes_retirados}</td>
+		<td align="center">${fld:total_pacientes}</td>
+		<td align="center">${fld:total_tiempo}</td>
+	</tr>
+	</rows>
+	<rows2>
+	<tr>		
+		<!-- <td align="center"></td> -->
+		<td align="center"></td>
+		<td align="center"></td>
+		<td align="center"></td>
+		<td align="center">Totales</td>
+		<td align="center">${fld:tpacientes_pendientes}</td>
+		<td align="center">${fld:ttiempo_pacientes_pendientes}</td>
+		<td align="center">${fld:tpacientes_atendidos}</td>
+		<td align="center">${fld:ttiempo_pacientes_atendidos}</td>
+		<td align="center">${fld:tpacientes_en_atencion}</td>
+		<td align="center">${fld:ttiempo_pacientes_en_atencion}</td>
+		<td align="center">${fld:tpacientes_informados}</td>
+		<td align="center">${fld:ttiempo_pacientes_informado}</td>
+		<td align="center">${fld:tpacientes_retirados}</td>
+		<td align="center">${fld:ttotal_pacientes}</td>
+		<td align="center">${fld:ttotal_tiempo}</td>
+	</tr>
+	</rows2>
+</table>

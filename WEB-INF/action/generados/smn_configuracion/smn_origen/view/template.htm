@@ -1,0 +1,34 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="4">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th class='sortable' onclick='sortBy("ori_codigo","query-smnorigen.sql")'>${lbl:b_code}</th>
+		<th class='sortable' onclick='sortBy("ori_descripcion","query-smnorigen.sql")'>${lbl:b_description} (CallCenter, Internet, ...)</th>
+		<th class='sortable' onclick='sortBy("ori_tipo_combo","query-smnorigen.sql")'>${lbl:b_type}</th>
+		<th class='sortable' onclick='sortBy("ori_fecha_registro","query-smnorigen.sql")'>${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td align='left'>${fld:ori_codigo}</td>
+		<td align='left'>${fld:ori_descripcion}</td>
+		<td align='left'>${fld:ori_tipo_combo}</td>
+		<td>${fld:ori_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>

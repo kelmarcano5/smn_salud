@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_tramos>
+	<detail>
+		<rows>		
+		<record trm_fecha_registro="${fld:trm_fecha_registro}"    trm_dia_semana="${fld:trm_dia_semana}"    trm_descripcion="${fld:trm_descripcion}"    trm_codigo="${fld:trm_codigo}"    />
+		</rows>
+	</detail>
+</smn_tramos>

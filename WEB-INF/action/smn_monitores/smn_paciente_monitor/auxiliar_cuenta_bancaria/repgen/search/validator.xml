@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='false' label='${lbl:b_class_auxiliary}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='acb_num_cuenta' type='varchar' required='false' label='${lbl:b_account_number}' maxlen='24'/>
+	<parameter id='acb_tipo_cta_banco' type='integer' required='false' label='${lbl:b_account_bank_type}' maxlen='1'/>
+	<parameter id='acb_respons_cuenta' type='varchar' required='false' label='${lbl:b_responsible}' maxlen='96'/>
+	<parameter id='acb_banco_pertenece' type='integer' required='false' label='${lbl:b_bank}' maxlen='3'/>
+	<parameter id='acb_num_aba' type='varchar' required='false' label='${lbl:b_aba_code}' maxlen='24'/>
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='acb_num_cuenta'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='acb_respons_cuenta'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='acb_num_aba'
+		rule='contains' />
+
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generación del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

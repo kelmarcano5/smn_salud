@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='rec_fecha' type='date' required='true' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_patologia_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='rec_ordenante_nombre_desc_ref' type='varchar' required='false' maxlen='10'/>
+	<parameter id='smn_contratante_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_farmaceuta_prestador_servicio_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='rec_fecha_aprobacion' type='date' required='false' maxlen='10'/>
+	<parameter id='rec_estatus' type='varchar' required='true' maxlen='2'/>
+
+	<parameter id='rec_ordenante_nombre_ref' type='integer' required='false' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarNombre.sql'
+			id='rec_ordenante_nombre_desc_ref'/>
+
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: rec_ordenante_nombre' 
+		parameter='rec_ordenante_nombre_ref' 
+		sql='rec_ordenante_nombre.sql' 
+		id='rec_ordenante_nombre_ref'/>
+
+</validator>

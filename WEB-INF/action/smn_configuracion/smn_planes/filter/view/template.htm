@@ -1,0 +1,52 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="9" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("pla_codigo","query-smnplanes.sql")'>${lbl:b_code}</th>
+		<th class='sortable' onclick='sortBy("pla_descripcion","query-smnplanes.sql")'>${lbl:b_description}</th>
+		<th class='sortable' onclick='sortBy("pla_vigencia_desde","query-smnplanes.sql")'>${lbl:b_validation_date_from}</th>
+		<th class='sortable' onclick='sortBy("pla_vigencia_hasta","query-smnplanes.sql")'>${lbl:b_validation_date_until}</th>
+		<th class='sortable' onclick='sortBy("pla_inactivo_combo","query-smnplanes.sql")'>${lbl:b_inactive}</th>
+		<th class='sortable' onclick='sortBy("pla_fecha_registro","query-smnplanes.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_planes_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_planes_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_planes_id}')" title="${lbl:b_edit_button}"></td>
+		<td align='left'>${fld:pla_codigo}</td>
+		<td align='left'>${fld:pla_descripcion}</td>
+		<td>${fld:pla_vigencia_desde@dd-MM-yyyy}</td>
+		<td>${fld:pla_vigencia_hasta@dd-MM-yyyy}</td>
+		<td align='left'>${fld:pla_inactivo_combo}</td>
+		<td>${fld:pla_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

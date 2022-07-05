@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_sintoma>
+	<detail>
+		<rows>		
+		<record stm_fecha_registro="${fld:stm_fecha_registro}"    stm_descripcion="${fld:stm_descripcion}"    stm_codigo="${fld:stm_codigo}"    />
+		</rows>
+	</detail>
+</smn_sintoma>

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnobservacionescitas.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+	
+	<excel recordset='query-smnobservacionescitas.sql' sheetname='${lbl:b_observation}' filename='filter.xls'>
+		<col id='obc_codigo' label='${lbl:b_code}' />
+		<col id='obc_descripcion' label='${lbl:b_description}' />
+		<col id='obc_idioma' label='${lbl:s_profile_lang}' />
+		<col id='obc_usuario' label='${lbl:b_users}' />
+		<col id='obc_fecha_registro' label='${lbl:b_store_date}' />
+		<col id='obc_hora' label='${lbl:s_loginhist_col2}' />
+	</excel>
+
+</config>

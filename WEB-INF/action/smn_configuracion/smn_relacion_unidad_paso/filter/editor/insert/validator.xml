@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_area_servicio_rf' type='integer' required='true' label='${lbl:b_service_area}' maxlen='10'/>
+	<parameter id='smn_unidad_servicio_rf' type='integer' required='true' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='smn_paso_rf' type='integer' required='true' label='${lbl:b_paso}' maxlen='10'/>
+	<parameter id='smn_serie_id' type='integer' required='true' label='${lbl:b_serie}' maxlen='10'/>
+	<parameter id='rup_secuencia' type='integer' required='true' label='${lbl:b_serie}' maxlen='10'/>
+	<parameter id='rup_unidad_administrativa' type='varchar' required='true' label='${lbl:b_united_administrative}' maxlen='2'/>
+	<parameter id='rup_estatus' type='varchar' required='true' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='rup_vigencia' type='date' required='true' label='${lbl:b_vigencia}' maxlen='10'/>
+
+
+</validator>

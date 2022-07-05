@@ -1,0 +1,37 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='45%'/>
+	<col width='45%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="5" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('smn_coberturas_id_combo','query-smncoberturasservicios.sql')" >${lbl:b_cobertura}</th>
+		<th class='sortable' onclick="sortBy('smn_unidades_servicios_id_combo','query-smncoberturasservicios.sql')" >${lbl:b_service_unit}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_coberturas_servicios_id}')" title="Ver detalle"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_coberturas_servicios_id}')" title="Eliminar"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_coberturas_servicios_id}')" title="Editar"></td>
+		<td align="center">${fld:smn_coberturas_id_combo}</td>
+		<td align="center">${fld:smn_unidades_servicios_id_combo}</td>
+	</tr>
+	</rows>
+
+</table>

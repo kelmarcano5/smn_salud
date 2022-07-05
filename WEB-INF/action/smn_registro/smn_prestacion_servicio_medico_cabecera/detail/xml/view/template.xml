@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_prestacion_servicio_medico_cabecera>
+	<detail>
+		<rows>		
+		<record psc_fecha_registro="${fld:psc_fecha_registro}"    psc_estatus="${fld:psc_estatus}"    smn_unidades_servicios_rf="${fld:smn_unidades_servicios_rf}"    smn_mov_caja_cabecera_id="${fld:smn_mov_caja_cabecera_id}"    smn_ingresos_id="${fld:smn_ingresos_id}"    />
+		</rows>
+	</detail>
+</smn_prestacion_servicio_medico_cabecera>

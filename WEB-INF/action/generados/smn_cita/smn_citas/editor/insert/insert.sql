@@ -1,0 +1,42 @@
+INSERT INTO smn_salud.smn_citas
+(
+	smn_citas_id,
+	cts_num_control,
+	cts_num_doc_oficial,
+	smn_motivos_id,
+	cts_clase_auxiliar,
+	cts_auxiliar,
+	smn_origen_id,
+	cts_ordenante,
+	cts_tipo_orden,
+	cts_titular,
+	smn_estatus_citas_id,
+	smn_relacionados_id,
+	smn_observaciones_citas_id,
+	smn_citas_mov_id,
+	cts_idioma,
+	cts_usuario,
+	cts_fecha_registro,
+	cts_hora
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_citas},
+	${fld:cts_num_control},
+	${fld:cts_num_doc_oficial},
+	${fld:smn_motivos_id},
+	${fld:cts_clase_auxiliar},
+	${fld:cts_auxiliar},
+	${fld:smn_origen_id},
+	${fld:cts_ordenante},
+	${fld:cts_tipo_orden},
+	${fld:cts_titular},
+	${fld:smn_estatus_citas_id},
+	${fld:smn_relacionados_id},
+	${fld:smn_observaciones_citas_id},
+	${fld:smn_citas_mov_id},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

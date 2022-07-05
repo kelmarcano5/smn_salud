@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Presupuesto</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />	
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+   	<script type="text/javascript" src="${def:context}/action/jqueryi"></script>
+	<style>
+		#cabecera {
+			color: white;
+			height: 80px;
+			top: 0; /* Posicionamos la cabecera pegada arriba */
+			position: fixed; /* Hacemos que la cabecera tenga una posición fija */
+		}
+		#cabecera2 {
+			position: fixed;
+		  padding: .5em .5em .5em 0em;
+		}
+
+		#facturas {
+			position: fixed;
+		  padding: .5em .5em .5em 0em;
+		}
+
+		body{
+ 		 background-color: #bdc3c7;
+		}
+		.table-fixed{
+		  width: 100%;
+		  background-color: #f3f3f3;
+		  tbody{
+		    height:200px;
+		    overflow-y:auto;
+		    width: 100%;
+		    }
+		  thead,tbody,tr,td,th{
+		    display:block;
+		  }
+		  tbody{
+		    td{
+		      float:left;
+		    }
+		  }
+		  thead {
+		    tr{
+		      th{
+		        float:left;
+		       background-color: #f39c12;
+		       border-color:#e67e22;
+		      }
+		    }
+		  }
+		}
+	
+	</style>
+</head>
+<body>
+	<form id="facturas" style="width:1000px; background: #fff;  box-shadow: 0px 0px 0px #fff;">
+		<br>
+		<div align="left" style="padding-left: 40px; margin-bottom: -90px; "><img src="${def:context}/images/logo_vistacalifornia.png" border="0" alt="" vspace="0" hspace="0" width="250" height="100"></div></img>
+
+	<div align="right" style="margin-right: 30px;">
+		<p style=" font-weight: bold;">PRESUPUESTO N&deg;:  ${fld:pre_numero_control} </p>
+		<p style=" font-weight: bold;">FECHA EMISI&Oacute;N: ${fld:pre_fecha_registro@dd-MM-yyyy}</p>
+		<p style=" font-weight: bold;">FECHA DE VIGENCIA HASTA: ${fld:vigencia_hasta@dd-MM-yyyy}</p>
+	</div>
+	<div align="left" style="margin-left: 20px;">
+		<strong><p>Calle Trieste, Los Ruices Sur - Caracas</p></strong>
+		<strong><p>Tel&eacute;fonos 257-00-11 / 256-58-30 / 257-94-86</p></strong>
+		<strong><p>RIF J-30652948-9</p></strong>
+	</div>
+
+	<table align="center" style="margin-left: -150px; margin-bottom: 20px;" class="table table-fixed">
+		<thead>
+			<tr>
+				<td style=" font-weight: bold;">Paciente:</td>
+				<td>${fld:nombre_paciente}</td>
+			</tr>
+			<tr>
+				<td style=" font-weight: bold;">CI.:</td>
+				<td>${fld:cedula}</td>
+			</tr>
+			<tr>
+				<td style=" font-weight: bold;">RIF:</td>
+				<td>${fld:rif}</td>
+			</tr>
+			<tr>
+				<td style=" font-weight: bold;">Domicilio:</td>
+				<td>${fld:direccion}</td>
+			</tr>
+			<tr></tr>
+			<tr>
+				<td style=" font-weight: bold;">Responsable:</td>
+				<td>${fld:pre_tipo}</td>
+			</tr>
+			<tr>
+				<td style=" font-weight: bold;">M&eacute;dico:</td>
+				<td>${fld:medico}</td>
+			</tr>
+			<tr>
+				<td style=" font-weight: bold;">Intervenciones:</td>
+				<td>${fld:patologia}</td>
+			</tr>
+		</thead>
+	</table>
+	<br>
+	<br>
+	
+	<table class="record2 table table-fixed" style="width:95%;">
+		<thead>
+			<rows3>
+			<tr>
+				<td align="left" style=" font-weight: bold;">${fld:grupo_titulo}</td>
+				<td></td>
+				<td></td>
+				<td align="right">Monto Neto MA</td>
+			</tr>
+			</rows3>
+
+		</thead>
+		<tbody>
+			<rows>
+				<tr>
+					<td align="left">${fld:componentes}</td>
+					<td align="right">$</td>	
+					<td align="right">$</td>	
+					<td align="right">${fld:prc_monto_neto_ma@#,###,##0.00}</td>
+				</tr>
+			</rows>
+
+			<tr>
+				<td align="right" style=" font-weight: bold; margin-right: 280px;">TOTAL ${fld:grupo_titulo}</td>
+				<td></td>
+				<td align="right" style=" font-weight: bold;">${fld:netoma@#,###,##0.00}</td>
+			</tr>
+		</tbody>
+	</table>		
+	<br>
+	<br>
+		<!-- <div align="center">
+			<button id="imprimir" onclick="imprimir();">Imprimir</button>
+		</div> -->
+	</form>
+</body>
+</html>
+
+<script type="text/javascript" >
+  	onload = function() {
+  		//document.getElementById('imprimir').style.display='none';
+  		$('#facturas').printThis({
+  			debug: false,               // show the iframe for debugging
+		    importCSS: true,            // import parent page css
+		    importStyle: false,         // import style tags
+		    printContainer: true,       // print outer container/$.selector
+		    loadCSS: "",                // path to additional css file - use an array [] for multiple
+		    pageTitle: "Presupuesto",              // add title to print page
+		    removeInline: true,        // remove inline styles from print elements
+		    removeInlineSelector: "*",  // custom selectors to filter inline styles. removeInline must be true
+		    printDelay: 333,            // variable print delay
+		    header: null,               // prefix to html
+		    footer: null,               // postfix to html
+		    base: false,                // preserve the BASE tag or accept a string for the URL
+		    formValues: false,           // preserve input/form values
+		    canvas: false,              // copy canvas content
+		    doctypeString: '...',       // enter a different doctype for older markup
+		    removeScripts: true,       // remove script tags from print content
+		    copyTagClasses: false,      // copy classes from the html & body tag
+		    beforePrintEvent: null,     // function for printEvent in iframe
+		    beforePrint: null,          // function called before iframe is filled
+		    afterPrint: null            // function called before iframe is removed
+  		});
+  	}
+</script>
+
+

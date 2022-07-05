@@ -1,0 +1,60 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='3%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="12" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_documento_id","query-smncitas.sql")'>${lbl:b_document}</th>
+		<th class='sortable' onclick='sortBy("cts_auxiliar","query-smncitas.sql")'>${lbl:b_auxiliary_pa}</th>
+		<th class='sortable' onclick='sortBy("contratante","query-smncitas.sql")'>Contratante</th>
+		<th class='sortable' onclick='sortBy("cts_num_control","query-smncitas.sql")'>${lbl:b_num_control_citas}</th>
+		<th class='sortable' onclick='sortBy("servicio","query-smncitas.sql")'>Servicio</th>
+		<th class='sortable' onclick='sortBy("fecha_cita","query-smncitas.sql")'>Fecha Cita</th>
+		<th class='sortable' onclick='sortBy("smn_estatus_citas_id","query-smncitas.sql")'>Estatus Cita</th>
+		<th class='sortable' onclick='sortBy("cts_fecha_registro","query-smncitas.sql")'>${lbl:b_store_date}</th>
+		<th class='sortable'>MC</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+		<tr>
+			<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_citas_id}')" title="${lbl:b_view_detail}"></td>
+			<td><img src="${def:context}/images/accept.png"  onclick="aprobar('${fld:smn_citas_id}')" title="Aprobar"></td>
+			<td><img src="${def:context}/images/reject.png"  onclick="rechazar('${fld:smn_citas_id}')" title="Rechazar"></td>
+			<!-- <td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_citas_id}')" title="${lbl:b_delete_button}"></td>
+			<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_citas_id}')" title="${lbl:b_edit_button}"></td> -->
+			<td>${fld:smn_documento_id}</td>
+			<td>${fld:cts_auxiliar}</td>
+			<td>${fld:contratante}</td>
+			<td>${fld:cts_num_control}</td>
+			<td>${fld:servicio}</td>
+			<td>${fld:fecha_cita@dd-MM-yyyy}</td>
+			<td>${fld:smn_estatus_citas_id}</td>
+			<td>${fld:cts_fecha_registro@dd-MM-yyyy}</td>
+			<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png"  onclick="detallecitas('${fld:smn_citas_id}', '${fld:cts_num_control}', '${fld:documento_id}','${fld:smn_estatus_citas_id}')" title="${lbl:b_appoiment_detail}"></td>
+		</tr>
+	</rows>
+
+</table>

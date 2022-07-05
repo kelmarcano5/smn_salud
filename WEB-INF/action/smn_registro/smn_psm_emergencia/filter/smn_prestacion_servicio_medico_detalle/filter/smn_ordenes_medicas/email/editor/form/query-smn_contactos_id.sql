@@ -1,0 +1,2 @@
+select smn_base.smn_contactos.smn_contactos_id as id, smn_base.smn_contactos.cnt_nombres ||' '|| smn_base.smn_contactos.cnt_apellidos as item from smn_base.smn_contactos
+inner join smn_base.smn_auxiliar on smn_base.smn_auxiliar.smn_auxiliar_id = smn_base.smn_contactos.smn_auxiliar_id

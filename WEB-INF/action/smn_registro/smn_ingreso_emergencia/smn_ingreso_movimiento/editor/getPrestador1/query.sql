@@ -1,0 +1,6 @@
+SELECT DISTINCT smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id as id, smn_base.smn_prestadores_servicios.prs_descripcion as item,
+smn_salud.smn_agenda_medica.smn_unidades_servicios_rf as id_unidad
+FROM smn_base.smn_prestadores_servicios 
+INNER JOIN smn_salud.smn_agenda_medica ON smn_salud.smn_agenda_medica.smn_prestador_servicio_rf = smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id
+WHERE
+smn_salud.smn_agenda_medica.smn_grupo_prestador_servicio_rf=${fld:id}

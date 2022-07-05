@@ -1,0 +1,381 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+	
+</head>
+
+<body>
+
+<!--banner-->
+<div class="banner">
+	${lbl:b_components}
+	<!-- <img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="Cerrar" style="float:right; cursor:pointer;"> -->
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">Añadir registro</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+				<tr>
+			<td>${lbl:b_code}*</td>
+			<td>
+				<input id="cmp_codigo" name="cmp_codigo" type="text" maxlength="16" >
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_description}*</td>
+			<td>
+				<input id="cmp_descripcion" name="cmp_descripcion" type="text" maxlength="48" >
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_service_area}</td>
+		<td>
+			<select name="cmp_area_servicio" id="cmp_area_servicio" onchange="chgCombo(cmp_area_servicio.options[cmp_area_servicio.selectedIndex].text,'cmp_area_servicio_name');">
+				<option value="">[Cualquiera]</option>
+				<cmp_area_servicio_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cmp_area_servicio_rows>
+			</select> 
+			<input id="cmp_area_servicio_name" name="cmp_area_servicio_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_service_unit}</td>
+		<td>
+			<select name="cmp_unidad_servicio" id="cmp_unidad_servicio" onchange="chgCombo(cmp_unidad_servicio.options[cmp_unidad_servicio.selectedIndex].text,'cmp_unidad_servicio_name');">
+				<option value="">[Cualquiera]</option>
+				<cmp_unidad_servicio_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cmp_unidad_servicio_rows>
+			</select> 
+			<input id="cmp_unidad_servicio_name" name="cmp_unidad_servicio_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_validation_date_from}*</td>
+			<td>
+				<input id="cmp_vigencia_desde" name="cmp_vigencia_desde" type="text" class="date" maxlength="10">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('cmp_vigencia_desde')">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_validation_date_to}*</td>
+			<td>
+				<input id="cmp_vigencia_hasta" name="cmp_vigencia_hasta" type="text" class="date" maxlength="10">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('cmp_vigencia_hasta')">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_visible}*</td>
+			<td>
+				<select name="cmp_visible" id="cmp_visible">
+				<option value="S">${lbl:b_yes}</option>
+				<option value="N">${lbl:b_not}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_require_providers_group}*</td>
+			<td>
+				<select name="cmp_req_grupo_prestador" id="cmp_req_grupo_prestador">
+				<option value="S">${lbl:b_yes}</option>
+				<option value="N">${lbl:b_not}</option>
+
+				</select> 
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_group_of_provider}*</td>
+		<td>
+			<select name="cmp_grupo_prestador" id="cmp_grupo_prestador" onchange="chgCombo(cmp_grupo_prestador.options[cmp_grupo_prestador.selectedIndex].text,'cmp_grupo_prestador_name');">
+				<option value="">[Cualquiera]</option>
+				<cmp_grupo_prestador_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cmp_grupo_prestador_rows>
+			</select> 
+			<input id="cmp_grupo_prestador_name" name="cmp_grupo_prestador_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_require_honorary}*</td>
+			<td>
+				<select name="cmp_req_honorario" id="cmp_req_honorario">
+				<option value="S">${lbl:b_yes}</option>
+				<option value="N">${lbl:b_not}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_estimated_time}*</td>
+			<td>
+				<input id="cmp_tiempo_estimado" name="cmp_tiempo_estimado" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_auxiliary_class}</td>
+		<td>
+			<select name="cmp_clase_auxiliar" id="cmp_clase_auxiliar" onchange="chgCombo(cmp_clase_auxiliar.options[cmp_clase_auxiliar.selectedIndex].text,'cmp_clase_auxiliar_name');">
+				<option value="">[Cualquiera]</option>
+				<cmp_clase_auxiliar_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cmp_clase_auxiliar_rows>
+			</select> 
+			<input id="cmp_clase_auxiliar_name" name="cmp_clase_auxiliar_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_type}*</td>
+			<td>
+				<select name="cmp_tipo" id="cmp_tipo">
+				<option value="SE">${lbl:b_services}</option>
+				<option value="IN">${lbl:b_inventory}</option>
+				<option value="PR">${lbl:b_providers}</option>
+
+				</select> 
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_store}</td>
+		<td>
+			<select name="cmp_almacen" id="cmp_almacen" onchange="chgCombo(cmp_almacen.options[cmp_almacen.selectedIndex].text,'cmp_almacen_name');">
+				<option value="">[Cualquiera]</option>
+				<cmp_almacen_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cmp_almacen_rows>
+			</select> 
+			<input id="cmp_almacen_name" name="cmp_almacen_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_calculus}*</td>
+			<td>
+				<select name="cmp_calculo" id="cmp_calculo">
+				<option value="IM">${lbl:b_amount_money}</option>
+				<option value="PO">${lbl:b_percentage}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_amount}*</td>
+			<td>
+				<input id="cmp_cantidad" name="cmp_cantidad" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_price}*</td>
+			<td>
+				<input id="cmp_precio" name="cmp_precio" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_percentage}*</td>
+			<td>
+				<input id="cmp_porcentaje" name="cmp_porcentaje" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_general_transaction}*</td>
+		<td>
+			<select name="cmp_trans_general" id="cmp_trans_general" onchange="chgCombo(cmp_trans_general.options[cmp_trans_general.selectedIndex].text,'cmp_trans_general_name');">
+				<option value="">[Cualquiera]</option>
+				<cmp_trans_general_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cmp_trans_general_rows>
+			</select> 
+			<input id="cmp_trans_general_name" name="cmp_trans_general_name" type="hidden">
+		</td>
+	</tr>
+	<!--control picklist de seleccion múltiple-->
+	<tr>
+		<td>${lbl:b_services}*</td>
+		<td>
+			<!--listbox--> 
+			<select id="smn_servicios_id_name" name="smn_servicios_id_name" size="5" style="width: 95%;">
+			</select>
+			<br>
+	
+			<!--comandos del listbox-->
+			<div style="float: right; margin-right: 12px; padding-top: 7px">
+			[<a href="javascript:pickSmnServiciosId()" title="Añadir items a la lista">Añadir</a>]
+			[<a href="javascript:removeSmnServiciosId()" title="Remover un item de la lista">Remover</a>]
+			</div>
+	
+			<!--almacena los IDs de los items separados por ";"--> 
+			<input type="hidden" name="smn_servicios_id" id="smn_servicios_id" />
+			<input type="hidden" name="smn_servicios_id_text" id="smn_servicios_id_text" />
+		</td>
+	</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="Grabar" class="button">
+	<input id="cancelar" type="button" value="Cancelar" onclick="addNew()" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+	
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+		document.form1.cmp_vigencia_desde.onkeypress = keypressDate;
+		document.form1.cmp_vigencia_hasta.onkeypress = keypressDate;
+		var txt_cmp_tiempo_estimado = new NumericInput(document.form1.cmp_tiempo_estimado);
+		var txt_cmp_cantidad = new NumericInput(document.form1.cmp_cantidad);
+		var txt_cmp_precio = new NumericInput(document.form1.cmp_precio);
+		var txt_cmp_porcentaje = new NumericInput(document.form1.cmp_porcentaje);
+
+		if (id!="")
+			edit(id);
+	} 
+	
+	
+	//desplegar picklist de seleccion multiple
+	function pickSmnServiciosId(){
+		var url = "${def:context}/action/picklist/smnservicios/form";
+		pickOpen ('smn_servicios_id_name','smn_servicios_id',url, 380, 295);	
+	}	
+
+	//llamada por el picklist para añadir un item al listbox
+	function selectSmnServiciosId(id, title) {
+		listboxAddItem("smn_servicios_id_name", id, title);
+	}
+	
+	//remover un item del listbox
+	function removeSmnServiciosId() {
+		if (document.getElementById("smn_servicios_id_name").selectedIndex == -1) {
+			alertBox("Por favor seleccione el item de la lista que desea remover.","Continuar");
+			return;
+		}
+		listboxRemoveItem("smn_servicios_id_name");
+	}
+
+
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "Añadir registro";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+		listboxClear('smn_servicios_id_name');
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{	
+		
+		document.getElementById("smn_servicios_id").value = listboxGetItemValues("smn_servicios_id_name");
+
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+					 uri="${def:actionroot}/edit?id=" + id , 
+					 divResponse=null, 
+					 divProgress="status", 
+					 formName=null, 
+					 afterResponseFn=null, 
+					 onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+	
+		document.getElementById("smn_servicios_id").value = listboxGetItemValues("smn_servicios_id_name");
+
+		clearErrorMessages();
+		document.getElementById("grabar").disabled=true;
+			
+		//llamada Ajax...
+		return ajaxCall(httpMethod="POST", 
+						uri="${def:actionroot}/update", 
+						divResponse=null, 
+						divProgress="status", 
+						formName="form1", 
+						afterResponseFn=null, 
+						onErrorFn=retryAddnewOrEdit);	
+	}
+
+</script>	
+</body>
+</html>

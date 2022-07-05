@@ -1,0 +1,38 @@
+INSERT INTO smn_salud.smn_recipe_medico
+(
+	smn_recipe_medico_id,
+	rec_fecha,
+	smn_auxiliar_rf,
+	smn_patologia_id,
+	smn_prestador_servicio_rf,
+	rec_ordenante_nombre,
+	smn_contratante_id,
+	smn_farmaceuta_prestador_servicio_rf,
+	rec_fecha_aprobacion,
+	rec_estatus,
+	rec_idioma,
+	rec_usuario,
+	rec_fecha_registro,
+	rec_hora,
+	smn_prestacion_servicio_medico_id,
+	rec_sintoma
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_recipe_medico},
+	${fld:rec_fecha},
+	${fld:smn_auxiliar_rf},
+	${fld:smn_patologia_id},
+	${fld:smn_prestador_servicio_rf},
+	${fld:rec_ordenante_nombre},
+	${fld:smn_contratante_id},
+	${fld:smn_farmaceuta_prestador_servicio_rf},
+	${fld:rec_fecha_aprobacion},
+	${fld:rec_estatus},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}',
+	${fld:smn_prestacion_servicio_medico_id},
+	${fld:rec_sintoma}
+)

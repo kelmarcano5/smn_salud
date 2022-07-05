@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Insertar registro 
+	</summary>
+
+	<log>false</log>
+
+	<!--soporte de auditoria-->
+	<audit>
+		<!--de donde saca los datos, por defecto es "_request"-->
+		<recordset></recordset>
+		<!--que campos extrae para el registro descriptivo-->
+		<cols>
+			<colname>smn_ingreso_id</colname>
+			<colname>smn_presupuesto_id</colname>
+			<colname>smn_auxiliar_rf</colname>
+			<colname>coa_hora_solicitada</colname>
+			<colname>coa_ejecutivo_atencion_pagador</colname>
+			<colname>coa_observacion_inicial</colname>
+			<colname>coa_monto_solicitado_servicios_clinicos_ml</colname>
+			<colname>coa_monto_solicitado_medicinas_y_mmq_ml</colname>
+			<colname>coa_monto_solicitado_honorarios_ml</colname>
+			<colname>coa_monto_total_solicitado_ml</colname>
+			<colname>smn_moneda_rf</colname>
+			<colname>smn_tasa_rf</colname>
+			<colname>coa_monto_solicitado_servicios_clinicos_ma</colname>
+			<colname>coa_monto_solicitado_medicinas_y_mmq_ma</colname>
+			<colname>coa_monto_solicitado_honorarios_ma</colname>
+			<colname>coa_monto_total_solicitado_ma</colname>
+			<colname>coa_fecha_aprobacion</colname>
+			<colname>coa_hora_aprobacion</colname>
+			<colname>coa_monto_aprobado_servicios_medicos_ml</colname>
+			<colname>coa_monto_aprobado_medicinas_y_mmq_ml</colname>
+			<colname>coa_monto_aprobado_honorarios_ml</colname>
+			<colname>coa_monto_total_aprobado_ml</colname>
+			<colname>coa_monto_aprobado_servicios_medicos_ma</colname>
+			<colname>coa_monto_aprobado_medicinas_y_mmq_ma</colname>
+			<colname>coa_monto_aprobado_honorarios_ma</colname>
+			<colname>coa_monto_total_aprobado_ma</colname>
+			<colname>coa_estatus_proceso</colname>
+			<colname>coa_estatus_financiero</colname>
+			<colname>coa_monto_deducible_ml</colname>
+			<colname>coa_monto_deducible_ma</colname>
+		
+		</cols>
+		<table>smn_salud.smn_cobertura_admision</table>
+		<oper>AÑADIR</oper>
+		<area>Carga de datos</area>
+		<!--
+			query para obtener el ID generado o nombre de 
+			la columna que contiene el pkey, si es query, 
+			el alias del campo debe ser "id"
+		-->
+		<pkey>select ${seq:currval@smn_salud.seq_smn_cobertura_admision} as id</pkey>
+	</audit>
+
+	<transaction>
+		<classname>dinamica.audit.AuditableTransaction</classname>
+		<validator>true</validator>
+		<transaction>true</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="nextval.sql" source="sql" scope="transaction" />
+	</transaction>
+
+	<query>insert.sql</query>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>script.js</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/javascript</content-type>
+		<expiration>0</expiration>
+		<print mode="form" recordset="_request" />
+		<print mode="form" recordset="nextval.sql" />
+	</output>
+	
+	<!-- Envio de email declarativo -->
+	<mail enabled="false">
+		<subject>Subject</subject>
+		<mail-to>martin.cordova@gmail.com</mail-to>
+		<body>body.txt</body>
+	</mail>
+
+</config>

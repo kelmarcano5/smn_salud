@@ -1,0 +1,32 @@
+INSERT INTO smn_salud.smn_habitaciones
+(
+	smn_habitaciones_id,
+	smn_activo_fijo_rf,
+	hab_codigo,
+	hab_descripcion,
+	hab_estatus,
+	hab_clase,
+	hab_tipo_servicio,
+	hab_idioma,
+	hab_usuario,
+	hab_fecha_registro,
+	hab_hora,
+	hab_naturaleza,
+	smn_areas_servicios_rf
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_habitaciones},
+	${fld:smn_activo_fijo_rf},
+	${fld:hab_codigo},
+	${fld:hab_descripcion},
+	${fld:hab_estatus},
+	${fld:hab_clase},
+	${fld:hab_tipo_servicio},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}',
+	${fld:hab_naturaleza},
+	${fld:smn_areas_servicios_rf}
+)

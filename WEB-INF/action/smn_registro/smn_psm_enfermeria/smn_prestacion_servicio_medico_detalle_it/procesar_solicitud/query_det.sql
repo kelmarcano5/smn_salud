@@ -1,0 +1,9 @@
+select smn_salud.smn_prestacion_servicio_medico_detalle.*, ${fld:smn_despacho_id} as smn_despacho_id,
+${fld:ingresoid} as ingresoid,
+CASE
+	WHEN smn_salud.smn_prestacion_servicio_medico_detalle.smn_item_rf IS NULL then 0 else smn_salud.smn_prestacion_servicio_medico_detalle.smn_item_rf
+END AS smn_item_rf_2
+from smn_salud.smn_prestacion_servicio_medico_detalle
+inner join smn_salud.smn_prestacion_servicio_medico_cabecera on smn_salud.smn_prestacion_servicio_medico_cabecera.smn_prestacion_servicio_medico_cabecera_id = smn_salud.smn_prestacion_servicio_medico_detalle.smn_prestacion_servicio_medico_cabecera_id
+inner join smn_salud.smn_ingresos on smn_salud.smn_ingresos.smn_ingresos_id = smn_salud.smn_prestacion_servicio_medico_cabecera.smn_ingresos_id
+where smn_salud.smn_prestacion_servicio_medico_cabecera.smn_ingresos_id=${fld:ingresoid} and smn_salud.smn_prestacion_servicio_medico_detalle.psd_tipo_componentes IN ('IT') AND smn_salud.smn_prestacion_servicio_medico_detalle.psd_estatus IN ('RE')

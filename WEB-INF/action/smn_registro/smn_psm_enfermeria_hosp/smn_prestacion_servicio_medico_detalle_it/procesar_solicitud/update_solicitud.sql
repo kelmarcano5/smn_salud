@@ -1,0 +1,1 @@
+UPDATE smn_salud.smn_prestacion_servicio_medico_detalle set psd_estatus='SO' WHERE smn_salud.smn_prestacion_servicio_medico_detalle.smn_ingresos_id=${fld:ingresoid};

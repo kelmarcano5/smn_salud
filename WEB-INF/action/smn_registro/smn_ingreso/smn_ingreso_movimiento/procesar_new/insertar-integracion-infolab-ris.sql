@@ -1,0 +1,44 @@
+INSERT INTO smn_salud.integracion_proveedor
+(
+	integracion_proveedor_id,
+	smn_ingresos_id,
+	smn_orden_servicio_id,
+	smn_servicios_id,
+	smn_componentes_id,
+	smn_mov_caja_cabecera_id,
+	smn_prestador_medico_id,
+	smn_prestador_tecnico_id,
+	int_status_ruta_paciente_ant,
+	int_status_ruta_paciente_act,
+	int_estatus_transaccion,
+	int_fecha_respuesta,
+	int_hora_respuesta,
+	int_link_resultado,
+	int_proveedor,
+	int_idioma,
+	int_usuario,
+	int_fecha_registro,
+	int_hora_registro
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_integracion_proveedor},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?
+)

@@ -1,0 +1,43 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='30%'/>
+	<col width='30%'/>
+	<col width='30%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="6" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('smn_tipo_servicio_rf','query-smnnaturalezaservicio.sql')" >${lbl:b_types_services}</th>
+		<th class='sortable' onclick="sortBy('nts_naturaleza','query-smnnaturalezaservicio.sql')" >${lbl:b_nature}</th>
+		<th class='sortable' onclick="sortBy('nts_fecha_registro','query-smnnaturalezaservicio.sql')" >${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_naturaleza_servicio_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_naturaleza_servicio_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_naturaleza_servicio_id}')" title="${lbl:b_edit_button}"></td>
+		<td align="center">${fld:smn_tipo_servicio_rf}</td>
+		<td align="left">${fld:nts_naturaleza}</td>
+		<td align="center">${fld:nts_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

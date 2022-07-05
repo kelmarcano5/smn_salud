@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/crud'>
+	<parameter id='cnt_email' type='varchar' required='false' label='${lbl:s_profile_email}' maxlen='96'/>
+	<parameter id='cnt_nombres' type='varchar' required='false' label='${lbl:s_profile_fname}' maxlen='30'/>
+	<parameter id='cnt_apellidos' type='varchar' required='false' label='${lbl:s_profile_lname}' maxlen='30'/>
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="cnt_email" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="cnt_nombres" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="cnt_apellidos" rule="contains" />
+</validator>

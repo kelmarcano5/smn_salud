@@ -1,0 +1,46 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='30%'/>
+	<col width='30%'/>
+	<col width='30%'/>
+	<col width='30%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="7" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("sta_codigo","query-base.sql")'>${lbl:b_code}</th>
+		<th class='sortable' onclick='sortBy("sta_descripcion","query-base.sql")'>${lbl:b_description}</th>
+		<th class='sortable' onclick='sortBy("sta_cod_siguiente","query-base.sql")'>${lbl:b_code}</th>
+		<th class='sortable' onclick='sortBy("sta_fecha_registro","query-base.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_estatus_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_estatus_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_estatus_id}')" title="${lbl:b_edit_button}"></td>
+		<td align='center'>${fld:sta_codigo}</td>
+		<td align='left'>${fld:sta_descripcion}</td>
+		<td align='center'>${fld:sta_cod_siguiente}</td>
+		<td>${fld:sta_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

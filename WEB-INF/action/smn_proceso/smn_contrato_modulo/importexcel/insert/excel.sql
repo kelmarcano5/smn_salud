@@ -1,0 +1,40 @@
+INSERT INTO smn_salud.smn_contrato_modulo
+(
+	smn_contrato_modulo_id,
+	smn_contrato_base_rf,
+	smn_documento_id,
+	ctm_numero_contrato,
+	smn_contratante_id,
+	ctm_fecha_vigencia_desde,
+	ctm_fecha_vigencia_hasta,
+	smn_planes_id,
+	ctm_cantidad_afiliados,
+	ctm_monto_contrato,
+	ctm_monto_cobertura_afiliado,
+	ctm_cantidad_servicio_afiliado,
+	ctm_cantidad_dias_cobertura,
+	ctm_cantidad_citas,
+	smn_descuento_rf,
+	ctm_dia_factura,
+	ctm_fecha_registro
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_contrato_modulo},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	{d '${def:date}'}
+)

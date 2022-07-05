@@ -1,0 +1,1 @@
+select smn_salud.smn_tramos.smn_tramos_id as id, smn_salud.smn_tramos.trm_codigo || ' - ' || smn_salud.smn_tramos.trm_descripcion as item from smn_salud.smn_tramos order by smn_salud.smn_tramos.trm_descripcion

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_dispositivos_id' type='integer' required='true' label='${lbl:b_dispositivos}' maxlen='10'/>
+	<parameter id='smn_series_id_name' type='varchar' required='true' label='${lbl:b_serie}'/>
+	<parameter id='smn_series_id' type='integer' required='false' label='${lbl:b_serie}' maxlen='10'/>
+	<parameter id='cvm_datos_pac' type='varchar' required='true' label='${lbl:b_aux_campos_vis_mon}' maxlen='10'/>
+	<parameter id='cvm_unidad_llamada' type='varchar' required='true' label='${lbl:b_unidad_llamada}' maxlen='10'/>
+	<parameter id='cvm_pacientes_espera' type='varchar' required='true' label='${lbl:b_paciente_espera}' maxlen='10'/>
+	<parameter id='cvm_tiempo_aprox_espera' type='varchar' required='true' label='${lbl:b_tiempo_aprox_espera}' maxlen='10'/>
+
+
+</validator>

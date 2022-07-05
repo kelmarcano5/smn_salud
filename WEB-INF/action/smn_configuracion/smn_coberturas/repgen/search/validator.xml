@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	
+	<parameter id='cob_codigo' type='varchar' required='false' label='${lbl:b_cob_code}' maxlen='16'/>
+	<parameter id='cob_descripcion' type='varchar' required='false' label='${lbl:b_cob_des}' maxlen='56'/>
+	<parameter id='cob_descuento' type='double' required='false' label='${lbl:b_descuento}' maxlen='10'/>
+	<parameter id='cob_tiempo_servicio' type='integer' required='false' label='${lbl:b_service_time}' maxlen='1'/>
+	<parameter id='cob_unidad_tiempo_rf' type='integer' required='false' label='${lbl:b_cob_unidad_tiempo}' maxlen='10'/>
+	<parameter id='cob_deducible' type='double' required='false' label='${lbl:b_deducible}' maxlen='10'/>
+	<parameter id='cob_time_desp_afil' type='integer' required='false' label='${lbl:b_time_after_affiliation}' maxlen='10'/>
+	<parameter id='cob_otros_centros' type='varchar' required='false' label='${lbl:b_another_centers}' maxlen='1'/>
+	<parameter id='cob_cantidad_servicio' type='integer' required='false' label='${lbl:b_qty}' maxlen='10'/>
+	<parameter id='cob_vigencia_desde' type='date' required='false' label='${lbl:b_validation_date_from}' maxlen='10'/>
+	<parameter id='cob_vigencia_hasta' type='date' required='false' label='${lbl:b_validation_date_until}' maxlen='10'/>
+	<parameter id='cob_cobertura_desde' type='double' required='false' label='${lbl:b_coverage_from}' maxlen='10'/>
+	<parameter id='cob_cobertura_hasta' type='double' required='false' label='${lbl:b_coverage_until}' maxlen='10'/>
+	<parameter id='cob_deducible_centro' type='double' required='false' label='${lbl:b_deductible_center}' maxlen='10'/>
+	<parameter id='cob_porc_deducible' type='double' required='false' label='${lbl:b_porcentaje_deducible}' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='cob_codigo'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+parameter='cob_descripcion'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='cob_otros_centros'
+		rule='contains' />
+
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='cob_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='cob_descripcion'/>
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generación del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

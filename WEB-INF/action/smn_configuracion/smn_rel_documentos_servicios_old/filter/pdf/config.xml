@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnreldocumentosservicios.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_relacion_documento_servicio}</pdf-title>
+	<pdf-logo url='/images/logo-dinamica.png' scale='100' />
+
+	<pdf-report pageSize="letter" rotate="false">
+		<record recordset='filter.params' title='Filtro de Búsqueda' noFilterMsg='-- Sin filtro de búsqueda --' width='55' spacingBefore='15'>
+			<col name='smn_documentos_id' title='${lbl:b_contrato_doc}'  format='######' align='center' />
+			<col name='smn_servicios_id' title='${lbl:b_service}'  format='######' align='center' />
+			<col name='rdt_tipo_generacion' title='${lbl:b_tipo_generacion}'  format='######' align='center' />
+		</record>
+		<table recordset='query-smnreldocumentosservicios.sql' width='100' spacingBefore='10'>
+			<col name='smn_documentos_id_combo' title='${lbl:b_contrato_doc}' width='25' align='center' format='######' />
+			<col name='smn_servicios_id_combo' title='${lbl:b_service}' width='25' align='center' format='######' />
+			<col name='rdt_tipo_generacion_combo' title='${lbl:b_tipo_generacion}' width='25' align='center' format='######' />
+			<col name='rdt_hora_generacion' title='${lbl:b_hora_generacion}' width='25' align='left' />
+		</table>
+
+	</pdf-report>
+</config>

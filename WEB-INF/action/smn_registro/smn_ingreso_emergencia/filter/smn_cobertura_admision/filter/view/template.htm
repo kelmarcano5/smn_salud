@@ -1,0 +1,65 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='2%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="14" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th>AP</th>
+		<th>GE</th>
+		<th>RV</th>
+		<th class='sortable' onclick='sortBy("smn_ingreso_id","query-smncoberturaadmision.sql")'>${lbl:b_ingreso}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf","query-smncoberturaadmision.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("coa_monto_total_aprobado_ml","query-smncoberturaadmision.sql")'>${lbl:b_monto_aprobado_total_ml}</th>
+		<th class='sortable' onclick='sortBy("coa_monto_total_aprobado_ma","query-smncoberturaadmision.sql")'>${lbl:b_monto_aprobado_total_ma}</th>
+		<th class='sortable' onclick='sortBy("coa_estatus_proceso","query-smncoberturaadmision.sql")'>${lbl:b_status_proceso}</th>
+		<th class='sortable' onclick='sortBy("coa_estatus_financiero","query-smncoberturaadmision.sql")'>${lbl:b_status_financiero}</th>
+		<th class='sortable' onclick='sortBy("coa_fecha_registro","query-smncoberturaadmision.sql")'>${lbl:b_store_date}</th>
+		<th>SE</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_cobertura_admision_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_cobertura_admision_id}','${fld:coa_estatus_proceso}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_cobertura_admision_id}','${fld:coa_estatus_proceso}')" title="${lbl:b_edit_button}"></td>
+		<td><img src="${def:context}/images/accept.png"  onclick="aprobacion('${fld:smn_cobertura_admision_id}','${fld:coa_estatus_proceso}')" title="Aprobacion"></td>
+		<td><img src="${def:context}/images/icongrid/Generar.png"  onclick="procesar('${fld:smn_ingreso_id}','${fld:coa_estatus_proceso}')" title="Procesar"></td>
+		<td><img src="${def:context}/images/icongrid/Reversar.png"  onclick="reversar('${fld:smn_ingreso_id}','${fld:coa_estatus_proceso}')" title="Reversar"></td>
+		<td>${fld:smn_ingreso_id}</td>
+		<td>${fld:smn_auxiliar_rf}</td>
+		<td align='right'>${fld:coa_monto_total_aprobado_ml@#,###,##0.00}</td>
+		<td align='right'>${fld:coa_monto_total_aprobado_ma@#,###,##0.00}</td>
+		<td align='left'>${fld:coa_estatus_proceso}</td>
+		<td align='left'>${fld:coa_estatus_financiero}</td>
+		<td>${fld:coa_fecha_registro@dd-MM-yyyy}</td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png"  onclick="seguimiento('${fld:smn_cobertura_admision_id}')" title="Seguimiento"></td>
+
+	</tr>
+	</rows>
+
+</table>

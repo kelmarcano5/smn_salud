@@ -1,0 +1,75 @@
+<!--data grid-->
+<table class="datagrid display" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<!-- <col width='3%'/> -->
+	<col width='3%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='3%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="18" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th>PA</th>
+		<th>CE</th>
+		<th>RE</th>
+		<!-- <th></th> -->
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_doc_orig","query-smningreso.sql")'>${lbl:b_doc_orig}</th>
+		<th class='sortable' onclick='sortBy("smn_documento_id_combo","query-smningreso.sql")'>${lbl:b_document}</th>
+		<th class='sortable' onclick='sortBy("contratante","query-smningreso.sql")'>Contratante</th>
+		<th class='sortable' onclick='sortBy("serie","query-smningreso.sql")'>Serie</th>
+		<th class='sortable' onclick='sortBy("igs_ticket","query-smningreso.sql")'>${lbl:b_num_ticket}</th>
+		<th class='sortable' onclick='sortBy("igs_num_ingreso","query-smningreso.sql")'>${lbl:b_num_ingreso}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf1","query-smningreso.sql")'>${lbl:b_auxiliary_pa}</th>
+		<th class='sortable' onclick='sortBy("ejecutivo","query-smningreso.sql")'>Ejecutivo</th>
+		<th class='sortable' onclick='sortBy("igs_estatus_financiero","query-smningreso.sql")'>Estatus Financiero</th>
+		<th class='sortable' onclick='sortBy("rta_estatus","query-smningreso.sql")'>Estatus Proceso</th>
+		<th class='sortable' onclick='sortBy("igs_fecha_registro","query-smningreso.sql")'>${lbl:b_store_date}</th>
+		<th></th>
+	</tr>
+
+	<!--data-->
+	<rows>
+		<tr>
+			<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_ingreso_id}')" title="${lbl:b_view_detail}"></td>
+			<td><img src="${def:context}/images/search.png"  onclick="getPaciente('${fld:smn_ingreso_id}','${fld:smn_auxiliar_rf}')" title="Ver Paciente"></td>
+			<td><img src="${def:context}/images/search.png"  onclick="changeStatus('${fld:smn_ingreso_id}','${fld:igs_estatus_financiero}','${fld:igs_fecha_registro}', '${fld:rta_estatus}')" title="Cambiar Status"></td>
+			<td><img src="${def:context}/images/edit.png"  onclick="reasignarEjecutivo('${fld:smn_ingreso_id}','${fld:igs_ticket}','${fld:igs_fecha_registro}', '${fld:rta_estatus}')" title="Reasignar Ejecutivo"></td>
+			<!-- <td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_ingreso_id}','${fld:igs_estatus_financiero}','${fld:igs_fecha_registro}')" title="${lbl:b_delete_button}"></td> -->
+			<td><img src="${def:context}/images/edit.png"  onclick="showEditor2('${fld:smn_ingreso_id}','${fld:igs_estatus_financiero}','${fld:igs_fecha_registro}','${fld:rta_estatus}')" title="${lbl:b_edit_button}"></td>
+			<td>${fld:smn_doc_orig}</td>
+			<td>${fld:smn_documento_id_combo}</td>
+			<td>${fld:contratante}</td>
+			<td>${fld:serie}</td>
+			<td>${fld:igs_ticket}</td>
+			<td>${fld:igs_num_ingreso}</td>
+			<td>${fld:smn_auxiliar_rf1}</td>
+			<td>${fld:ejecutivo}</td>
+			<td>${fld:igs_estatus_financiero}</td>
+			<td>${fld:rta_estatus}</td>
+			<td>${fld:igs_fecha_registro}</td>
+			<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png"  onclick="detalleingreso('${fld:smn_ingreso_id}','${fld:smn_areas_servicios_rf}','${fld:igs_num_ingreso}','${fld:igs_estatus_financiero}','${fld:igs_fecha_registro}','${fld:rta_estatus}','${fld:rta_secuencia}')" title="${lbl:b_ingreso_mov}"></td>
+		</tr>
+	</rows>
+
+</table>

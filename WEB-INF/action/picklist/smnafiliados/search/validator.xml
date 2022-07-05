@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/crud'>
+	<parameter id='afi_num_control' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='afi_apellidos' type='varchar' required='false' label='${lbl:s_profile_lname}' maxlen='56'/>
+	<parameter id='afi_nombres' type='varchar' required='false' label='${lbl:s_profile_fname}' maxlen='56'/>
+	<parameter id='afi_sexo' type='varchar' required='false' label='${lbl:b_sex}' maxlen='2'/>
+	<parameter id='afi_tipo_doc_oficial' type='integer' required='false' label='${lbl:b_official_document_type}' maxlen='10'/>
+	<parameter id='afi_nro_doc_oficial' type='varchar' required='false' label='${lbl:b_official_document_number}
+' maxlen='12'/>
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="afi_num_control" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="afi_apellidos" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="afi_nombres" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="afi_sexo" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="afi_nro_doc_oficial" rule="contains" />
+</validator>

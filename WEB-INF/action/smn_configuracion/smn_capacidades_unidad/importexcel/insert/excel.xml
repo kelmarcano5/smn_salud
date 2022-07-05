@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_unidad_servicio_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='cap_cant_max_pacientes' type='integer' required='true' maxlen='10'/>
+	<parameter id='cap_cant_min_pacientes' type='integer' required='true' maxlen='10'/>
+
+
+
+</validator>

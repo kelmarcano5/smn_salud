@@ -1,0 +1,312 @@
+<!doctype html>
+<html>
+
+<head>
+
+		<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+		<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+		
+		<!--biblioteca generica JS/Dinamica-->
+		<script type="text/javascript" src="${def:context}/action/script"></script>
+		<script type="text/javascript" src="${def:context}/action/jquery"></script>
+
+		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_orders_medics}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+	<tr>
+		<td>${lbl:b_ingreso}</td>
+		<td>
+			<select class="ingreso" name="smn_ingreso_id" id="smn_ingreso_id" onchange="chgCombo(smn_ingreso_id.options[smn_ingreso_id.selectedIndex].text,'smn_ingreso_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_ingreso_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_ingreso_id_rows>
+			</select> 
+			<input id="smn_ingreso_id_name" name="smn_ingreso_id_name" type="hidden">
+		</td>
+	</tr>
+		<!-- <tr>
+			<td>${lbl:b_ingreso}*</td>
+			<td>
+				<input id="smn_ingreso_id" name="smn_ingreso_id" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr> -->
+		<tr>
+			<td>${lbl:b_code}*</td>
+			<td>
+				<input id="omd_numero_orden" name="omd_numero_orden" type="text" maxlength="16" >
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_description}*</td>
+			<td>
+				<textarea id="omd_descripcion" name="omd_descripcion" cols="30" rows="3"></textarea>
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_service_providers}</td>
+		<td>
+			<select class="prestador" name="smn_prestador_servicio_rf" id="smn_prestador_servicio_rf" onchange="chgCombo(smn_prestador_servicio_rf.options[smn_prestador_servicio_rf.selectedIndex].text,'smn_prestador_servicio_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_prestador_servicio_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_prestador_servicio_rf_rows>
+			</select> 
+			<input id="smn_prestador_servicio_rf_name" name="smn_prestador_servicio_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_auxiliary_class}*</td>
+		<td>
+			<select class="clase" name="omd_clase_auxiliar" id="omd_clase_auxiliar" onchange="chgCombo(omd_clase_auxiliar.options[omd_clase_auxiliar.selectedIndex].text,'omd_clase_auxiliar_name');">
+				<option value="">[Cualquiera]</option>
+				<omd_clase_auxiliar_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</omd_clase_auxiliar_rows>
+			</select> 
+			<input id="omd_clase_auxiliar_name" name="omd_clase_auxiliar_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_auxiliary}*</td>
+		<td>
+			<select class="auxiliar" name="omd_auxiliar" id="omd_auxiliar" onchange="chgCombo(omd_auxiliar.options[omd_auxiliar.selectedIndex].text,'omd_auxiliar_name');">
+				<option value="">[Cualquiera]</option>
+				<omd_auxiliar_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</omd_auxiliar_rows>
+			</select> 
+			<input id="omd_auxiliar_name" name="omd_auxiliar_name" type="hidden">
+		</td>
+	</tr>
+		<!-- <tr>
+			<td>Numero de Documento Oficial*</td>
+			<td>
+				<input id="omd_num_doc_oficial" name="omd_num_doc_oficial" type="text" maxlength="12" >
+			</td>
+		</tr> -->
+		<tr>
+			<td>${lbl:b_order_type}*</td>
+			<td>
+				<select name="omd_tipo_orden" id="omd_tipo_orden">
+				<option value="UG">${lbl:b_urgente}</option>
+				<option value="NR">${lbl:b_normal}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_indications}*</td>
+			<td>
+				<textarea id="omd_indicaciones" name="omd_indicaciones" cols="30" rows="3"></textarea>
+			</td>
+		</tr>
+
+		<tr id="estatus">
+			<td>${lbl:b_status}*</td>
+			<td>
+				<select name="omd_estatus" id="omd_estatus">
+				<option value="EM">Emitido</option>
+				<option value="PR">Presupuestado</option>
+
+				</select> 
+			</td>
+		</tr>
+
+		<!--control picklist de seleccion múltiple-->
+		<tr>
+			<td>${lbl:b_services}*</td>
+			<td>
+				<!--listbox--> 
+				<select id="smn_servicios_id_name" name="smn_servicios_id_name" size="5" style="width: 95%;">
+				</select>
+				<br>
+		
+				<!--comandos del listbox-->
+				<div style="float: right; margin-right: 12px; padding-top: 7px">
+				[<a href="javascript:pickSmnServiciosId()" title="${lbl:b_add_item_list}">${lbl:b_add_button}</a>]
+				[<a href="javascript:removeSmnServiciosId()" title="${lbl:b_delete_item_list}">${lbl:b_delete_button}</a>]
+				</div>
+		
+				<!--almacena los IDs de los items separados por ";"--> 
+				<input type="hidden" name="smn_servicios_id" id="smn_servicios_id" />
+				<input type="hidden" name="smn_servicios_id_text" id="smn_servicios_id_text" />
+			</td>
+		</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+
+		$(document).ready(function() {
+			$('.ingreso').select2();
+	    	$('.prestador').select2();
+	    	$('.clase').select2();
+	    	$('.auxiliar').select2();
+	    	$('#estatus').hide();
+
+   
+		});
+
+		if (id!="")
+			edit(id);
+	} 
+	
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			document.getElementById("smn_servicios_id").value = listboxGetItemValues("smn_servicios_id_name");
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+	//desplegar picklist de seleccion multiple
+	function pickSmnServiciosId(){
+		var url = "${def:context}/action/picklist/smnservicios/form";
+		pickOpen ('smn_servicios_id_name','smn_servicios_id',url, 600, 550);	
+	}	
+
+	//llamada por el picklist para añadir un item al listbox
+	function selectSmnServiciosId(id, title) {
+		listboxAddItem("smn_servicios_id_name", id, title);
+	}
+	
+	//remover un item del listbox
+	function removeSmnServiciosId() {
+		if (document.getElementById("smn_servicios_id_name").selectedIndex == -1) {
+			alertBox("${lbl:b_delete_item_list_message}.","${lbl:b_continue_button}");
+			return;
+		}
+		listboxRemoveItem("smn_servicios_id_name");
+	}
+
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			document.getElementById("smn_servicios_id").value = listboxGetItemValues("smn_servicios_id_name");
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+			document.getElementById("smn_servicios_id").value = listboxGetItemValues("smn_servicios_id_name");
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+	
+</script>	
+</body>
+</html>

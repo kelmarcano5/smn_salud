@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_ingreso_id' type='integer' required='false' label='${lbl:b_income}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_diagnostico_rf' type='integer' required='false' label='${lbl:b_diagnostic}' maxlen='10'/>
+</validator>

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_ingreso_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_componente_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='inm_accion' type='varchar' required='false' maxlen='40'/>
+	<parameter id='smn_tipo_consulta_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_grupo_prestador_servicio_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_motivos_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='inm_ordenante_descripcion' type='varchar' required='false' maxlen='100'/>
+	<parameter id='smn_sintoma_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='inm_tipo_orden' type='varchar' required='true' maxlen='2'/>
+	<parameter id='inm_num_orden_medica' type='integer' required='false' maxlen='10'/>
+	<parameter id='inm_estatus_desc_ref' type='varchar' required='true' maxlen='2'/>
+
+	<parameter id='inm_estatus_ref' type='varchar' required='false' maxlen='2'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='inm_ordenante_descripcion'/>
+
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: inm_estatus' 
+		parameter='inm_estatus_ref' 
+		sql='inm_estatus.sql' 
+		id='inm_estatus_ref'/>
+
+</validator>

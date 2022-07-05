@@ -1,0 +1,3 @@
+<rows>
+loc_fecha_registro="${fld:loc_fecha_registro}"    loc_status="${fld:loc_status}"    loc_descripcion="${fld:loc_descripcion}"    loc_codigo="${fld:loc_codigo}"    
+</rows>

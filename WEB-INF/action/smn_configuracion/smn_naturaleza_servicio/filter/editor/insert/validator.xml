@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_tipo_servicio_rf' type='integer' required='true' label='${lbl:b_types_services}' maxlen='10'/>
+	<parameter id='nts_naturaleza' type='varchar' required='true' label='${lbl:b_nature}' maxlen='2'/>
+
+
+</validator>

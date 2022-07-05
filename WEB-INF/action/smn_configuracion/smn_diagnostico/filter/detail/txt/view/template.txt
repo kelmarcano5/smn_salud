@@ -1,0 +1,3 @@
+<rows>
+dgn_tipo="${fld:dgn_tipo}"    dgn_fecha_registro="${fld:dgn_fecha_registro}"    dgn_descripcion="${fld:dgn_descripcion}"    dgn_codigo="${fld:dgn_codigo}"    
+</rows>

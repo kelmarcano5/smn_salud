@@ -1,0 +1,33 @@
+<!--data grid-->
+<table class="datagrid rowhover oneCellRow" style="width:90%;">
+
+	<col width='100%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="4" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th onclick="sortBy('svc_codigo','query-smnservicios.sql')" class="sortable">${lbl:b_code}</th>
+		<th onclick="sortBy('svc_descripcion','query-smnservicios.sql')" class="sortable">${lbl:b_description}</th>
+		<th onclick="sortBy('smn_clase_auxiliar_rf_name','query-smnservicios.sql')" class="sortable">Grupo Prestador</th>
+		<th onclick="sortBy('smn_tipo_servicio_rf','query-smnservicios.sql')" class="sortable">${lbl:b_service_type}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr onclick="selectItem('${fld:smn_servicios_id}','${fld:smn_clase_auxiliar_rf}')" >
+		<td align="center"><span id="${fld:smn_servicios_id}">${fld:svc_descripcion}</span></td>
+		<td align="center">${fld:svc_descripcion}</td>
+		<td align="center">${fld:smn_clase_auxiliar_rf_name}</td>
+		<td align="center">${fld:smn_tipo_servicio_rf}</td>
+	</tr>
+	</rows>
+
+</table>
+

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncoberturaadmision.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="9" cellStep="0" name="${lbl:b_cobertura_admision}"/>
+	
+	<excel 
+		recordset='query-smncoberturaadmision.sql' 
+		sheetname='${lbl:b_cobertura_admision}' 
+		filename='${lbl:b_cobertura_admision}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_ingreso_id' label='${lbl:b_ingreso}' />
+		<col id='smn_presupuesto_id' label='${lbl:b_presupuesto}' />
+		<col id='smn_auxiliar_rf' label='${lbl:b_auxiliary}' />
+		<col id='coa_hora_solicitada' label='${lbl:b_solicited_hours}' />
+		<col id='aux_descripcion' label='${lbl:b_auxiliary}' />
+		<col id='coa_observacion_inicial' label='${lbl:b_observation_init}' />
+		<col id='smn_moneda_rf' label='${lbl:b_coins}' />
+		<col id='smn_tasa_rf' label='${lbl:b_exchange_rate}' />
+		<col id='coa_monto_aprobado_servicios_medicos_ml' label='${lbl:b_monto_aprobado_sc_ml}' />
+		<col id='coa_monto_aprobado_medicinas_y_mmq_ml' label='${lbl:b_monto_aprobado_mm_ml}' />
+		<col id='coa_monto_aprobado_honorarios_ml' label='${lbl:b_monto_aprobado_ho_ml}' />
+		<col id='coa_monto_total_aprobado_ml' label='${lbl:b_monto_aprobado_total_ml}' />
+		<col id='coa_monto_aprobado_servicios_medicos_ma' label='${lbl:b_monto_aprobado_sc_ma}' />
+		<col id='coa_monto_aprobado_medicinas_y_mmq_ma' label='${lbl:b_monto_aprobado_mm_ma}' />
+		<col id='coa_monto_aprobado_honorarios_ma' label='${lbl:b_monto_aprobado_ho_ma}' />
+		<col id='coa_monto_total_aprobado_ma' label='${lbl:b_monto_aprobado_total_ma}' />
+		<col id='coa_estatus_proceso' label='${lbl:b_status_proceso}' />
+		<col id='coa_estatus_financiero' label='${lbl:b_status_financiero}' />
+		<col id='coa_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

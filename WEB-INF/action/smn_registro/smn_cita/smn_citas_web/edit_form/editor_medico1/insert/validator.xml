@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_sedes' type='integer' required='true' label='${lbl:b_sedes}' maxlen='10'/>
+	<parameter id='smn_especialidad' type='integer' required='true' label='${lbl:b_especialidad}' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_especialidad' type='integer' required='true' label='${lbl:b_medicos}' maxlen='10'/>
+	<parameter id='smn_contratante_id' type='integer' required='false' label='${lbl:b_contratante_aux}' maxlen='10'/>
+	<parameter id='smn_tipo_cita' type='varchar' required='true' label='${lbl:b_tipo_cita}' maxlen='10'/>
+	<parameter id='smn_forma_pago' type='varchar' required='true' label='${lbl:b_pay_method}' maxlen='10'/>
+	<parameter id='smn_fecha_cita' type='date' required='true' label='${lbl:b_timetable}' maxlen='10'/>
+	<parameter id='cts_auxiliar_name' type='integer' required='true' label='${lbl:b_auxiliary_pa}' maxlen='10'/>
+</validator>

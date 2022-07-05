@@ -1,0 +1,61 @@
+<!--data grid-->
+<table class="datagrid" width="530px">
+
+	<col width='64%'/>
+	<col width='36%'/>
+
+	
+	<!--toolbar-->
+	<tr>
+		<th colspan="3">
+			<div style="display: inline; float: left; padding-left: 3px; margin-top:2px;">
+				<img src="${def:context}/images/pdf.png" onclick="openPDF()" title="Exportar a PDF" style="padding-right:3px;"/>
+				<img src="${def:context}/images/excel.png" onclick="openExcel()" title="Exportar a Excel" style="padding-right:3px;"/>
+			</div>			
+		</th>
+	</tr>
+	
+	<tr>
+
+		<th>Unidad de Servicio</th>
+		<th>Total Pacientes Atendidos</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+
+		<td align="left">${fld:item}</td>
+		<td align="right">${fld:subtotal@#,###,##0.00}</td>
+	</tr>
+	</rows>
+
+	<!--totales-->
+	<tr>
+		<td align="right" ><b>Total</b></td>
+		<td align="right">${fld:subtotal@#,###,##0.00}</td>
+	</tr>
+
+</table>
+
+<br>
+
+<!-- botones para cambiar el tipo de grafico -->
+<div style="border-radius: 7px 7px 0px 0px; margin:0 auto;width:300px;border:1px solid #c0c0c0; background-color:#dfe7f5; padding:4px; cursor:pointer; margin-bottom:0px; border-bottom:none;padding-left:10px;">
+	<img src="${def:context}/images/chart/chart_pie.png" onclick="changeChart('dinamica.charts.PieChart','chart1')"/>
+	<img src="${def:context}/images/chart/chart_ring.png" onclick="changeChart('dinamica.charts.RingChart','chart1')"/>
+	<img src="${def:context}/images/chart/chart_pie3d.png" onclick="changeChart('dinamica.charts.PieChart3D','chart1')"/>
+	<img src="${def:context}/images/chart/chart_vbar.png" onclick="changeChart('dinamica.charts.VerticalBarChart3D','chart1')"/>
+	<img src="${def:context}/images/chart/chart_hbar.png" onclick="changeChart('dinamica.charts.HorizontalBarChart3D','chart1')"/>
+	<img src="${def:context}/images/chart/chart_area.png" onclick="changeChart('dinamica.charts.AreaChart','chart1')"/>
+	<img src="${def:context}/images/chart/chart_line.png" onclick="changeChart('dinamica.charts.LineChart','chart1')"/>
+	<img src="${def:context}/images/chart/chart_vbar2d.png" onclick="changeChart('dinamica.charts.VerticalBarChart','chart1')"/>
+	<img src="${def:context}/images/chart/chart_hbar2d.png" onclick="changeChart('dinamica.charts.HorizontalBarChart','chart1')"/>
+	
+	<img id="chart1_wait" src="${def:context}/images/progress.gif" style="float:right; margin-right:5px; margin-top:3px;">
+</div>
+
+<!--chart-->
+<div style="width:100%; text-align:center; margin-top:-10px; z-index:-1; position:relative;">
+	<img id="chart1" style="display:none" src="${def:context}${def:actionroot}/chart?dummy=${def:time}" border="0" onload="displayChart('chart1')">
+</div>

@@ -1,0 +1,32 @@
+INSERT INTO smn_salud.smn_paciente
+(
+	smn_paciente_id,
+	smn_clase_auxiliar_rf,
+	smn_auxiliar_rf,
+	smn_clasificacion_abc_rf,
+	pac_vigencia,
+	pac_estatus,
+	smn_forma_pago_rf,
+	smn_condicion_financiera_rf,
+	smn_promotor_rf,
+	pac_idioma,
+	pac_usuario,
+	pac_fecha_registro,
+	pac_hora
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_paciente},
+	${fld:smn_clase_auxiliar_rf},
+	${fld:smn_auxiliar_rf},
+	${fld:smn_clasificacion_abc_rf},
+	${fld:pac_vigencia},
+	${fld:pac_estatus},
+	${fld:smn_forma_pago_rf},
+	${fld:smn_condicion_financiera_rf},
+	${fld:smn_promotor_rf},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

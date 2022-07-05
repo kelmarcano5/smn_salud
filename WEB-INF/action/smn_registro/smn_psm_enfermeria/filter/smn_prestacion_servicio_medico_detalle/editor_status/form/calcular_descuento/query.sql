@@ -1,0 +1,1 @@
+select smn_base.smn_descuento.dct_porcentaje as porcentaje from smn_base.smn_descuento where smn_base.smn_descuento.smn_descuento_id = ${fld:id}

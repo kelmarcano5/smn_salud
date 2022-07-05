@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnseries.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_serie}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_serie}">
+				<col id='sri_codigo' label='${lbl:b_codigo_serie}' />
+		<col id='sri_nombre' label='${lbl:b_nombre_serie}' />
+		<col id='sri_estatus_combo' label='${lbl:b_status_serie}' />
+		<col id='sri_ultimo_numero' label='${lbl:b_ultimo_numero}' />
+		<col id='sri_reinicio_combo' label='${lbl:b_reinicio}' />
+		<col id='ctm_idioma' label='${lbl:s_profile_lang}' />
+		<col id='ctm_usuario_id' label='${lbl:b_users}' />
+		<col id='ctm_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

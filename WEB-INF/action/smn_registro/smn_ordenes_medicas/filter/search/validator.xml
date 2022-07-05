@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_ingreso_id' type='integer' required='false' label='${lbl:b_ingreso}' maxlen='10'/>
+	<parameter id='omd_numero_orden' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='omd_numero_orden' rule='like' />
+	<parameter id='omd_descripcion' type='varchar' required='false' label='${lbl:b_description}' maxlen='256'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='omd_descripcion' rule='like' />
+	<parameter id='omd_auxiliar' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='omd_fecha_registro_ini' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.DateRangeValidator' on-error-label='[${lbl:b_store_date} mayor o igual que] no puede ser mayor que [${lbl:b_store_date} menor o igual que].' date1='omd_fecha_registro_ini' date2='omd_fecha_registro_fin' id='omd_fecha_registro_ini' />
+	<parameter id='omd_fecha_registro_fin' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

@@ -1,0 +1,3 @@
+<rows>
+hab_fecha_registro="${fld:hab_fecha_registro}"    hab_tipo_servicio="${fld:hab_tipo_servicio}"    hab_clase="${fld:hab_clase}"    hab_estatus="${fld:hab_estatus}"    hab_descripcion="${fld:hab_descripcion}"    hab_codigo="${fld:hab_codigo}"    smn_activo_fijo_rf="${fld:smn_activo_fijo_rf}"    
+</rows>

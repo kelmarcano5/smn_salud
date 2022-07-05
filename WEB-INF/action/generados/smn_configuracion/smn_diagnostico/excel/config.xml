@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smndiagnostico.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+	
+	<excel recordset='query-smndiagnostico.sql' sheetname='${lbl:b_diagnosis}' filename='smn_diagnostico.xls'>
+		<col id='dgn_codigo' label='${lbl:b_code_diag}' />
+		<col id='dgn_descripcion' label='${lbl:b_description_diag}' />
+		<col id='dgn_tipo_combo' label='${lbl:b_tipo_diag}' />
+		<col id='dgn_idioma' label='${lbl:s_profile_lang}' />
+		<col id='dgn_usuario' label='${lbl:b_users}' />
+		<col id='dgn_fecha_registro' label='${lbl:b_store_date}' />
+		<col id='dgn_hora' label='${lbl:s_loginhist_col2}' />
+	</excel>
+
+</config>

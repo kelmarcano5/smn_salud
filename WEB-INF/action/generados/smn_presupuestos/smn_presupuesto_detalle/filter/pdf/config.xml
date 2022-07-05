@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnpresupuestodetalle.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_presupuesto}</pdf-title>
+	<pdf-logo url='/images/logo-dinamica.png' scale='100' />
+
+	<pdf-report pageSize="letter" rotate="false">
+		<record recordset='filter.params' title='Filtro de Búsqueda' noFilterMsg='-- Sin filtro de búsqueda --' width='55' spacingBefore='15'>
+			<col name='smn_presupuesto_id' title='${lbl:smn_presupuesto}'  format='######' align='center' />
+			<col name='prd_servicio' title='${lbl:b_service}'  format='######' align='center' />
+			<col name='prd_monto' title='${lbl:b_monto_presupuesto}'  format='#,###,##0.00' align='center' />
+		</record>
+		<table recordset='query-smnpresupuestodetalle.sql' width='100' spacingBefore='10'>
+			<col name='smn_presupuesto_id' title='${lbl:smn_presupuesto}' width='20' align='center' format='######' />
+			<col name='prd_servicio_combo' title='${lbl:b_service}' width='20' align='center' format='######' />
+			<col name='prd_cantidad' title='${lbl:b_amount}' width='20' align='center' format='######' />
+			<col name='prd_monto' title='${lbl:b_monto_presupuesto}' width='20' align='right' format='#,###,##0.00' />
+			<col name='prd_fecha_registro' title='${lbl:b_store_date}' width='20' align='center' format='dd-MM-yyyy' />
+		</table>
+
+	</pdf-report>
+</config>

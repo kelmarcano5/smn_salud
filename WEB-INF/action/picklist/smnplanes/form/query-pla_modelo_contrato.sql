@@ -1,0 +1,1 @@
+select smn_base.smn_modelos_contratos.smn_modelos_contratos_id as id, smn_base.smn_modelos_contratos.mct_codigo || ' - ' || smn_base.smn_modelos_contratos.mct_descripcion as item  from smn_base.smn_modelos_contratos order by smn_base.smn_modelos_contratos.mct_descripcion 

@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica.css" />
+	
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+	<script type="text/javascript">
+		//invoca la generacion de un PDF en un popup
+		function openPDF()
+		{
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<!--banner-->
+	<div class="bannerDialog">
+		${lbl:b_presupuesto}
+		<img src="${def:context}/images/pdf.png" onclick="openPDF()" title="Exportar a PDF" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="Cerrar" style="float:right; cursor:pointer;"/>
+	</div>
+
+	<table class="record" style="width:500px;">
+		<tr>
+			<td width="40%">${lbl:b_budget_number}</td>
+			<td style="background-color: white">${fld:pre_numero_control}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_budget_date}</td>
+			<td style="background-color: white">${fld:pre_fecha@dd-MM-yyyy}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_titular}</td>
+			<td style="background-color: white">${fld:pre_titular_combo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_beneficiario}</td>
+			<td style="background-color: white">${fld:pre_beneficiario_combo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_plan}</td>
+			<td style="background-color: white">${fld:pre_plan_combo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_auxiliary_class}</td>
+			<td style="background-color: white">${fld:pre_clase_auxiliar_combo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_auxiliary}</td>
+			<td style="background-color: white">${fld:pre_auxiliar_combo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_fecha_vigencia}</td>
+			<td style="background-color: white">${fld:pre_vigencia_hasta@dd-MM-yyyy}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_titular}</td>
+			<td style="background-color: white">${fld:smn_ordenes_medicas_id_combo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_budget_status}</td>
+			<td style="background-color: white">${fld:smn_estado_presupuesto_id_combo}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:s_profile_lang}</td>
+			<td style="background-color: white">${fld:pre_idioma}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_users}</td>
+			<td style="background-color: white">${fld:pre_usuario}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_store_date}</td>
+			<td style="background-color: white">${fld:pre_fecha_registro@dd-MM-yyyy}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:s_loginhist_col2}</td>
+			<td style="background-color: white">${fld:pre_hora}</td>
+		</tr>
+
+	</table>
+
+
+
+</body>
+
+</html>

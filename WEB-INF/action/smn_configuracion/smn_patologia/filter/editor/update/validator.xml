@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='pat_codigo' type='varchar' required='true' label='${lbl:b_code}' maxlen='48'/>
+	<parameter id='pat_descripcion' type='varchar' required='true' label='${lbl:b_description}' maxlen='100'/>
+	<parameter id='pat_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_pathology}' maxlen='10'/>
+
+
+</validator>

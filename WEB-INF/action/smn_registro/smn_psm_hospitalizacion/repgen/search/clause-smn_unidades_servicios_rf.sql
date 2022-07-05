@@ -1,0 +1,2 @@
+ and
+ 	smn_salud.smn_prestacion_servicio_medico_cabecera.smn_unidades_servicios_rf=${fld:smn_unidades_servicios_rf}

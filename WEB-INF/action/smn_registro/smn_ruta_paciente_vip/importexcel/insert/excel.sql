@@ -1,0 +1,31 @@
+INSERT INTO smn_salud.smn_ruta_paciente
+(
+	smn_ruta_id,
+	smn_ingreso_cola_virtual_id,
+	smn_clase_auxiliar_rf,
+	smn_auxiliar_rf,
+	rta_numero_documento_identidad,
+	smn_serie_id,
+	rta_ticket,
+	rta_idioma,
+	rta_usuario,
+	rta_fecha_registro,
+	rta_hora
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_ruta_paciente},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'${def:locale
+}',
+	'${def:user
+}',
+	'${def:date
+}',
+	'${def:time}'
+)

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/ajax">
+	<parameter id="id" type="integer" required="true" label="ID" />
+	<parameter id="precio" type="integer" required="false" label="precio del baremos detalle" />
+	<parameter id="precioma" type="integer" required="false" label="precio MA del baremos detalle" />
+	<parameter id="smn_baremos_id" type="integer" required="false" label="${lbl:b_pre_documento}" maxlen="10" />
+</validator>

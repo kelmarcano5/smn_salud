@@ -1,0 +1,17 @@
+SELECT smn_documento_id_caja from (SELECT 
+	case 
+	when aux_condicion_financiera_rf != 0 AND
+           CASE WHEN dos_multiples_pagador = 'S' then true end
+        then 'credito' 
+	when aux_condicion_financiera_rf = 0 AND
+           CASE WHEN dos_multiples_pagador = 'N' then true end
+	then 'contado'
+	end as ver,	
+	smn_documento_id as smn_documento_id_caja
+FROM smn_caja.smn_documento
+inner join smn_base.smn_documentos_generales on smn_base.smn_documentos_generales.smn_documentos_generales_id = smn_caja.smn_documento.smn_documento_general_rf
+inner join smn_base.smn_auxiliar on smn_base.smn_auxiliar.smn_auxiliar_id = ${fld:smn_auxiliar_rf}
+WHERE  smn_caja.smn_documento.smn_documento_general_rf = smn_base.smn_documentos_generales.smn_documentos_generales_id and 
+smn_auxiliar_id = ${fld:smn_auxiliar_rf} ) as foo --and 
+--smn_clase_auxiliar_rf = ${fld:smn_clase_auxiliar_rf}) as foo
+where ver != '' limit 1

@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnhabitaciones.sql" source="session" scope="transaction" />
+		<recordset id='query-smntiposservicios.sql' source='sql' scope='transaction' />
+	
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_room}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_room}">
+				<col id='smn_activo_fijo_rf' label='${lbl:b_activo_fijo}' />
+		<col id='hab_codigo' label='${lbl:b_code}' />
+		<col id='hab_descripcion' label='${lbl:b_description}' />
+		<col id='hab_estatus' label='${lbl:b_status}' />
+		<col id='hab_clase' label='${lbl:b_class}' />
+		<col id='hab_tipo_servicio' label='${lbl:b_types_services}' />
+		<col id='hab_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+		<sheet recordset='query-smntiposservicios.sql' sheetname=''>
+		<col id='tsr_descripcion' label='${lbl:b_description}' />
+	</sheet>
+
+
+	</excel>
+
+</config>

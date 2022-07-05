@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='loc_codigo' type='varchar' required='true' label='${lbl:b_codigo_local}' maxlen='16'/>
+	<parameter id='loc_descripcion' type='varchar' required='true' label='${lbl:b_descripcion_local}' maxlen='48'/>
+	<parameter id='loc_status' type='varchar' required='true' label='${lbl:b_status_local}' maxlen='1'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_localidad}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.ArrayNotEmptyValidator' on-error-label='Seleccione al menos un ítem.' parameter-name='smn_sector_id' id='smn_sector_id'/>
+	<custom-validator classname='dinamica.validators.ArrayToRecordset' paramName='smn_sector_id' recordsetId='query-smn_sector.sql' colName='smn_sector_id' colType='integer'/>
+</validator>
+

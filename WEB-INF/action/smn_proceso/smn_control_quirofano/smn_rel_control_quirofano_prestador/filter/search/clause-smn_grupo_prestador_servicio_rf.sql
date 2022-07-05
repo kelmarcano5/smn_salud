@@ -1,0 +1,2 @@
+ and
+ 	smn_salud.smn_rel_control_quirofano_prestador.smn_grupo_prestador_servicio_rf=${fld:smn_grupo_prestador_servicio_rf}

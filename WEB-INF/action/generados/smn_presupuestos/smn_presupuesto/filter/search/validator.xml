@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='pre_numero_control' type='varchar' required='false' label='${lbl:b_budget_number}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='pre_numero_control' rule='like' />
+	<parameter id='pre_fecha' type='date' required='false' label='${lbl:b_budget_date}' maxlen='10'/>
+	<parameter id='pre_titular' type='integer' required='false' label='${lbl:b_titular}' maxlen='56'/>
+</validator>

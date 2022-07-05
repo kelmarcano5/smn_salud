@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncontratomodulo.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="5" cellStep="0" name="${lbl:b_contrato_modulo}"/>
+	
+	<excel 
+		recordset='query-smncontratomodulo.sql' 
+		sheetname='${lbl:b_contrato_modulo}' 
+		filename='${lbl:b_contrato_modulo}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_contrato_base_rf' label='${lbl:b_contrato_base}' />
+		<col id='smn_documento_id' label='${lbl:b_contrato_doc}' />
+		<col id='ctm_numero_contrato' label='${lbl:b_number_contract}' />
+		<col id='smn_contratante_id' label='${lbl:b_contratante}' />
+		<col id='ctm_fecha_vigencia_desde' label='${lbl:b_vigency_start_date}' />
+		<col id='ctm_fecha_vigencia_hasta' label='${lbl:b_vigency_stop_date}' />
+		<col id='smn_planes_id' label='${lbl:b_planes}' />
+		<col id='ctm_monto_contrato' label='${lbl:b_amount_contract}' />
+		<col id='ctm_monto_cobertura_afiliado' label='${lbl:b_amount_coverage_afiliated}' />
+		<col id='ctm_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

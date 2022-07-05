@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_sucursales_rf' type='integer' required='false' label='${lbl:b_sucursal_rp}' maxlen='10'/>
+	<parameter id='smn_entidades_rf' type='integer' required='false' label='${lbl:b_entidades_rp}' maxlen='10'/>
+	<parameter id='igs_num_ingreso' type='integer' required='false' label='${lbl:b_igs_num_ingreso}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_services_providers}' maxlen='10'/>
+	<parameter id='smn_grupo_prestador_rf' type='integer' required='false' label='${lbl:b_groups_of_providers}' maxlen='10'/>
+	<parameter id='igs_fecha_ingreso' type='date' required='false' label='Fecha Ingreso' maxlen='10'/>
+	<parameter id='psd_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+</validator>

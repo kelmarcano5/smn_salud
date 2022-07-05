@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog">
+	${lbl:b_appointment_movement}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="Cerrar" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">Añadir registro</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+				<tr>
+			<td>${lbl:b_code}*</td>
+			<td>
+				<input id="ctm_num_control_cita" name="ctm_num_control_cita" type="text" maxlength="16" >
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_appointment_date}*</td>
+			<td>
+				<input id="ctm_fecha" name="ctm_fecha" type="text" class="date" maxlength="10">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('ctm_fecha')">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_location}*</td>
+			<td>
+				<input id="ctm_localidad" name="ctm_localidad" type="text" maxlength="56" >
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_service}*</td>
+		<td>
+			<select name="ctm_servicio" id="ctm_servicio" onchange="chgCombo(ctm_servicio.options[ctm_servicio.selectedIndex].text,'ctm_servicio_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_servicio_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_servicio_rows>
+			</select> 
+			<input id="ctm_servicio_name" name="ctm_servicio_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_component}*</td>
+		<td>
+			<select name="ctm_componente" id="ctm_componente" onchange="chgCombo(ctm_componente.options[ctm_componente.selectedIndex].text,'ctm_componente_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_componente_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_componente_rows>
+			</select> 
+			<input id="ctm_componente_name" name="ctm_componente_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_service_providers}*</td>
+		<td>
+			<select name="ctm_prestador_servicio" id="ctm_prestador_servicio" onchange="chgCombo(ctm_prestador_servicio.options[ctm_prestador_servicio.selectedIndex].text,'ctm_prestador_servicio_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_prestador_servicio_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_prestador_servicio_rows>
+			</select> 
+			<input id="ctm_prestador_servicio_name" name="ctm_prestador_servicio_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_component_type}</td>
+			<td>
+				<select name="ctm_tipo_componente" id="ctm_tipo_componente">
+				<option value="RE">Relacionado</option>
+				<option value="IN">Independiente</option>
+
+				</select> 
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_status}*</td>
+		<td>
+			<select name="ctm_estatus" id="ctm_estatus" onchange="chgCombo(ctm_estatus.options[ctm_estatus.selectedIndex].text,'ctm_estatus_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_estatus_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_estatus_rows>
+			</select> 
+			<input id="ctm_estatus_name" name="ctm_estatus_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:${lbl:b_appointment_comment}}*</td>
+		<td>
+			<select name="ctm_observ_cita" id="ctm_observ_cita" onchange="chgCombo(ctm_observ_cita.options[ctm_observ_cita.selectedIndex].text,'ctm_observ_cita_name');">
+				<option value="">[Cualquiera]</option>
+				<ctm_observ_cita_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</ctm_observ_cita_rows>
+			</select> 
+			<input id="ctm_observ_cita_name" name="ctm_observ_cita_name" type="hidden">
+		</td>
+	</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="Grabar" class="button">
+	<input id="cancelar" type="button" value="Cancelar" onclick="addNew()" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="" alt="numeric">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+		document.form1.ctm_fecha.onkeypress = keypressDate;
+
+		if (id!="")
+			edit(id);
+	} 
+	
+
+
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "Añadir registro";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+	
+</script>	
+</body>
+</html>

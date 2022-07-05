@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_usuario_rf' type='integer' required='true' label='${lbl:b_usuario}' maxlen='10'/>
+	<parameter id='smn_entidades_rf' type='integer' required='true' label='${lbl:b_entidades_rol}' maxlen='10'/>
+	<parameter id='smn_sucursales_rf' type='integer' required='true' label='${lbl:b_sucursal_rol}' maxlen='10'/>
+	<parameter id='smn_area_servicio_rf' type='integer' required='true' label='${lbl:b_area_rol}' maxlen='10'/>
+	<parameter id='smn_unidad_servicio_rf' type='integer' required='true' label='${lbl:b_unidad_rol}' maxlen='10'/>
+
+
+</validator>

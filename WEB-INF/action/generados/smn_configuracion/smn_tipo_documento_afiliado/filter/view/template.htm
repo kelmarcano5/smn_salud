@@ -1,0 +1,49 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+	<col width='15%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="9">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('tdo_codigo','query-smntipodocumentoafiliado.sql')" >${lbl:b_code}</th>
+		<th class='sortable' onclick="sortBy('tdo_descripcion','query-smntipodocumentoafiliado.sql')" >${lbl:b_description}</th>
+		<th class='sortable' onclick="sortBy('tdo_idioma','query-smntipodocumentoafiliado.sql')" >${lbl:s_profile_lang}</th>
+		<th class='sortable' onclick="sortBy('tdo_usuario','query-smntipodocumentoafiliado.sql')" >${lbl:b_users}</th>
+		<th class='sortable' onclick="sortBy('tdo_fecha_registro','query-smntipodocumentoafiliado.sql')" >${lbl:b_store_date}</th>
+		<th class='sortable' onclick="sortBy('tdo_hora','query-smntipodocumentoafiliado.sql')" >${lbl:s_loginhist_col2}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_tipo_documento_afiliado_id}')" title="Ver detalle"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_tipo_documento_afiliado_id}')" title="Eliminar"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_tipo_documento_afiliado_id}')" title="Editar"></td>
+		<td align="left">${fld:tdo_codigo}</td>
+		<td align="left">${fld:tdo_descripcion}</td>
+		<td align="left">${fld:tdo_idioma}</td>
+		<td align="left">${fld:tdo_usuario}</td>
+		<td align="center">${fld:tdo_fecha_registro@dd-MM-yyyy}</td>
+		<td align="left">${fld:tdo_hora}</td>
+	</tr>
+	</rows>
+
+</table>

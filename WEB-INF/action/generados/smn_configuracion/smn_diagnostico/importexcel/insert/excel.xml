@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='dgn_codigo' type='varchar' required='true' maxlen='16'/>
+	<parameter id='dgn_descripcion' type='varchar' required='true' maxlen='200'/>
+	<parameter id='dgn_tipo' type='varchar' required='false' maxlen='1'/>
+</validator>

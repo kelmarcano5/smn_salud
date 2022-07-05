@@ -1,0 +1,43 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='16%'/>
+	<col width='16%'/>
+	<col width='16%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="6" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("mtv_codigo","query-smnmotivos.sql")'>${lbl:b_code_motivos}</th>
+		<th class='sortable' onclick='sortBy("mtv_descripcion","query-smnmotivos.sql")'>${lbl:b_description_motivos}</th>
+		<th class='sortable' onclick='sortBy("mtv_fecha_registro","query-smnmotivos.sql")'>${lbl:b_store_date}</th>
+		
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_motivos_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_motivos_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_motivos_id}')" title="${lbl:b_edit_button}"></td>
+		<td align='left'>${fld:mtv_codigo}</td>
+		<td align='left'>${fld:mtv_descripcion}</td>
+		<td>${fld:mtv_fecha_registro@dd-MM-yyyy}</td>
+		
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,1 @@
+select smn_inventario.smn_principio_activo.smn_principio_activo_id as id, smn_inventario.smn_principio_activo.pac_descripcion as item from smn_inventario.smn_principio_activo ORDER BY smn_inventario.smn_principio_activo.pac_descripcion asc

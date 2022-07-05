@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert">
+	<parameter id="id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id='documento_id' type='integer' required='false' label='${lbl:b_contratante}' maxlen='10'/>
+	<parameter id='codigo_doc' type='varchar' required='false' label='${lbl:b_num_control}' maxlen='100'/>
+	<parameter id='nombre_doc' type='varchar' required='false' label='${lbl:b_contratante}' maxlen='100'/>
+	<parameter id='contratante_id' type='integer' required='false' label='${lbl:b_num_control}' maxlen='10'/>
+	<parameter id='codigo_ter' type='varchar' required='false' label='${lbl:b_contratante}' maxlen='100'/>
+	<parameter id='descripcion_ter' type='varchar' required='false' label='${lbl:b_num_control}' maxlen='100'/>
+	<parameter id='num_control_cont' type='integer' required='false' label='${lbl:b_num_control}' maxlen='10'/>
+	<parameter id="source" type="varchar" required="false" label="Source" maxlen="20" />
+	<parameter id='aux_maneja_sucursal' type='varchar' required='false' label="SUCURSAL" maxlen='100'/>
+</validator>

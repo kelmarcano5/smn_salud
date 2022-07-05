@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnpresupuesto.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_presupuesto}</pdf-title>
+	<pdf-logo url='/images/logo-dinamica.png' scale='100' />
+
+	<pdf-report pageSize="letter" rotate="false">
+		<table recordset='query-smnpresupuesto.sql' width='100' spacingBefore='40'>
+			<col name='pre_numero_control' title='${lbl:b_budget_number}' width='14' align='left' />
+			<col name='pre_fecha' title='${lbl:b_budget_date}' width='14' align='center' format='dd-MM-yyyy' />
+			<col name='pre_titular_combo' title='${lbl:b_titular}' width='14' align='center' format='######' />
+			<col name='pre_beneficiario_combo' title='${lbl:b_beneficiario}' width='14' align='center' format='######' />
+			<col name='pre_plan_combo' title='${lbl:b_plan}' width='14' align='center' format='######' />
+			<col name='pre_auxiliar_combo' title='${lbl:b_auxiliary}' width='14' align='center' format='######' />
+			<col name='pre_fecha_registro' title='${lbl:b_store_date}' width='14' align='center' format='dd-MM-yyyy' />
+		</table>
+
+	</pdf-report>
+</config>

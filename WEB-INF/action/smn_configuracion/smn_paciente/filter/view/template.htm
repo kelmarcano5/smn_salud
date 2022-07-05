@@ -1,0 +1,58 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+	<col width='9%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="11" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_clase_auxiliar_rf","query-smnpaciente.sql")'>${lbl:b_auxiliary_class}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf","query-smnpaciente.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("smn_clasificacion_abc_rf","query-smnpaciente.sql")'>${lbl:b_abc_clasification}</th>
+		<th class='sortable' onclick='sortBy("smn_promotor_rf","query-smnpaciente.sql")'>${lbl:b_promotor}</th>
+		<th class='sortable' onclick='sortBy("smn_forma_pago_rf","query-smnpaciente.sql")'>${lbl:b_way_to_pay}</th>
+		<th class='sortable' onclick='sortBy("pac_vigencia","query-smnpaciente.sql")'>${lbl:b_validation_date}</th>
+		<th class='sortable' onclick='sortBy("pac_estatus","query-smnpaciente.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("pac_fecha_registro","query-smnpaciente.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_paciente_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_paciente_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_paciente_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_clase_auxiliar_rf}</td>
+		<td>${fld:smn_auxiliar_rf}</td>
+		<td>${fld:smn_clasificacion_abc_rf}</td>
+		<td>${fld:smn_promotor_rf}</td>
+		<td>${fld:smn_forma_pago_rf}</td>
+		<td>${fld:pac_vigencia@dd-MM-yyyy}</td>
+		<td align='left'>${fld:pac_estatus}</td>
+		<td>${fld:pac_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

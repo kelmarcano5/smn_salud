@@ -1,0 +1,55 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('dis_codigo','query-smndispositivos.sql')" >${lbl:b_codigo_dis}</th>
+		<th class='sortable' onclick="sortBy('dis_nombre','query-smndispositivos.sql')" >${lbl:b_nombre_dis}</th>
+		<th class='sortable' onclick="sortBy('dis_tipo_combo','query-smndispositivos.sql')" >${lbl:b_tipo_dispositivo}</th>
+		<th class='sortable' onclick="sortBy('smn_entidades_rf_combo','query-smndispositivos.sql')" >${lbl:b_entidades}</th>
+		<th class='sortable' onclick="sortBy('smn_sucursales_rf_combo','query-smndispositivos.sql')" >${lbl:b_sucursales}</th>
+		<th class='sortable' onclick="sortBy('smn_areas_servicios_rf_combo','query-smndispositivos.sql')" >${lbl:b_area_servicio}</th>
+		<th class='sortable' onclick="sortBy('dis_fecha_registro','query-smndispositivos.sql')" >${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_dispositivos_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_dispositivos_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_dispositivos_id}')" title="${lbl:b_edit_button}"></td>
+		<td align="left">${fld:dis_codigo}</td>
+		<td align="left">${fld:dis_nombre}</td>
+		<td align="left">${fld:dis_tipo_combo}</td>
+		<td align="center">${fld:smn_entidades_rf_combo}</td>
+		<td align="center">${fld:smn_sucursales_rf_combo}</td>
+		<td align="center">${fld:smn_areas_servicios_rf_combo}</td>
+		<td align="center">${fld:dis_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

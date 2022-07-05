@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_planes>
+	<detail>
+		<rows>		
+		<record pla_fecha_registro="${fld:pla_fecha_registro}"    pla_empresa="${fld:pla_empresa}"    pla_modelo_contrato="${fld:pla_modelo_contrato}"    pla_inactivo="${fld:pla_inactivo}"    pla_vigencia_hasta="${fld:pla_vigencia_hasta}"    pla_vigencia_desde="${fld:pla_vigencia_desde}"    pla_descripcion="${fld:pla_descripcion}"    pla_codigo="${fld:pla_codigo}"    pla_fecha_registro="${fld:pla_fecha_registro}"    pla_auxiliar="${fld:pla_auxiliar}"    pla_clase_auxiliar="${fld:pla_clase_auxiliar}"    pla_empresa="${fld:pla_empresa}"    pla_modelo_contrato="${fld:pla_modelo_contrato}"    pla_inactivo="${fld:pla_inactivo}"    pla_vigencia_hasta="${fld:pla_vigencia_hasta}"    pla_vigencia_desde="${fld:pla_vigencia_desde}"    pla_descripcion="${fld:pla_descripcion}"    pla_codigo="${fld:pla_codigo}"    />
+		</rows>
+	</detail>
+</smn_planes>

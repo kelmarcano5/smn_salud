@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Ver resultado de consulta paginado
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-viewchart.sql" source="session" scope="transaction" />
+		<recordset id="total" source="session" scope="transaction" />
+		<recordset id="viewchart.filter" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>template.htm</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/plain; charset=iso-8859-1</content-type>
+		<print mode="table" recordset="query-viewchart.sql" tag="rows" alternate-colors="true" />
+		<print mode="form" recordset="total" />
+		<print mode="form" recordset="viewchart.filter" />
+	</output>
+
+</config>

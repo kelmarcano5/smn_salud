@@ -1,0 +1,34 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="4">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th class='sortable' onclick='sortBy("smn_documentos_id_combo","query-smnreldocumentosservicios.sql")'>${lbl:b_contrato_doc}</th>
+		<th class='sortable' onclick='sortBy("smn_servicios_id_combo","query-smnreldocumentosservicios.sql")'>${lbl:b_service}</th>
+		<th class='sortable' onclick='sortBy("rdt_tipo_generacion_combo","query-smnreldocumentosservicios.sql")'>${lbl:b_tipo_generacion}</th>
+		<th class='sortable' onclick='sortBy("rdt_hora_generacion","query-smnreldocumentosservicios.sql")'>${lbl:b_hora_generacion}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td>${fld:smn_documentos_id_combo}</td>
+		<td>${fld:smn_servicios_id_combo}</td>
+		<td>${fld:rdt_tipo_generacion_combo}</td>
+		<td align='left'>${fld:rdt_hora_generacion}</td>
+	</tr>
+	</rows>
+
+</table>

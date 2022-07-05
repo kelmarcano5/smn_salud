@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='cob_codigo' type='varchar' required='true' label='${lbl:b_cob_code}' maxlen='16'/>
+	<parameter id='cob_descripcion' type='varchar' required='true' label='${lbl:b_cob_des}' maxlen='56'/>
+	<parameter id='cob_descuento' type='double' required='true' label='${lbl:b_descuento}' maxlen='10'/>
+	<parameter id='cob_tiempo_servicio' type='integer' required='true' label='${lbl:b_service_time}' maxlen='1'/>
+	<parameter id='cob_unidad_tiempo_rf' type='integer' required='true' label='${lbl:b_cob_unidad_tiempo}' maxlen='10'/>
+	<parameter id='cob_deducible' type='double' required='true' label='${lbl:b_deducible}' maxlen='10'/>
+	<parameter id='cob_time_desp_afil' type='integer' required='true' label='${lbl:b_time_after_affiliation}' maxlen='10'/>
+	<parameter id='cob_otros_centros' type='varchar' required='true' label='${lbl:b_another_centers}' maxlen='1'/>
+	<parameter id='cob_cantidad_servicio' type='integer' required='true' label='${lbl:b_qty}' maxlen='10'/>
+	<parameter id='cob_vigencia_desde' type='date' required='true' label='${lbl:b_validation_date_from}' maxlen='10'/>
+	<parameter id='cob_vigencia_hasta' type='date' required='true' label='${lbl:b_validation_date_until}' maxlen='10'/>
+	<parameter id='cob_cobertura_desde' type='double' required='true' label='${lbl:b_coverage_from}' maxlen='10'/>
+	<parameter id='cob_cobertura_hasta' type='double' required='true' label='${lbl:b_coverage_until}' maxlen='10'/>
+	<parameter id='cob_deducible_centro' type='double' required='true' label='${lbl:b_deductible_center}' maxlen='10'/>
+	<parameter id='cob_porc_deducible' type='double' required='true' label='${lbl:b_porcentaje_deducible}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_cobertura}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.ArrayNotEmptyValidator' on-error-label='Seleccione al menos un ítem.' parameter-name='smn_localidad_id' id='smn_localidad_id'/>
+	<custom-validator classname='dinamica.validators.ArrayToRecordset' paramName='smn_localidad_id' recordsetId='query-smn_localidad.sql' colName='smn_localidad_id' colType='integer'/>
+	<custom-validator classname='dinamica.validators.ArrayNotEmptyValidator' on-error-label='Seleccione al menos un ítem.' parameter-name='smn_horarios_id' id='smn_horarios_id'/>
+	<custom-validator classname='dinamica.validators.ArrayToRecordset' paramName='smn_horarios_id' recordsetId='query-smn_horario.sql' colName='smn_horarios_id' colType='integer'/>
+	
+</validator>
+

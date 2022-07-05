@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smningresomovimiento.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_ingreso_mov}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_ingreso_mov}.pdf</pdf-file-name>
+
+	<pdf-report 
+		pageSize="letter" 
+		rotate="false"
+		footer="false" 
+		header="true">
+		<record recordset='query-smningresomovimiento.sql' width='100' spacingBefore='40'>
+			<col name='smn_ingreso_id' title='${lbl:b_ingreso}' width='5' align='left'  />
+			<col name='smn_servicios_rf_combo' title='${lbl:b_service}' width='5' align='left'  />
+			<col name='smn_componente_rf_combo' title='${lbl:b_component}' width='5' align='left'  />
+			<col name='inm_accion' title='${lbl:b_accion}' width='5' align='left' />
+			<col name='smn_tipo_consulta_rf_combo' title='${lbl:b_tipo_consulta}' width='5' align='left'  />
+			<col name='smn_grupo_prestador_servicio_rf_combo' title='${lbl:b_grupo_prestador_servicio}' width='5' align='left'  />
+			<col name='smn_prestador_servicio_rf_combo' title='${lbl:b_service_providers}' width='5' align='left'  />
+			<col name='smn_motivos_id_combo' title='${lbl:b_reason}' width='5' align='left'  />
+			<col name='smn_clase_auxiliar_rf' title='${lbl:b_auxiliary_class_mov_cita}@(select smn_base.smn_clase_auxiliar.smn_clase_auxiliar_id as id, smn_base.smn_clase_auxiliar.cla_codigo|| ' - ' || smn_base.smn_clase_auxiliar.cla_nombre as item from smn_base.smn_clase_auxiliar where smn_base.smn_clase_auxiliar.cla_codigo = 'PA')' width='5' align='left'  />
+			<col name='smn_auxiliar_rf' title='${lbl:b_auxiliary_mov_citas}@(select smn_base.smn_auxiliar_persona_natural.smn_auxiliar_persona_natural_id as id, smn_base.smn_auxiliar_persona_natural.ant_num_doc_oficial || ' - ' || smn_base.smn_auxiliar_persona_natural.ant_nombres || ' - ' || smn_base.smn_auxiliar_persona_natural.ant_apellidos as item from smn_base.smn_auxiliar_persona_natural where smn_base.smn_auxiliar_persona_natural.smn_clase_auxiliar_id = 26 order by smn_base.smn_auxiliar_persona_natural.ant_num_doc_oficial)' width='5' align='left'  />
+			<col name='inm_ordenante_descripcion' title='${lbl:b_ordenante_descripcion}' width='5' align='left' />
+			<col name='smn_sintoma_id_combo' title='${lbl:b_symptom}' width='5' align='left'  />
+			<col name='inm_tipo_orden_combo' title='${lbl:b_tipo_orden}' width='5' align='left' />
+			<col name='inm_num_orden_medica' title='${lbl:b_orden_medica}' width='5' align='left'  />
+			<col name='eci_descripcion_combo' title='${lbl:b_status}' width='5' align='left' />
+			<col name='inm_idioma' title='${lbl:s_profile_lang}' width='5' align='left' />
+			<col name='inm_usuario' title='${lbl:b_users}' width='5' align='left' />
+			<col name='inm_fecha_registro' title='${lbl:b_store_date}' width='5' align='left' format='dd-MM-yyyy' />
+			<col name='inm_hora' title='${lbl:s_loginhist_col2}' width='5' align='left' />
+
+		</record>
+
+	</pdf-report>
+</config>

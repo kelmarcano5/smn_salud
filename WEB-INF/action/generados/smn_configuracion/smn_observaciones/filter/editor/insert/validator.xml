@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='obs_codigo' type='varchar' required='true' label='${lbl:b_code_obs}' maxlen='16'/>
+	<parameter id='obs_descripcion' type='varchar' required='true' label='${lbl:b_description_obs}' maxlen='56'/>
+	<parameter id='obs_tipo' type='varchar' required='false' label='${lbl:b_tipo_obs}' maxlen='2'/>
+</validator>

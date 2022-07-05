@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>${lbl:b_prescription_medic}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />	
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+   	<script type="text/javascript" src="${def:context}/action/jqueryi"></script>
+</head>
+<body>
+	<div id="recipe" style="width:100%">
+		<br>
+		<div align="left"><img src="${def:context}/images/logo_vistacalifornia.png" border="0" alt="" vspace="0" hspace="0" width="250" height="100"></div></img>
+
+		<table style="margin-left: 5mm; margin: auto" class="record">
+			<thead>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_enterprise}:</td>
+					<td>${fld:smn_entidades_rf_combo}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_tax_id}:</td>
+					<td>${fld:ent_rif}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_auxiliary_pa}:</td>
+					<td>${fld:aux_nombre_paciente}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_cedula}:</td>
+					<td>${fld:aux_cedula}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_age}:</td>
+					<td>${fld:aux_edad@###}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_sex}:</td>
+					<td>${fld:aux_sexo}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_service_provider}:</td>
+					<td>${fld:smn_prestador_servicio_rf}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_first_name}:</td>
+					<td>${fld:aux_nombre_prestador_servicio}</td>
+				</tr>
+			</thead>
+		</table>
+		<br><br>
+		<table style="margin-left: 5mm; margin: auto" class="datagrid">
+			<thead>
+				<tr>
+					<td style=" font-weight: bold;" align="center">${lbl:b_medicine}</td>
+					<!-- <td style=" font-weight: bold;" align="center">${lbl:b_measurement_unit}</td>
+					<td style=" font-weight: bold;" align="center">${lbl:b_dose}</td>
+					<td style=" font-weight: bold;" align="center">${lbl:b_frecuency}</td>
+					<td style=" font-weight: bold;" align="center">${lbl:b_treatment_time}</td> -->
+					<td style=" font-weight: bold;" align="center">${lbl:b_especification}</td>
+					<!-- <td style=" font-weight: bold;" align="center">${lbl:b_treatment_day}</td> -->
+				</tr>
+			</thead>
+			<tbody>
+				<rows>
+					<tr>
+						<td align="center">${fld:smn_item_rf_combo}</td>
+						<!-- <td align="center">${fld:smn_unidad_medida_rf_combo}</td> -->
+						<!-- <td align="center">${fld:rmd_dosis}</td>
+						<td align="center">${fld:rmd_frecuencia}</td>
+						<td align="center">${fld:rmd_tiempo_frecuencia_combo}</td> -->
+						<td align="center">${fld:rmd_especificacion}</td>
+						<!-- <td align="center">${fld:rmd_dias_tratamiento}</td> -->
+					</tr>
+				</rows>
+			</tbody>
+		</table>
+		<br>
+		<br>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript" >
+  	onload = function() {
+  		$('#recipe').printThis();
+  	}
+</script>
+
+

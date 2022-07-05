@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_contrato_modulo>
+	<detail>
+		<rows>		
+		<record ctm_fecha_registro="${fld:ctm_fecha_registro}"    ctm_fecha_renovacion="${fld:ctm_fecha_renovacion}"    ctm_direccion_rf="${fld:ctm_direccion_rf}"    ctm_porcentaje_incremento="${fld:ctm_porcentaje_incremento}"    ctm_monto="${fld:ctm_monto}"    ctm_precio="${fld:ctm_precio}"    ctm_cantidad="${fld:ctm_cantidad}"    ctm_dia_factura="${fld:ctm_dia_factura}"    smn_documento_id="${fld:smn_documento_id}"    smn_contrato_base_rf="${fld:smn_contrato_base_rf}"    ctm_fecha_registro="${fld:ctm_fecha_registro}"    ctm_fecha_renovacion="${fld:ctm_fecha_renovacion}"    ctm_direccion_rf="${fld:ctm_direccion_rf}"    ctm_porcentaje_incremento="${fld:ctm_porcentaje_incremento}"    ctm_monto="${fld:ctm_monto}"    ctm_precio="${fld:ctm_precio}"    ctm_cantidad="${fld:ctm_cantidad}"    ctm_dia_factura="${fld:ctm_dia_factura}"    smn_documentos_id="${fld:smn_documentos_id}"    smn_contrato_base_rf="${fld:smn_contrato_base_rf}"    ctm_fecha_registro="${fld:ctm_fecha_registro}"    ctm_fecha_renovacion="${fld:ctm_fecha_renovacion}"    ctm_direccion_rf="${fld:ctm_direccion_rf}"    ctm_porcentaje_incremento="${fld:ctm_porcentaje_incremento}"    ctm_monto="${fld:ctm_monto}"    ctm_precio="${fld:ctm_precio}"    ctm_cantidad="${fld:ctm_cantidad}"    ctm_dia_factura="${fld:ctm_dia_factura}"    smn_documento_id="${fld:smn_documento_id}"    smn_contrato_base_rf="${fld:smn_contrato_base_rf}"    />
+		</rows>
+	</detail>
+</smn_contrato_modulo>

@@ -1,0 +1,27 @@
+<html>
+
+	<head>
+		<link rel="stylesheet" type="text/css" href="${def:context}/default.css" />
+		<title>${lbl:b_security_system}</title>
+	</head>
+	
+	<center>
+	
+		<br>
+		
+		<div class="alert" style="width:40%">
+		
+			${lbl:s_session_terminated}
+			
+			<br><br>
+			
+				<input type="button" class="button"
+				onclick="window.location='${def:context}/action/index'; window.location.reload();" value="${lbl:s_login_again}">
+			
+			<br>
+		
+		</div>
+	
+	</center>
+
+</html>

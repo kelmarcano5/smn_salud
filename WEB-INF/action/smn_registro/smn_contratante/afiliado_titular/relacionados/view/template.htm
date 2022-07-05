@@ -1,0 +1,57 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='3%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="11">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_afiliados_rf","query-smnrelacionados.sql")'>${lbl:b_rel_afiliado}</th>
+		<th class='sortable' onclick='sortBy("smn_documento_id","query-smnrelacionados.sql")'>${lbl:b_rel_documento}</th>
+		<th class='sortable' onclick='sortBy("rel_numero_control","query-smnrelacionados.sql")'>${lbl:b_rel_num_control}</th>
+		<th class='sortable' onclick='sortBy("smn_clase_rf","query-smnrelacionados.sql")'>${lbl:b_auxiliary_class}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf","query-smnrelacionados.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("smn_parentesco_rf","query-smnrelacionados.sql")'>${lbl:b_rel_parentesco}</th>
+		<th class='sortable' onclick='sortBy("rel_fecha_registro","query-smnrelacionados.sql")'>${lbl:b_store_date}</th>
+		<th>AD</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_relacionado_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_relacionado_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_relacionado_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_afiliados_rf}</td>
+		<td>${fld:smn_documento_id}</td>
+		<td>${fld:rel_numero_control}</td>
+		<td>${fld:smn_clase_rf}</td>
+		<td>${fld:smn_auxiliar_rf}</td>
+		<td>${fld:smn_parentesco_rf}</td>
+		<td>${fld:rel_fecha_registro@dd-MM-yyyy}</td>
+		<td><img src="${def:context}/images/view-list-details.png" onclick="documentoaf('${fld:smn_afiliados_id}','${fld:afiliado}','${fld:aux_codigo}','${fld:aux_descripcion}')" title="${lbl:b_document}"></td>
+
+	</tr>
+	</rows>
+
+</table>

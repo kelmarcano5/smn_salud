@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_ingresos_id_name' type='varchar' required='true' label='${lbl:b_income}'/>
+	<parameter id='smn_ingresos_id' type='integer' required='false' label='${lbl:b_income}' maxlen='10'/>
+	<parameter id='smn_mov_caja_cabecera_id' type='integer' required='true' label='${lbl:b_movement_caj}' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_rf' type='integer' required='true' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='psc_estatus' type='varchar' required='true' label='${lbl:b_status}' maxlen='2'/>
+
+
+</validator>

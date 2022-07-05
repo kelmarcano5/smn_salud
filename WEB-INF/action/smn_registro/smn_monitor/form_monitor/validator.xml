@@ -1,0 +1,6 @@
+ <validator onerror="/action/error/validation/alert" id="ruta_paciente">
+ 	<parameter id="entidad_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="sucursal_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="smn_areas_servicios" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="smn_unidad_servicios" type="integer" required="true" label="ID" maxlen="10" />
+ </validator>

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_ingreso_id' type='integer' required='true' label='${lbl:b_ingreso}' maxlen='10'/>
+	<parameter id='smn_presupuesto_id' type='integer' required='true' label='${lbl:b_presupuesto}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='coa_hora_solicitada' type='integer' required='false' label='${lbl:b_solicited_hours}' maxlen='10'/>
+	<parameter id='coa_ejecutivo_atención_pagador' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='coa_observación_inicial' type='integer' required='false' label='${lbl:b_observation_init}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_servicios_clinicos_ml' type='double' required='false' label='${lbl:b_monto_solicitado_sc_ml}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_medicinas_y_mmq_ml' type='double' required='false' label='${lbl:b_monto_solicitado_mm_ml}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_honorarios_ml' type='double' required='false' label='${lbl:b_monto_solicitado_ho_ml}' maxlen='10'/>
+	<parameter id='coa_monto_total_solicitado_ml' type='double' required='false' label='${lbl:b_monto_solicitado_total_ml}' maxlen='10'/>
+	<parameter id='smn_moneda_rf' type='integer' required='true' label='${lbl:b_coins}' maxlen='10'/>
+	<parameter id='smn_tasa_rf' type='integer' required='true' label='${lbl:b_exchange_rate}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_servicios_clinicos_ma' type='double' required='false' label='${lbl:b_monto_solicitado_sc_ma}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_medicinas_y_mmq_ma' type='double' required='false' label='${lbl:b_monto_solicitado_mm_ma}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_honorarios_ma' type='double' required='false' label='${lbl:b_monto_solicitado_ho_ma}' maxlen='10'/>
+	<parameter id='coa_monto_total_solicitado_ma' type='double' required='false' label='${lbl:b_monto_solicitado_total_ma}' maxlen='10'/>
+	<parameter id='coa_fecha_aprobación' type='date' required='false' label='${lbl:b_aprobation_date}' maxlen='10'/>
+	<parameter id='coa_hora_aprobación' type='varchar' required='false' label='${lbl:b_aprobation_hour}' maxlen='8'/>
+	<parameter id='coa_monto_aprobado_servicios_medicos_ml' type='double' required='false' label='${lbl:b_monto_aprobado_sc_ml}' maxlen='10'/>
+	<parameter id='coa_monto_aprobado_medicinas_y_mmq_ml' type='double' required='false' label='${lbl:b_monto_aprobado_mm_ml}' maxlen='10'/>
+	<parameter id='coa_monto_aprobado_honorarios_ml' type='double' required='false' label='${lbl:b_monto_aprobado_ho_ml}' maxlen='10'/>
+	<parameter id='coa_monto_total_aprobado_ml' type='double' required='false' label='${lbl:b_monto_aprobado_total_ml}' maxlen='10'/>
+	<parameter id='coa_monto_aprobado_servicios_medicos_ma' type='double' required='false' label='${lbl:b_monto_aprobado_sc_ma}' maxlen='10'/>
+	<parameter id='coa_monto_aprobado_medicinas_y_mmq_ma' type='double' required='false' label='${lbl:b_monto_aprobado_mm_ma}' maxlen='10'/>
+	<parameter id='coa_monto_aprobado_honorarios_ma' type='double' required='false' label='${lbl:b_monto_aprobado_ho_ma}' maxlen='10'/>
+	<parameter id='coa_monto_total_aprobado_ma' type='double' required='false' label='${lbl:b_monto_aprobado_total_ma}' maxlen='10'/>
+	<parameter id='coa_estatus_proceso' type='varchar' required='false' label='${lbl:b_status_proceso}' maxlen='2'/>
+	<parameter id='coa_estatus_financiero' type='varchar' required='false' label='${lbl:b_status_financiero}' maxlen='2'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_cobertura_admision}' maxlen='10'/>
+
+
+</validator>

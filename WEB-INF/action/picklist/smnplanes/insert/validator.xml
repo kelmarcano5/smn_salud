@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/ajax">
+
+
+	<parameter id='pla_codigo2' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='pla_descripcion2' type='varchar' required='true' label='${lbl:b_description}' maxlen='56'/>
+	<parameter id='pla_vigencia_desde2' type='date' required='true' label='${lbl:b_validation_date_from}
+' maxlen='10'/>
+	<parameter id='pla_vigencia_hasta2' type='date' required='true' label='${lbl:b_validation_date_until}
+' maxlen='10'/>
+	<parameter id='pla_inactivo2' type='varchar' required='true' label='${lbl:b_inactive}' maxlen='1'/>
+	<parameter id='pla_modelo_contrato2' type='integer' required='false' label='${lbl:b_contract_model}' maxlen='10'/>
+	<parameter id='pla_empresa2' type='integer' required='false' label='${lbl:b_entity}' maxlen='10'/>
+	<parameter id='pla_clase_auxiliar2' type='integer' required='false' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='pla_auxiliar2' type='integer' required='false' label='${lbl:b_outsourced_company}' maxlen='10'/>
+
+
+
+</validator>
+
+

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		${lbl:b_citas}
+	</summary>
+
+	<log>false</log>
+	
+	<set-request-attribute id="progress" value="file:/WEB-INF/action/progress/progress.htm"/>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id='query-smn_motivos_id.sql' source='sql' scope='transaction'/>
+		<recordset id='query-cts_clase_auxiliar.sql' source='sql' scope='transaction'/>
+		<recordset id='query-cts_auxiliar.sql' source='sql' scope='transaction'/>
+		<recordset id='query-smn_origen_id.sql' source='sql' scope='transaction'/>
+		<recordset id='query-cts_ordenante.sql' source='sql' scope='transaction'/>
+		<recordset id='query-cts_titular.sql' source='sql' scope='transaction'/>
+		<recordset id='query-smn_estatus_citas_id.sql' source='sql' scope='transaction'/>
+		<recordset id='query-smn_relacionados_id.sql' source='sql' scope='transaction'/>
+		<recordset id='query-smn_citas_mov_id.sql' source='sql' scope='transaction'/>
+		<recordset id='query-smn_servicios.sql' source='sql' scope='transaction'/>
+
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>template.htm</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/html</content-type>
+		<print mode='table' recordset='query-smn_motivos_id.sql' tag='smn_motivos_id_rows'/>
+		<print mode='table' recordset='query-cts_clase_auxiliar.sql' tag='cts_clase_auxiliar_rows'/>
+		<print mode='table' recordset='query-cts_auxiliar.sql' tag='cts_auxiliar_rows'/>
+		<print mode='table' recordset='query-smn_origen_id.sql' tag='smn_origen_id_rows'/>
+		<print mode='table' recordset='query-cts_ordenante.sql' tag='cts_ordenante_rows'/>
+		<print mode='table' recordset='query-cts_titular.sql' tag='cts_titular_rows'/>
+		<print mode='table' recordset='query-smn_estatus_citas_id.sql' tag='smn_estatus_citas_id_rows'/>
+		<print mode='table' recordset='query-smn_relacionados_id.sql' tag='smn_relacionados_id_rows'/>
+		<print mode='table' recordset='query-smn_citas_mov_id.sql' tag='smn_citas_mov_id_rows'/>
+		<print mode='table' recordset='query-smn_servicios.sql' tag='smn_servicios_rows'/>
+
+		<print mode="form" recordset="_request" /> 
+	</output>
+
+</config>

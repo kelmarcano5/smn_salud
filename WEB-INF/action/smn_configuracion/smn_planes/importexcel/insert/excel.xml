@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='pla_codigo' type='varchar' required='true' maxlen='16'/>
+	<parameter id='pla_descripcion' type='varchar' required='true' maxlen='56'/>
+	<parameter id='pla_vigencia_desde' type='date' required='true' maxlen='10'/>
+	<parameter id='pla_vigencia_hasta' type='date' required='true' maxlen='10'/>
+	<parameter id='pla_inactivo_desc_ref' type='varchar' required='true' maxlen='2'/>
+	<parameter id='pla_modelo_contrato_desc_ref' type='varchar' required='false' maxlen='10'/>
+	<parameter id='pla_empresa_desc_ref' type='varchar' required='false' maxlen='10'/>
+
+	<parameter id='pla_inactivo_ref' type='varchar' required='false' maxlen='1'/>
+	<parameter id='pla_modelo_contrato_ref' type='integer' required='false' maxlen='10'/>
+	<parameter id='pla_empresa_ref' type='integer' required='false' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='pla_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='pla_descripcion'/>
+
+
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: pla_inactivo' 
+		parameter='pla_inactivo_ref' 
+		sql='pla_inactivo.sql' 
+		id='pla_inactivo_ref'/>
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: pla_modelo_contrato' 
+		parameter='pla_modelo_contrato_ref' 
+		sql='pla_modelo_contrato.sql' 
+		id='pla_modelo_contrato_ref'/>
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: pla_empresa' 
+		parameter='pla_empresa_ref' 
+		sql='pla_empresa.sql' 
+		id='pla_empresa_ref'/>
+
+</validator>

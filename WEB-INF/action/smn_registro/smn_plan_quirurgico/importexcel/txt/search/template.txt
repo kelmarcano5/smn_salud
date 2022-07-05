@@ -1,0 +1,3 @@
+<rows>
+plq_fecha_registro="${fld:plq_fecha_registro}"    plq_estatus="${fld:plq_estatus}"    plq_observaciones="${fld:plq_observaciones}"    plq_fecha_cirugia="${fld:plq_fecha_cirugia}"    smn_patologia_rf="${fld:smn_patologia_rf}"    smn_auxiliar_rf="${fld:smn_auxiliar_rf}"    smn_clase_auxiliar_rf="${fld:smn_clase_auxiliar_rf}"    smn_contratante_id="${fld:smn_contratante_id}"    smn_presupuesto_id="${fld:smn_presupuesto_id}"    smn_habitaciones_id="${fld:smn_habitaciones_id}"    smn_sucursal_rf="${fld:smn_sucursal_rf}"    smn_entidad_rf="${fld:smn_entidad_rf}"    
+</rows>

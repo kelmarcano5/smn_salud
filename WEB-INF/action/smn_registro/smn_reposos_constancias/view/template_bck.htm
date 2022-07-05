@@ -1,0 +1,61 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+	<col width='11%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="12" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_ingreso_id","query-smnrepososconstancias.sql")'>${lbl:b_income}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf","query-smnrepososconstancias.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("smn_diagnostico_rf","query-smnrepososconstancias.sql")'>${lbl:b_diagnostic}</th>
+		<th class='sortable' onclick='sortBy("rpc_fecha_desde","query-smnrepososconstancias.sql")'>${lbl:b_init_date}</th>
+		<th class='sortable' onclick='sortBy("rpc_fecha_hasta","query-smnrepososconstancias.sql")'>${lbl:b_end_date}</th>
+		<th class='sortable' onclick='sortBy("rpc_fecha_reintegro","query-smnrepososconstancias.sql")'>${lbl:b_reintegro_date}</th>
+		<th class='sortable' onclick='sortBy("rpc_motivo","query-smnrepososconstancias.sql")'>${lbl:b_reason}</th>
+		<th class='sortable' onclick='sortBy("rpc_observacion","query-smnrepososconstancias.sql")'>${lbl:b_observations}</th>
+		<th class='sortable' onclick='sortBy("rpc_fecha_registro","query-smnrepososconstancias.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_reposos_constancias_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_reposos_constancias_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_reposos_constancias_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_ingreso_id}</td>
+		<td>${fld:smn_auxiliar_rf}</td>
+		<td>${fld:smn_diagnostico_rf}</td>
+		<td>${fld:rpc_fecha_desde@dd-MM-yyyy}</td>
+		<td>${fld:rpc_fecha_hasta@dd-MM-yyyy}</td>
+		<td>${fld:rpc_fecha_reintegro@dd-MM-yyyy}</td>
+		<td>${fld:rpc_motivo}</td>
+		<td align='left'>${fld:rpc_observacion}</td>
+		<td>${fld:rpc_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

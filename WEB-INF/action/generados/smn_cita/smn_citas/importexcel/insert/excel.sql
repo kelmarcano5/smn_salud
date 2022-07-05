@@ -1,0 +1,42 @@
+INSERT INTO smn_salud.smn_citas
+(
+	smn_citas_id,
+	cts_num_control,
+	cts_num_doc_oficial,
+	smn_motivos_id,
+	cts_clase_auxiliar,
+	cts_auxiliar,
+	smn_origen_id,
+	cts_ordenante,
+	cts_tipo_orden,
+	cts_titular,
+	smn_estatus_citas_id,
+	smn_relacionados_id,
+	smn_observaciones_citas_id,
+	cts_idioma,
+	cts_usuario,
+	cts_fecha_registro,
+	cts_hora,
+	smn_citas_mov_id
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_citas},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}',
+	?
+)

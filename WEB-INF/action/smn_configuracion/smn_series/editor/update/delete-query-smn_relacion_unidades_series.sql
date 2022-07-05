@@ -1,0 +1,1 @@
+delete from smn_salud.smn_relacion_unidades_series WHERE smn_series_id= ${fld:id}

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnrutapaciente.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_ruta_paciente}</pdf-title>
+	<pdf-logo url='/images/logo-dinamica.png' scale='100' />
+
+	<pdf-report pageSize="letter" rotate="false">
+		<record recordset='filter.params' title='Filtro de Búsqueda' noFilterMsg='-- Sin filtro de búsqueda --' width='55' spacingBefore='15'>
+			<col name='smn_auxiliar_rf' title='${lbl:b_auxiliary}'  format='######' align='center' />
+			<col name='rta_numero_documento_identidad' title='${lbl:b_rta_numero_documento_identidad}'  align='center' />
+			<col name='smn_entidad_rf' title='${lbl:b_entidades_rp}'  format='######' align='center' />
+			<col name='smn_sucursal_rf' title='${lbl:b_sucursal_rp}'  format='######' align='center' />
+			<col name='smn_area_servicio_rf' title='${lbl:b_area_rp}'  format='######' align='center' />
+			<col name='smn_unidad_servicio_rf' title='${lbl:b_units_service}'  format='######' align='center' />
+			<col name='smn_grupo_prestador_rf' title='${lbl:b_groups_of_providers}'  format='######' align='center' />
+			<col name='smn_prestador_servicio_rf' title='${lbl:b_services_providers}'  format='######' align='center' />
+			<col name='rta_estatus' title='${lbl:b_status}'  align='center' />
+			<col name='smn_serie_id' title='${lbl:b_serie}'  align='center' />
+			<col name='rta_ticket' title='${lbl:b_rta_ticket}'  format='######' align='center' />
+			<col name='rta_hora_llegada_unidad' title='${lbl:b_time_end}'  align='center' />
+			<col name='rta_hora_salida_unidad' title='${lbl:b_time_exit}'  align='center' />
+			<col name='rta_ejecutivo_asignado' title='${lbl:b_ejecutivo_asignado}'  format='######' align='center' />
+			<col name='rta_fecha_registro' title='${lbl:b_store_date}'  format='dd-MM-yyyy' align='center' />
+		</record>
+		<table recordset='query-smnrutapaciente.sql' width='100' spacingBefore='10'>
+			<col name='smn_entidad_rf_combo' title='${lbl:b_entidades_rp}' width='7' align='center' format='######' />
+			<col name='smn_sucursal_rf_combo' title='${lbl:b_sucursal_rp}' width='7' align='center' format='######' />
+			<col name='smn_area_servicio_rf_combo' title='${lbl:b_area_rp}' width='7' align='center' format='######' />
+			<col name='smn_serie_id_combo' title='${lbl:b_serie}' width='7' align='left' />
+			<col name='rta_ticket' title='${lbl:b_rta_ticket}' width='7' align='center' format='######' />
+			<col name='rta_secuencia' title='${lbl:b_rta_sequence}' width='7' align='center' format='######' />
+			<col name='smn_unidad_servicio_rf_combo' title='${lbl:b_units_service}' width='7' align='center' format='######' />
+			<col name='rta_numero_documento_identidad' title='${lbl:b_rta_numero_documento_identidad}' width='7' align='left' />
+			<col name='smn_auxiliar_rf_combo' title='${lbl:b_auxiliary}' width='7' align='center' format='######' />
+			<col name='rta_estatus_combo' title='${lbl:b_status}' width='7' align='left' />
+			<col name='rta_hora_llegada_unidad' title='${lbl:b_time_end}' width='7' align='left' />
+			<col name='rta_hora_salida_unidad' title='${lbl:b_time_exit}' width='7' align='left' />
+			<col name='rta_ejecutivo_asignado_combo' title='${lbl:b_ejecutivo_asignado}' width='7' align='center' format='######' />
+			<col name='rta_fecha_registro' title='${lbl:b_store_date}' width='7' align='center' format='dd-MM-yyyy' />
+		</table>
+
+	</pdf-report>
+</config>

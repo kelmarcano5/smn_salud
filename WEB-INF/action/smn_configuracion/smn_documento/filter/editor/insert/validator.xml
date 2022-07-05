@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_tipo_documento_id' type='integer' required='true' label='${lbl:b_tipo_documento}' maxlen='10'/>
+	<parameter id='smn_documento_general_rf' type='integer' required='true' label='${lbl:b_general_documents}' maxlen='10'/>
+	<parameter id='doc_codigo' type='varchar' required='true' label='${lbl:b_codigo_documento}' maxlen='10'/>
+	<parameter id='doc_nombre' type='varchar' required='true' label='${lbl:b_nombre_documento}' maxlen='100'/>
+	<parameter id='doc_maneja_moneda_alt' type='varchar' required='true' label='${lbl:b_nombre_documento}' maxlen='2'/>
+	<parameter id='smn_categoria_justificacion_rf' type='integer' required='false' label='Categoria de Justificacion' maxlen='10'/>
+
+	<parameter id='tca_tipo_tasa' type='varchar' required='false' label='${lbl:b_codigo_documento}' maxlen='2'/>
+	<parameter id='doc_contratante' type='varchar' required='false' label='${lbl:b_codigo_documento}' maxlen='2'/>
+	<parameter id='doc_afiliacion_persona_natural' type='varchar' required='false' label='${lbl:b_codigo_documento}' maxlen='2'/>
+
+	<parameter id='smn_servicios_cobertura' type='integer' required='false' label='Servicio Cobertura' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='doc_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarNombre.sql'
+			id='doc_nombre'/>
+
+   <parameter id='smn_entidades_rf' type='integer' required='true' label='${lbl:b_general_documents}' maxlen='10'/>
+   <parameter id='smn_sucursales_rf' type='integer' required='false' label='${lbl:b_general_documents}' maxlen='10'/>
+   <parameter id='smn_caja_rf' type='integer' required='true' label='${lbl:b_general_documents}' maxlen='10'/>
+</validator>

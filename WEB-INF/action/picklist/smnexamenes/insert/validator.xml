@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/ajax">
+
+
+	<parameter id='svc_codigo2' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='svc_descripcion2' type='varchar' required='true' label='${lbl:b_description}' maxlen='56'/>
+	<parameter id='smn_tipo_servicio_rf2' type='integer' required='false' label='${lbl:b_service_type}' maxlen='10'/>
+	<parameter id='svc_frecuencia2' type='integer' required='false' label='${lbl:b_frecuency}' maxlen='10'/>
+	<parameter id='smn_unidad_medida_rf2' type='integer' required='false' label='${lbl:b_measurement_unit}' maxlen='10'/>
+	<parameter id='smn_precio_moneda_local2' type='double' required='true' label='${lbl:b_coin_local_price}' maxlen='10'/>
+	<parameter id='smn_moneda_rf2' type='integer' required='false' label='${lbl:b_coin}' maxlen='10'/>
+	<parameter id='smn_precio_moneda_alterna2' type='double' required='false' label='${lbl:b_coin_altern_price}' maxlen='10'/>
+	<parameter id='smn_descuento_rf2' type='integer' required='false' label='${lbl:b_discount}' maxlen='10'/>
+	<parameter id='svc_monto_desc_ml2' type='double' required='false' label='' maxlen='10'/>
+	<parameter id='svc_monto_desc_ma2' type='double' required='false' label='' maxlen='10'/>
+	<parameter id='svr_precio_neto2' type='double' required='true' label='' maxlen='10'/>
+	<parameter id='svc_precio_neto_ma2' type='double' required='false' label='' maxlen='10'/>
+	<parameter id='svc_req_prestador2' type='varchar' required='true' label='' maxlen='1'/>
+	<parameter id='smn_clase_auxiliar_rf2' type='integer' required='false' label='' maxlen='10'/>
+	<parameter id='svc_requisitos2' type='varchar' required='false' label='${lbl:b_requirements}' maxlen='2048'/>
+	<parameter id='svc_vigencia_desde2' type='date' required='true' label='${lbl:b_validation_date_from}' maxlen='10'/>
+	<parameter id='svc_vigencia_hasta2' type='date' required='true' label='${lbl:b_validation_date_to}' maxlen='10'/>
+	<parameter id='smn_documento_general_rf2' type='integer' required='true' label='' maxlen='10'/>
+	<parameter id='svc_inactivo2' type='varchar' required='true' label='${lbl:b_inactive}' maxlen='1'/>
+
+
+
+</validator>
+
+

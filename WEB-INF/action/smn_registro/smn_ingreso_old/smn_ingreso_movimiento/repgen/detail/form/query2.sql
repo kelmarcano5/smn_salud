@@ -1,0 +1,22 @@
+select
+		smn_salud.smn_ingreso_movimiento.smn_ingresos_mov_id,
+	smn_salud.smn_ingreso_movimiento.smn_ingreso_id,
+	smn_salud.smn_ingreso_movimiento.smn_servicios_rf,
+	smn_salud.smn_ingreso_movimiento.smn_componente_rf,
+	smn_salud.smn_ingreso_movimiento.inm_accion,
+	smn_salud.smn_ingreso_movimiento.smn_tipo_consulta_rf,
+	smn_salud.smn_ingreso_movimiento.smn_grupo_prestador_servicio_rf,
+	smn_salud.smn_ingreso_movimiento.smn_prestador_servicio_rf,
+	smn_salud.smn_ingreso_movimiento.smn_motivos_id,
+	smn_salud.smn_ingreso_movimiento.smn_clase_auxiliar_rf,
+	smn_salud.smn_ingreso_movimiento.smn_auxiliar_rf,
+	smn_salud.smn_ingreso_movimiento.inm_ordenante_descripcion,
+	smn_salud.smn_ingreso_movimiento.smn_sintoma_id,
+	smn_salud.smn_ingreso_movimiento.inm_tipo_orden,
+	smn_salud.smn_ingreso_movimiento.inm_num_orden_medica,
+	smn_salud.smn_ingreso_movimiento.inm_estatus,
+	smn_salud.smn_ingreso_movimiento.inm_fecha_registro
+from
+	smn_salud.smn_ingreso_movimiento 
+where
+	smn_salud.smn_ingreso_movimiento.smn_ingreso_movimiento_id = ${fld:id}

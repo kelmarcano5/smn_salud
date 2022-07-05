@@ -1,0 +1,2 @@
+select smn_salud.smn_estatus_citas.smn_estatus_citas_id as id, smn_salud.smn_estatus_citas.eci_num_secuencia || ' - ' || smn_salud.smn_estatus_citas.eci_descripcion as item from smn_salud.smn_estatus_citas
+where smn_salud.smn_estatus_citas.smn_estatus_citas_id=3 order by smn_salud.smn_estatus_citas.eci_descripcion

@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+	<script type="text/javascript">
+		//invoca la generacion de un PDF en un popup
+		function openPDF()
+		{
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a excel
+		function openExcel() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a xml
+		function openXml(id) {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/xml/search?id=" + id;
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a texto
+		function openTxt(id) {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/txt/search?id=" + id;
+			var w = window.open(url, null, features);
+		}
+		
+		//envio de emails
+		function openEmails() {
+			var uri = "${def:context}${def:actionroot}/email/form";					
+			openDialog("editor0", uri, 980, 600);	
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<!--banner-->
+	<div class="bannerDialog" id="encabezado_tabla">
+		${lbl:b_prescription_medic}
+		<img src="${def:context}/images/pdf.png" onclick="openPDF()" title="${lbl:b_export_pdf}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/excel.png" onclick="openExcel()" title="${lbl:b_export_excel}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="${lbl:b_close_button}" style="float:right; cursor:pointer;"/>
+	</div>
+
+	<table class="record" style="width:500px;">
+		<tr>
+			<td width="40%">${lbl:b_prescription_date}</td>
+			<td style="background-color: white">${fld:rec_fecha@dd-MM-yyyy}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_auxiliary}</td>
+			<td style="background-color: white">${fld:smn_auxiliar_rf}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_pathology}</td>
+			<td style="background-color: white">${fld:smn_patologia_id}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_service_providers}</td>
+			<td style="background-color: white">${fld:smn_prestador_servicio_rf}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_applicant}</td>
+			<td style="background-color: white">${fld:prs_descripcion}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_contratante}</td>
+			<td style="background-color: white">${fld:smn_contratante_id}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_service_providers}</td>
+			<td style="background-color: white">${fld:smn_farmaceuta_prestador_servicio_rf}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_aprobated_date}</td>
+			<td style="background-color: white">${fld:rec_fecha_aprobacion@dd-MM-yyyy}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_estatus}</td>
+			<td style="background-color: white">${fld:rec_estatus}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_store_date}</td>
+			<td style="background-color: white">${fld:rec_fecha_registro@dd-MM-yyyy}</td>
+		</tr>
+
+	</table>
+<table class="datagrid" width="600px">
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="12" style="font-weight:bold;font-size:10pt;">
+			${lbl:b_detail_prescription_medic}
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th width="8%">${lbl:b_detail_prescription_medic}</th>
+		<th width="8%">${lbl:b_active_ingredient}</th>
+		<th width="8%">${lbl:b_item}</th>
+		<th width="8%">${lbl:b_presentacion}</th>
+		<th width="8%">${lbl:b_measurement_unit}</th>
+		<th width="8%">${lbl:b_dose}</th>
+		<th width="8%">${lbl:b_frecuency_time}</th>
+		<th width="8%">${lbl:b_especification}</th>
+		<th width="8%">${lbl:b_treatment_day}</th>
+		<th width="8%">${lbl:b_total_dose}</th>
+		<th width="8%">${lbl:b_observation}</th>
+		<th width="8%">${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows-smnrecipemedicodetalle>
+	<tr>
+		<td align="center">${fld:smn_recipe_medico_detalle_id}</td>
+		<td align="center">${fld:smn_principio_activo_rf}</td>
+		<td>${fld:smn_item_rf}</td>
+		<td align="center">${fld:smn_presentacion_rf}</td>
+		<td>${fld:smn_unidad_medida_rf}</td>
+		<td align="right">${fld:rmd_dosis@#,###,##0.00}</td>
+		<td>${fld:rmd_tiempo_frecuencia}</td>
+		<td align="left">${fld:rmd_especificacion}</td>
+		<td align="center">${fld:rmd_dias_tratamiento}</td>
+		<td align="center">${fld:rmd_dosis_total}</td>
+		<td align="left">${fld:rmd_observacion}</td>
+		<td align="center">${fld:rmd_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows-smnrecipemedicodetalle>
+
+</table>
+
+	<br>
+	<div  align="center">
+		<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog()" class="button">
+	</div>
+
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+SELECT smn_salud.smn_series.sri_codigo as id, smn_salud.smn_series.sri_codigo as item FROM smn_salud.smn_series

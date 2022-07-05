@@ -1,0 +1,21 @@
+select
+		smn_salud.smn_contrato_modulo.smn_contrato_modulo_id,
+select
+		smn_salud.smn_contrato_modulo.smn_contrato_modulo_id,
+select
+		smn_salud.smn_contrato_modulo.smn_contrato_modulo_id,
+select
+		smn_salud.smn_contrato_modulo.smn_contrato_modulo_id,
+	smn_salud.smn_contrato_modulo.smn_contrato_base_rf,
+	smn_salud.smn_contrato_modulo.smn_documento_id,
+	smn_salud.smn_contrato_modulo.ctm_numero_contrato,
+	smn_salud.smn_contrato_modulo.smn_contratante_id,
+	smn_salud.smn_contrato_modulo.ctm_fecha_vigencia_desde,
+	smn_salud.smn_contrato_modulo.ctm_fecha_vigencia_hasta,
+	smn_salud.smn_contrato_modulo.smn_planes_id,
+	smn_salud.smn_contrato_modulo.ctm_monto_contrato,
+	smn_salud.smn_contrato_modulo.ctm_monto_cobertura_afiliado,
+	smn_salud.smn_contrato_modulo.ctm_fecha_registro
+	
+from
+	smn_salud.smn_contrato_modulo

@@ -1,0 +1,26 @@
+select
+		smn_salud.smn_recipe_medico_detalle.smn_recipe_medico_detalle_id,
+	smn_salud.smn_recipe_medico.smn_recipe_medico_id,
+	smn_salud.smn_recipe_medico.rec_estatus as rec_estatus_pl0,
+select
+		smn_salud.smn_recipe_medico_detalle.smn_recipe_medico_detalle_id,
+select
+		smn_salud.smn_recipe_medico_detalle.smn_recipe_medico_detalle_id,
+select
+		smn_salud.smn_recipe_medico_detalle.smn_recipe_medico_detalle_id,
+	smn_salud.smn_recipe_medico_detalle.smn_recipe_medico_id,
+	smn_salud.smn_recipe_medico_detalle.smn_principio_activo_rf,
+	smn_salud.smn_recipe_medico_detalle.smn_item_rf,
+	smn_salud.smn_recipe_medico_detalle.smn_presentacion_rf,
+	smn_salud.smn_recipe_medico_detalle.smn_unidad_medida_rf,
+	smn_salud.smn_recipe_medico_detalle.rmd_dosis,
+	smn_salud.smn_recipe_medico_detalle.rmd_frecuencia,
+	smn_salud.smn_recipe_medico_detalle.rmd_especificacion,
+	smn_salud.smn_recipe_medico_detalle.rmd_dias_tratamiento,
+	smn_salud.smn_recipe_medico_detalle.rmd_fecha_registro
+	
+from
+	smn_salud.smn_recipe_medico,
+	smn_salud.smn_recipe_medico_detalle
+where
+	smn_salud.smn_recipe_medico.smn_recipe_medico_id=smn_salud.smn_recipe_medico_detalle.smn_recipe_medico_id

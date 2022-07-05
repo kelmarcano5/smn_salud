@@ -1,0 +1,1 @@
+select smn_caja.smn_mov_caja_detalle.smn_mov_caja_detalle_id as id, smn_caja.smn_mov_caja_detalle.smn_mov_caja_detalle_id as item from smn_caja.smn_mov_caja_detalle

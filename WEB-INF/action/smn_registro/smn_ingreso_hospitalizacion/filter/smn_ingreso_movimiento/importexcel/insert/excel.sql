@@ -1,0 +1,46 @@
+INSERT INTO smn_salud.smn_ingreso_movimiento
+(
+	smn_ingresos_mov_id,
+	smn_ingreso_id,
+	smn_servicios_rf,
+	smn_componente_rf,
+	inm_accion,
+	smn_tipo_consulta_rf,
+	smn_grupo_prestador_servicio_rf,
+	smn_prestador_servicio_rf,
+	smn_motivos_id,
+	smn_clase_auxiliar_rf,
+	smn_auxiliar_rf,
+	inm_ordenante_descripcion,
+	smn_sintoma_id,
+	inm_tipo_orden,
+	inm_num_orden_medica,
+	inm_estatus,
+	inm_idioma,
+	inm_usuario,
+	inm_fecha_registro,
+	inm_hora
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_ingreso_movimiento},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

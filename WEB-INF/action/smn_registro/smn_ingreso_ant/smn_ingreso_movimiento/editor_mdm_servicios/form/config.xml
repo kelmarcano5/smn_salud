@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		${lbl:b_components}
+	</summary>
+
+	<log>false</log>
+	
+	<set-request-attribute id="progress" value="file:/WEB-INF/action/progress/progress.htm"/>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id='query-cmp_area_servicio.sql' source='sql' scope='transaction'/>
+		<recordset id='query-cmp_unidad_servicio.sql' source='sql' scope='transaction'/>
+		<recordset id='query-cmp_grupo_prestador.sql' source='sql' scope='transaction'/>
+		<recordset id='query-cmp_clase_auxiliar.sql' source='sql' scope='transaction'/>
+		<recordset id='query-cmp_almacen.sql' source='sql' scope='transaction'/>
+		<recordset id='query-cmp_trans_general.sql' source='sql' scope='transaction'/>
+
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>template.htm</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/html</content-type>
+		<print mode='table' recordset='query-cmp_area_servicio.sql' tag='cmp_area_servicio_rows'/>
+		<print mode='table' recordset='query-cmp_unidad_servicio.sql' tag='cmp_unidad_servicio_rows'/>
+		<print mode='table' recordset='query-cmp_grupo_prestador.sql' tag='cmp_grupo_prestador_rows'/>
+		<print mode='table' recordset='query-cmp_clase_auxiliar.sql' tag='cmp_clase_auxiliar_rows'/>
+		<print mode='table' recordset='query-cmp_almacen.sql' tag='cmp_almacen_rows'/>
+		<print mode='table' recordset='query-cmp_trans_general.sql' tag='cmp_trans_general_rows'/>
+
+		<print mode="form" recordset="_request" /> 
+	</output>
+
+</config>

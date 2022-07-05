@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncapacidadesunidad.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_capacidad_unidad}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_capacidad_unidad}">
+				<col id='smn_areas_servicios_rf_combo' label='${lbl:b_area_servicio}' />
+		<col id='smn_unidad_servicio_rf_combo' label='${lbl:b_unidad_servicio}' />
+		<col id='cap_cant_max_pacientes' label='${lbl:b_max_pacientes}' />
+		<col id='cap_cant_min_pacientes' label='${lbl:b_min_pacientes}' />
+		<col id='smn_areas_servicios_rf_combo' label='${lbl:b_area_servicio}' />
+		<col id='smn_unidad_servicio_rf_combo' label='${lbl:b_unidad_servicio}' />
+		<col id='cap_cant_max_pacientes' label='${lbl:b_max_pacientes}' />
+		<col id='cap_cant_min_pacientes' label='${lbl:b_min_pacientes}' />
+		<col id='cap_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnsintoma.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_symptom}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_symptom}">
+				<col id='afi_num_control' label='${lbl:b_code}' />
+		<col id='afi_apellidos' label='${lbl:s_profile_lname}' />
+		<col id='afi_nombres' label='${lbl:s_profile_fname}' />
+		<col id='afi_sexo_combo' label='${lbl:b_sex}' />
+		<col id='afi_tipo_doc_oficial' label='${lbl:b_official_document_type}' />
+		<col id='afi_nro_doc_oficial' label='${lbl:b_official_document_number}' />
+		<col id='afi_idioma' label='${lbl:s_profile_lang}' />
+		<col id='afi_usuario' label='${lbl:b_users}' />
+		<col id='afi_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

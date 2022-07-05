@@ -1,0 +1,2 @@
+ select smn_salud.smn_rel_documentos_servicios.smn_documentos_id  from smn_salud.smn_rel_documentos_servicios
+ where smn_salud.smn_rel_documentos_servicios.smn_documentos_id = (select smn_salud.smn_ingresos.smn_documento_id from smn_salud.smn_ingresos where smn_salud.smn_ingresos.smn_ingresos_id=${fld:id}) and smn_salud.smn_rel_documentos_servicios.smn_servicios_id=${fld:servicio}

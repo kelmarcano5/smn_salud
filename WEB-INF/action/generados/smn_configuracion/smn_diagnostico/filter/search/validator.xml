@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='dgn_codigo' type='varchar' required='false' label='${lbl:b_code_diag}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='dgn_codigo' rule='like' />
+	<parameter id='dgn_descripcion' type='varchar' required='false' label='${lbl:b_description_diag}' maxlen='200'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='dgn_descripcion' rule='like' />
+	<parameter id='dgn_tipo' type='varchar' required='false' label='${lbl:b_tipo_diag}' maxlen='1'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='dgn_tipo' rule='like' />
+</validator>

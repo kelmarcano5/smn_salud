@@ -1,0 +1,34 @@
+INSERT INTO smn_salud.smn_recipe_medico_detalle
+(
+	smn_recipe_medico_detalle_id,
+	smn_recipe_medico_id,
+	smn_principio_activo_rf,
+	smn_item_rf,
+	smn_presentacion_rf,
+	smn_unidad_medida_rf,
+	rmd_dosis,
+	rmd_frecuencia,
+	rmd_tiempo_frecuencia,
+	rmd_especificacion,
+	rmd_dias_tratamiento,
+	rmd_dosis_total,
+	rmd_observacion,
+	rmd_fecha_registro
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_recipe_medico_detalle},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	{d '${def:date}'}
+)

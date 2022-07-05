@@ -1,0 +1,34 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="4">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th class='sortable' onclick='sortBy("put_codigo","query-smnpuestoatencion.sql")'>${lbl:b_code}</th>
+		<th class='sortable' onclick='sortBy("put_descripcion","query-smnpuestoatencion.sql")'>${lbl:b_description}</th>
+		<th class='sortable' onclick='sortBy("put_estatus_combo","query-smnpuestoatencion.sql")'>${lbl:b_estatus}</th>
+		<th class='sortable' onclick='sortBy("put_fecha_registro","query-smnpuestoatencion.sql")'>${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td align='left'>${fld:put_codigo}</td>
+		<td align='left'>${fld:put_descripcion}</td>
+		<td align='left'>${fld:put_estatus_combo}</td>
+		<td>${fld:put_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>

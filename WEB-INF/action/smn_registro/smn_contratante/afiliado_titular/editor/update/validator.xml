@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_documento_id' type='integer' required='true' label='${lbl:b_afi_documento}' maxlen='10'/>
+	<parameter id='afi_numero_control' type='integer' required='true' label='${lbl:b_num_control}' maxlen='10'/>
+	<parameter id='smn_contratante_id' type='integer' required='true' label='${lbl:b_contratante}' maxlen='10'/>
+	<parameter id='smn_auxiliar_unidades_negocios_rf' type='integer' required='false' label='${lbl:b_aux_unidad_neg}' maxlen='10'/>
+	<parameter id='smn_auxiliar_sucursales_rf' type='integer' required='false' label='${lbl:b_aux_sucursales}' maxlen='10'/>
+	<parameter id='smn_auxiliar_areas_servicios_rf' type='integer' required='false' label='${lbl:b_area_serv}' maxlen='10'/>
+	<parameter id='smn_auxiliar_unidades_servicios_rf' type='integer' required='false' label='${lbl:b_aux_unidades_serv}' maxlen='10'/>
+	<parameter id='afi_clase_auxiliar_rf' type='integer' required='true' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='afi_auxiliar_rf' type='integer' required='true' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='afi_fecha_de_registro' type='date' required='true' label='${lbl:b_afi_fecha_reg}' maxlen='10'/>
+	<parameter id='afi_fecha_de_inicio' type='date' required='true' label='${lbl:b_afi_fecha_ini}' maxlen='10'/>
+	<parameter id='afi_estatus' type='varchar' required='false' label='${lbl:b_afi_status}' maxlen='1'/>
+	<parameter id='afi_fecha_desafiliado' type='date' required='false' label='${lbl:b_afi_fecha_des}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_afiliado_titular}' maxlen='10'/>
+
+
+</validator>

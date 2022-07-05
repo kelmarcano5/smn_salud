@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_ingreso_id' type='integer' required='true' label='${lbl:b_ingreso}' maxlen='10'/>
+	<parameter id='seg_fecha' type='date' required='true' label='${lbl:b_date}' maxlen='10'/>
+	<parameter id='seg_hora_seg' type='varchar' required='true' label='${lbl:b_hour}' maxlen='8'/>
+	<parameter id='seg_accion' type='integer' required='true' label='${lbl:b_action}' maxlen='10'/>
+	<parameter id='seg_observacion' type='integer' required='true' label='${lbl:b_observation}' maxlen='10'/>
+	<parameter id='seg_estatus' type='integer' required='true' label='${lbl:b_estatus}' maxlen='10'/>
+
+
+</validator>

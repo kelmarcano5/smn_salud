@@ -1,0 +1,1 @@
+select smn_salud.smn_ingresos.smn_ingresos_id as id, smn_salud.smn_ingresos.igs_num_ingreso as item from smn_salud.smn_ingresos

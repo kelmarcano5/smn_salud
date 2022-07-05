@@ -1,0 +1,205 @@
+<!doctype html>
+<html>
+
+<head>
+
+<link rel="stylesheet" type="text/css" href="${def:context}/dinamica.css" />
+
+<!--biblioteca generica JS/Dinamica-->
+<script type="text/javascript" src="${def:context}/action/script">
+</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="banner">
+	${lbl:b_presupuesto}
+	${req:progress}
+</div>
+
+<!--formulario de filtro-->
+<form name="form1" onsubmit="return search()" style="width:530px;">
+
+	<!--titulo-->
+	<h1>Filtro de búsqueda</h1>
+	
+	<table>
+	
+	<!--ancho de la columna de etiquetas-->
+	<col style="width:40%">
+
+	<!--campos-->
+		<tr>
+		<td>${lbl:smn_presupuesto}</td>
+		<td>
+			<input id="smn_presupuesto_id" name="smn_presupuesto_id" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_service}</td>
+		<td>
+			<select name="prd_servicio" id="prd_servicio" onchange="chgCombo(prd_servicio.options[prd_servicio.selectedIndex].text,'prd_servicio_name');">
+				<option value="">[Cualquiera]</option>
+				<prd_servicio_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</prd_servicio_rows>
+			</select> 
+			<input id="prd_servicio_name" name="prd_servicio_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_monto_presupuesto}</td>
+		<td>
+			<input id="prd_monto" name="prd_monto" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+
+	
+	</table>
+	
+	<!--botones-->
+	<input type="submit" value="Buscar" class="button">
+	<input type="button" value="Limpiar" class="button" onclick="clearForm('form1')">
+	<input type="button" value="Añadir" class="button" onclick="showEditor()">
+	
+</form>
+
+<!--panel de respuesta AJAX #1-->
+<div id="response" style="display:none; width:100%; margin-top:10px;"></div>
+	
+</body>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	//inicializacion de la pagina cuando carga
+	onload = function()
+	{ 
+		showFilter();
+		var txt_smn_presupuesto_id = new NumericInput(document.form1.smn_presupuesto_id, 0);
+		var txt_prd_monto = new NumericInput(document.form1.prd_monto);
+
+	} 
+	
+
+
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//mostrar filtro de busqueda
+	function showFilter()
+	{
+		document.getElementById("response").style.display='none';
+		setFocusOnForm("form1");
+	}
+	
+	//ejecutar consulta
+	function search()
+	{
+
+		var url = "${def:actionroot}/search";
+		
+		//determina si refresca y se para en la pagina actual o en la pagina 1
+		if (currentPage > 0)
+			url = "${def:actionroot}/search?currentpage=" + currentPage;
+
+		//definir funcion goBack()
+		_goBackFn = showFilter;
+		
+		clearErrorMessages();
+
+		//llamada Ajax...
+		return ajaxCall(	httpMethod="POST", 
+							uri=url, 
+							divResponse="response", 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=showFilter);
+
+	}
+
+	//mostrar una pagina del grid
+	function viewPage()
+	{
+		var url = "${def:actionroot}/view";
+		//llama a la funcion para ir a la pagina indicada 
+		gotoPage(url);
+	}		
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//invoca la generacion de un PDF en un popup
+	function openPDF()
+	{
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+
+	//invoca la generacion de un Excel en un popup
+	function openExcel()
+	{
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+	
+	//mostrar el detalle de un registro
+	function getDetail(id)
+	{
+		//alert('Colocar su código aquí.')
+		
+		var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
+		openDialog("dialog", uri, 750, 450);
+		
+	}
+	
+	//muestra un DIV+IFRAME con el formulario de CRUD
+	function showEditor(id)
+	{
+		//alert('Colocar su código aquí.')
+		
+		var uri = "";
+		if (id==null)
+		 	uri = "${def:context}${def:actionroot}/editor/form";
+		else
+			uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
+			
+		openDialog("editor", uri, 580, 450);
+		
+	}
+	
+	function deleteRecord(id) {
+		//alert('Colocar su código aquí.')
+		
+		alertBox("¿Desea borrar este registro de la base de datos?", "Eliminar", "Cancelar", "deleteRecordOK(" + id + ")")
+				
+	}
+	
+	//eliminar un registro
+	function deleteRecordOK(id) {
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/delete?id=" + id,
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+
+			
+</script>
+
+</html>

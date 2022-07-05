@@ -1,0 +1,480 @@
+<!doctype html>
+<html>
+
+<head>
+
+<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+<!--biblioteca generica JS/Dinamica-->
+<script type="text/javascript" src="${def:context}/action/script">
+</script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="welcome" style="padding-right:50px; margin-top: 20px;"><br>
+        <b>${lbl:b_welcome}</b> ${fld:fname} ${fld:lname} ${req:progress}
+        <div class="" style="width: 100%; border-bottom: solid 6px #1d61a0; border-radius: 30px; margin-top: 4px;">
+        </div>
+    </div>
+    <br>
+    <div class="titulo-negocios">
+        <div style="padding-top: 15px;">Admision Resumido</div>
+    </div>
+
+<!--formulario de filtro-->
+<form name="form1" onsubmit="return search()" style="width:530px;">
+
+	<!--titulo-->
+	<h1>Filtro de búsqueda</h1>
+	
+	<table>
+	
+	<!--ancho de la columna de etiquetas-->
+	<col style="width:40%">
+
+	<!--campos-->
+	<tr>
+		<td>${lbl:b_entidades_rp}</td>
+		<td>
+			<select name="smn_entidad_rf" id="smn_entidad_rf" onchange="chgCombo1(smn_entidad_rf.options[smn_entidad_rf.selectedIndex].text,'smn_entidad_rf_name');chgCombo2(smn_entidad_rf.options[smn_entidad_rf.selectedIndex].text,'smn_entidad_rf_name');">		<option value="">[Cualquiera]</option>
+				<smn_entidad_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_entidad_rf_rows>
+			</select> 
+			<input id="smn_entidad_rf_name" name="smn_entidad_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_sucursal_rp}</td>
+		<td>
+			<select name="smn_sucursal_rf" id="smn_sucursal_rf" onchange="chgCombo(smn_sucursal_rf.options[smn_sucursal_rf.selectedIndex].text,'smn_sucursal_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_sucursal_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_sucursal_rf_rows>
+			</select> 
+			<input id="smn_sucursal_rf_name" name="smn_sucursal_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_area_rp}</td>
+		<td>
+			<select name="smn_area_servicio_rf" id="smn_area_servicio_rf" onchange="chgCombo3(smn_area_servicio_rf.options[smn_area_servicio_rf.selectedIndex].text,'smn_area_servicio_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_area_servicio_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_area_servicio_rf_rows>
+			</select> 
+			<input id="smn_area_servicio_rf_name" name="smn_area_servicio_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_tipo_unidad_rp}</td>
+		<td>
+			<select name="tipo_unidad_rp" id="tipo_unidad_rp" onchange="chgCombo(tipo_unidad_rp.options[tipo_unidad_rp.selectedIndex].text,'tipo_unidad_rp_name');chgCombo4(tipo_unidad_rp.options[tipo_unidad_rp.selectedIndex].text,'tipo_unidad_rp_name');">
+				<option value="">[Cualquiera]</option>
+				<option value="AD">Administrativa</option>
+				<option value="DS">Servicio</option>
+			</select> 
+			<input id="tipo_unidad_rp_name" name="tipo_unidad_rp_name" type="hidden">			
+		</td>
+	</tr>	
+	<tr>
+		<td>${lbl:b_units_service}</td>
+		<td>
+			<select name="smn_unidad_servicio_rf" id="smn_unidad_servicio_rf" onchange="chgCombo(smn_unidad_servicio_rf.options[smn_unidad_servicio_rf.selectedIndex].text,'smn_unidad_servicio_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_unidad_servicio_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_unidad_servicio_rf_rows>
+			</select> 
+			<input id="smn_unidad_servicio_rf_name" name="smn_unidad_servicio_rf_name" type="hidden">
+		</td>
+	</tr>
+	<!-- <tr>
+		<td>${lbl:b_serie}</td>
+		<td>
+			<select name="smn_serie_id" id="smn_serie_id" onchange="chgCombo(smn_serie_id.options[smn_serie_id.selectedIndex].text,'smn_serie_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_serie_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_serie_id_rows>
+			</select> 
+			<input id="smn_serie_id_name" name="smn_serie_id_name" type="hidden">
+		</td>
+	</tr> -->
+	<tr>
+		<td>${lbl:b_ejecutivo_asignado}</td>
+		<td>
+			<select name="rta_ejecutivo_asignado" id="rta_ejecutivo_asignado" onchange="chgCombo(rta_ejecutivo_asignado.options[rta_ejecutivo_asignado.selectedIndex].text,'rta_ejecutivo_asignado_name');">
+				<option value="">[Cualquiera]</option>
+				<rta_ejecutivo_asignado_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</rta_ejecutivo_asignado_rows>
+			</select> 
+			<input id="rta_ejecutivo_asignado_name" name="rta_ejecutivo_asignado_name" type="hidden">
+		</td>
+	</tr>
+	<!-- <tr>
+		<td>${lbl:b_store_date}</td>
+		<td>
+			<input id="rta_fecha_registro" name="rta_fecha_registro" type="text" class="date" maxlength="10">
+			<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('rta_fecha_registro')">
+		</td>
+	</tr> -->
+	<tr>
+		<td>${lbl:b_entry_date_from}</td>
+		<td>
+			<input id="igs_fecha_ingreso_desde" name="igs_fecha_ingreso_desde" type="text" class="date" maxlength="10">
+			<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('igs_fecha_ingreso_desde')">
+		</td>
+	</tr> 
+	<tr>
+		<td>${lbl:b_entry_date_to}</td>
+		<td>
+			<input id="igs_fecha_ingreso_hasta" name="igs_fecha_ingreso_hasta" type="text" class="date" maxlength="10">
+			<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('igs_fecha_ingreso_hasta')">
+		</td>
+	</tr> 
+	
+	</table>
+	
+	<!--botones-->
+	<input type="submit" value="Buscar" class="button">
+	<input type="button" value="Limpiar" class="button" onclick="clearForm('form1')">
+	
+	
+</form>
+
+<!--panel de respuesta AJAX #1-->
+<div id="response" style="display:none; width:100%; margin-top:10px;"></div>
+	
+</body>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	//inicializacion de la pagina cuando carga
+	onload = function()
+	{ 
+		showFilter();					
+
+	} 
+	
+
+
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//mostrar filtro de busqueda
+	function showFilter()
+	{
+		document.getElementById("response").style.display='none';
+		setFocusOnForm("form1");
+	}
+	
+	//ejecutar consulta
+	function search()
+	{
+
+		var url = "${def:actionroot}/search";
+		
+		//determina si refresca y se para en la pagina actual o en la pagina 1
+		if (currentPage > 0)
+			url = "${def:actionroot}/search?currentpage=" + currentPage;
+
+		//definir funcion goBack()
+		_goBackFn = showFilter;
+		
+		clearErrorMessages();
+
+		//llamada Ajax...
+		return ajaxCall(	httpMethod="POST", 
+							uri=url, 
+							divResponse="response", 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=showFilter);
+
+	}
+
+	//mostrar una pagina del grid
+	function viewPage()
+	{
+		var url = "${def:actionroot}/view";
+		//llama a la funcion para ir a la pagina indicada 
+		gotoPage(url);
+	}		
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//invoca la generacion de un PDF en un popup
+	function openPDF()
+	{
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+
+	//invoca la generacion de un Excel en un popup
+	function openExcel()
+	{
+		var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+		var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+		var w = window.open(url, null, features);
+	}
+	
+	//mostrar el detalle de un registro
+	function getDetail(id)
+	{
+		
+		var uri = "${def:context}${def:actionroot}/detail/form?id=" + id;
+		openDialog("dialog", uri, 750, 450);
+		
+	}
+		//Author     : SIMONE
+	//Description: Set first element as selected value
+	//Return     : None
+	function setElementFirstIndex(id)
+	{
+		var combo = document.getElementById(id);
+		combo.selectedIndex = 0;
+	}
+
+	//Author     : SIMONE
+	//Description: Insert new value into combo box
+	//Return     : None
+	function insertComboBox(code, combo, description) {
+		var valueText = code;
+		if (description != null)
+		{
+			valueText = valueText + ' - ' + description;
+		}
+		//alert("Insert Combo: "+valueText);
+        combo.options[combo.options.length] = new Option(valueText);
+	}
+	
+	//Author     : SIMONE
+	//Description: Add new value to combo box
+	//Return     : None
+	function addValueToCombo(code, description, field) 
+	{
+	    var combo = document.getElementById(field);	    
+	    insertComboBox(code, combo, description);
+	}
+	
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndex(code, combo, description) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+			var valueText = code;
+			if (description != null)
+			{
+				valueText = valueText + ' - ' + description;
+			}
+	        if (combo.options[i].text == valueText) 
+	        {
+	        	combo.options[i].selected = true;
+	            return;
+	        }
+	    }
+	}
+	
+	//Author     : SIMONE
+	//Description: Get text valueof selected index
+	//Return     : Text associated to index
+	function getSelectedIndex(combo) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].text;
+	        }
+	    }
+	}
+	function getIDSelectedIndex(combo) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].value;
+	        }
+	    }
+	}
+	
+
+	//Author     : SIMONE
+	//Description: Set value to combo box
+	//Parameters : code - it is code associated into each database table 
+	//             descripcion - it is description associated into each database table 
+	//             field - name combo field
+	//             id - identifier retrieved after transaction
+	//             linked - flag indicates 'true' when combos are linked and 'false' otherwise
+	//Return     : None
+	function setValueComboBox(code, description, field, linked)
+	{
+		//add value text to combo
+		addValueToCombo(code,description,field);
+
+		//get select object 
+		var combo = document.getElementById(field);
+		
+		//set element selected to field referenced
+		setSelectedIndex(code,combo, description);
+		
+		//set text value to combo field
+		var valueText = getSelectedIndex(combo);		
+		
+		//get hidden field in order to set any value
+		var combo = document.getElementById(field+'_name');
+		
+		//alert("Text: "+valueText+" - bdID: "+bdID);
+		
+		combo.text  = valueText;
+		combo.value = bdID;
+		
+		//enable linked fields
+		if (linked)
+		{
+			
+			
+			if (field == 'smn_area_id')
+			{
+				document.form1.smn_area_id.disabled = false;
+			}
+			
+			if (field == 'smn_sucursales_id')
+			{
+				document.form1.smn_sucursales_id.disabled = false;
+			}
+			
+		}
+	}
+	
+	function chgCombo1(text,id)
+	{		
+		document.form1.smn_sucursal_rf.disabled=false;
+
+		// setComboValue('smn_area_servicio_rf','','form1');
+		// setComboValue('smn_unidad_servicio_rf','','form1');
+		
+		var combo = document.getElementById('smn_entidad_rf');
+		var valueCombo = getIDSelectedIndex(combo);
+		geo_id1 = valueCombo.split("-").pop().trim();
+		
+		//findLocation(geo_id0, '');
+		
+		if (id!=null && id!="") 
+		{
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/form/getsucursal?id=" + geo_id1, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_sucursal_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}
+		
+	}
+	function chgCombo2(text,id)
+	{		
+		document.form1.smn_area_servicio_rf.disabled=false;
+		
+		setComboValue('smn_unidad_servicio_rf','','form1');
+		var combo = document.getElementById('smn_entidad_rf');
+		//var combo = document.getElementById('smn_sucursal_rf');
+		var valueCombo = getIDSelectedIndex(combo);
+		geo_id2 = valueCombo.split("-").pop().trim();
+		
+		//findLocation(geo_id0, '');
+		
+		if (id!=null && id!="") 
+		{
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/form/getareaservicio?id=" + geo_id1 + "&" + "id2=" + geo_id2,
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_area_servicio_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}
+		
+	}
+	function chgCombo3(text,id)
+	{		
+		document.form1.smn_unidad_servicio_rf.disabled=false;
+		var combo = document.getElementById('smn_area_servicio_rf');
+		//var combo = document.getElementById('smn_area_servicio_rf');
+		var valueCombo = getIDSelectedIndex(combo);
+		geo_id3 = valueCombo.split("-").pop().trim();
+		
+		
+		//findLocation(geo_id0, '');
+		
+		if (id!=null && id!="") 
+		{
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/form/getunidadservicio?id=" + geo_id3, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_unidad_servicio_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}
+		
+	}
+	function chgCombo4(text,id)
+	{		
+		
+		document.form1.smn_unidad_servicio_rf.disabled=false;
+		var combo = document.getElementById('smn_area_servicio_rf');
+		var valueCombo = getIDSelectedIndex(combo);
+		geo_id4 = valueCombo.split("-").pop().trim();
+		var combo2 = document.getElementById('tipo_unidad_rp');
+		var valueCombo2 = getIDSelectedIndex(combo2);
+		geo_id5 = valueCombo2.split("-").pop().trim();
+		
+		//findLocation(geo_id0, '');
+		
+		if (id!=null && id!="") 
+		{
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/form/getunidadservicio2?id=" + geo_id4+ "&id2="+geo_id5, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_unidad_servicio_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}
+		
+	}	
+</script>
+
+</html>

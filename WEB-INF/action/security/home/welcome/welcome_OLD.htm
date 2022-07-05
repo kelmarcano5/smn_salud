@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<title>${lbl:b_security_system}.</title>
+
+	<script type="text/javascript">
+
+	//inicializacion de la pagina cuando carga
+	onload = function()
+	{
+		<rows>
+			showTable('${fld:rolename}');
+		</rows>
+
+		noDisplayTables();
+	}
+
+	var isGroups= false;
+	var isCategories = false;
+	var isAccessControl = false;
+	var isProfessional = false;
+
+	function showTable (rolename) {
+		if (rolename == 'smn_registros')
+		{
+			isGroups = true;
+		}
+		else if (rolename == 'smn_procesos')
+		{
+			isCategories = true;
+		}
+		else if (rolename == 'smn_monitores')
+		{
+			isAccessControl = true;
+		}
+		else if (rolename == 'smn_configuracion')
+		{
+			isProfessional = true;
+		}
+		else if (rolename == 'smn_admin')
+		{
+			isCategories = true;
+			isGroups = true;
+			isAccessControl = true;
+			isProfessional = true;
+		}
+	}
+
+	function noDisplayTables()
+	{
+		if (!isCategories)
+		{
+			document.getElementById('table1').style.display="none";
+			document.getElementById('panel1').style.display="none";
+		}
+		if (!isGroups)
+		{
+			document.getElementById('table2').style.display="none";
+			document.getElementById('panel2').style.display="none";
+		}
+		if (!isAccessControl)
+		{
+			document.getElementById('table3').style.display="none";
+			document.getElementById('panel3').style.display="none";
+		}
+		if (!isProfessional)
+		{
+			document.getElementById('table4').style.display="none";
+			document.getElementById('panel4').style.display="none";
+		}
+	}
+</script>
+</head>
+
+<body>
+
+
+	<div class="welcome" style="padding-right:50px; margin-top: 20px;"><br>
+	<b>${lbl:b_welcome}</b> ${fld:fname} ${fld:lname}
+	<div class="" style="width: 100%; border-bottom: solid 6px #1d61a0; border-radius: 30px; margin-top: 4px;">
+	</div>
+	</div>
+<br>
+<div class="modulo">
+		<div class="tituloModulo">
+				<div class="tittlModContenedor">
+						<div class="ttlModTop">
+								<h2>${lbl:b_tax_module}</h2>
+								<div class="ttlModTopImg"><img src="${def:context}/images/mainFolder/talentoHumanoImg.jpg"></div><!--ttlModTopImg-->
+						</div><!--ttlModTop-->
+						<div class="ttlModBottom"><h3>Atenci&oacute;n primaria salud</h3></div><!--ttlModTop-->
+						<div class="rightImg"><img src="${def:context}/images/mainFolder/modContAsis.png"></div><!--rightImg-->
+				</div><!--tittlModContenedor-->
+		</div><!--tituloModulo-->
+</div><!--modulo-->
+
+<br>
+
+<table id='table1' class="datagrid" width="50%">
+	<tr>
+		<th colspan="5" style="font-weight:bold; font-size:15pt;">${lbl:b_registers}</th>
+	</tr>
+</table>
+
+<!--include al menu iconografico-->
+${inc:${def:actionroot}/panel/registro/view}
+
+<table id='table2' class="datagrid" width="50%">
+	<tr>
+		<th colspan="5" style="font-weight:bold; font-size:15pt;">${lbl:b_process}</th>
+	</tr>
+</table>
+
+<!--include al menu iconografico-->
+${inc:${def:actionroot}/panel/proceso/view}
+
+<table id='table3' class="datagrid" width="50%">
+	<tr>
+		<th colspan="5" style="font-weight:bold; font-size:15pt;">${lbl:b_monitor}</th>
+	</tr>
+</table>
+
+<!--include al menu iconografico-->
+${inc:${def:actionroot}/panel/monitor/view}
+
+<table id='table4' class="datagrid" width="50%">
+	<tr>
+		<th colspan="5" style="font-weight:bold; font-size:15pt;">${lbl:b_configuration}</th>
+	</tr>
+</table>
+
+<!--include al menu iconografico-->
+${inc:${def:actionroot}/panel/configuracion/view}
+
+<!--include al menu iconografico-->
+ ${inc:${def:actionroot}/panel/view}
+<!-- 
+<div class="alert" style="color:black; font-weight:bold; margin-top:10px;">
+${lbl:b_welcome}@${fld:fname} ${fld:lname}, ${lbl:b_please_select}<br>
+${lbl:b_select_command_menu}.
+</div>
+
+<br>
+
+<div class="alert" align="center" style="color:red; font-weight:bold; font-size:10pt;">
+${inc:${def:actionroot}/mensaje}
+</div>
+
+<br>
+
+
+<table id='table1' class="datagrid" width="50%">
+	<tr>
+		<th colspan="5" style="font-weight:bold; font-size:15pt;">${lbl:b_registers}</th>
+	</tr>
+</table>
+
+<!--include al menu iconografico--
+${inc:${def:actionroot}/panel/registro/view}
+
+<table id='table2' class="datagrid" width="50%">
+	<tr>
+		<th colspan="5" style="font-weight:bold; font-size:15pt;">${lbl:b_configuration}</th>
+	</tr>
+</table>
+
+<!--include al menu iconografico--
+${inc:${def:actionroot}/panel/configuracion/view}
+
+<table id='table3' class="datagrid" width="50%">
+	<tr>
+		<th colspan="5" style="font-weight:bold; font-size:15pt;">${lbl:b_monitor}</th>
+	</tr>
+</table>
+
+<!--include al menu iconografico
+ ${inc:${def:actionroot}/panel/view}--
+
+<!--tabla de ultimos logins--
+
+<table class="datagrid" width="50%">
+
+	<tr>
+		<th colspan="4" style="font-weight:bold; font-size:10pt;">${lbl:b_last_access_to_server}</th>
+	</tr>
+
+	<tr>
+		<th width="25%">${lbl:s_loginhist_col1}</th>
+		<th width="25%">${lbl:s_loginhist_col2}</th>
+		<th width="25%">${lbl:s_loginhist_col3}</th>
+		<th width="25%">${lbl:s_loginhist_col4}</th>
+	</tr>
+
+	<rows>
+	<tr ${fld:_rowStyle}>
+		<td align="center">${fld:login_date}</td>
+		<td align="center">${fld:login_time}</td>
+		<td align="center">${fld:remote_addr}</td>
+		<td align="center">${fld:context}</td>
+	</tr>
+	</rows>
+
+</table>
+
+<br/>
+
+<table class="datagrid" width="50%">
+
+	<tr>
+		<th colspan="4" style="color:red; font-weight:bold; font-size:10pt;">${lbl:s_loginhist_failed}</th>
+	</tr>
+
+	<tr>
+		<th width="25%">${lbl:s_loginhist_col1}</th>
+		<th width="25%">${lbl:s_loginhist_col2}</th>
+		<th width="25%">${lbl:s_loginhist_col3}</th>
+		<th width="25%">${lbl:s_loginhist_col4}</th>
+	</tr>
+
+	<rows2>
+	<tr ${fld:_rowStyle}>
+		<td align="center">${fld:login_date}</td>
+		<td align="center">${fld:login_time}</td>
+		<td align="center">${fld:remote_addr}</td>
+		<td align="center">${fld:context}</td>
+	</tr>
+	</rows2>
+
+</table>
+ -->
+</body>
+
+</html>

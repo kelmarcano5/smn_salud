@@ -1,0 +1,1 @@
+select smn_salud.smn_ingreso_movimiento.smn_ingresos_mov_id as id, smn_salud.smn_ingreso_movimiento.smn_ingreso_id as item from smn_salud.smn_ingreso_movimiento limit 1

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Ver resultado de consulta
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="sql" scope="session" />
+	<!-- 	<recordset id='detail-smnrelpatologiaitem.sql' source='sql' scope='session' />
+		<recordset id='detail-smnrelpatologiaservicios.sql' source='sql' scope='session' /> -->
+
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>template.htm</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/html</content-type>
+	<!-- 	<print mode='table' recordset='detail-smnrelpatologiaitem.sql' tag='rows-smnrelpatologiaitem' alternate-colors='true' />
+		<print mode='table' recordset='detail-smnrelpatologiaservicios.sql' tag='rows-smnrelpatologiaservicios' alternate-colors='true' /> -->
+
+		<print mode="form" recordset="query.sql" />
+	</output>
+
+</config>

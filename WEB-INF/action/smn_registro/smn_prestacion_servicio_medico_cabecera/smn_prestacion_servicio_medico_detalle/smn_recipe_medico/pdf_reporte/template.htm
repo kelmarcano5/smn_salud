@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>${lbl:b_prescription_medic}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />	
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+   	<script type="text/javascript" src="${def:context}/action/jqueryi"></script>
+</head>
+<body>
+	<div id="recipe">
+		<table cellspacing="10" style="float: left; table-layout: fixed; width: 50%;" id="tbl_recipe">
+			<tr>
+				<td>
+					<img src="${def:context}/images/logo_vistacalifornia.png" border="0" alt="" vspace="0" hspace="0" width="100" height="50">
+				</td>
+				<td class="encabezado"></td>
+			</tr>
+			<tr>
+				<td colspan="2"><strong>RECIPE:</strong></td>
+			</tr>
+		</table>
+		<table cellspacing="10" style="float: right; table-layout: fixed; width: 50%;" id="tbl_indicaciones">
+			<tr>
+				<td>
+					<img src="${def:context}/images/logo_vistacalifornia.png" border="0" alt="" vspace="0" hspace="0" width="100" height="50">
+				</td>
+				<td class="encabezado"></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="word-wrap: break-word; overflow-wrap: break-word;"><strong>INDICACIONES:</strong></td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
+
+<script>
+  	onload = function() {
+
+		var entidad    = "${fld:smn_entidades_rf_combo}";
+		var rif        = "${fld:ent_rif}";
+		var paciente   = "${fld:aux_nombre_paciente}";
+		var cedula     = "${fld:aux_cedula}";
+		var edad       = "${fld:aux_edad}";
+		var sexo       = "${fld:aux_sexo}";
+		var prestador  = "${fld:smn_prestador_servicio_rf}";
+		var medico     = "${fld:aux_nombre_prestador_servicio}";
+		var prefijo    = "${fld:prefijo}";
+		var especialidad = "${fld:esp_descripcion}";
+
+  		$(".encabezado").html("<strong>"+prefijo+" "+medico+"</strong><br>"+especialidad);
+
+  		<rows>
+  			$("#tbl_recipe").append("<tr><td colspan='2'>${fld:smn_item_rf_combo}</td></tr>");
+  			$("#tbl_indicaciones").append("<tr><td colspan='2'>${fld:smn_item_rf_combo} ${fld:rmd_concentracion} ${fld:rmd_especificacion}</td></tr>");
+  		</rows>;
+  		$('#recipe').printThis();
+  	}
+</script>

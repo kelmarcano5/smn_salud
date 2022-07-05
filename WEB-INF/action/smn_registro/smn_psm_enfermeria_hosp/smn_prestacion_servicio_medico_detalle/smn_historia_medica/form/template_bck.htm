@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html>
+<head>
+		 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<style>
+	   .check_box_ancho {
+	     width: 20%;
+	
+	   }
+	 
+	   th,h3{
+	   	margin-left: 5%;
+	   }
+	</style>
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+    <script type="text/javascript" src="${def:context}/action/jquery">
+	</script>
+
+</head>
+<body>
+	<div class="welcome" style="padding-right:50px; margin-top: 20px;"><br>
+        <b>${lbl:b_welcome}</b> ${fld:fname} ${fld:lname} ${req:progress}<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+        <div class="" style="width: 100%; border-bottom: solid 6px #1d61a0; border-radius: 30px; margin-top: 4px;">
+        </div>
+    </div>  
+	<form id="form1" name="form1" onsubmit="return save()" style="width:700px;">
+	<table>
+	<col width="20%">
+	<tr>
+		<th>
+			<h3>COMPLEMENTO DE DATOS PERSONALES</h3>
+		</th>
+	</tr>
+
+	<tr>
+		<td><b>Paciente</b></td>
+		<td>
+			<select name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
+					<option value="0">[Cualquiera]</option>
+					<smn_auxiliar_rf_rows>
+						<option value="${fld:id}">${fld:item}</option>
+					</smn_auxiliar_rf_rows>
+			</select>
+				<input id="smn_auxiliar_rf_name" name="smn_auxiliar_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td><b>Entrevistador</b></td>
+		<td>
+			<select name="him_entrevistador" id="him_entrevistador" onchange="chgCombo(him_entrevistador.options[him_entrevistador.selectedIndex].text,'him_entrevistador_name');">
+					<option value="0">[Cualquiera]</option>
+					<him_entrevistador_rows>
+						<option value="${fld:id}">${fld:item}</option>
+					</him_entrevistador_rows>
+			</select>
+				<input id="him_entrevistador_name" name="him_entrevistador_name" type="hidden">
+		</td>
+	</tr>
+
+		<tr>
+			<td>Rango de Edad</td>
+			<td>
+				<select name="rango_edad" id="rango_edad" onchange="chgCombo(rango_edad.options[rango_edad.selectedIndex].text,'rango_edad_name');">
+					<option value="0">[Cualquiera]</option>
+					<rango_edad_rows>
+						<option value="${fld:id}">${fld:item}</option>
+					</rango_edad_rows>
+				</select>
+				<input id="him_entrevistador_name" name="him_entrevistador_name" type="hidden">
+			</td>
+		</tr>
+		<tr>
+			<td>Grupo Etnico</td>
+			<td>
+				<select name="grupo_etnico" id="grupo_etnico" onchange="chgCombo(grupo_etnico.options[grupo_etnico.selectedIndex].text,'grupo_etnico_name');">
+					<option value="0">[Cualquiera]</option>
+					<grupo_etnico_rows>
+						<option value="${fld:id}">${fld:item}</option>
+					</grupo_etnico_rows>
+				</select>
+				<input id="grupo_etnico_name" name="grupo_etnico_name" type="hidden">
+				<br>
+			</td>
+		</tr>
+
+		<tr>
+			<th>
+				<h3>ANTECEDENTES PERSONALES</h3>
+			</th>
+		</tr>
+		
+				<tr>
+					<td><br><b>ENFERMEDADES:</b></td>
+					<td>
+						<enfermedades_rows>
+						<br>
+						<input type="checkbox" name="enfermedades[]" id="enfermedades" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+						<br>
+						</enfermedades_rows>
+						<br>
+					</td>
+				</tr>
+				<br>
+				<tr>
+					<td><b>ALERGIAS:</b></td>
+					<td>
+						<textarea type="text" name="alergias" id="alergias" maxlengtr="1000" cols="30" rows="3"></textarea>
+						<br>
+					</td>
+				</tr>
+				<tr>
+					<td><b>VICIO ERROR REFRACTIVO:</b></td>
+					<td>
+						<textarea type="text" name="vicio_error_txt" id="vicio_error_txt"maxlengtr="1000" cols="30" rows="3"></textarea>
+						<br>
+					</td>
+				</tr>
+					<br>
+				
+				<tr>
+					<td><b>MEDICAMENTOS:</b></td>
+					<td>
+						<textarea type="text" name="medicamentos_sistemicos" id="medicamentos_sistemicos" maxlengtr="1000" cols="30" rows="3"></textarea>
+						<br>
+					</td>
+				</tr>
+				<tr>
+					<td><b>USO DE ESTEROIDES:</b></td>
+					<td>
+						
+						<textarea type="text" name="uso_de_esteroides" id="uso_de_esteroides" maxlengtr="1000" cols="30" rows="3"></textarea>
+						<br>
+					</td>
+				</tr>
+				<tr>
+					<td><b>OTRA ENFERMEDAD OCULAR:</b></td>
+					<td>
+						<textarea type="text" name="enfermedad_ocular" id="enfermedad_ocular" maxlengtr="1000" cols="30" rows="3"></textarea>
+						<br>
+					</td>
+				</tr>
+			
+		<tr>
+			<th>
+				<h3>ANTECEDENTES FAMILIARES</h3>
+			</th>
+		</tr>
+	
+				<tr>
+					<td><br><b>GLAUCOMA EN FAMILIARES</b></td>
+					<td>
+						<glaucoma_en_familiares_rows>
+						<br>
+							<input type="checkbox" name="glaucoma_en_familiares[]" id="glaucoma_en_familiares" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+							<br>
+						</glaucoma_en_familiares_rows>
+						<br>
+					</td>
+				</tr>
+				<tr>
+					<td><br><b>CEGUERA EN FAMILIARES</b></td>
+					<td>
+						<ceguera_en_familiares_rows>
+						<br>
+							<input type="checkbox" name="ceguera_en_familiares[]" id="ceguera_en_familiares" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+							<br>
+						</ceguera_en_familiares_rows>
+						<br>
+					</td>
+				</tr>	
+		
+		<tr>
+			<th>
+				<h3>EXAMEN TECNICO OFTALMOLOGICO</h3>
+			</th>
+		</tr>
+	
+		<tr>
+			<td><br><b>AGUDEZA VISUAL CORREGIDA:</b></td>
+			<td>
+				<aguadeza_visual_rowsD>
+				<br>
+					<input type="checkbox" name="aguadeza_visual[]" id="aguadeza_visual" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</aguadeza_visual_rowsD>
+			</td>
+			<td>
+				<aguadeza_visual_rowsI>
+				<br>
+					<input type="checkbox" name="aguadeza_visual[]" id="aguadeza_visual" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</aguadeza_visual_rowsI>
+				<br>
+			</td>
+		</tr>
+		
+		<tr>
+			<td><b>PRESION INTRAOCULAR OI mmHg:</b></td>
+			<td>
+				<textarea type="text" name="presion_intraocular_oi" id="presion_intraocular_oi" maxlengtr="1000" cols="30" rows="3"></textarea>
+				<br><br>
+			</td>
+		</tr>
+		<tr>
+			<td><b>PRESION INTRAOCULAR OD mmHg:</b></td>
+			<td>
+				<textarea type="text" name="presion_intraocular_od" id="presion_intraocular_od"maxlengtr="1000" cols="30" rows="3"></textarea>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>PRESION INTRAOCULAR CORREGIDA OI mmHg:</b></td>
+			<td><br>
+				<textarea type="text" name="presion_intraocular_corregida_oi" id="presion_intraocular_corregida_oi" maxlengtr="1000" cols="30" rows="3"></textarea>
+				<br><br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>PRESION INTRAOCULAR CORREGIDA OD mmHg:</b></td>
+			<td><br>
+				<textarea type="text" name="presion_intraocular_corregida_od" id="presion_intraocular_corregida_od" maxlengtr="1000" cols="30" rows="3"></textarea>
+				<br><br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>PAQUIMETRIA: </b></td>
+			<td>
+				<paquimetria_rowsD>
+				<br>
+				<input type="checkbox" name="paquimetria[]" id="paquimetria" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</paquimetria_rowsD>
+			</td>
+			<td>
+				<paquimetria_rowsI>
+				<br>
+				<input type="checkbox" name="paquimetria[]" id="paquimetria" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</paquimetria_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>VICIO ERROR REFRACTIVO: </b></td>
+			<td>
+				<vicio_error_rowsD>
+				<br>
+				<input type="checkbox" name="vicio_error[]" id="vicio_error" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</vicio_error_rowsD>
+			</td>
+			<td>
+				<vicio_error_rowsI>
+				<br>
+				<input type="checkbox" name="vicio_error[]" id="vicio_error" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</vicio_error_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>VICIO ERROR REFRACTIVO MAYOR:</b></td>
+			<td>
+				<br>
+				<textarea type="text" name="vicio_error_mayor" id="vicio_error_mayor" maxlengtr="1000" cols="30" rows="3"></textarea>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><b>ASTIGMATISMO EJE:</b></td>
+			<td>
+				<textarea type="text" name="astismagtismo" id="astismagtismo" maxlengtr="1000" cols="30" rows="3"></textarea>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<h3>CONSULTA MEDICA OFTALMOLOGICA</h3>
+			</th>
+		</tr>
+		<tr>
+			<td>
+				<h1>BIOMICROSCOPIA</h1>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>PARPADOS</b></td>
+			<td>
+				<parpados_rowsD>
+				<br>
+					<input type="checkbox" name="parpados[]" id="parpados" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</parpados_rowsD>
+			</td>
+			<td>
+				<parpados_rowsI>
+				<br>
+					<input type="checkbox" name="parpados[]" id="parpados" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</parpados_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><b>OTROS PARPADOS</b></td>
+			<td>
+				<textarea type="text" name="otros_parpados" id="otros_parpados" maxlengtr="1000" cols="30" rows="3"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>CONJUNTIVA</b></td>
+			<td>
+				<conjuntiva_rowsD>
+				<br>
+					<input type="checkbox" name="conjuntiva[]" id="conjuntiva" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</conjuntiva_rowsD>
+			</td>
+			<td>
+				<conjuntiva_rowsI>
+				<br>
+					<input type="checkbox" name="conjuntiva[]" id="conjuntiva" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</conjuntiva_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>CORNEA</b></td>
+			<td>
+				<cornea_rowsD>
+				<br>
+					<input type="checkbox" name="cornea[]" id="cornea" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</cornea_rowsD>
+			</td>
+			<td>
+				<cornea_rowsI>
+				<br>
+					<input type="checkbox" name="cornea[]" id="cornea" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</cornea_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>CAMARA ANTERIOR</b></td>
+			<td>
+				<camara_anterior_rowsD>
+				<br>
+					<input type="checkbox" name="camara_anterior[]" id="camara_anterior" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</camara_anterior_rowsD>
+			</td>
+			<td>
+				<camara_anterior_rowsI>
+				<br>
+					<input type="checkbox" name="camara_anterior[]" id="camara_anterior" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</camara_anterior_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>IRIS Y PUPILA</b></td>
+			<td>
+				<iris_pupila_rowsD>
+				<br>
+					<input type="checkbox" name="iris_pupila[]" id="iris_pupila" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</iris_pupila_rowsD>
+			</td>
+			<td>
+				<iris_pupila_rowsI>
+				<br>
+					<input type="checkbox" name="iris_pupila[]" id="iris_pupila" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</iris_pupila_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>CRISTALINO:</b></td>
+			<td>
+				<cristalino_rowsD>
+				<br>
+				<input type="checkbox" name="cristalino[]" id="cristalino" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</cristalino_rowsD>
+			</td>
+			<td>
+				<cristalino_rowsI>
+				<br>
+				<input type="checkbox" name="cristalino[]" id="cristalino" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</cristalino_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><h1>GONIOSCOPIA:</h1></td>
+		</tr>
+		<tr>
+			<td><br><b>GONIOSCOPIA</b></td>
+			<td>
+				<gonioscopia_rowsD>
+				<br>
+				<input type="checkbox" name="gonioscopia[]" id="gonioscopia" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</gonioscopia_rowsD>
+			</td>
+			<td>
+				<gonioscopia_rowsI>
+				<br>
+				<input type="checkbox" name="gonioscopia[]" id="gonioscopia" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</gonioscopia_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<th>
+				<h1>FONDO DE OJO</h1>	
+			</th>
+		</tr>
+		<tr>
+			<td><br><b>DISCO NERVIO OPTICO</b></td>
+			<td>
+				<disco_nervio_rowsD>
+				<br>
+				<input type="checkbox" name="disco_nervio[]" id="disco_nervio" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</disco_nervio_rowsD>
+			</td>
+			<td>
+				<disco_nervio_rowsI>
+				<br>
+				<input type="checkbox" name="disco_nervio[]" id="disco_nervio" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</disco_nervio_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>EXCAVACION</b></td>
+			<td>
+				<excavacion_rowsD>
+				<br>
+				<input type="checkbox" name="excavacion[]" id="excavacion" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</excavacion_rowsD>
+			</td>
+			<td>
+				<excavacion_rowsI>
+				<br>
+				<input type="checkbox" name="excavacion[]" id="excavacion" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+				<br>
+				</excavacion_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>REBORDE NEURAL</b></td>
+			<td>
+				<rebote_neutral_rowsD>
+				<br>
+					<input type="checkbox" name="rebote_neutral[]" id="rebote_neutral" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</rebote_neutral_rowsD>
+			</td>
+			<td>
+				<rebote_neutral_rowsI>
+				<br>
+					<input type="checkbox" name="rebote_neutral[]" id="rebote_neutral" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+					<br>
+				</rebote_neutral_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>VASOS SANGUINEOS</b></td>
+				<td>
+					<vasos_sanguineos_rowsD>
+					<br>
+						<input type="checkbox" name="vasos_sanguineos[]" id="vasos_sanguineos" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+						<br>
+					</vasos_sanguineos_rowsD>
+				</td>
+				<td>
+					<vasos_sanguineos_rowsI>
+					<br>
+						<input type="checkbox" name="vasos_sanguineos[]" id="vasos_sanguineos" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+						<br>
+					</vasos_sanguineos_rowsI>
+					<br>
+				</td>
+		</tr>
+		<tr>
+			<td><b>RETINA</b></td>
+			<td>
+				<textarea type="text" name="retina" id="retina" maxlengtr="1000" cols="30" rows="3"></textarea>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<th><h3>IMPRESION DIAGNOSTICA:</h3></th>
+		</tr>
+		<tr>
+			<td><b>OJO DERECHO</b></td>
+			<td>
+				<textarea type="text" name="ojo_derecho" id="ojo_derecho" maxlengtr="1000" cols="30" rows="3"></textarea>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><b>OJO IZQUIERDO</b></td>
+			<td>
+				<textarea type="text" name="ojo_izquierdo" id="ojo_izquierdo" maxlengtr="1000" cols="30" rows="3"></textarea>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><b>PLAN</b></td>
+			<td>
+				<textarea type="text" name="plan" id="plan" maxlengtr="1000" cols="30" rows="3"></textarea>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><b>OBSERVACION</b></td>
+			<td>
+				<textarea type="text" name="observacion" id="observacion" maxlengtr="1000" cols="30" rows="3"></textarea>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>ESTUDIOS COMPLEMENTARIOS</b></td>
+			<td>
+				<estudios_complementarios_rowsD>
+					<br>
+						<input type="checkbox" name="estudios_complementarios[]" id="estudios_complementarios" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+						<br>
+					</estudios_complementarios_rowsD>
+			</td>
+			<td>
+				<estudios_complementarios_rowsI>
+					<br>
+						<input type="checkbox" name="estudios_complementarios[]" id="estudios_complementarios" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+						<br>
+					</estudios_complementarios_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>TRATAMIENTO HIPOTENSOR OCULAR</b></td>
+			<td>
+				<tratamiento_hipotensor_rowsD>
+					<br>
+						<input type="checkbox" name="tratamiento_hipotensor[]" id="tratamiento_hipotensor" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+						<br>
+				</tratamiento_hipotensor_rowsD>
+			</td>
+			<td>
+				<tratamiento_hipotensor_rowsI>
+					<br>
+						<input type="checkbox" name="tratamiento_hipotensor[]" id="tratamiento_hipotensor" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+						<br>
+				</tratamiento_hipotensor_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>PROCEDIMIENTO LASER</b></td>
+			<td>
+				<procedimiento_laser_rowsD>
+					<br>
+						<input type="checkbox" name="procedimiento_laser[]" id="procedimiento_laser" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+						<br>
+				</procedimiento_laser_rowsD>
+			</td>
+			<td>
+				<procedimiento_laser_rowsI>
+					<br>
+						<input type="checkbox" name="procedimiento_laser[]" id="procedimiento_laser" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+						<br>
+				</procedimiento_laser_rowsI>
+				<br>
+			</td>
+		</tr>
+		<tr>
+			<td><br><b>PROCEDIMIENTO QUIRURGICO</b></td>
+			<td>
+				<procedimiento_quirurgico_rowsD>
+					<br>
+						<input type="checkbox" name="procedimiento_quirurgico[]" id="procedimiento_quirurgico" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+						<br>
+					</procedimiento_quirurgico_rowsD>
+			</td>
+			<td>
+				<procedimiento_quirurgico_rowsI>
+					<br>
+						<input type="checkbox" name="procedimiento_quirurgico[]" id="procedimiento_quirurgico" value="${fld:id}" class="check_box_ancho">${fld:item}</input>
+						<br>
+					</procedimiento_quirurgico_rowsI>
+					<br>
+			</td>
+		</tr>
+	</table>
+
+		<!-- <input type="button" name="atras" id="atras" value="<< Atras " onchange="atras();"> -->
+		<input type="submit" name="grabar" id="grabar" value="Registrar">
+		<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+		<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+		<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">
+
+			<!-- PK-->	
+		<input type="hidden" name="id" value="">
+		<input type="hidden" name="id_prestacion" value="">
+		<input type="text" name="vicio_error_hd" id="vicio_error_hd" style="display: none">
+		<input type="text" name="glaucoma_en_familiares_hd" id="glaucoma_en_familiares_hd" style="display: none">
+		<input type="text" name="ceguera_en_familiares_hd" id="ceguera_en_familiares_hd" style="display: none">
+		<!-- <input type="text" name="mmhg_hd" id="mmhg_hd" style="display: none"> -->
+		
+		<input type="text" name="aguadeza_visual_hd" id="aguadeza_visual_hd" style="display: none">
+		<input type="text" name="parpados_hd" id="parpados_hd" style="display: none">
+		<input type="text" name="conjuntiva_hd" id="conjuntiva_hd" style="display: none">
+		<input type="text" name="cornea_hd" id="cornea_hd" style="display: none">
+		<input type="text" name="cristalino_hd" id="cristalino_hd" style="display: none">
+		<input type="text" name="gonioscopia_hd" id="gonioscopia_hd" style="display: none">
+		<input type="text" name="disco_nervio_hd" id="disco_nervio_hd" style="display: none">
+		<input type="text" name="rebote_neutral_hd" id="rebote_neutral_hd" style="display: none">
+		<input type="text" name="vasos_sanguineos_hd" id="vasos_sanguineos_hd" style="display: none">
+
+		<input type="text" name="estudios_complementarios_hd" id="estudios_complementarios_hd" style="display: none">
+		<input type="text" name="tratamiento_hipotensor_hd" id="tratamiento_hipotensor_hd" style="display: none">
+		<input type="text" name="procedimiento_laser_hd" id="procedimiento_laser_hd" style="display: none">		
+		<input type="text" name="procedimiento_quirurgico_hd" id="procedimiento_quirurgico_hd" style="display: none">
+		<input type="text" name="camara_anterior_hd" id="camara_anterior_hd" style="display: none">
+		<input type="text" name="iris_pupila_hd" id="iris_pupila_hd" style="display: none">
+		<input type="text" name="enfermedades_hd" id="enfermedades_hd" style="display: none">
+		<input type="text" name="paquimetria_hd" id="paquimetria_hd" style="display: none">
+		<input type="text" name="excavacion_hd" id="excavacion_hd" style="display: none">
+
+	</form>
+
+
+</body>
+</html>
+<!--codigo especifico de este modulo--> 
+	<script type="text/javascript">
+		//inicializacion de la pagina cuando carga
+		onload = function() { 
+			//alert("hola"+'${fld:codigopaciente}');
+			document.getElementById("smn_auxiliar_rf").value = '${fld:codigopaciente}';
+			document.getElementById("smn_auxiliar_rf").disabled = true;
+			document.getElementById("id_prestacion").value = '${fld:id_prestacion}';
+		} 
+
+		function save() {
+
+			if (document.form1.id.value==""){
+				insert();
+			}
+		}
+
+		function chgCombo(text,id){
+			document.getElementById(id).value = text;
+		}
+
+		//mostrar la actualizacion de un registro
+		function insert()
+		{		
+
+			var estudios_complementarios = []
+			$("input[name='estudios_complementarios[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    estudios_complementarios += (estudios_complementarios == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#estudios_complementarios_hd").val(estudios_complementarios);
+
+			var tratamiento_hipotensor = []
+			$("input[name='tratamiento_hipotensor[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    tratamiento_hipotensor += (tratamiento_hipotensor == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#tratamiento_hipotensor_hd").val(tratamiento_hipotensor);
+
+			var procedimiento_laser = []
+			$("input[name='procedimiento_laser[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    procedimiento_laser += (procedimiento_laser == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#procedimiento_laser_hd").val(procedimiento_laser);
+
+			var procedimiento_quirurgico = []
+			$("input[name='procedimiento_quirurgico[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    procedimiento_quirurgico += (procedimiento_quirurgico == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#procedimiento_quirurgico_hd").val(procedimiento_quirurgico);
+
+			var camara_anterior = []
+			$("input[name='camara_anterior[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    camara_anterior += (camara_anterior == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#camara_anterior_hd").val(camara_anterior);
+
+			var iris_pupila = []
+			$("input[name='iris_pupila[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    iris_pupila += (iris_pupila == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#iris_pupila_hd").val(iris_pupila);
+				
+			var enfermedades = []
+			$("input[name='enfermedades[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    enfermedades += (enfermedades == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#enfermedades_hd").val(enfermedades);
+					
+			var paquimetria = []
+			$("input[name='paquimetria[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    paquimetria += (paquimetria == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#paquimetria_hd").val(paquimetria);
+
+			var excavacion = []
+			$("input[name='excavacion[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    excavacion += (excavacion == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#excavacion_hd").val(excavacion);
+
+
+			var vicio_error = []
+			$("input[name='vicio_error[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    vicio_error += (vicio_error == "" ? sThisVal : "," + sThisVal);
+			});
+
+			$("#vicio_error_hd").val(vicio_error);
+
+			var glaucoma_en_familiares = []
+			$("input[name='glaucoma_en_familiares[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    glaucoma_en_familiares += (glaucoma_en_familiares == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#glaucoma_en_familiares_hd").val(glaucoma_en_familiares);
+
+			var ceguera_en_familiares = []
+			$("input[name='ceguera_en_familiares[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    ceguera_en_familiares += (ceguera_en_familiares == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#ceguera_en_familiares_hd").val(ceguera_en_familiares);
+
+			// var mmhg = []
+			// $("input[name='mmhg[]']:checked").each(function () {
+			//     var sThisVal = parseInt($(this).val());
+			//     mmhg += (mmhg == "" ? sThisVal : "," + sThisVal);
+			// });
+			// $("#mmhg_hd").val(mmhg);
+
+			var aguadeza_visual = []
+			$("input[name='aguadeza_visual[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    aguadeza_visual += (aguadeza_visual == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#aguadeza_visual_hd").val(aguadeza_visual);
+
+			var parpados = []
+			$("input[name='parpados[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    parpados += (parpados == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#parpados_hd").val(parpados);
+
+			var conjuntiva = []
+			$("input[name='conjuntiva[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    conjuntiva += (conjuntiva == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#conjuntiva_hd").val(conjuntiva);
+
+			var cornea = []
+			$("input[name='cornea[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    cornea += (cornea == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#cornea_hd").val(cornea);
+
+			var cristalino = []
+			$("input[name='cristalino[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    cristalino += (cristalino == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#cristalino_hd").val(cristalino);
+
+			var gonioscopia = []
+			$("input[name='gonioscopia[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    gonioscopia += (gonioscopia == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#gonioscopia_hd").val(gonioscopia);
+
+			var disco_nervio = []
+			$("input[name='disco_nervio[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    disco_nervio += (disco_nervio == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#disco_nervio_hd").val(disco_nervio);
+
+			var rebote_neutral = []
+			$("input[name='rebote_neutral[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    rebote_neutral += (rebote_neutral == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#rebote_neutral_hd").val(rebote_neutral);
+
+			var vasos_sanguineos = []
+			$("input[name='vasos_sanguineos[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    vasos_sanguineos += (vasos_sanguineos == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#vasos_sanguineos_hd").val(vasos_sanguineos);
+
+
+						var estudios_complementarios = []
+			$("input[name='estudios_complementarios[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    estudios_complementarios += (estudios_complementarios == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#estudios_complementarios_hd").val(estudios_complementarios);
+
+			var tratamiento_hipotensor = []
+			$("input[name='tratamiento_hipotensor[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    tratamiento_hipotensor += (tratamiento_hipotensor == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#tratamiento_hipotensor_hd").val(tratamiento_hipotensor);
+
+			var procedimiento_laser = []
+			$("input[name='procedimiento_laser[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    procedimiento_laser += (procedimiento_laser == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#procedimiento_laser_hd").val(procedimiento_laser);
+
+			var procedimiento_quirurgico = []
+			$("input[name='procedimiento_quirurgico[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    procedimiento_quirurgico += (procedimiento_quirurgico == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#procedimiento_quirurgico_hd").val(procedimiento_quirurgico);
+
+			var camara_anterior = []
+			$("input[name='camara_anterior[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    camara_anterior += (camara_anterior == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#camara_anterior_hd").val(camara_anterior);
+
+			var iris_pupila = []
+			$("input[name='iris_pupila[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    iris_pupila += (iris_pupila == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#iris_pupila_hd").val(iris_pupila);
+				
+			var enfermedades = []
+			$("input[name='enfermedades[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    enfermedades += (enfermedades == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#enfermedades_hd").val(enfermedades);
+					
+			var paquimetria = []
+			$("input[name='paquimetria[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    paquimetria += (paquimetria == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#paquimetria_hd").val(paquimetria);
+
+			var excavacion = []
+			$("input[name='excavacion[]']:checked").each(function () {
+			    var sThisVal = parseInt($(this).val());
+			    excavacion += (excavacion == "" ? sThisVal : "," + sThisVal);
+			});
+			$("#excavacion_hd").val(excavacion);
+	
+				//clearErrorMessages();
+				document.getElementById("grabar").disabled=true;
+				
+				//llamada Ajax...
+				 ajaxCall(httpMethod="POST", 
+								uri="${def:actionroot}/insert", 
+								divResponse=null, 
+								divProgress="status", 
+								formName="form1", 
+								afterResponseFn=null, 
+								onErrorFn=null);	
+		}
+
+		
+
+
+		
+		
+
+	</script>

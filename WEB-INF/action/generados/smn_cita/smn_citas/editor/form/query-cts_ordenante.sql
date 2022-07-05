@@ -1,0 +1,1 @@
+select smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id as id, smn_base.smn_prestadores_servicios.prs_codigo || ' - ' || smn_base.smn_prestadores_servicios.prs_nombres || ' ' || smn_base.smn_prestadores_servicios.prs_apellidos as item from smn_base.smn_prestadores_servicios order by smn_base.smn_prestadores_servicios.prs_nombres

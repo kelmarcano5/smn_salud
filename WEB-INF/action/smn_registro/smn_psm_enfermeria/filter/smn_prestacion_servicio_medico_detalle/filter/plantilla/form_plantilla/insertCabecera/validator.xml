@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_cuestionario_rf' type='integer' required='true' label='ID ${lbl:b_questionnaire}' maxlen='10'/>
+	<parameter id="smn_auxiliar_rf" type="integer" required="true" label="ID ${lbl:b_auxiliary}" maxlen="10" />
+	<parameter id="smn_prestador_servicio_rf" type="integer" required="false" label="ID ${lbl:b_service_provider}" maxlen="10" />
+	<parameter id="smn_ingresos_id" type="integer" required="false" label="ID ${lbl:b_income}" maxlen="10" />
+	<parameter id="spc_nivel_seguridad" type="integer" required="true" label="ID ${lbl:b_security_level}" maxlen="10" />
+	<parameter id="smn_servicios_rf" type="integer" required="true" label="ID ${lbl:b_service}" maxlen="10" />
+</validator>

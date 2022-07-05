@@ -1,0 +1,59 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="14" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('nfi_num_control','query-smnnoregistrados.sql')" >${lbl:b_code}</th>
+		<th class='sortable' onclick="sortBy('nfi_apellidos','query-smnnoregistrados.sql')" >${lbl:s_profile_lname}</th>
+		<th class='sortable' onclick="sortBy('nfi_nombres','query-smnnoregistrados.sql')" >${lbl:s_profile_fname}</th>
+		<th class='sortable' onclick="sortBy('nfi_sexo_combo','query-smnnoregistrados.sql')" >${lbl:b_sex}</th>
+		<th class='sortable' onclick="sortBy('nfi_telefono_fijo','query-smnnoregistrados.sql')" >${lbl:b_fixed_phone}</th>
+		<th class='sortable' onclick="sortBy('nfi_telefono_movil','query-smnnoregistrados.sql')" >${lbl:b_mobile_phone}</th>
+		<th class='sortable' onclick="sortBy('nfi_fecha_registro','query-smnnoregistrados.sql')" >${lbl:b_store_date}</th>
+		
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_no_registrados_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_no_registrados_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_no_registrados_id}')" title="${lbl:b_edit_button}"></td>
+		<td align="left">${fld:nfi_num_control}</td>
+		<td align="left">${fld:nfi_apellidos}</td>
+		<td align="left">${fld:nfi_nombres}</td>
+		<td align="left">${fld:nfi_sexo_combo}</td>
+		<td align="left">${fld:nfi_telefono_fijo}</td>
+		<td align="left">${fld:nfi_telefono_movil}</td>
+		<td align="center">${fld:nfi_fecha_registro@dd-MM-yyyy}</td>
+		
+	</tr>
+	</rows>
+
+</table>

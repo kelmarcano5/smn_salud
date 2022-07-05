@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_tipo_documento_afiliado>
+	<detail>
+		<rows>		
+		<record tdo_fecha_registro="${fld:tdo_fecha_registro}"    tdo_descripcion="${fld:tdo_descripcion}"    tdo_codigo="${fld:tdo_codigo}"    />
+		</rows>
+	</detail>
+</smn_tipo_documento_afiliado>

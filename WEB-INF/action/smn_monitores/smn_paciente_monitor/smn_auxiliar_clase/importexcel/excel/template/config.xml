@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnauxiliarclase.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_auxiliary_class}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_auxiliary_class}">
+				<col id='smn_auxiliar_id' label='${lbl:b_auxiliary}' />
+		<col id='smn_clase_auxiliar_id' label='${lbl:b_auxiliary_class}' />
+		<col id='acl_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

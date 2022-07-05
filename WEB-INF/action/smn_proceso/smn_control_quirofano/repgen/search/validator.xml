@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	
+	<parameter id='smn_agenda_rf' type='integer' required='false' label='${lbl:b_schedule}' maxlen='10'/>
+	<parameter id='smn_presupuesto_id' type='integer' required='false' label='${lbl:b_presupuesto}' maxlen='10'/>
+	<parameter id='smn_ingreso_id' type='integer' required='false' label='${lbl:b_ingreso}' maxlen='10'/>
+	<parameter id='smn_prestacion_servicio_cabecera_id' type='integer' required='false' label='${lbl:b_psm_cabecera}' maxlen='10'/>
+	<parameter id='smn_prestación_servicio_medico_detalle_id' type='integer' required='false' label='${lbl:b_psm_detalle}' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='varchar' required='false' label='${lbl:b_services}' maxlen='8'/>
+	<parameter id='ccq_hora_entrada' type='varchar' required='false' label='${lbl:b_entry_hour}' maxlen='8'/>
+	<parameter id='ccq_hora_salida' type='integer' required='false' label='${lbl:b_exit_hour}' maxlen='10'/>
+	<parameter id='ccq_fecha_quirofano' type='date' required='false' label='${lbl:b_fecha_quirofano}' maxlen='10'/>
+	<parameter id='smn_habitaciones_id' type='integer' required='false' label='${lbl:b_habitaciones}' maxlen='10'/>
+	<parameter id='ccq_cantidad_horas' type='integer' required='false' label='${lbl:b_entry_hour}' maxlen='10'/>
+	<parameter id='smn_unidad_medida_rf' type='integer' required='false' label='${lbl:b_measurement_unit}' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='smn_servicios_rf'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='ccq_hora_entrada'
+		rule='contains' />
+
+
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generación del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

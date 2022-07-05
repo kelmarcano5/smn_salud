@@ -1,0 +1,1 @@
+delete from smn_salud.smn_tramos where smn_tramos_id = ${fld:id}

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_citas>
+	<detail>
+		<rows>		
+		<record smn_citas_mov_id="${fld:smn_citas_mov_id}"    cts_fecha_registro="${fld:cts_fecha_registro}"    smn_observaciones_citas_id="${fld:smn_observaciones_citas_id}"    smn_relacionados_id="${fld:smn_relacionados_id}"    smn_estatus_citas_id="${fld:smn_estatus_citas_id}"    cts_titular="${fld:cts_titular}"    cts_tipo_orden="${fld:cts_tipo_orden}"    cts_ordenante="${fld:cts_ordenante}"    smn_origen_id="${fld:smn_origen_id}"    cts_auxiliar="${fld:cts_auxiliar}"    cts_clase_auxiliar="${fld:cts_clase_auxiliar}"    smn_motivos_id="${fld:smn_motivos_id}"    cts_num_doc_oficial="${fld:cts_num_doc_oficial}"    cts_num_control="${fld:cts_num_control}"    />
+		</rows>
+	</detail>
+</smn_citas>

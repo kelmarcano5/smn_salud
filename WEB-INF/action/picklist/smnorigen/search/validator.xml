@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/crud'>
+	<parameter id='ori_codigo' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='ori_descripcion' type='varchar' required='false' label='${lbl:b_description} (CallCenter, Internet, ...)' maxlen='56'/>
+	<parameter id='ori_tipo' type='varchar' required='false' label='${lbl:b_type}' maxlen='2'/>
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="ori_codigo" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="ori_descripcion" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="ori_tipo" rule="contains" />
+</validator>

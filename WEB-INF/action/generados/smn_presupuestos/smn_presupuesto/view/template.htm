@@ -1,0 +1,43 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="7">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th class='sortable' onclick='sortBy("pre_numero_control","query-smnpresupuesto.sql")'>${lbl:b_budget_number}</th>
+		<th class='sortable' onclick='sortBy("pre_fecha","query-smnpresupuesto.sql")'>${lbl:b_budget_date}</th>
+		<th class='sortable' onclick='sortBy("pre_titular_combo","query-smnpresupuesto.sql")'>${lbl:b_titular}</th>
+		<th class='sortable' onclick='sortBy("pre_beneficiario_combo","query-smnpresupuesto.sql")'>${lbl:b_beneficiario}</th>
+		<th class='sortable' onclick='sortBy("pre_plan_combo","query-smnpresupuesto.sql")'>${lbl:b_plan}</th>
+		<th class='sortable' onclick='sortBy("pre_auxiliar_combo","query-smnpresupuesto.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("pre_fecha_registro","query-smnpresupuesto.sql")'>${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td align='left'>${fld:pre_numero_control}</td>
+		<td>${fld:pre_fecha@dd-MM-yyyy}</td>
+		<td>${fld:pre_titular_combo}</td>
+		<td>${fld:pre_beneficiario_combo}</td>
+		<td>${fld:pre_plan_combo}</td>
+		<td>${fld:pre_auxiliar_combo}</td>
+		<td>${fld:pre_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>

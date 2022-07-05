@@ -1,0 +1,28 @@
+SELECT
+	smn_salud.smn_salud_plantilla_cabecera.smn_salud_plantilla_cabecera_id,
+	smn_salud.smn_salud_plantilla_cabecera.smn_cuestionario_rf,
+	smn_base.smn_auxiliar.aux_apellidos ||' '|| smn_base.smn_auxiliar.aux_nombres AS smn_auxiliar_rf_combo,
+	smn_base.smn_auxiliar.aux_num_doc_oficial,
+	smn_base.smn_auxiliar.aux_numero_historia,
+	smn_salud.smn_ingresos.igs_fecha_ingreso,
+	smn_salud.smn_ingresos.igs_num_ingreso,
+	smn_base.smn_prestadores_servicios.prs_codigo ||'-'|| smn_base.smn_prestadores_servicios.prs_descripcion AS smn_prestador_servicio_rf_combo,
+	smn_base.smn_grupos_prestadores.gpp_codigo ||'-'|| smn_base.smn_grupos_prestadores.gpp_descripcion AS smn_grupos_prestadores_id_combo
+FROM
+	smn_salud.smn_salud_plantilla_cabecera
+	INNER JOIN
+	smn_salud.smn_prestacion_servicio_medico_cabecera ON smn_salud.smn_prestacion_servicio_medico_cabecera.smn_ingresos_id=smn_salud.smn_salud_plantilla_cabecera.smn_ingreso_id
+	INNER JOIN
+	smn_salud.smn_prestacion_servicio_medico_detalle ON smn_salud.smn_prestacion_servicio_medico_detalle.smn_prestacion_servicio_medico_cabecera_id=smn_salud.smn_prestacion_servicio_medico_cabecera.smn_prestacion_servicio_medico_cabecera_id
+	INNER JOIN
+	smn_base.smn_auxiliar ON smn_base.smn_auxiliar.smn_auxiliar_id=smn_salud.smn_salud_plantilla_cabecera.smn_auxiliar_rf
+	INNER JOIN
+	smn_salud.smn_ingresos ON smn_salud.smn_ingresos.smn_ingresos_id=smn_salud.smn_salud_plantilla_cabecera.smn_ingreso_id
+	LEFT JOIN
+	smn_base.smn_prestadores_servicios ON smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id=smn_salud.smn_salud_plantilla_cabecera.smn_prestadores_servicio_rf
+	LEFT JOIN
+	smn_base.smn_rel_grupo_prestador_servicio ON smn_base.smn_rel_grupo_prestador_servicio.smn_prestadores_servicios_id=smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id
+	LEFT JOIN
+	smn_base.smn_grupos_prestadores ON smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id=smn_base.smn_rel_grupo_prestador_servicio.smn_grupos_prestadores_id
+WHERE
+	smn_salud.smn_prestacion_servicio_medico_detalle.smn_prestacion_servicio_medico_detalle_id=${fld:smn_prestacion_servicio_medico_detalle_id}

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_serie_id' type='varchar' required='false' label='${lbl:b_serie}' maxlen='2'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='rta_ticket' type='integer' required='false' label='${lbl:b_rta_ticket}' maxlen='10'/>
+	<parameter id='rta_numero_documento_identidad' type='varchar' required='false' label='${lbl:b_rta_documento}' maxlen='20'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='rta_numero_documento_identidad' rule='like' />
+	<parameter id='rta_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<parameter id='smn_unidad_servicio_rf' type='integer' required='false' label='${lbl:b_units_service}' maxlen='10'/>
+	<parameter id='rta_secuencia' type='integer' required='false' label='${lbl:b_sequence}' maxlen='10'/>	
+</validator>

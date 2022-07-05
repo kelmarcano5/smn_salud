@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='sri_codigo' type='varchar' required='false' label='${lbl:b_codigo_serie}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='sri_codigo' rule='like' />
+	<parameter id='sri_nombre' type='varchar' required='false' label='${lbl:b_nombre_serie}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='sri_nombre' rule='like' />
+	<parameter id='ctm_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

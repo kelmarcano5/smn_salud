@@ -1,0 +1,1 @@
+document.form1.rta_numero_documento_identidad.value='${fld:item@js}';

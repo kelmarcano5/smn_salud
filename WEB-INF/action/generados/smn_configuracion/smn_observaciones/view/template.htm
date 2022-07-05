@@ -1,0 +1,34 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+	<col width='25%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="4">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th class='sortable' onclick='sortBy("obs_codigo","query-smnobservaciones.sql")'>${lbl:b_code_obs}</th>
+		<th class='sortable' onclick='sortBy("obs_descripcion","query-smnobservaciones.sql")'>${lbl:b_description_obs}</th>
+		<th class='sortable' onclick='sortBy("obs_tipo_combo","query-smnobservaciones.sql")'>${lbl:b_tipo_obs}</th>
+		<th class='sortable' onclick='sortBy("obs_fecha_registro","query-smnobservaciones.sql")'>${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td align='left'>${fld:obs_codigo}</td>
+		<td align='left'>${fld:obs_descripcion}</td>
+		<td align='left'>${fld:obs_tipo_combo}</td>
+		<td>${fld:obs_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>

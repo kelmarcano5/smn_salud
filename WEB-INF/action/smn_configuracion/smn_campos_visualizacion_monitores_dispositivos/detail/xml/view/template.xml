@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_campos_visualizacion_monitores_dispositivos>
+	<detail>
+		<rows>		
+		<record cvm_fecha_registro="${fld:cvm_fecha_registro}"    cvm_tiempo_aprox_espera="${fld:cvm_tiempo_aprox_espera}"    cvm_pacientes_espera="${fld:cvm_pacientes_espera}"    cvm_unidad_llamada="${fld:cvm_unidad_llamada}"    cvm_datos_pac="${fld:cvm_datos_pac}"    smn_series_id="${fld:smn_series_id}"    smn_dispositivos_id="${fld:smn_dispositivos_id}"    smn_campos_vis_mon_dis_id="${fld:smn_campos_vis_mon_dis_id}"    />
+		</rows>
+	</detail>
+</smn_campos_visualizacion_monitores_dispositivos>

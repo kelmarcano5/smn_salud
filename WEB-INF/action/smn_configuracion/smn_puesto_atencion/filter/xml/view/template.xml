@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_puesto_atencion>
+	<detail>
+		<rows>		
+		<record put_fecha_registro="${fld:put_fecha_registro}"    put_estatus="${fld:put_estatus}"    put_descripcion="${fld:put_descripcion}"    put_codigo="${fld:put_codigo}"    />
+		</rows>
+	</detail>
+</smn_puesto_atencion>

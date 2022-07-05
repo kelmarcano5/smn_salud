@@ -1,0 +1,20 @@
+INSERT INTO smn_salud.smn_afiliados
+(
+	smn_v_afiliados_id,
+	afi_num_control,
+	afi_apellidos,
+	afi_nombres,
+	afi_sexo,
+	afi_tipo_doc_oficial,
+	afi_nro_doc_oficial
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_afiliados},
+	${fld:afi_num_control2},
+	${fld:afi_apellidos2},
+	${fld:afi_nombres2},
+	${fld:afi_sexo2},
+	${fld:afi_tipo_doc_oficial2},
+	${fld:afi_nro_doc_oficial2}
+)

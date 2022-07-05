@@ -1,0 +1,62 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="12" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_documento_id","query-smncontratante.sql")'>${lbl:b_cnt_documento}</th>
+		<th class='sortable' onclick='sortBy("cnt_numero_control","query-smncontratante.sql")'>${lbl:b_cnt_num_control}</th>
+		<th class='sortable' onclick='sortBy("departamento","query-smncontratante.sql")'>Departamento</th>
+		<th class='sortable' onclick='sortBy("smn_clase_auxiliar_rf","query-smncontratante.sql")'>${lbl:b_auxiliary_class}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf","query-smncontratante.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("smn_plan_id","query-smncontratante.sql")'>${lbl:b_cnt_plan}</th>
+		<th class='sortable' onclick='sortBy("cnt_cantidad_citas","query-smncontratante.sql")'>${lbl:b_cnt_cant_citas}</th>
+		<th class='sortable' onclick='sortBy("cnt_fecha_registro","query-smncontratante.sql")'>${lbl:b_store_date}</th>
+		<th>AF</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_contratante_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_contratante_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_contratante_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_documento_id}</td>
+		<td>${fld:cnt_numero_control}</td>
+		<td>${fld:departamento}</td>
+		<td>${fld:smn_clase_auxiliar_rf}</td>
+		<td>${fld:smn_auxiliar_rf}</td>
+		<td>${fld:smn_plan_id}</td>
+		<td>${fld:cnt_cantidad_citas}</td>
+		<td>${fld:cnt_fecha_registro@dd-MM-yyyy}</td>
+		<td><img src="${def:context}/images/view-list-details.png" onclick="afiliado('${fld:documento_rf}','${fld:doc_codigo}','${fld:doc_nombre}','${fld:smn_contratante_id}','${fld:atr_codigo}','${fld:atr_descripcion}','${fld:cnt_numero_control}')" title="${lbl:b_afiliado}"></td>
+
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,445 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_cobertura_admision}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+<!-- 				<tr>
+			<td>${lbl:b_ingreso}*</td>
+			<td>
+				<input id="smn_ingreso_id" name="smn_ingreso_id" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_presupuesto}*</td>
+			<td>
+				<input id="smn_presupuesto_id" name="smn_presupuesto_id" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr> -->
+	<tr>
+		<td>${lbl:b_ingreso}*</td>
+		<td>
+			<select class="ingreso" name="smn_ingreso_id" id="smn_ingreso_id" onchange="chgCombo(smn_ingreso_id.options[smn_ingreso_id.selectedIndex].text,'smn_ingreso_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_ingreso_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_ingreso_id_rows>
+			</select> 
+			<input id="smn_ingreso_id_name" name="smn_ingreso_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_presupuesto}*</td>
+		<td>
+			<select class="presupuesto" name="smn_presupuesto_id" id="smn_presupuesto_id" onchange="chgCombo(smn_presupuesto_id.options[smn_presupuesto_id.selectedIndex].text,'smn_presupuesto_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_presupuesto_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_presupuesto_id_rows>
+			</select> 
+			<input id="smn_presupuesto_id_name" name="smn_presupuesto_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>Pagador*</td>
+		<td>
+			<select class="pagador" name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_auxiliar_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_auxiliar_rf_rows>
+			</select> 
+			<input id="smn_auxiliar_rf_name" name="smn_auxiliar_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>Ejecutivo Pagador</td>
+		<td>
+			<select class="ejecutivo" name="coa_ejecutivo_atención_pagador" id="coa_ejecutivo_atención_pagador" onchange="chgCombo(coa_ejecutivo_atención_pagador.options[coa_ejecutivo_atención_pagador.selectedIndex].text,'coa_ejecutivo_atención_pagador_name');">
+				<option value="">[Cualquiera]</option>
+				<coa_ejecutivo_atención_pagador_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</coa_ejecutivo_atención_pagador_rows>
+			</select> 
+			<input id="coa_ejecutivo_atención_pagador_name" name="coa_ejecutivo_atención_pagador_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_solicited_hours}</td>
+		<td>
+			<input id="coa_hora_solicitada" name="coa_hora_solicitada" type="time" maxlength="8">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_observation_init}</td>
+		<td>
+			<input id="coa_observación_inicial" name="coa_observación_inicial" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_monto_solicitado_sc_ml}</td>
+		<td>
+			<input id="coa_monto_solicitado_servicios_clinicos_ml" name="coa_monto_solicitado_servicios_clinicos_ml" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_monto_solicitado_mm_ml}</td>
+		<td>
+			<input id="coa_monto_solicitado_medicinas_y_mmq_ml" name="coa_monto_solicitado_medicinas_y_mmq_ml" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_monto_solicitado_ho_ml}</td>
+		<td>
+			<input id="coa_monto_solicitado_honorarios_ml" name="coa_monto_solicitado_honorarios_ml" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_monto_solicitado_total_ml}</td>
+		<td>
+			<input id="coa_monto_total_solicitado_ml" name="coa_monto_total_solicitado_ml" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_monto_aprobado_sc_ml}</td>
+		<td>
+			<input id="coa_monto_aprobado_servicios_medicos_ml" name="coa_monto_aprobado_servicios_medicos_ml" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_monto_aprobado_mm_ml}</td>
+		<td>
+			<input id="coa_monto_aprobado_medicinas_y_mmq_ml" name="coa_monto_aprobado_medicinas_y_mmq_ml" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_monto_aprobado_ho_ml}</td>
+		<td>
+			<input id="coa_monto_aprobado_honorarios_ml" name="coa_monto_aprobado_honorarios_ml" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_monto_aprobado_total_ml}</td>
+		<td>
+			<input id="coa_monto_total_aprobado_ml" name="coa_monto_total_aprobado_ml" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_coins}*</td>
+		<td>
+			<select class="moneda" name="smn_moneda_rf" id="smn_moneda_rf" onchange="chgCombo(smn_moneda_rf.options[smn_moneda_rf.selectedIndex].text,'smn_moneda_rf_name');cambiarmoneda();">
+				<option value="">[Cualquiera]</option>
+				<smn_moneda_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_moneda_rf_rows>
+			</select> 
+			<input id="smn_moneda_rf_name" name="smn_moneda_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr id="tasa">
+		<td>${lbl:b_exchange_rate}*</td>
+		<td>
+			<select class="tasa" name="smn_tasa_rf" id="smn_tasa_rf" onchange="chgCombo(smn_tasa_rf.options[smn_tasa_rf.selectedIndex].text,'smn_tasa_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_tasa_rf_rows>
+				<option value="${fld:id}">${fld:tasa_cambio}</option>
+
+				</smn_tasa_rf_rows>
+			</select> 
+			<input id="smn_tasa_rf_name" name="smn_tasa_rf_name" type="hidden">
+		</td>
+	</tr>
+		<tr id="m1">
+			<td>${lbl:b_monto_solicitado_sc_ma}</td>
+			<td>
+				<input id="coa_monto_solicitado_servicios_clinicos_ma" name="coa_monto_solicitado_servicios_clinicos_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="m2">
+			<td>${lbl:b_monto_solicitado_mm_ma}</td>
+			<td>
+				<input id="coa_monto_solicitado_medicinas_y_mmq_ma" name="coa_monto_solicitado_medicinas_y_mmq_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="m3">
+			<td>${lbl:b_monto_solicitado_ho_ma}</td>
+			<td>
+				<input id="coa_monto_solicitado_honorarios_ma" name="coa_monto_solicitado_honorarios_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="m4">
+			<td>${lbl:b_monto_solicitado_total_ma}</td>
+			<td>
+				<input id="coa_monto_total_solicitado_ma" name="coa_monto_total_solicitado_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_aprobation_date}</td>
+			<td>
+				<input id="coa_fecha_aprobación" name="coa_fecha_aprobación" type="date" >
+				<!-- <img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('coa_fecha_aprobación')"> class="date" maxlength="10"-->
+			</td>
+		</tr>
+
+		<tr>
+			<td>${lbl:b_aprobation_hour}</td>
+			<td>
+				<input id="coa_hora_aprobación" name="coa_hora_aprobación" type="time" maxlength="8" >
+			</td>
+		</tr>
+		<tr id="m5">
+			<td>${lbl:b_monto_aprobado_sc_ma}</td>
+			<td>
+				<input id="coa_monto_aprobado_servicios_medicos_ma" name="coa_monto_aprobado_servicios_medicos_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="m6">
+			<td>${lbl:b_monto_aprobado_mm_ma}</td>
+			<td>
+				<input id="coa_monto_aprobado_medicinas_y_mmq_ma" name="coa_monto_aprobado_medicinas_y_mmq_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="m7">
+			<td>${lbl:b_monto_aprobado_ho_ma}</td>
+			<td>
+				<input id="coa_monto_aprobado_honorarios_ma" name="coa_monto_aprobado_honorarios_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="m8">
+			<td>${lbl:b_monto_aprobado_total_ma}</td>
+			<td>
+				<input id="coa_monto_total_aprobado_ma" name="coa_monto_total_aprobado_ma" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr id="estatusp">
+			<td>${lbl:b_status_proceso}</td>
+			<td>
+				<select class="estatusp" name="coa_estatus_proceso" id="coa_estatus_proceso">
+				<!-- <option value="">[Cualquiera]</option> -->
+				<option value="RE">${lbl:b_registrada}</option>
+				<option value="SO">${lbl:b_solicitada}</option>
+				<option value="AP">${lbl:b_aprobado}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr id="estatusf">
+			<td>${lbl:b_status_financiero}</td>
+			<td>
+				<select class="estatusf" name="coa_estatus_financiero" id="coa_estatus_financiero">
+				<!-- <option value="">[Cualquiera]</option> -->
+				<option value="RE">${lbl:b_registrada}</option>
+				<option value="SO">${lbl:b_solicitada}</option>
+				<option value="AP">${lbl:b_aprobado}</option>
+
+				</select> 
+			</td>
+		</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+
+		inic();
+
+		
+		if (id!="")
+			edit(id);
+	} 
+
+	function inic() {
+
+		$('.pagador').select2();
+		$('.ejecutivo').select2();
+		$('.moneda').select2();
+		$('.tasa').select2();
+		$('.estatusp').select2();
+		$('.estatusf').select2();
+		$('.ingreso').select2();
+		$('.presupuesto').select2();
+
+		$('#m1').hide();
+		$('#m2').hide();
+		$('#m3').hide();
+		$('#m4').hide();
+		$('#m5').hide();
+		$('#m6').hide();
+		$('#m7').hide();
+		$('#m8').hide();
+		$('#tasa').hide();
+		$('#estatusp').hide();
+		$('#estatusf').hide();
+
+	}
+
+	function cambiarmoneda() {
+		var moneda = $('#smn_moneda_rf').val();
+
+		if (moneda=="") {
+			$('#m1').hide();
+			$('#m2').hide();
+			$('#m3').hide();
+			$('#m4').hide();
+			$('#m5').hide();
+			$('#m6').hide();
+			$('#m7').hide();
+			$('#m8').hide();
+			$('#tasa').hide();
+		}else{
+			$('#m1').show();
+			$('#m2').show();
+			$('#m3').show();
+			$('#m4').show();
+			$('#m5').show();
+			$('#m6').show();
+			$('#m7').show();
+			$('#m8').show();
+			$('#tasa').show();
+		}
+	}
+	
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+	
+</script>	
+</body>
+</html>

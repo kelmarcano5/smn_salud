@@ -1,0 +1,3 @@
+<rows>
+rpc_fecha_registro="${fld:rpc_fecha_registro}"    rpc_observacion="${fld:rpc_observacion}"    rpc_motivo="${fld:rpc_motivo}"    rpc_fecha_reintegro="${fld:rpc_fecha_reintegro}"    rpc_fecha_hasta="${fld:rpc_fecha_hasta}"    rpc_fecha_desde="${fld:rpc_fecha_desde}"    smn_diagnostico_rf="${fld:smn_diagnostico_rf}"    smn_auxiliar_rf="${fld:smn_auxiliar_rf}"    smn_ingreso_id="${fld:smn_ingreso_id}"    
+</rows>

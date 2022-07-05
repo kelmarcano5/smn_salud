@@ -1,0 +1,1 @@
+select smn_base.smn_auxiliar_medico.smn_auxiliar_medico_id as id, smn_base.smn_auxiliar_medico.aam_num_doc_oficial || ' - ' || smn_base.smn_auxiliar_medico.aam_nombres || ' ' ||  smn_base.smn_auxiliar_medico.aam_apellidos as item from smn_base.smn_auxiliar_medico order by smn_base.smn_auxiliar_medico.aam_descripcion

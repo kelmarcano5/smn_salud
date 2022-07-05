@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_estatus>
+	<detail>
+		<rows>		
+		<record est_fecha_registro="${fld:est_fecha_registro}"    est_descripcion="${fld:est_descripcion}"    est_codigo="${fld:est_codigo}"    sta_fecha_registro="${fld:sta_fecha_registro}"    sta_descripcion="${fld:sta_descripcion}"    sta_codigo="${fld:sta_codigo}"    />
+		</rows>
+	</detail>
+</smn_estatus>

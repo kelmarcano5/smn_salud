@@ -1,0 +1,65 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='9%'/>
+	<col width='9'/>
+	<col width='12%'/>
+	<col width='9%'/>
+	<col width='10%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="11" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("documento_identidad","query-smnprestacionserviciomedicodetalle.sql")'>Cod.</th>
+		<th class='sortable' onclick='sortBy("nombre_apellido","query-smnprestacionserviciomedicodetalle.sql")'>Prestador</th>
+		<th class='sortable' onclick='sortBy("documento","query-smnprestacionserviciomedicodetalle.sql")'>Documento</th>
+		<th class='sortable' onclick='sortBy("psd_tipo_componentes_combo","query-smnprestacionserviciomedicodetalle.sql")'>Componente</th>
+		<th class='sortable' onclick='sortBy("ticket","query-smnprestacionserviciomedicodetalle.sql")'>Ticket</th>
+		<th class='sortable' onclick='sortBy("psd_estatus","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("psd_fecha_registro","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_store_date}</th>
+
+		<!-- <th class='sortable' onclick='sortBy("smn_prestacion_servicio_medico_cabecera_id","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_header_medic_provider_services}</th>
+		<th class='sortable' onclick='sortBy("smn_mov_caja_detalle_id","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_movement_caj_detail}</th>
+		<th class='sortable' onclick='sortBy("smn_ingresos_mov_id","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_appointment_movement}</th>
+		<th class='sortable' onclick='sortBy("psd_tipo_componentes_combo","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_components_types}</th>
+		<th class='sortable' onclick='sortBy("psd_cantidad","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_quantity}</th>
+		<th class='sortable' onclick='sortBy("psd_estatus_combo","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("psd_fecha_registro","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_store_date}</th> -->
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_prestacion_servicio_medico_detalle_id}')" title="${lbl:b_view_detail}"></td>
+		<!-- <td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_prestacion_servicio_medico_detalle_id}')" title="${lbl:b_delete_button}"></td> 
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_prestacion_servicio_medico_detalle_id}')" title="${lbl:b_edit_button}"></td>-->
+		<td><img src="${def:context}/images/accept.png"  onclick="showEditor_aprobar('${fld:smn_prestacion_servicio_medico_detalle_id}','${fld:psd_estatus_cabecera}' )" title="Aprobar"></td>
+		<td><img src="${def:context}/images/reject.png"  onclick="showEditor_rechazar('${fld:smn_prestacion_servicio_medico_detalle_id}')" title="Rechazar"></td>
+		<td>${fld:documento_identidad}</td>
+		<td>${fld:nombre_apellido}</td>
+		<td>${fld:documento}</td>
+		<td align='center'>${fld:psd_tipo_componentes_combo}</td>
+		<td align='center'>${fld:ticket}</td>
+		<td align='center'>${fld:psd_estatus}</td>
+		<td>${fld:psd_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

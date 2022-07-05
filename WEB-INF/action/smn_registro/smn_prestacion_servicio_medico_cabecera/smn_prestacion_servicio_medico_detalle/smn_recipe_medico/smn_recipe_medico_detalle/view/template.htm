@@ -1,0 +1,61 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<!-- <col width='10%'/> -->
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="11" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<!-- <th class='sortable' onclick='sortBy("smn_recipe_medico_id","query-smnrecipemedicodetalle.sql")'>${lbl:b_prescription_medic}</th> -->
+		<th class='sortable' onclick='sortBy("smn_principio_activo_rf","query-smnrecipemedicodetalle.sql")'>${lbl:b_active_ingredient}</th>
+		<th class='sortable' onclick='sortBy("smn_marca_comercial_id","query-smnrecipemedicodetalle.sql")'>${lbl:b_marca_comercial}</th>
+		<th class='sortable' onclick='sortBy("smn_presentacion_rf","query-smnrecipemedicodetalle.sql")'>${lbl:b_presentacion}</th>
+		<th class='sortable' onclick='sortBy("rmd_concentracion","query-smnrecipemedicodetalle.sql")'>Concentracion</th>
+		<th class='sortable' onclick='sortBy("rmd_dosis","query-smnrecipemedicodetalle.sql")'>${lbl:b_dose}</th>
+		<th class='sortable' onclick='sortBy("rmd_frecuencia","query-smnrecipemedicodetalle.sql")'>${lbl:b_frecuency}</th>
+		<th class='sortable' onclick='sortBy("rmd_dias_tratamiento","query-smnrecipemedicodetalle.sql")'>${lbl:b_treatment_day}</th>
+		<th class='sortable' onclick='sortBy("rmd_fecha_registro","query-smnrecipemedicodetalle.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_recipe_medico_detalle_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_recipe_medico_detalle_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_recipe_medico_detalle_id}')" title="${lbl:b_edit_button}"></td>
+		<!-- <td>${fld:smn_recipe_medico_id}</td> -->
+		<td>${fld:smn_principio_activo_rf}</td>
+		<td>${fld:smn_marca_comercial_id}</td>
+		<td>${fld:smn_presentacion_rf}</td>
+		<td>${fld:rmd_concentracion}</td>
+		<td align='right'>${fld:rmd_dosis@#,###,##0.00}</td>
+		<td>${fld:rmd_frecuencia}</td>
+		<td>${fld:rmd_dias_tratamiento}</td>
+		<td>${fld:rmd_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

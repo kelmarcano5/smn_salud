@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnafiliados.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_afiliados}</pdf-title>
+	<pdf-logo url='/images/logo-dinamica.png' scale='100' />
+
+	<pdf-report pageSize="letter" rotate="false">
+		<record recordset='filter.params' title='Filtro de Búsqueda' noFilterMsg='-- Sin filtro de búsqueda --' width='55' spacingBefore='15'>
+			<col name='afi_nro_doc_oficial' title='${lbl:b_official_document_number}
+'  align='center' />
+			<col name='afi_apellidos' title='${lbl:s_profile_lname}'  align='center' />
+			<col name='afi_nombres' title='${lbl:s_profile_fname}'  align='center' />
+		</record>
+		<table recordset='query-smnafiliados.sql' width='100' spacingBefore='10'>
+			<col name='afi_num_control' title='${lbl:b_code}' width='10' align='left' />
+			<col name='afi_apellidos' title='${lbl:s_profile_lname}' width='10' align='left' />
+			<col name='afi_nombres' title='${lbl:s_profile_fname}' width='10' align='left' />
+			<col name='afi_sexo_combo' title='${lbl:b_sex}' width='10' align='left' />
+			<col name='afi_tipo_doc_oficial' title='${lbl:b_official_document_type}' width='10' align='center' format='######' />
+			<col name='afi_nro_doc_oficial' title='${lbl:b_official_document_number}
+' width='10' align='left' />
+			<col name='afi_idioma' title='${lbl:s_profile_lang}' width='10' align='left' />
+			<col name='afi_usuario' title='${lbl:b_users}' width='10' align='left' />
+			<col name='afi_fecha_registro' title='${lbl:b_store_date}' width='10' align='center' format='dd-MM-yyyy' />
+			<col name='afi_hora' title='${lbl:s_loginhist_col2}' width='10' align='left' />
+		</table>
+
+	</pdf-report>
+</config>

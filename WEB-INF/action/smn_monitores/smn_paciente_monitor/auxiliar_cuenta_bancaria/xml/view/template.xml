@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_auxiliar_cuenta_bancaria>
+	<detail>
+		<rows>		
+		<record acb_fecha_registro="${fld:acb_fecha_registro}"    acb_num_aba="${fld:acb_num_aba}"    efi_nombre="${fld:efi_nombre}"    acb_respons_cuenta="${fld:acb_respons_cuenta}"    tcb_descripcion="${fld:tcb_descripcion}"    acb_num_cuenta="${fld:acb_num_cuenta}"    />
+		</rows>
+	</detail>
+</smn_auxiliar_cuenta_bancaria>

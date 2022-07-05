@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncontratante.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_contratante}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_contratante}">
+				<col id='smn_documento_id' label='${lbl:b_cnt_documento}' />
+		<col id='cnt_numero_control' label='${lbl:b_cnt_num_control}' />
+		<col id='smn_clase_auxiliar_rf' label='${lbl:b_auxiliary_class}' />
+		<col id='smn_auxiliar_rf' label='${lbl:b_auxiliary}' />
+		<col id='smn_plan_id' label='${lbl:b_cnt_plan}' />
+		<col id='cnt_fecha_de_inicio' label='${lbl:b_cnt_fecha_inic}' />
+		<col id='cnt_cantidad_citas' label='${lbl:b_cnt_cant_citas}' />
+		<col id='smn_documento_id' label='${lbl:b_cnt_documento}' />
+		<col id='cnt_numero_control' label='${lbl:b_cnt_num_control}' />
+		<col id='smn_clase_auxiliar_rf' label='${lbl:b_auxiliary_class}' />
+		<col id='smn_auxiliar_rf' label='${lbl:b_auxiliary}' />
+		<col id='smn_plan_id' label='${lbl:b_cnt_plan}' />
+		<col id='cnt_cantidad_citas' label='${lbl:b_cnt_cant_citas}' />
+		<col id='cnt_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

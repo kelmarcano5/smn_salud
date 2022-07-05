@@ -1,0 +1,28 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='50%'/>
+	<col width='50%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="2" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th class='sortable' onclick='sortBy("smn_coberturas_id_combo","query-smncoberturasservicios.sql")'>${lbl:b_cobertura}</th>
+		<th class='sortable' onclick='sortBy("smn_unidades_servicios_id_combo","query-smncoberturasservicios.sql")'>${lbl:b_service_unit}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td>${fld:smn_coberturas_id_combo}</td>
+		<td>${fld:smn_unidades_servicios_id_combo}</td>
+	</tr>
+	</rows>
+
+</table>

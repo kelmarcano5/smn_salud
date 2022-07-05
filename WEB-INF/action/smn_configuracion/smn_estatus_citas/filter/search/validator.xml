@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='eci_num_secuencia' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='eci_num_secuencia' rule='like' />
+	<parameter id='eci_descripcion' type='varchar' required='false' label='${lbl:b_description}' maxlen='56'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='eci_descripcion' rule='like' />
+	<parameter id='eci_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

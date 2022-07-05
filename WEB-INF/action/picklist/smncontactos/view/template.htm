@@ -1,0 +1,33 @@
+<!--data grid-->
+<table class="datagrid rowhover oneCellRow" style="width:95%;">
+
+	<col width='40%'/>
+	<col width='30%'/>
+	<col width='30%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="3">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th onclick="sortBy('cnt_email','query-smncontactos.sql')" class="sortable">${lbl:s_profile_email}</th>
+		<th onclick="sortBy('cnt_nombres','query-smncontactos.sql')" class="sortable">${lbl:s_profile_fname}</th>
+		<th onclick="sortBy('cnt_apellidos','query-smncontactos.sql')" class="sortable">${lbl:s_profile_lname}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr onclick="selectItem('${fld:smn_contactos_id}')" >
+		<td align="left"><span id="${fld:smn_contactos_id}">${fld:cnt_email}</span></td>
+		<td align="left">${fld:cnt_nombres}</td>
+		<td align="left">${fld:cnt_apellidos}</td>
+	</tr>
+	</rows>
+
+</table>
+

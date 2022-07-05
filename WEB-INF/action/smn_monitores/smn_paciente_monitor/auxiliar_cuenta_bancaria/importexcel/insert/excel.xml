@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='acb_num_cuenta' type='varchar' required='true' maxlen='24'/>
+	<parameter id='acb_tipo_cta_banco_desc_ref' type='varchar' required='true' maxlen='1'/>
+	<parameter id='acb_banco_pertenece_desc_ref' type='varchar' required='true' maxlen='3'/>
+
+	<parameter id='acb_tipo_cta_banco_ref' type='integer' required='false' maxlen='1'/>
+	<parameter id='acb_banco_pertenece_ref' type='integer' required='false' maxlen='3'/>
+
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: acb_tipo_cta_banco' 
+		parameter='acb_tipo_cta_banco_ref' 
+		sql='acb_tipo_cta_banco.sql' 
+		id='acb_tipo_cta_banco_ref'/>
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: acb_banco_pertenece' 
+		parameter='acb_banco_pertenece_ref' 
+		sql='acb_banco_pertenece.sql' 
+		id='acb_banco_pertenece_ref'/>
+
+</validator>

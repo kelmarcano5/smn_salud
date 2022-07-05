@@ -1,0 +1,10 @@
+select
+		smn_salud.smn_rel_orden_medica_servicios.smn_ordenes_medicas_id,
+	smn_salud.smn_rel_orden_medica_servicios.smn_servicios_rf,
+	smn_salud.smn_rel_orden_medica_servicios.ros_observacion,
+	smn_salud.smn_rel_orden_medica_servicios.smn_grupo_prestador_rf,
+	smn_salud.smn_rel_orden_medica_servicios.smn_prestador_servicio_referido_rf
+from
+	smn_salud.smn_rel_orden_medica_servicios 
+where
+	smn_salud.smn_rel_orden_medica_servicios.smn_rel_orden_medica_servicios_id = ${fld:id}

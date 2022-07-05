@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert">
+	<parameter id="id" type="integer" required="true" label="ID" maxlen="10" />
+	<parameter id='contratante_id' type='integer' required='false' label='${lbl:b_num_control}' maxlen='10'/>
+
+</validator>

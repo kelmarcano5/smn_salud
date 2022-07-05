@@ -1,0 +1,40 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='30%'/>
+	<col width='30%'/>
+	<col width='30%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="6">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('mac_codigo','query-smnmarcacomercial.sql')" >${lbl:b_code}</th>
+		<th class='sortable' onclick="sortBy('mac_descripcion','query-smnmarcacomercial.sql')" >${lbl:b_description}</th>
+		<th class='sortable' onclick="sortBy('mac_fecha_registro','query-smnmarcacomercial.sql')" >${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_marca_comercial_id}')" title="Ver detalle"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_marca_comercial_id}')" title="Eliminar"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_marca_comercial_id}')" title="Editar"></td>
+		<td align="center">${fld:mac_codigo}</td>
+		<td align="center">${fld:mac_descripcion}</td>
+		<td align="center">${fld:mac_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>

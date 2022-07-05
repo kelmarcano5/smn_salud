@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_rel_orden_medica_servicios>
+	<detail>
+		<rows>		
+		<record smn_prestador_servicio_referido_rf="${fld:smn_prestador_servicio_referido_rf}"    smn_grupo_prestador_rf="${fld:smn_grupo_prestador_rf}"    ros_observacion="${fld:ros_observacion}"    smn_servicios_rf="${fld:smn_servicios_rf}"    smn_ordenes_medicas_id="${fld:smn_ordenes_medicas_id}"    />
+		</rows>
+	</detail>
+</smn_rel_orden_medica_servicios>

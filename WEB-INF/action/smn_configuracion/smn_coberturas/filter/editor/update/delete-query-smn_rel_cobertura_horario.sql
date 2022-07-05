@@ -1,0 +1,1 @@
+delete from smn_salud.smn_rel_cobertura_horario WHERE smn_coberturas_id= ${fld:id}

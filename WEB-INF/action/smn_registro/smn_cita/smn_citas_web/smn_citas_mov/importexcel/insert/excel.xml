@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_citas_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_documento_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='ctm_num_control_cita' type='integer' required='true' maxlen='10'/>
+	<parameter id='ctm_consecutivo' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_componente_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='ctm_accion' type='varchar' required='false' maxlen='40'/>
+	<parameter id='smn_tipo_consulta_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_grupo_prestador_servicio_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='ctm_fecha_cita' type='date' required='true' maxlen='10'/>
+	<parameter id='ctm_turno_cita' type='integer' required='false' maxlen='10'/>
+	<parameter id='ctm_hora_cita' type='varchar' required='false' maxlen='8'/>
+	<parameter id='ctm_estatus_id_desc_ref' type='varchar' required='true' maxlen='10'/>
+	<parameter id='smn_motivos_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='cts_ordenante_descripcion' type='varchar' required='false' maxlen='40'/>
+	<parameter id='smn_sintoma_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='cts_tipo_orden' type='varchar' required='true' maxlen='3'/>
+	<parameter id='cts_num_orden_medica' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_entidades_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_sucursales_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='ctm_observaciones_id_desc_ref' type='varchar' required='false' maxlen='10'/>
+
+	<parameter id='ctm_estatus_id_ref' type='integer' required='false' maxlen='10'/>
+	<parameter id='ctm_observaciones_id_ref' type='integer' required='false' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='cts_ordenante_descripcion'/>
+
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: ctm_estatus_id' 
+		parameter='ctm_estatus_id_ref' 
+		sql='ctm_estatus_id.sql' 
+		id='ctm_estatus_id_ref'/>
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: ctm_observaciones_id' 
+		parameter='ctm_observaciones_id_ref' 
+		sql='ctm_observaciones_id.sql' 
+		id='ctm_observaciones_id_ref'/>
+
+</validator>

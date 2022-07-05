@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		${lbl:b_dinamic_template}
+	</summary>
+
+	<log>false</log>
+	
+	<set-request-attribute id="progress" value="file:/WEB-INF/action/progress/progress.htm"/>
+	<set-request-attribute id="controls" value="file:/WEB-INF/action/pagecontrols/controls.htm"/>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id='query-smn_cuestionario.sql' source='sql' scope='transaction'/>
+		<recordset id="user-info.sql" source="sql" scope="session" />
+		<recordset id="query-smnsaludplantillacabecera.sql" source="sql" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>template.htm</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/html</content-type>
+		<print mode='table' recordset='query-smn_cuestionario.sql' tag='smn_cuestionario_rows'/>
+		<print mode="form" recordset="_request" /> 
+		<print mode="form" recordset="user-info.sql" />
+		<print mode="table" recordset="query-smnsaludplantillacabecera.sql" tag="rows" alternate-colors="true" />
+	</output>
+
+</config>

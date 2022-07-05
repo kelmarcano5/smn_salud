@@ -1,0 +1,30 @@
+INSERT INTO smn_inventario.smn_despacho_detalle
+(
+	smn_despacho_detalle_id,
+	smn_despacho_id,
+	smn_caracteristica_item_id,
+	dde_cantidad_solicitada,
+	dde_costo_ml,
+	dde_costo_ma,
+	dde_estatus_transaccion,
+	dde_idioma,
+	dde_usuario,
+	dde_fecha_registro,
+	dde_hora,
+	smn_id_movimiento_origen
+)
+VALUES
+(
+	${seq:nextval@smn_inventario.seq_smn_despacho_detalle},
+	${fld:smn_despacho_id},
+	${fld:smn_item_rf_2},
+	${fld:psd_cantidad},
+	${fld:psd_monto_neto_propuesto_ml},
+	${fld:psd_monto_neto_propuesto_ma},
+	'SO',
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}',
+	${fld:smn_prestacion_servicio_medico_detalle_id}
+)

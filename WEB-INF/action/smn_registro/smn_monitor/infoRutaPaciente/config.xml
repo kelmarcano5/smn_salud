@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Return JS in order to fill a combobox depending of value that send to this action
+	</summary>
+
+	<log>false</log>
+
+	<set-request-attribute id="paging.recordset" value="query-smncontratante.sql" />
+	<set-request-attribute id="paging.pagesize" value="6" />
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="sql"  scope="session" />
+		<recordset id="query2.sql" source="sql"  scope="session" />
+		<recordset id="ruta_paciente" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>rutaPaciente2.js</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/javascript</content-type>
+		<print mode="table" recordset="query.sql" tag="rowsRuta" alternate-colors="true" />
+		<print mode="table" recordset="query2.sql" tag="rowsRuta2" alternate-colors="true" />
+		<print mode="form" recordset="ruta_paciente" />
+	</output>
+
+</config>

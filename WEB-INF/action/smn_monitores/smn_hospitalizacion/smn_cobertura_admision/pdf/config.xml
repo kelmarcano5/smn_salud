@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncoberturaadmision.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_cobertura_admision}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_cobertura_admision}.pdf</pdf-file-name>
+
+	<pdf-report 
+		pageSize="letter" 
+		rotate="false"
+		footer="false" 
+		header="true">
+		<record recordset='query-smncoberturaadmision.sql' width='100' spacingBefore='40'>
+			<col name='smn_ingreso_id' title='${lbl:b_ingreso}' width='5' align='left'  />
+			<col name='smn_presupuesto_id' title='${lbl:b_presupuesto}' width='5' align='left'  />
+			<col name='smn_auxiliar_rf' title='${lbl:b_auxiliary}' width='5' align='left'  />
+			<col name='coa_hora_solicitada' title='${lbl:b_solicited_hours}' width='5' align='left'  />
+			<col name='smn_auxiliar_rf' title='${lbl:b_auxiliary}' width='5' align='left'  />
+			<col name='coa_observacion_inicial' title='${lbl:b_observation_init}' width='5' align='left'  />
+			<col name='smn_moneda_rf' title='${lbl:b_coins}' width='5' align='left'  />
+			<col name='smn_tasa_rf' title='${lbl:b_exchange_rate}' width='5' align='left'  />
+			<col name='coa_monto_aprobado_servicios_medicos_ml' title='${lbl:b_monto_aprobado_sc_ml}' width='5' align='left' format='#,###,##0.00' />
+			<col name='coa_monto_aprobado_medicinas_y_mmq_ml' title='${lbl:b_monto_aprobado_mm_ml}' width='5' align='left' format='#,###,##0.00' />
+			<col name='coa_monto_aprobado_honorarios_ml' title='${lbl:b_monto_aprobado_ho_ml}' width='5' align='left' format='#,###,##0.00' />
+			<col name='coa_monto_total_aprobado_ml' title='${lbl:b_monto_aprobado_total_ml}' width='5' align='left' format='#,###,##0.00' />
+			<col name='coa_monto_aprobado_servicios_medicos_ma' title='${lbl:b_monto_aprobado_sc_ma}' width='5' align='left' format='#,###,##0.00' />
+			<col name='coa_monto_aprobado_medicinas_y_mmq_ma' title='${lbl:b_monto_aprobado_mm_ma}' width='5' align='left' format='#,###,##0.00' />
+			<col name='coa_monto_aprobado_honorarios_ma' title='${lbl:b_monto_aprobado_ho_ma}' width='5' align='left' format='#,###,##0.00' />
+			<col name='coa_monto_total_aprobado_ma' title='${lbl:b_monto_aprobado_total_ma}' width='5' align='left' format='#,###,##0.00' />
+			<col name='coa_estatus_proceso' title='${lbl:b_status_proceso}' width='5' align='left' />
+			<col name='coa_estatus_financiero' title='${lbl:b_status_financiero}' width='5' align='left' />
+			<col name='coa_fecha_registro' title='${lbl:b_store_date}' width='5' align='left' format='dd-MM-yyyy' />
+
+		</record>
+
+	</pdf-report>
+</config>

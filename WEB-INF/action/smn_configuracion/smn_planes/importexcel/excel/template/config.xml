@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnplanes.sql" source="session" scope="transaction" />
+		<recordset id='query-smnentidades.sql' source='sql' scope='transaction' />
+	<recordset id='query-smncontratomodulo.sql' source='sql' scope='transaction' />
+	
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_plans}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_plans}">
+				<col id='pla_codigo' label='${lbl:b_code}' />
+		<col id='pla_descripcion' label='${lbl:b_description}' />
+		<col id='pla_vigencia_desde' label='${lbl:b_validation_date_from}' />
+		<col id='pla_vigencia_hasta' label='${lbl:b_validation_date_until}' />
+		<col id='pla_inactivo_combo' label='${lbl:b_inactive}' />
+		<col id='pla_modelo_contrato_combo' label='${lbl:b_contrato_modulo}' />
+		<col id='pla_empresa_combo' label='${lbl:b_entity}' />
+		<col id='pla_codigo' label='${lbl:b_code}' />
+		<col id='pla_descripcion' label='${lbl:b_description}' />
+		<col id='pla_vigencia_desde' label='${lbl:b_validation_date_from}' />
+		<col id='pla_vigencia_hasta' label='${lbl:b_validation_date_until}' />
+		<col id='pla_inactivo_combo' label='${lbl:b_inactive}' />
+		<col id='pla_modelo_contrato_combo' label='${lbl:b_contrato_modulo}' />
+		<col id='pla_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+		<sheet recordset='query-smnentidades.sql' sheetname=''>
+		<col id='ent_descripcion_corta' label='${lbl:b_description}' />
+	</sheet>
+
+	<sheet recordset='query-smncontratomodulo.sql' sheetname=''>
+		<col id='smn_documento_id' label='${lbl:}' />
+	</sheet>
+
+
+	</excel>
+
+</config>

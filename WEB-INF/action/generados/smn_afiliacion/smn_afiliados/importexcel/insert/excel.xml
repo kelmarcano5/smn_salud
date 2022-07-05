@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='afi_num_control' type='varchar' required='true' maxlen='16'/>
+	<parameter id='afi_apellidos' type='varchar' required='true' maxlen='56'/>
+	<parameter id='afi_nombres' type='varchar' required='true' maxlen='56'/>
+	<parameter id='afi_sexo' type='varchar' required='true' maxlen='2'/>
+	<parameter id='afi_tipo_doc_oficial' type='integer' required='false' maxlen='10'/>
+	<parameter id='afi_nro_doc_oficial' type='varchar' required='true' maxlen='12'/>
+</validator>

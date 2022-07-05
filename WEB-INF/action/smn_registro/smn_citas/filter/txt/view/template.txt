@@ -1,0 +1,3 @@
+<rows>
+cts_fecha_registro="${fld:cts_fecha_registro}"      ant_apellidos="${fld:ant_apellidos}"    cla_nombre="${fld:cla_nombre}"      cts_numero_ticket="${fld:cts_numero_ticket}"      cts_num_control="${fld:cts_num_control}"    smn_documento_id="${fld:smn_documento_id}"    
+</rows>

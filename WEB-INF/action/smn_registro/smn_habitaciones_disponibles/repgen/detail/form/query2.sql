@@ -1,0 +1,11 @@
+select
+		smn_salud.smn_habitaciones_disponibles.smn_habitaciones_id,
+	smn_salud.smn_habitaciones_disponibles.smn_ingreso_id,
+	smn_salud.smn_habitaciones_disponibles.had_fecha_ingreso,
+	smn_salud.smn_habitaciones_disponibles.had_fecha_egreso,
+	smn_salud.smn_habitaciones_disponibles.had_estatus,
+	smn_salud.smn_habitaciones_disponibles.had_fecha_registro
+from
+	smn_salud.smn_habitaciones_disponibles 
+where
+	smn_salud.smn_habitaciones_disponibles.smn_habitaciones_disponibles_id = ${fld:id}

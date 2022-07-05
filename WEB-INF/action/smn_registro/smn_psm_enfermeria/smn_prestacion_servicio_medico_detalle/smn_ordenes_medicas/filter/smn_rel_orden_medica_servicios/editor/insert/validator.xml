@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_ordenes_medicas_id' type='integer' required='true' label='${lbl:b_orders_medics}' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='integer' required='true' label='${lbl:b_services}' maxlen='10'/>
+	<parameter id='ros_observacion' type='varchar' required='false' label='${lbl:b_observations}' maxlen='200'/>
+	<parameter id='smn_grupo_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_grupo_prestador_servicio}' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_service_providers}' maxlen='10'/>
+
+
+</validator>

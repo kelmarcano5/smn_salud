@@ -1,0 +1,64 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width="3%"/>
+	<col width="3%"/>
+	<col width="3%"/>
+	<col width="3%"/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="15">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th colspan="4"></th>
+		<th class='sortable' onclick="sortBy('smn_tipo_documento_afiliado_id_combo','query-smndocumentoafiliados.sql')" >${lbl:b_document_type}</th>
+		<th class='sortable' onclick="sortBy('doc_desc_documento','query-smndocumentoafiliados.sql')" >${lbl:b_document}</th>
+		<th class='sortable' onclick="sortBy('smn_afiliados_id_combo','query-smndocumentoafiliados.sql')" >${lbl:b_afiliados}</th>
+		<th class='sortable' onclick="sortBy('doc_archivo','query-smndocumentoafiliados.sql')" >${lbl:b_file}</th>
+		<th class='sortable' onclick="sortBy('doc_contenido','query-smndocumentoafiliados.sql')" >${lbl:b_content}</th>
+		<th class='sortable' onclick="sortBy('doc_descripcion','query-smndocumentoafiliados.sql')" >${lbl:b_description}</th>
+		<th class='sortable' onclick="sortBy('doc_tamano','query-smndocumentoafiliados.sql')" >${lbl:b_size}</th>
+		<th class='sortable' onclick="sortBy('doc_idioma','query-smndocumentoafiliados.sql')" >${lbl:s_profile_lang}</th>
+		<th class='sortable' onclick="sortBy('doc_usuario','query-smndocumentoafiliados.sql')" >${lbl:b_users}</th>
+		<th class='sortable' onclick="sortBy('doc_fecha_registro','query-smndocumentoafiliados.sql')" >${lbl:b_store_date}</th>
+		<th class='sortable' onclick="sortBy('doc_hora','query-smndocumentoafiliados.sql')" >${lbl:s_loginhist_col2}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/download.png" onclick="downloadBlob('${fld:smn_documento_afiliados_id}')" title="Descargar" ></td>
+		<td><img src="${def:context}/images/search.png" onclick="getImage('${fld:smn_documento_afiliados_id}', '${fld:doc_contenido}')" title="Ver documento" ></td>
+		<td><img src="${def:context}/images/delete.png" onclick="deleteRecord('${fld:smn_documento_afiliados_id}')" title="Eliminar"></td>
+		<td><img src="${def:context}/images/edit.png" onclick="edit('${fld:smn_documento_afiliados_id}')" title="Editar"></td>
+		<td>${fld:smn_tipo_documento_afiliado_id_combo}</td>
+		<td align="left">${fld:doc_desc_documento}</td>
+		<td>${fld:smn_afiliados_id_combo}</td>
+		<td align="left">${fld:doc_archivo}</td>
+		<td align="left">${fld:doc_contenido}</td>
+		<td align="left">${fld:doc_descripcion}</td>
+		<td align="center">${fld:doc_tamano}</td>
+		<td align="left">${fld:doc_idioma}</td>
+		<td align="left">${fld:doc_usuario}</td>
+		<td align="center">${fld:doc_fecha_registro@dd-MM-yyyy}</td>
+		<td align="left">${fld:doc_hora}</td>
+	</tr>
+	</rows>
+
+</table>

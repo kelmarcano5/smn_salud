@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		${lbl:b_presupuesto}
+	</summary>
+
+	<log>false</log>
+	
+	<set-request-attribute id="progress" value="file:/WEB-INF/action/progress/progress.htm"/>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id='query-pre_titular.sql' source='sql' scope='transaction'/><recordset id='query-pre_beneficiario.sql' source='sql' scope='transaction'/><recordset id='query-pre_plan.sql' source='sql' scope='transaction'/><recordset id='query-pre_clase_auxiliar.sql' source='sql' scope='transaction'/><recordset id='query-pre_auxiliar.sql' source='sql' scope='transaction'/><recordset id='query-smn_ordenes_medicas_id.sql' source='sql' scope='transaction'/><recordset id='query-smn_estado_presupuesto_id.sql' source='sql' scope='transaction'/>
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>template.htm</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/html</content-type>
+		<print mode='table' recordset='query-pre_titular.sql' tag='pre_titular_rows'/><print mode='table' recordset='query-pre_beneficiario.sql' tag='pre_beneficiario_rows'/><print mode='table' recordset='query-pre_plan.sql' tag='pre_plan_rows'/><print mode='table' recordset='query-pre_clase_auxiliar.sql' tag='pre_clase_auxiliar_rows'/><print mode='table' recordset='query-pre_auxiliar.sql' tag='pre_auxiliar_rows'/><print mode='table' recordset='query-smn_ordenes_medicas_id.sql' tag='smn_ordenes_medicas_id_rows'/><print mode='table' recordset='query-smn_estado_presupuesto_id.sql' tag='smn_estado_presupuesto_id_rows'/>
+		<print mode="form" recordset="_request" /> 
+	</output>
+
+</config>

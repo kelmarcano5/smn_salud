@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert">
+	<parameter id="id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="id_ingreso" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="num_ingreso" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="estatus_financiero" type="varchar" required="false" label="ID" maxlen="10" />
+ 	<parameter id="fecha_reg" type="varchar" required="true" label="Fecha" maxlen="10" />
+ 	<parameter id="presupuesto_id" type="integer" required="false" label="PRESUPUESTO ID" maxlen="10" />
+ 	<parameter id="paciente_pagador" type="integer" required="false" label="paciente" maxlen="10" />
+</validator>

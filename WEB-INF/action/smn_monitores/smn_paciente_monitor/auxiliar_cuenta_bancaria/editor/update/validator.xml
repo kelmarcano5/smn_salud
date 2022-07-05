@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='true' label='${lbl:b_class_auxiliary}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='acb_num_cuenta' type='varchar' required='true' label='${lbl:b_account_number}' maxlen='24'/>
+	<parameter id='acb_tipo_cta_banco' type='integer' required='true' label='${lbl:b_account_bank_type}' maxlen='1'/>
+	<parameter id='acb_respons_cuenta' type='varchar' required='false' label='${lbl:b_responsible}' maxlen='96'/>
+	<parameter id='acb_banco_pertenece' type='integer' required='true' label='${lbl:b_bank}' maxlen='3'/>
+	<parameter id='acb_num_aba' type='varchar' required='false' label='${lbl:b_aba_code}' maxlen='24'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_auxiliary_bank_account}' maxlen='10'/>
+
+
+</validator>

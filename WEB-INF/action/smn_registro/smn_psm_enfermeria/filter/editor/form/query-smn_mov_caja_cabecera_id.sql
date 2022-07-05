@@ -1,0 +1,1 @@
+select smn_caja.smn_mov_caja_cabecera.smn_mov_caja_cabecera_id as id, smn_caja.smn_mov_caja_cabecera.smn_mov_caja_cabecera_id as item from smn_caja.smn_mov_caja_cabecera order by smn_caja.smn_mov_caja_cabecera.smn_mov_caja_cabecera_id desc

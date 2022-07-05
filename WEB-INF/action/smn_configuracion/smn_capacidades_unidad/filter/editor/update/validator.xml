@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='true' label='${lbl:b_area_servicio}' maxlen='10'/>
+	<parameter id='smn_unidad_servicio_rf' type='integer' required='true' label='${lbl:b_unidad_servicio}' maxlen='10'/>
+	<parameter id='cap_cant_max_pacientes' type='integer' required='true' label='${lbl:b_max_pacientes}' maxlen='10'/>
+	<parameter id='cap_cant_min_pacientes' type='integer' required='true' label='${lbl:b_min_pacientes}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_capacidad_unidad}' maxlen='10'/>
+
+
+</validator>

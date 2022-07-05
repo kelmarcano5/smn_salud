@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='trm_codigo' type='varchar' required='false' label='${lbl:b_trm_cod}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='trm_codigo' rule='like' />
+	<parameter id='trm_descripcion' type='varchar' required='false' label='${lbl:b_trm_des}' maxlen='100'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='trm_descripcion' rule='like' />
+	<parameter id='trm_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

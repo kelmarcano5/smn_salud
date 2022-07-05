@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax' id="cita">
+	<parameter id='smn_citas_id_name' type='varchar' required='false' label='${lbl:smn_citas}'/>
+	<parameter id='smn_citas_id' type='integer' required='true' label='${lbl:smn_citas}' maxlen='10'/>
+	<parameter id='smn_documento_id' type='integer' required='true' label='${lbl:b_document}' maxlen='10'/>
+	<parameter id='ctm_num_control_cita' type='integer' required='true' label='${lbl:b_num_control_citas}' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='integer' required='true' label='${lbl:b_service}' maxlen='10'/>
+	<parameter id='smn_componente_rf' type='integer' required='false' label='${lbl:b_component}' maxlen='10'/>
+	<parameter id='ctm_accion' type='varchar' required='false' label='${lbl:b_accion}' maxlen='40'/>
+	<parameter id='smn_tipo_consulta_id' type='integer' required='false' label='${lbl:b_tipo_consulta}' maxlen='10'/>
+	<parameter id='smn_grupo_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_grupo_prestador_servicio}' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_service_providers}' maxlen='10'/>
+	<parameter id='ctm_fecha_cita' type='date' required='true' label='${lbl:b_appointment_date}' maxlen='10'/>
+	<parameter id='ctm_turno_cita' type='integer' required='false' label='${lbl:b_turno_cita}' maxlen='10'/>
+	<parameter id='ctm_hora_cita' type='varchar' required='false' label='${lbl:b_hora_cita}' maxlen='8'  regexp='^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$' regexp-error-label="Formato de hora incorrecto"/>
+	<parameter id='ctm_estatus_id' type='integer' required='true' label='${lbl:b_status}' maxlen='10'/>
+	<parameter id='smn_motivos_id' type='integer' required='false' label='${lbl:b_reason}' maxlen='10'/>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary_class_mov_cita}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary_mov_citas}' maxlen='10'/>
+	<parameter id='cts_ordenante_descripcion' type='varchar' required='false' label='${lbl:b_ordenante_descripcion}' maxlen='40'/>
+	<parameter id='smn_sintoma_id' type='integer' required='true' label='${lbl:b_symptom}' maxlen='10'/>
+	<parameter id='cts_tipo_orden' type='varchar' required='true' label='${lbl:b_tipo_orden}' maxlen='3'/>
+	<parameter id='cts_num_orden_medica' type='integer' required='false' label='${lbl:b_orden_medica}' maxlen='10'/>
+	<parameter id='smn_entidades_rf' type='integer' required='true' label='${lbl:b_entities}' maxlen='10'/>
+	<parameter id='smn_sucursales_rf' type='integer' required='true' label='${lbl:b_subsidiaries}' maxlen='10'/>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='true' label='${lbl:b_service_area}' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_rf' type='integer' required='true' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='ctm_observaciones_id' type='integer' required='false' label='${lbl:b_observation}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_appointment_movement}' maxlen='10'/>	
+	<parameter id="id_cita" type="integer" required="false" label="ID" maxlen="10" />
+</validator>

@@ -1,0 +1,3 @@
+<rows>
+put_fecha_registro="${fld:put_fecha_registro}"    put_estatus="${fld:put_estatus}"    put_descripcion="${fld:put_descripcion}"    put_codigo="${fld:put_codigo}"    
+</rows>

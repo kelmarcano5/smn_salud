@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<recordset>
+		<parameter id='smn_rel_orden_medica_servicios_id' type='integer'/>
+		<parameter id='smn_ordenes_medicas_id' type='integer'/>
+        <parameter id='smn_servicios_rf' type='integer'/>
+</recordset>  

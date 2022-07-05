@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+</head>
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	Seleccionar Presupuesto Aprobado
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+	<table>
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+		<!--campos-->
+		<tr>
+			<td>${lbl:b_contratante_aux}</td>
+			<td>
+				<select class="contratante" name="smn_contratante_id" id="smn_contratante_id" onchange="chgCombo(smn_contratante_id.options[smn_contratante_id.selectedIndex].index,'smn_contratante_id_name');">
+					<option value="">[Cualquiera]</option>
+					<smn_contratante_id_rows>
+					<option value="${fld:id}">${fld:item}</option>
+
+					</smn_contratante_id_rows>
+				</select> 
+				<input id="smn_contratante_id_name" name="smn_contratante_id_name" type="hidden">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_auxiliary_pa}*</td>
+			<td>
+				<select class="paciente" name="cts_auxiliar" id="cts_auxiliar" onchange="chgCombo(cts_auxiliar.options[cts_auxiliar.selectedIndex].text,'cts_auxiliar_name');">
+					<option value="">[Cualquiera]</option>
+					<cts_auxiliar_rows>
+						<option value="${fld:id}">${fld:item}</option>
+
+					</cts_auxiliar_rows>
+				</select> 
+				<input id="cts_auxiliar_name" name="cts_auxiliar_name" type="hidden">
+			</td>
+		</tr>
+		<tr>
+			<td>Presupuesto</td>
+			<td>
+				<select class="doc_ori" name="smn_doc_orig" id="smn_doc_orig" onchange="chgCombo(smn_doc_orig.options[smn_doc_orig.selectedIndex].text,'smn_doc_orig_name');">
+					<option value="">[Cualquiera]</option>
+					<smn_documento_origen_rows>
+					<option value="${fld:id}">${fld:item}</option>
+	
+					</smn_documento_origen_rows>
+				</select> 
+				<input id="smn_doc_orig_name" name="smn_doc_orig_name" type="hidden">
+			</td>
+		</tr>
+		
+	</table>
+
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="Procesar" class="button">
+	<!-- <input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button"> -->
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="ingreso_id" id="ingreso_id" value="">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+
+	onload = function(){ 
+		addNew();
+
+		getPresupuesto('${fld:paciente}');
+
+		$(document).ready(function() {
+    		$('.paciente').select2();
+    		$('.doc_ori').select2();
+    		$('.contratante').select2();
+			var ingreso_id=$('#ingreso_id').val('${fld:ingreso_id}');
+			var contratante_id=$('#smn_contratante_id').val('${fld:contratante}').change();
+			var auxiliar_id=$('#cts_auxiliar').val('${fld:paciente}').change();
+			var presupuesto_id=$('#smn_doc_orig').val('${fld:presupuesto_id}').change();
+			$('#smn_contratante_id').prop('disabled','true');
+			$('#cts_auxiliar').prop('disabled','true');
+
+
+    		
+		});
+
+
+
+		
+		
+		if (id!="")
+			edit(id);
+	} 
+
+	
+	function chgCombo(text,id){
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew(){
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack(){
+		_goBackFn()			
+	}
+	
+
+	//mostrar la actualizacion de un registro
+	function insert(){		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save(){
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+				return insert();	
+		else
+				return update();
+	
+	}
+
+	
+	//editar registro en formulario
+	function edit(id){
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update(){		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+	//actualizar registro en BD
+	function update(){		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update_pres", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+
+	var geo_id10 = null;
+	function chgCombo_prest(text,id){		
+		
+		var combo = document.getElementById('cts_auxiliar');
+		var valueCombo = getIDSelectedIndex(combo);
+		//console.log(valueCombo);
+		geo_id10= valueCombo.split("-").shift().trim();
+
+		if (id!=null && id!=""){
+			
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/getpresupuesto?id=" + geo_id10, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_doc_orig'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}	
+	}
+
+	var geo_id10 = null;
+	function chgCombo_presupuesto(text,id){		
+		
+		var combo = document.getElementById('smn_doc_orig');
+		var valueCombo = getIDSelectedIndex(combo);
+		//console.log(valueCombo);
+		geo_id10= valueCombo.split("-").shift().trim();
+
+		if (id!=null && id!=""){
+			
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/getObtenerNumPresupuesto?id=" + geo_id10, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}	
+	}
+
+	function sel_num_presupuesto() {
+		var idpre = $('#smn_doc_orig').val();
+		console.log(idpre);
+	}
+
+	//Author     : SIMONE
+	//Description: Set first element as selected value
+	//Return     : None
+	function setElementFirstIndex(id){
+		var combo = document.getElementById(id);
+		combo.selectedIndex = 0;
+	}
+
+
+	var geo_id10 = null;
+	function getPresupuesto(id){		
+	
+		var uri="${def:actionroot}/../getpresupuesto?id=" + id; 
+		alert("si llego a getpresupuesto"+uri);
+		if (id!='') {
+			 return ajaxCall(	
+					httpMethod="GET", 
+					uri, 
+					divResponse=null, 
+					divProgress="status", 
+					formName="form1", 
+					afterResponseFn=null, //function 'setElementFirstIndex' select first element of combo list
+					onErrorFn=null);	
+		}						
+	}
+
+	
+</script>	
+</body>
+</html>

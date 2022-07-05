@@ -1,0 +1,30 @@
+INSERT INTO smn_salud.smn_planes
+(
+	smn_planes_id,
+	pla_codigo,
+	pla_descripcion,
+	pla_vigencia_desde,
+	pla_vigencia_hasta,
+	pla_inactivo,
+	pla_modelo_contrato,
+	pla_empresa,
+	pla_idioma,
+	pla_usuario,
+	pla_fecha_registro,
+	pla_hora
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_planes},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

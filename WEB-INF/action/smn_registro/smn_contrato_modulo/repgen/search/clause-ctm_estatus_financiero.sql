@@ -1,0 +1,2 @@
+ and
+ 	upper(smn_salud.smn_contrato_modulo.ctm_estatus_financiero) like upper(${fld:ctm_estatus_financiero})

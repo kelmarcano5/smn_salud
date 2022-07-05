@@ -1,0 +1,44 @@
+INSERT INTO smn_salud.smn_recipe_medico_detalle
+(
+	smn_recipe_medico_detalle_id,
+	smn_recipe_medico_id,
+	smn_principio_activo_rf,
+	smn_item_rf,
+	smn_presentacion_rf,
+	rmd_dosis,
+	rmd_frecuencia,
+	rmd_tiempo_frecuencia,
+	rmd_especificacion,
+	rmd_dias_tratamiento,
+	rmd_dosis_total,
+	rmd_observacion,
+	rmd_idioma,
+	rmd_usuario,
+	rmd_fecha_registro,
+	rmd_hora,
+	rmd_tiempo_frecuencia_2,
+	smn_marca_comercial
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_recipe_medico_detalle},
+	${fld:smn_recipe_medico_id},
+	${fld:smn_principio_activo_rf},
+	${fld:smn_item_rf},
+	${fld:smn_presentacion_rf},
+	${fld:rmd_dosis},
+	${fld:rmd_frecuencia},
+	${fld:rmd_tiempo_frecuencia},
+	${fld:rmd_especificacion},
+	${fld:rmd_dias_tratamiento},
+	${fld:rmd_dosis_total},
+	${fld:rmd_observacion},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}',
+	${fld:rmd_tiempo_frecuencia_2},
+	${fld:smn_marca_comercial}
+
+
+)

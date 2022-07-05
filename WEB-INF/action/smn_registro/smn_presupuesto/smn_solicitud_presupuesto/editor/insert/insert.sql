@@ -1,0 +1,98 @@
+INSERT INTO smn_salud.smn_solicitud_presupuesto
+(
+	smn_solicitud_presupuesto_id,
+	spr_solicitud,
+	smn_auxiliar,
+	smn_contratante_id,
+	smn_patologia_id,
+	spr_dias_hospitalizacion,
+	spr_horas_quirofano,
+	spr_instrumentales,
+	spr_honorarios,
+	spr_estatus,
+	spr_idioma,
+	spr_usuario,
+	spr_fecha_registro,
+	spr_hora,
+	smn_presupuesto_id,
+	smn_documento_id
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_solicitud_presupuesto},
+	${seq:nextval@smn_salud.seq_solicitud_numero},
+	${fld:smn_auxiliar},
+	${fld:smn_contratante_id},
+	${fld:smn_patologia_id},
+	${fld:spr_dias_hospitalizacion},
+	${fld:spr_horas_quirofano},
+	${fld:spr_instrumentales},
+	${fld:spr_honorarios},
+	${fld:spr_estatus},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}',
+	${seq:nextval@smn_salud.seq_smn_presupuesto},
+	${fld:smn_documento_id}
+);
+
+INSERT INTO smn_salud.smn_presupuesto
+(
+	smn_presupuesto_id,
+	smn_documento_id,
+	smn_entidades_rf,
+	smn_sucursales_rf,
+	smn_clase_auxiliar_rf,
+	smn_auxiliar_rf,
+	smn_clase_ord_rf,
+	smn_auxiliar_ord_rf,
+	smn_baremo_rf,
+	smn_auxiliar_unidades_negocios_rf,
+	smn_auxiliar_sucursales_rf,
+	smn_auxiliar_areas_servicios_rf,
+	smn_auxiliar_unidades_servicios_rf,
+	pre_vigencia_hasta,
+	smn_ordenes_medicas_id,
+	pre_fecha_entrega,
+	pre_monto_ml,
+	pre_monto_ma,
+	smn_estado_presupuesto_id,
+	pre_idioma,
+	pre_usuario,
+	pre_fecha_registro,
+	pre_hora,
+	smn_contratante_id,
+	pre_tipo,
+	smn_patologia_id
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_presupuesto},
+	${fld:smn_documento_id},
+	(select smn_salud.smn_documento.smn_entidades_rf from smn_salud.smn_documento where smn_salud.smn_documento.smn_documento_id=${fld:smn_documento_id}),
+	(select smn_salud.smn_documento.smn_sucursales_rf from smn_salud.smn_documento where smn_salud.smn_documento.smn_documento_id=${fld:smn_documento_id}),
+	(select smn_base.smn_auxiliar.smn_clase_auxiliar_rf from smn_base.smn_auxiliar where smn_base.smn_auxiliar.smn_auxiliar_id=${fld:smn_auxiliar}),
+	${fld:smn_auxiliar},
+	0,
+	0,
+	(select smn_salud.smn_contratante.smn_baremos_id from smn_salud.smn_contratante where smn_salud.smn_contratante.smn_contratante_id=${fld:smn_contratante_id}),
+	0,
+	0,
+	0,
+	0,
+	{d '${def:date}'},
+	0,
+	{d '${def:date}'},
+	0,
+	0,
+	1,
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}',
+	${fld:smn_contratante_id},
+	'PA',
+	${fld:smn_patologia_id}
+)
+

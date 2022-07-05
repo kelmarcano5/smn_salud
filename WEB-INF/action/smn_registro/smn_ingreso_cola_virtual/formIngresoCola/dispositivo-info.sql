@@ -1,0 +1,5 @@
+select smn_salud.smn_dispositivos.smn_entidades_rf, smn_salud.smn_dispositivos.smn_sucursales_rf, smn_salud.smn_dispositivos.smn_areas_servicios_rf,
+smn_base.smn_unidades_servicios.smn_unidades_servicios_id
+from smn_salud.smn_dispositivos
+left outer join smn_base.smn_unidades_servicios on smn_base.smn_unidades_servicios.smn_unidades_servicios_id = smn_salud.smn_dispositivos.smn_unidad_servicio_rf
+where upper(smn_salud.smn_dispositivos.dis_codigo) = upper('0001') limit 1

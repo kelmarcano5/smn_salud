@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='loc_codigo' type='varchar' required='false' label='${lbl:b_codigo_local}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='loc_codigo' rule='like' />
+	<parameter id='loc_descripcion' type='varchar' required='false' label='${lbl:b_descripcion_local}' maxlen='48'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='loc_descripcion' rule='like' />
+</validator>

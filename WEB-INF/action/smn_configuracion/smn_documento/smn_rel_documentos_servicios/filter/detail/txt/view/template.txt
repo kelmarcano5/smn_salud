@@ -1,0 +1,3 @@
+<rows>
+rdt_tipo_generacion="${fld:rdt_tipo_generacion}"    smn_servicios_id="${fld:smn_servicios_id}"    smn_documentos_id="${fld:smn_documentos_id}"    
+</rows>

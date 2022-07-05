@@ -1,0 +1,3 @@
+<rows>
+est_fecha_registro="${fld:est_fecha_registro}"    est_descripcion="${fld:est_descripcion}"    est_codigo="${fld:est_codigo}"    sta_fecha_registro="${fld:sta_fecha_registro}"    sta_descripcion="${fld:sta_descripcion}"    sta_codigo="${fld:sta_codigo}"    
+</rows>

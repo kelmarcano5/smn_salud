@@ -1,0 +1,3 @@
+<rows>
+trd_fecha_registro="${fld:trd_fecha_registro}"    smn_tramos_id="${fld:smn_tramos_id}"    smn_tramo_descanso_id="${fld:smn_tramo_descanso_id}"    
+</rows>

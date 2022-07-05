@@ -1,0 +1,78 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='3%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+	<col width='6%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="16" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+
+
+		<th class='sortable' onclick="sortBy('smn_entidad_rf_combo','query-smnrutapaciente.sql')" >${lbl:b_entidades_rp}</th>
+		<th class='sortable' onclick="sortBy('smn_sucursal_rf_combo','query-smnrutapaciente.sql')" >${lbl:b_sucursal_rp}</th>
+		<th class='sortable' onclick="sortBy('smn_area_servicio_rf_combo','query-smnrutapaciente.sql')" >${lbl:b_area_rp}</th>
+		<!-- <th class='sortable' onclick="sortBy('smn_serie_id_combo','query-smnrutapaciente.sql')" >${lbl:b_serie}</th> -->
+		<th class='sortable' onclick="sortBy('igs_num_ingreso','query-smnrutapaciente.sql')" >${lbl:b_igs_num_ingreso}</th>
+		<th class='sortable' onclick="sortBy('rta_ticket','query-smnrutapaciente.sql')" >${lbl:b_rta_ticket}</th>
+		<th class='sortable' onclick="sortBy('rta_secuencia','query-smnrutapaciente.sql')" >${lbl:b_rta_sequence}</th>
+		<th class='sortable' onclick="sortBy('smn_unidad_servicio_rf_combo','query-smnrutapaciente.sql')" >${lbl:b_units_service}</th>
+		<th class='sortable' onclick="sortBy('aux_descripcion','query-smnrutapaciente.sql')" >${lbl:b_contratante}</th>
+		<th class='sortable' onclick="sortBy('rta_numero_documento_identidad','query-smnrutapaciente.sql')" >${lbl:b_rta_numero_documento_identidad}</th>
+		<th class='sortable' onclick="sortBy('smn_auxiliar_rf_combo','query-smnrutapaciente.sql')" >${lbl:b_auxiliary_pa}</th>
+		<th class='sortable' onclick="sortBy('rta_estatus_combo','query-smnrutapaciente.sql')" >${lbl:b_status}</th>
+		<th class='sortable' onclick="sortBy('rta_hora_llegada_unidad','query-smnrutapaciente.sql')" >${lbl:b_time_end}</th>
+		<th class='sortable' onclick="sortBy('rta_hora_salida_unidad','query-smnrutapaciente.sql')" >${lbl:b_time_exit}</th>
+		<th class='sortable' onclick="sortBy('rta_ejecutivo_asignado_combo','query-smnrutapaciente.sql')" >${lbl:b_ejecutivo_asignado}</th>
+		<th class='sortable' onclick="sortBy('rta_fecha_registro','query-smnrutapaciente.sql')" >${lbl:b_store_date}</th>
+		
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_ruta_id}')" title="Ver detalle"></td>
+
+
+		<td align="center">${fld:smn_entidad_rf_combo}</td>
+		<td align="center">${fld:smn_sucursal_rf_combo}</td>
+		<td align="center">${fld:smn_area_servicio_rf_combo}</td>
+		<!-- <td align="left">${fld:smn_serie_id_combo}</td> -->
+		<td align="center">${fld:igs_num_ingreso}</td>
+		<td align="center">${fld:rta_ticket}</td>
+		<td align="center">${fld:rta_secuencia}</td>
+		<td align="center">${fld:smn_unidad_servicio_rf_combo}</td>
+		<td align="center">${fld:aux_descripcion}</td>
+		<td align="left">${fld:rta_numero_documento_identidad}</td>
+		<td align="center">${fld:smn_auxiliar_rf_combo}</td>
+		<td align="left">${fld:rta_estatus_combo}</td>
+		<td align="left">${fld:rta_hora_llegada_unidad}</td>
+		<td align="left">${fld:rta_hora_salida_unidad}</td>
+		<td align="center">${fld:rta_ejecutivo_asignado_combo}</td>
+		<td align="left">${fld:rta_fecha_registro}</td>
+		
+	</tr>
+	</rows>
+
+</table>

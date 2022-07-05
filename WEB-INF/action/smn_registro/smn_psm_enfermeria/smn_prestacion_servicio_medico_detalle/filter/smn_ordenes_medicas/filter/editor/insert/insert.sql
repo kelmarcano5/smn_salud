@@ -1,0 +1,51 @@
+INSERT INTO smn_salud.smn_ordenes_medicas
+(
+	smn_ordenes_medicas_id,
+	smn_ingreso_id,
+	omd_numero_orden,
+	omd_descripcion,
+	smn_prestador_servicio_rf,
+	omd_clase_auxiliar,
+	omd_auxiliar,
+	omd_tipo_orden,
+	omd_indicaciones,
+	omd_idioma,
+	omd_usuario,
+	omd_fecha_registro,
+	omd_hora,
+	omd_estatus
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_ordenes_medicas},
+	${fld:smn_ingreso_id},
+	${seq:nextval@smn_salud.seq_numero_orden_medica},
+	${fld:omd_descripcion},
+	${fld:smn_prestador_servicio_rf},
+	${fld:omd_clase_auxiliar},
+	${fld:omd_auxiliar},
+	${fld:omd_tipo_orden},
+	${fld:omd_indicaciones},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}',
+	${fld:omd_estatus}
+);
+
+-- INSERT INTO smn_salud.smn_rel_orden_medica_servicios
+-- (
+-- 	smn_rel_orden_medica_servicios_id,
+-- 	smn_ordenes_medicas_id,
+-- 	smn_servicios_rf,
+-- 	smn_grupo_prestador_rf,
+-- 	smn_prestador_servicio_referido_rf
+-- )
+-- VALUES
+-- (
+-- 	${seq:nextval@smn_salud.seq_smn_rel_orden_medica_servicios},
+-- 	${seq:currval@smn_salud.seq_smn_ordenes_medicas},
+-- 	${fld:smn_servicios_rf},
+-- 	${fld:smn_grupo_prestador_servicio_rf},
+-- 	${fld:smn_prestador_servicio_rf}
+-- )

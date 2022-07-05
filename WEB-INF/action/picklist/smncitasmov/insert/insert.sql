@@ -1,0 +1,34 @@
+INSERT INTO smn_salud.smn_citas_mov
+(
+	smn_citas_mov_id,
+	ctm_num_control_cita,
+	ctm_fecha,
+	ctm_localidad,
+	ctm_servicio,
+	ctm_componente,
+	ctm_prestador_servicio,
+	ctm_tipo_componente,
+	ctm_estatus,
+	ctm_observ_cita,
+	ctm_idioma,
+	ctm_usuario,
+	ctm_fecha_registro,
+	ctm_hora
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_citas_mov},
+	${fld:ctm_num_control_cita2},
+	${fld:ctm_fecha2},
+	${fld:ctm_localidad2},
+	${fld:ctm_servicio2},
+	${fld:ctm_componente2},
+	${fld:ctm_prestador_servicio2},
+	${fld:ctm_tipo_componente2},
+	${fld:ctm_estatus2},
+	${fld:ctm_observ_cita2},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

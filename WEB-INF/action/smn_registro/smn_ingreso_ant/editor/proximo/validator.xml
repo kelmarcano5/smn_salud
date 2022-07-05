@@ -1,0 +1,9 @@
+ <validator onerror="/action/error/validation/alert" id="ingreso">
+	<parameter id="usuario" type="integer" required="true" label="ID" maxlen="10" />
+	<parameter id="entidad_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="sucursal_prestador" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="area_prestador" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="unidad_prestador" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="ruta_id" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="auxiliar_id" type="integer" required="false" label="ID" maxlen="10" />
+ </validator>

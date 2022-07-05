@@ -1,0 +1,9 @@
+SELECT DISTINCT
+smn_base.smn_grupo_prestador_servicio_frecuencia.smn_servicios_id as id, 
+smn_base.smn_servicios.svc_descripcion as item
+FROM
+smn_base.smn_servicios
+INNER JOIN smn_base.smn_grupo_prestador_servicio_frecuencia ON smn_base.smn_servicios.smn_servicios_id = smn_base.smn_grupo_prestador_servicio_frecuencia.smn_servicios_id
+left join smn_base.smn_baremos on smn_base.smn_baremos.smn_baremos_id = smn_base.smn_servicios.smn_baremos_id
+inner join smn_base.smn_tipos_servicios on smn_base.smn_tipos_servicios.smn_tipos_servicios_id = smn_base.smn_servicios.smn_tipo_servicio_rf
+WHERE smn_base.smn_grupo_prestador_servicio_frecuencia.smn_grupos_prestadores_id IS NOT NULL

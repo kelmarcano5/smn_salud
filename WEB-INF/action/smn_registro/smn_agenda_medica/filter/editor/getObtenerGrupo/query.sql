@@ -1,0 +1,1 @@
+select smn_base.smn_grupos_prestadores.gpp_is_pull as pull, ${fld:id} as idg from smn_base.smn_grupos_prestadores where smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id=${fld:id}

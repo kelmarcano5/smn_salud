@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/ajax" id="ingresocola">
+	<parameter id="cedula" type="varchar" required="true" label="ID ${lbl:b_paciente_clase}" />
+	<parameter id="ticket" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="smn_unidad" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="entidad_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="sucursal_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="smn_area_servicio" type="integer" required="true" label="ID" maxlen="10" />
+
+ 	<parameter id="contratante" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="unidad" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="grupo" type="integer" required="false" label="ID" maxlen="10" />
+
+</validator>

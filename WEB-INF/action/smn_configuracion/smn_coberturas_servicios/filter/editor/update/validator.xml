@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_coberturas_id_name' type='varchar' required='true' label='${lbl:b_cobertura}'/>
+	<parameter id='smn_coberturas_id' type='integer' required='false' label='${lbl:b_cobertura}' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_id' type='integer' required='true' label='${lbl:b_service_unit}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_coverage_services}' maxlen='10'/>
+</validator>
+

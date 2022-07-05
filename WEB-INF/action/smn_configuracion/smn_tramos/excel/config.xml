@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smntramos.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="3" cellStep="0" name="${lbl:b_tramos}"/>
+	
+	<excel 
+		recordset='query-smntramos.sql' 
+		sheetname='${lbl:b_tramos}' 
+		filename='${lbl:b_tramos}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='trm_codigo' label='${lbl:b_trm_cod}' />
+		<col id='trm_descripcion' label='${lbl:b_trm_des}' />
+		<col id='trm_dia_semana_combo' label='${lbl:b_dia_semana}' />
+		<col id='trm_hora_inicio' label='${lbl:b_trm_hora_inicio}' />
+		<col id='trm_hora_fin' label='${lbl:b_trm_hora_fin}' />
+		<col id='trm_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

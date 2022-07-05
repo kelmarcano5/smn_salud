@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert">
+	<parameter id="smn_ingresos_id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="smn_mov_caja_cabecera_id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="smn_documento_id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="igs_monto_moneda_local" type="double" required="false" label="ID" maxlen="10" />
+	<parameter id="igs_monto_moneda_alternal" type="double" required="false" label="ID" maxlen="10" />
+	<parameter id="smn_moneda_rf" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="smn_tasa_rf" type="integer" required="false" label="ID" maxlen="10" />
+</validator>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_area_servicio_rf' type='integer' required='false' label='${lbl:b_service_area}' maxlen='10'/>
+	<parameter id='smn_paso_rf' type='integer' required='false' label='${lbl:b_paso}' maxlen='10'/>
+	<parameter id='smn_serie_id' type='integer' required='false' label='${lbl:b_serie}' maxlen='10'/>
+	<parameter id='rup_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<parameter id='smn_unidad_servicio_rf' type='integer' required='false' label='${lbl:b_service_area}' maxlen='10'/>
+	<parameter id='rup_unidad_administrativa' type='varchar' required='false' label='${lbl:b_service_area}' maxlen='10'/>
+</validator>

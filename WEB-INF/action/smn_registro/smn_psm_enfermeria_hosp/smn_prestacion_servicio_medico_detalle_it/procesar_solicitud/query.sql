@@ -1,0 +1,3 @@
+select * from smn_salud.smn_prestacion_servicio_medico_cabecera
+inner join smn_salud.smn_ingresos on smn_salud.smn_ingresos.smn_ingresos_id = smn_salud.smn_prestacion_servicio_medico_cabecera.smn_ingresos_id
+where smn_salud.smn_prestacion_servicio_medico_cabecera.smn_prestacion_servicio_medico_cabecera_id=${fld:id2}

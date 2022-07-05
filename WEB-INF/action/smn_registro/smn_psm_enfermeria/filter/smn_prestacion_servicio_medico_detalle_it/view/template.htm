@@ -1,0 +1,52 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="9" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th class='sortable' onclick='sortBy("documento_identidad","query-smnprestacionserviciomedicodetalle.sql")'>Codigo</th>
+		<th class='sortable' onclick='sortBy("nombre_apellido","query-smnprestacionserviciomedicodetalle.sql")'>Paciente</th>
+		<th class='sortable' onclick='sortBy("smn_servicios_rf","query-smnprestacionserviciomedicodetalle.sql")'>Servicio</th>
+		<th class='sortable' onclick='sortBy("smn_principio_activo_id","query-smnprestacionserviciomedicodetalle.sql")'>Principio Activo</th>
+		<th class='sortable' onclick='sortBy("smn_item_rf","query-smnprestacionserviciomedicodetalle.sql")'>Item</th>
+		<th class='sortable' onclick='sortBy("psd_cantidad","query-smnprestacionserviciomedicodetalle.sql")'>Cantidad</th>
+		<th class='sortable' onclick='sortBy("psd_estatus","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("psd_fecha_registro","query-smnprestacionserviciomedicodetalle.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png" onclick="getDetail('${fld:smn_prestacion_servicio_medico_detalle_id}')" title="${lbl:b_view_detail}"></td>
+		<td>${fld:documento_identidad}</td>
+		<td>${fld:nombre_apellido}</td>
+		<td align='left'>${fld:smn_servicios_rf}</td>
+		<td align='center'>${fld:smn_principio_activo_id}</td>
+		<td align='center'>${fld:smn_item_rf}</td>
+		<td align='center'>${fld:psd_cantidad}</td>
+		<td align='center'>${fld:psd_estatus}</td>
+		<td>${fld:psd_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

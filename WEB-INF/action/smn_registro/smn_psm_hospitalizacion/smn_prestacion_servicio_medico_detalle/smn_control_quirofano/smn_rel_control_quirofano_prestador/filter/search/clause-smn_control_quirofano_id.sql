@@ -1,0 +1,2 @@
+ and
+ 	smn_salud.smn_rel_control_quirofano_prestador.smn_control_quirofano_id=${fld:smn_control_quirofano_id}

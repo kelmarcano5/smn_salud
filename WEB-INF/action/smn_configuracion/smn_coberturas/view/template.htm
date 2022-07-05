@@ -1,0 +1,55 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_tipo_coberturas_id","query-smncoberturas.sql")'>${lbl:b_tipo_coberturas}</th>
+		<th class='sortable' onclick='sortBy("cob_codigo","query-smncoberturas.sql")'>${lbl:b_cob_code}</th>
+		<th class='sortable' onclick='sortBy("cob_descripcion","query-smncoberturas.sql")'>${lbl:b_cob_des}</th>
+		<th class='sortable' onclick='sortBy("cob_tiempo_servicio","query-smncoberturas.sql")'>${lbl:b_service_time}</th>
+		<th class='sortable' onclick='sortBy("unm_descripcion_combo","query-smncoberturas.sql")'>${lbl:b_cob_unidad_tiempo}</th>
+		<th class='sortable' onclick='sortBy("cob_deducible","query-smncoberturas.sql")'>Monto ${lbl:b_deducible}</th>
+		<th class='sortable' onclick='sortBy("cob_fecha_registro","query-smncoberturas.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_coberturas_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_coberturas_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_coberturas_id}')" title="${lbl:b_edit_button}"></td>
+		<td align='left'>${fld:smn_tipo_coberturas_id}</td>
+		<td align='left'>${fld:cob_codigo}</td>
+		<td align='left'>${fld:cob_descripcion}</td>
+		<td>${fld:cob_tiempo_servicio}</td>
+		<td>${fld:unm_descripcion_combo}</td>
+		<td align='right'>${fld:cob_deducible@#,###,##0.00}</td>
+		<td>${fld:cob_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,42 @@
+INSERT INTO smn_salud.smn_agenda_medica
+(
+	smn_agenda_medica_id,
+	smn_agenda_id,
+	smn_entidades_rf,
+	smn_sucursales_rf,
+	smn_areas_servicios_rf,
+	smn_unidades_servicios_rf,
+	smn_grupo_prestador_servicio_rf,
+	smn_prestador_servicio_rf,
+	smn_especialidad_rf,
+	agm_jornada_desde_rf,
+	agm_frecuencia,
+	agm_cantidad_frecuencia,
+	agm_estatus,
+	agm_idioma,
+	agm_usuario,
+	agm_fecha_registro,
+	agm_hora,
+	smn_habitaciones_id
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_agenda_medica},
+	${fld:smn_agenda_id},
+	${fld:smn_entidades_rf},
+	${fld:smn_sucursales_rf},
+	${fld:smn_areas_servicios_rf},
+	${fld:smn_unidades_servicios_rf},
+	${fld:smn_grupo_prestador_servicio_rf},
+	${fld:smn_prestador_servicio_rf},
+	${fld:smn_especialidad_rf},
+	${fld:agm_jornada_desde_rf},
+	${fld:agm_frecuencia},
+	${fld:agm_cantidad_frecuencia},
+	${fld:agm_estatus},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}',
+	${fld:smn_habitaciones_id}
+)

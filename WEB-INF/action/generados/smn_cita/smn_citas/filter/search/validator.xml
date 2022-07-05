@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='cts_num_control' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='cts_num_control' rule='like' />
+	<parameter id='cts_tipo_orden' type='varchar' required='false' label='${lbl:b_order_type}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='cts_tipo_orden' rule='like' />
+	<parameter id='cts_num_doc_oficial' type='varchar' required='false' label='${lbl:b_official_document_number}' maxlen='12'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='cts_num_doc_oficial' rule='like' />
+	<parameter id='cts_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

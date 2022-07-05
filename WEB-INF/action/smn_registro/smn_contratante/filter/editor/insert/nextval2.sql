@@ -1,0 +1,1 @@
+select ${seq:nextval@smn_salud.seq_numero_control} as id2

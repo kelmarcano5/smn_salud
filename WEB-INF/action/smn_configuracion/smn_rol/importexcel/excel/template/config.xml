@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnrol.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_roles}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_roles}">
+				<col id='smn_usuario_id' label='${lbl:b_users}' />
+		<col id='rol_tipo' label='${lbl:b_rol_type}' />
+		<col id='smn_corporacion_rf' label='${lbl:b_corporation}' />
+		<col id='smn_entidad_rf' label='${lbl:b_entities}' />
+		<col id='smn_sucursal_rf' label='${lbl:b_subsidiaries}' />
+		<col id='smn_area_servicio_rf' label='${lbl:b_area_service}' />
+		<col id='smn_unidad_servicio_rf' label='${lbl:b_units_service}' />
+		<col id='smn_estructura_organizacional_rf' label='${lbl:b_organizational_structure}' />
+		<col id='rol_idioma' label='${lbl:s_profile_lang}' />
+		<col id='rol_usuario_id' label='${lbl:b_users}' />
+		<col id='rol_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

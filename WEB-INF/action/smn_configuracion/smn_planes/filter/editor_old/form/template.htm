@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+
+<head>
+
+
+<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+	
+</head>
+
+<body>
+
+<!--banner-->
+<div class="banner" id="encabezado_tabla">
+	${lbl:b_plans}
+	<!-- <img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="Cerrar" style="float:right; cursor:pointer;"> -->
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">Añadir registro</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+				<tr>
+			<td>${lbl:b_code}*</td>
+			<td>
+				<input id="pla_codigo" name="pla_codigo" type="text" maxlength="16" >
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_description}*</td>
+			<td>
+				<input id="pla_descripcion" name="pla_descripcion" type="text" maxlength="56" >
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_validation_date_from}
+*</td>
+			<td>
+				<input id="pla_vigencia_desde" name="pla_vigencia_desde" type="text" class="date" maxlength="10">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('pla_vigencia_desde')">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_validation_date_until}
+*</td>
+			<td>
+				<input id="pla_vigencia_hasta" name="pla_vigencia_hasta" type="text" class="date" maxlength="10">
+				<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('pla_vigencia_hasta')">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_inactive}*</td>
+			<td>
+				<select name="pla_inactivo" id="pla_inactivo">
+				<option value="S">${lbl:b_yes}</option>
+				<option value="N">${lbl:b_not}</option>
+
+				</select> 
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_contrato_modulo}</td>
+		<td>
+			<select name="pla_modelo_contrato" id="pla_modelo_contrato" onchange="chgCombo(pla_modelo_contrato.options[pla_modelo_contrato.selectedIndex].text,'pla_modelo_contrato_name');">
+				<option value="">[Cualquiera]</option>
+				<pla_modelo_contrato_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</pla_modelo_contrato_rows>
+			</select> 
+			<input id="pla_modelo_contrato_name" name="pla_modelo_contrato_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_entity}</td>
+		<td>
+			<select name="pla_empresa" id="pla_empresa" onchange="chgCombo(pla_empresa.options[pla_empresa.selectedIndex].text,'pla_empresa_name');">
+				<option value="">[Cualquiera]</option>
+				<pla_empresa_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</pla_empresa_rows>
+			</select> 
+			<input id="pla_empresa_name" name="pla_empresa_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_contrato_modulo}*</td>
+			<td>
+				<smn_contrato_modulo_rows>
+				<input name="smn_contrato_modulo_id" id="smn_contrato_modulo_id" type="checkbox" value="${fld:smn_contrato_modulo_id}" style="width:10px"> ${fld:smn_contrato_base_rf}<br>
+				</smn_contrato_modulo_rows>
+			</td>
+		</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+	
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+
+		if (id!="")
+			edit(id);
+	} 
+	
+
+
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "Añadir registro";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+		
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{	
+		
+
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+	
+
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+</script>	
+</body>
+</html>

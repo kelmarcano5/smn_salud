@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnobservaciones.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_observation}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_observation}">
+				<col id='obs_codigo' label='${lbl:b_code_obs}' />
+		<col id='obs_descripcion' label='${lbl:b_description_obs}' />
+		<col id='obs_tipo_combo' label='${lbl:b_tipo_obs}' />
+		<col id='obs_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_documento_id' type='integer' required='true' label='${lbl:b_document}' maxlen='10'/>
+	<parameter id='cts_clase_auxiliar' type='integer' required='true' label='${lbl:b_auxiliary_class_pa}' maxlen='10'/>
+	<parameter id='cts_auxiliar' type='integer' required='false' label='${lbl:b_auxiliary_pa}' maxlen='10'/>
+	<parameter id='smn_condicion_financiera_rf' type='integer' required='false' label='${lbl:b_cond_fin}' maxlen='10'/>
+	<parameter id='smn_contratante_id' type='integer' required='false' label='${lbl:b_contratante_aux}' maxlen='10'/>
+	<parameter id='smn_observaciones_id' type='integer' required='false' label='${lbl:b_observation}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:smn_citas}' maxlen='10'/>
+
+
+</validator>

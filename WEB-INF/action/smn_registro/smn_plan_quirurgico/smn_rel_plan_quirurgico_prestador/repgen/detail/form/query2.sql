@@ -1,0 +1,10 @@
+select
+		smn_salud.smn_rel_plan_quirurgico_prestador.smn_plan_quirurgico_id,
+	smn_salud.smn_rel_plan_quirurgico_prestador.smn_servicios_rf,
+	smn_salud.smn_rel_plan_quirurgico_prestador.smn_componentes_rf,
+	smn_salud.smn_rel_plan_quirurgico_prestador.smn_grupo_prestador_servicio_rf,
+	smn_salud.smn_rel_plan_quirurgico_prestador.smn_prestador_servicio_rf
+from
+	smn_salud.smn_rel_plan_quirurgico_prestador 
+where
+	smn_salud.smn_rel_plan_quirurgico_prestador.smn_rel_plan_quirurgico_prestador_id = ${fld:id}

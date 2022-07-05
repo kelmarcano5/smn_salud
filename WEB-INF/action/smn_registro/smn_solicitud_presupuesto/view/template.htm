@@ -1,0 +1,67 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='10%'/>
+	<col width='8%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='8%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+    <col width='3%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="15" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th>GE</th>
+		<th class='sortable' onclick='sortBy("documento","query-smnsolicitudpresupuesto.sql")'>${lbl:b_document}</th>
+		<th class='sortable' onclick='sortBy("spr_solicitud","query-smnsolicitudpresupuesto.sql")'>N&ordm; Solicitud</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar","query-smnsolicitudpresupuesto.sql")'>Paciente</th>
+		<th class='sortable' onclick='sortBy("smn_contratante_id","query-smnsolicitudpresupuesto.sql")'>Contratante</th>
+		<th class='sortable' onclick='sortBy("smn_patologia_id","query-smnsolicitudpresupuesto.sql")'>${lbl:b_pathology}</th>
+		<th class='sortable' onclick='sortBy("spr_dias_hospitalizacion","query-smnsolicitudpresupuesto.sql")'>${lbl:b_hospitalization_day}</th>
+		<th class='sortable' onclick='sortBy("spr_horas_quirofano","query-smnsolicitudpresupuesto.sql")'>${lbl:b_operating_room_hours}</th>
+		<th class='sortable' onclick='sortBy("spr_honorarios","query-smnsolicitudpresupuesto.sql")'>${lbl:b_schedules}</th>
+		<th class='sortable' onclick='sortBy("spr_estatus","query-smnsolicitudpresupuesto.sql")'>${lbl:b_estatus}</th>
+		<th class='sortable' onclick='sortBy("spr_fecha_registro","query-smnsolicitudpresupuesto.sql")'>${lbl:b_store_date}</th>
+        <th>PR</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_solicitud_presupuesto_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_solicitud_presupuesto_id}','${fld:spr_estatus}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_solicitud_presupuesto_id}','${fld:spr_estatus}')" title="${lbl:b_edit_button}"></td>
+		<td><img src="${def:context}/images/icongrid/Generar.png"  onclick="generar('${fld:smn_solicitud_presupuesto_id}','${fld:spr_estatus}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:documento}</td>
+		<td>${fld:spr_solicitud}</td>
+		<td>${fld:smn_auxiliar}</td>
+		<td>${fld:smn_contratante_id}</td>
+		<td>${fld:smn_patologia_id}</td>
+		<td>${fld:spr_dias_hospitalizacion}</td>
+		<td>${fld:spr_horas_quirofano}</td>
+		<td>${fld:spr_honorarios}</td>
+		<td align='center'>${fld:spr_estatus}</td>
+		<td>${fld:spr_fecha_registro@dd-MM-yyyy}</td>
+        <td><img src="${def:context}/images/icongrid/Detalle-impuesto.png"  onclick="presupuesto('${fld:smn_solicitud_presupuesto_id}','${fld:smn_presupuesto_id}')" title="Ver Presupuesto"></td>
+	</tr>
+	</rows>
+
+</table>

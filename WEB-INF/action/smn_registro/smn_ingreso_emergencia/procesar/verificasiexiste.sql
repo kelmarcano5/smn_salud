@@ -1,0 +1,1 @@
+select smn_comercial.smn_pedido_cabecera.*, smn_comercial.smn_pedido_cabecera.smn_ingresos_rf as id_ingreso from smn_comercial.smn_pedido_cabecera where smn_comercial.smn_pedido_cabecera.smn_ingresos_rf=${fld:id_ingreso}

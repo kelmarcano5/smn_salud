@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='nfi_num_control' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='nfi_num_control' rule='like' />
+	<parameter id='nfi_apellidos' type='varchar' required='false' label='${lbl:s_profile_lname}' maxlen='56'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='nfi_apellidos' rule='like' />
+	<parameter id='nfi_nombres' type='varchar' required='false' label='${lbl:s_profile_fname}' maxlen='56'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='nfi_nombres' rule='like' />
+</validator>

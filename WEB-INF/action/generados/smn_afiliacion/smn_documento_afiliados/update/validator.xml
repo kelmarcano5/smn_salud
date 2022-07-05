@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_tipo_documento_afiliado_id_name' type='varchar' required='true' label='${lbl:b_document_type}'/>
+	<parameter id='smn_tipo_documento_afiliado_id' type='integer' required='false' label='${lbl:b_document_type}' maxlen='10'/>
+	<parameter id='smn_afiliados_id_name' type='varchar' required='true' label='${lbl:b_afiliados}'/>
+	<parameter id='smn_afiliados_id' type='integer' required='false' label='${lbl:b_afiliados}' maxlen='10'/>
+	<parameter id='doc_archivo' type='varchar' required='true' label='${lbl:b_file}' maxlen='400'/>
+	<parameter id='doc_descripcion' type='varchar' required='true' label='${lbl:b_description}' maxlen='500'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_documents}' maxlen='10'/>
+</validator>
+

@@ -1,0 +1,45 @@
+<!--data grid-->
+<table class="datagrid rowhover oneCellRow" style="width:90%;">
+
+	<col width='100%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="9">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th onclick="sortBy('pla_codigo','query-smnplanes.sql')" class="sortable">${lbl:b_code}</th>
+		<th onclick="sortBy('pla_descripcion','query-smnplanes.sql')" class="sortable">${lbl:b_description}</th>
+		<th onclick="sortBy('pla_vigencia_desde','query-smnplanes.sql')" class="sortable">${lbl:b_validation_date_from}
+</th>
+		<th onclick="sortBy('pla_vigencia_hasta','query-smnplanes.sql')" class="sortable">${lbl:b_validation_date_until}
+</th>
+		<th onclick="sortBy('pla_inactivo','query-smnplanes.sql')" class="sortable">${lbl:b_inactive}</th>
+		<th onclick="sortBy('pla_modelo_contrato','query-smnplanes.sql')" class="sortable">${lbl:b_contract_model}</th>
+		<th onclick="sortBy('pla_empresa','query-smnplanes.sql')" class="sortable">${lbl:b_entity}</th>
+		<th onclick="sortBy('pla_clase_auxiliar','query-smnplanes.sql')" class="sortable">${lbl:b_auxiliary_class}</th>
+		<th onclick="sortBy('pla_auxiliar','query-smnplanes.sql')" class="sortable">${lbl:b_outsourced_company}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr onclick="selectItem('${fld:smn_planes_id}')" >
+		<td align="center"><span id="${fld:smn_planes_id}">${fld:pla_codigo}</span></td>
+		<td align="center">${fld:pla_descripcion}</td>
+		<td align="center">${fld:pla_vigencia_desde@dd-MM-yyyy}</td>
+		<td align="center">${fld:pla_vigencia_hasta@dd-MM-yyyy}</td>
+		<td align="center">${fld:pla_inactivo}</td>
+		<td align="center">${fld:pla_modelo_contrato}</td>
+		<td align="center">${fld:pla_empresa}</td>
+		<td align="center">${fld:pla_clase_auxiliar}</td>
+		<td align="center">${fld:pla_auxiliar}</td>
+	</tr>
+	</rows>
+
+</table>
+

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>${lbl:b_prescription_medic}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />	
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+   	<script type="text/javascript" src="${def:context}/action/jqueryi"></script>
+</head>
+<body>
+	<div id="recipe">
+		<table cellspacing="20">
+		<tr>
+			<td>
+			<div align="left"><img src="${def:context}/images/logo_vistacalifornia.png" border="0" alt="" vspace="0" hspace="0" width="100" height="50"></div></img>
+
+			<table> 
+				<thead>
+					<tr>
+						<td style="font-weight: bold;">${lbl:b_enterprise}:</td>
+						<td class="entidad"></td>
+					</tr>
+					<tr>
+						<td style="font-weight: bold;">${lbl:b_tax_id}:</td>
+						<td class="rif"></td>
+					</tr>
+					<tr>
+						<td style="font-weight: bold;">${lbl:b_auxiliary_pa}:</td>
+						<td class="paciente"></td>
+					</tr>
+					<tr>
+						<td style="font-weight: bold;">${lbl:b_cedula}:</td>
+						<td class="cedula"></td>
+					</tr>
+					<tr>
+						<td style="font-weight: bold;">${lbl:b_age}:</td>
+						<td class="edad"></td>
+					</tr>
+					<tr>
+						<td style="font-weight: bold;">${lbl:b_sex}:</td>
+						<td class="sexo"></td>
+					</tr>
+					<tr>
+						<td style="font-weight: bold;">${lbl:b_service_provider}:</td>
+						<td class="prestador"></td>
+					</tr>
+					<tr>
+						<td style="font-weight: bold;">${lbl:b_first_name}:</td>
+						<td class="medico"></td>
+					</tr>
+				</thead>
+			</table>
+			<br><br>
+			<div>
+				<strong>Recipe:</strong><br>
+				<ul id="recipe"></ul>
+			</div>
+			</td>
+			<td>
+		<div align="left"><img src="${def:context}/images/logo_vistacalifornia.png" border="0" alt="" vspace="0" hspace="0" width="100" height="50"></div></img>
+				<table>
+					<thead>
+						<tr>
+							<td style="font-weight: bold;">${lbl:b_enterprise}:</td>
+							<td class="entidad"></td>
+						</tr>
+						<tr>
+							<td style="font-weight: bold;">${lbl:b_tax_id}:</td>
+							<td class="rif"></td>
+						</tr>
+						<tr>
+							<td style="font-weight: bold;">${lbl:b_auxiliary_pa}:</td>
+							<td class="paciente"></td>
+						</tr>
+						<tr>
+							<td style="font-weight: bold;">${lbl:b_cedula}:</td>
+							<td class="cedula"></td>
+						</tr>
+						<tr>
+							<td style="font-weight: bold;">${lbl:b_age}:</td>
+							<td class="edad"></td>
+						</tr>
+						<tr>
+							<td style="font-weight: bold;">${lbl:b_sex}:</td>
+							<td class="sexo"></td>
+						</tr>
+						<tr>
+							<td style="font-weight: bold;">${lbl:b_service_provider}:</td>
+							<td class="prestador"></td>
+						</tr>
+						<tr>
+							<td style="font-weight: bold;">${lbl:b_first_name}:</td>
+							<td class="medico"></td>
+						</tr>
+					</thead>
+				</table>
+				<br><br>
+				<div align="left" style="margin-left: 10px;">
+					<strong>Indicaciones:</strong>
+					<!-- <br> -->
+					<li id="indicaciones"></li>
+				</div>
+				</td>
+			</tr>
+			</table>
+	    </div>
+</body>
+</html>
+
+<script>
+  	onload = function() {
+
+  		var entidad="${fld:smn_entidades_rf_combo}";
+  		var rif="${fld:ent_rif}";
+  		var paciente="${fld:aux_nombre_paciente}";
+  		var cedula="${fld:aux_cedula}";
+  		var edad="${fld:aux_edad}";
+  		var sexo="${fld:aux_sexo}";
+  		var prestador="${fld:smn_prestador_servicio_rf}";
+  		var medico="${fld:aux_nombre_prestador_servicio}";
+
+  		$(".entidad").html(entidad);
+  		$(".rif").html(rif);
+  		$(".paciente").html(paciente);
+  		$(".cedula").html(cedula);
+  		$(".edad").html(edad);
+  		$(".sexo").html(sexo);
+  		$(".prestador").html(prestador);
+  		$(".medico").html(medico);
+
+  		<rows>
+  			$("#recipe ul").append("<li>${fld:smn_item_rf_combo}</li>");
+  			$("#indicaciones").append("${fld:rmd_especificacion}");
+  		</rows>;
+  		$('#recipe').printThis();
+  	}
+</script>

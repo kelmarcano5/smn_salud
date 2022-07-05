@@ -1,0 +1,1 @@
+select smn_base.smn_transaccion_general.smn_transaccion_general_id as id, smn_base.smn_transaccion_general.trg_codigo || ' - ' || smn_base.smn_transaccion_general.trg_descripcion as item from smn_base.smn_transaccion_general order by smn_base.smn_transaccion_general.trg_descripcion

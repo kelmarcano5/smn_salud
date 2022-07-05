@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_documento>
+	<detail>
+		<rows>		
+		<record doc_fecha_registro="${fld:doc_fecha_registro}"    doc_secuencia="${fld:doc_secuencia}"    doc_nombre="${fld:doc_nombre}"    doc_codigo="${fld:doc_codigo}"    smn_documento_general_rf="${fld:smn_documento_general_rf}"    smn_tipo_documento_id="${fld:smn_tipo_documento_id}"    doc_fecha_registro="${fld:doc_fecha_registro}"    doc_observ_aprob="${fld:doc_observ_aprob}"    doc_aprobado="${fld:doc_aprobado}"    doc_observ_verif="${fld:doc_observ_verif}"    doc_verificado="${fld:doc_verificado}"    doc_image_data="${fld:doc_image_data}"    doc_image_size="${fld:doc_image_size}"    doc_content_type="${fld:doc_content_type}"    doc_filename="${fld:doc_filename}"    doc_fecha_venc="${fld:doc_fecha_venc}"    doc_fecha_emision="${fld:doc_fecha_emision}"    doc_descripcion="${fld:doc_descripcion}"    doc_codigo="${fld:doc_codigo}"    doc_tipo_documento="${fld:doc_tipo_documento}"    doc_categoria="${fld:doc_categoria}"    smn_persona_id="${fld:smn_persona_id}"    />
+		</rows>
+	</detail>
+</smn_documento>

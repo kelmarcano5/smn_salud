@@ -1,0 +1,7 @@
+SELECT DISTINCT smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id as id, 
+smn_base.smn_prestadores_servicios.prs_descripcion as item
+FROM smn_base.smn_prestadores_servicios 
+inner join smn_base.smn_rel_grupo_prestador_servicio on smn_base.smn_rel_grupo_prestador_servicio.smn_prestadores_servicios_id = smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id 
+inner join smn_base.smn_grupos_prestadores on smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id = smn_base.smn_rel_grupo_prestador_servicio.smn_grupos_prestadores_id
+where 
+smn_base.smn_rel_grupo_prestador_servicio.smn_grupos_prestadores_id=${fld:id} 

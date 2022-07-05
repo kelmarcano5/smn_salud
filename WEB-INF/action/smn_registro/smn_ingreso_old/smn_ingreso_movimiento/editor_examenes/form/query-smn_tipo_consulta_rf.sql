@@ -1,0 +1,1 @@
+select smn_salud.smn_tipo_consulta.smn_tipo_consulta_id as id, smn_salud.smn_tipo_consulta.tcs_codigo || ' - ' || smn_salud.smn_tipo_consulta.tcs_nombre as item from smn_salud.smn_tipo_consulta order by smn_salud.smn_tipo_consulta.tcs_nombre

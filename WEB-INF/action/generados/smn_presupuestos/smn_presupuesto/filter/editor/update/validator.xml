@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='pre_numero_control' type='varchar' required='true' label='${lbl:b_budget_number}' maxlen='16'/>
+	<parameter id='pre_fecha' type='date' required='true' label='${lbl:b_budget_date}' maxlen='10'/>
+	<parameter id='pre_titular' type='integer' required='false' label='${lbl:b_titular}' maxlen='56'/>
+	<parameter id='pre_beneficiario' type='integer' required='false' label='${lbl:b_beneficiario}' maxlen='10'/>
+	<parameter id='pre_plan' type='integer' required='false' label='${lbl:b_plan}' maxlen='10'/>
+	<parameter id='pre_clase_auxiliar' type='integer' required='false' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='pre_auxiliar' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='pre_vigencia_hasta' type='date' required='true' label='${lbl:b_fecha_vigencia}' maxlen='10'/>
+	<parameter id='smn_ordenes_medicas_id' type='integer' required='false' label='${lbl:b_titular}' maxlen='10'/>
+	<parameter id='smn_estado_presupuesto_id' type='integer' required='true' label='${lbl:b_budget_status}' maxlen='4'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:smn_presupuesto}' maxlen='10'/>
+</validator>
+

@@ -1,0 +1,32 @@
+select
+		smn_salud.smn_cobertura_admision.smn_ingreso_id,
+	smn_salud.smn_cobertura_admision.smn_presupuesto_id,
+	smn_salud.smn_cobertura_admision.smn_auxiliar_rf,
+	smn_salud.smn_cobertura_admision.coa_ejecutivo_atención_pagador,
+	smn_salud.smn_cobertura_admision.coa_observación_inicial,
+	smn_salud.smn_cobertura_admision.coa_monto_solicitado_servicios_clinicos_ml,
+	smn_salud.smn_cobertura_admision.coa_monto_solicitado_medicinas_y_mmq_ml,
+	smn_salud.smn_cobertura_admision.coa_monto_solicitado_honorarios_ml,
+	smn_salud.smn_cobertura_admision.coa_monto_total_solicitado_ml,
+	smn_salud.smn_cobertura_admision.smn_moneda_rf,
+	smn_salud.smn_cobertura_admision.smn_tasa_rf,
+	smn_salud.smn_cobertura_admision.coa_monto_solicitado_servicios_clinicos_ma,
+	smn_salud.smn_cobertura_admision.coa_monto_solicitado_medicinas_y_mmq_ma,
+	smn_salud.smn_cobertura_admision.coa_monto_solicitado_honorarios_ma,
+	smn_salud.smn_cobertura_admision.coa_monto_total_solicitado_ma,
+	smn_salud.smn_cobertura_admision.coa_fecha_aprobación,
+	smn_salud.smn_cobertura_admision.coa_monto_aprobado_servicios_medicos_ml,
+	smn_salud.smn_cobertura_admision.coa_monto_aprobado_medicinas_y_mmq_ml,
+	smn_salud.smn_cobertura_admision.coa_monto_aprobado_honorarios_ml,
+	smn_salud.smn_cobertura_admision.coa_monto_total_aprobado_ml,
+	smn_salud.smn_cobertura_admision.coa_monto_aprobado_servicios_medicos_ma,
+	smn_salud.smn_cobertura_admision.coa_monto_aprobado_medicinas_y_mmq_ma,
+	smn_salud.smn_cobertura_admision.coa_monto_aprobado_honorarios_ma,
+	smn_salud.smn_cobertura_admision.coa_monto_total_aprobado_ma,
+	smn_salud.smn_cobertura_admision.coa_estatus_proceso,
+	smn_salud.smn_cobertura_admision.coa_estatus_financiero,
+	smn_salud.smn_cobertura_admision.coa_fecha_registro
+from
+	smn_salud.smn_cobertura_admision 
+where
+	smn_salud.smn_cobertura_admision.smn_cobertura_admision_id = ${fld:id}

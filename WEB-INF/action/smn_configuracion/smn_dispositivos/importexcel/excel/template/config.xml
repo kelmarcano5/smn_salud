@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smndispositivos.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_dispositivos}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_dispositivos}">
+				<col id='dis_codigo' label='${lbl:b_codigo_dis}' />
+		<col id='dis_nombre' label='${lbl:b_nombre_dis}' />
+		<col id='dis_tipo_combo' label='${lbl:b_tipo_dispositivo}' />
+		<col id='dis_mac_address' label='${lbl:b_mac_address_dis}' />
+		<col id='smn_usuario_id_combo' label='${lbl:b_user}' />
+		<col id='smn_entidades_rf_combo' label='${lbl:b_entidades}' />
+		<col id='smn_sucursales_rf_combo' label='${lbl:b_sucursales}' />
+		<col id='smn_areas_servicios_rf_combo' label='${lbl:b_area_servicio}' />
+		<col id='smn_unidad_servicio_rf_combo' label='${lbl:b_service_unit}' />
+		<col id='dis_codigo' label='${lbl:b_codigo_dis}' />
+		<col id='dis_nombre' label='${lbl:b_nombre_dis}' />
+		<col id='dis_tipo_combo' label='${lbl:b_tipo_dispositivo}' />
+		<col id='smn_entidades_rf_combo' label='${lbl:b_entidades}' />
+		<col id='smn_sucursales_rf_combo' label='${lbl:b_sucursales}' />
+		<col id='smn_areas_servicios_rf_combo' label='${lbl:b_area_servicio}' />
+		<col id='dis_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

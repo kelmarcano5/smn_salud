@@ -1,0 +1,2 @@
+ and
+ 	smn_salud.smn_rel_orden_medica_servicios.smn_prestador_servicio_referido_rf=${fld:smn_prestador_servicio_referido_rf}

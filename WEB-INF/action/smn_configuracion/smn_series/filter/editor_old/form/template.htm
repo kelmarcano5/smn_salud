@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+	
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_serie}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">Añadir registro</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+				<tr>
+			<td>${lbl:b_codigo_serie}*</td>
+			<td>
+				<input id="sri_codigo" name="sri_codigo" type="text" maxlength="10" >
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_nombre_serie}*</td>
+			<td>
+				<input id="sri_nombre" name="sri_nombre" type="text" maxlength="100" >
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_status_serie}*</td>
+			<td>
+				<select name="sri_estatus" id="sri_estatus">
+				<option value="A">${lbl:b_activo}</option>
+				<option value="I">${lbl:b_inactivo}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_ultimo_numero}*</td>
+			<td>
+				<input id="sri_ultimo_numero" name="sri_ultimo_numero" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_reinicio}*</td>
+			<td>
+				<select name="sri_reinicio" id="sri_reinicio">
+				<option value="T">${lbl:b_turno}</option>
+				<option value="D">${lbl:b_diario}</option>
+				<option value="S"> ${lbl:b_semanal}</option>
+				<option value="M"> ${lbl:b_mensual}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td>Paciente Nuevo?*</td>
+			<td>
+				<select name="sri_paciente_nuevo" id="sri_paciente_nuevo">
+				<option value="">Seleccione su opcion</option>
+				<option value="SI">${lbl:b_yes}</option>
+				<option value="NO">${lbl:b_not}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td>Contratante?*</td>
+			<td>
+				<select name="sri_contratante" id="sri_contratante">
+				<option value="">Seleccione su opcion</option>
+				<option value="SI">${lbl:b_yes}</option>
+				<option value="NO">${lbl:b_not}</option>
+
+				</select> 
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_unidad_servicio}*</td>
+			<td>
+				<smn_unidades_servicios_rows>
+				<input name="smn_unidades_servicios_id" id="smn_unidades_servicios_id" type="checkbox" value="${fld:smn_unidades_servicios_id}" style="width:10px"> ${fld:uns_descripcion}<br>
+				</smn_unidades_servicios_rows>
+			</td>
+		</tr>
+		
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_add_button}"  onclick="showEditor()" class="button">
+	<input type="button" value="${lbl:b_clean_button}" class="button" onclick="clearForm('form1')">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">
+		
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+	
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+		var txt_sri_ultimo_numero = new NumericInput(document.form1.sri_ultimo_numero, 0);
+
+		if (id!="")
+			edit(id);
+	} 
+	
+
+
+
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "Añadir registro";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+		
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{	
+		
+
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+	
+
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+</script>	
+</body>
+</html>

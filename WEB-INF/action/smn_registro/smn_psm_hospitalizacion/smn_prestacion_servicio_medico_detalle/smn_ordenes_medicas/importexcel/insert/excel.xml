@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_ingreso_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='omd_numero_orden' type='varchar' required='true' maxlen='16'/>
+	<parameter id='omd_descripcion' type='varchar' required='true' maxlen='256'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='omd_clase_auxiliar_desc_ref' type='varchar' required='true' maxlen='10'/>
+	<parameter id='omd_auxiliar_desc_ref' type='varchar' required='true' maxlen='10'/>
+	<parameter id='omd_num_doc_oficial' type='varchar' required='true' maxlen='12'/>
+	<parameter id='omd_tipo_orden' type='varchar' required='true' maxlen='2'/>
+	<parameter id='omd_indicaciones' type='varchar' required='true' maxlen='500'/>
+
+	<parameter id='omd_clase_auxiliar_ref' type='integer' required='false' maxlen='10'/>
+	<parameter id='omd_auxiliar_ref' type='integer' required='false' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='omd_descripcion'/>
+
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: omd_clase_auxiliar' 
+		parameter='omd_clase_auxiliar_ref' 
+		sql='omd_clase_auxiliar.sql' 
+		id='omd_clase_auxiliar_ref'/>
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: omd_auxiliar' 
+		parameter='omd_auxiliar_ref' 
+		sql='omd_auxiliar.sql' 
+		id='omd_auxiliar_ref'/>
+
+</validator>

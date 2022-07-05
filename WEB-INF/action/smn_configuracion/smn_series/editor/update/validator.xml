@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='sri_codigo' type='varchar' required='true' label='${lbl:b_codigo_serie}' maxlen='10'/>
+	<parameter id='sri_nombre' type='varchar' required='true' label='${lbl:b_nombre_serie}' maxlen='100'/>
+	<parameter id='sri_estatus' type='varchar' required='true' label='${lbl:b_status_serie}' maxlen='1'/>
+	<parameter id='sri_ultimo_numero' type='integer' required='true' label='${lbl:b_ultimo_numero}' maxlen='10'/>
+	<parameter id='sri_reinicio' type='varchar' required='true' label='${lbl:b_reinicio}' maxlen='1'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_serie}' maxlen='10'/>
+	<!-- <custom-validator classname='dinamica.validators.ArrayNotEmptyValidator' on-error-label='Seleccione al menos un ítem.' parameter-name='smn_unidades_servicios_id' id='smn_unidades_servicios_id'/> -->
+	<!-- <custom-validator classname='dinamica.validators.ArrayToRecordset' paramName='smn_unidades_servicios_id' recordsetId='query-smn_unidades_servicios.sql' colName='smn_unidades_servicios_id' colType='integer'/> -->
+	<parameter id='sri_paciente_nuevo' type='varchar' required='true' label='Paciente Nuevo' maxlen='2'/>
+	<parameter id='smn_contratante_id' type='integer' required='true' label='Contratante' maxlen='10'/>
+	<parameter id='sri_particular' type='varchar' required='true' label='Particular' maxlen='2'/>
+</validator>
+

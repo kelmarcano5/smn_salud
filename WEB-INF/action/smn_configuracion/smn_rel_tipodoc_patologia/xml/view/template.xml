@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_rel_tipodoc_patologia>
+	<detail>
+		<rows>		
+		<record smn_patologia_id="${fld:smn_patologia_id}"    smn_tipo_documento_id="${fld:smn_tipo_documento_id}"    />
+		</rows>
+	</detail>
+</smn_rel_tipodoc_patologia>

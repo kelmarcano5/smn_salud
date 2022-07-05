@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_series>
+	<detail>
+		<rows>		
+		<record ctm_fecha_registro="${fld:ctm_fecha_registro}"    sri_reinicio="${fld:sri_reinicio}"    sri_ultimo_numero="${fld:sri_ultimo_numero}"    sri_estatus="${fld:sri_estatus}"    sri_nombre="${fld:sri_nombre}"    sri_codigo="${fld:sri_codigo}"    smn_serie_id="${fld:smn_serie_id}"    />
+		</rows>
+	</detail>
+</smn_series>

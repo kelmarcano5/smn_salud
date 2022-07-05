@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="3" cellStep="0" name="${lbl:b_room}"/>
+	
+	<excel 
+		recordset='query.sql' 
+		sheetname='${lbl:b_room}' 
+		filename='${lbl:b_room}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_activo_fijo_rf' label='${lbl:b_activo_fijo}' />
+		<col id='hab_codigo' label='${lbl:b_code}' />
+		<col id='hab_descripcion' label='${lbl:b_description}' />
+		<col id='hab_estatus' label='${lbl:b_status}' />
+		<col id='hab_clase' label='${lbl:b_class}' />
+		<col id='tsr_descripcion' label='${lbl:b_types_services}' />
+		<col id='hab_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

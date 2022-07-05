@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnrelpatologiaitem.sql" source="session" scope="transaction" />
+		
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+		
+	<excel 
+		filename='${lbl:b_rel_item_pathology}.xls' >
+		
+	<sheet recordset="query-table_stuck}.sql" sheetname="${lbl:b_rel_item_pathology}">
+				<col id='smn_patologia_id' label='${lbl:b_pathology}' />
+		<col id='smn_item_rf' label='${lbl:b_item}' />
+		<col id='rps_cantidad' label='${lbl:b_quantity}' />
+		<col id='rps_fecha_registro' label='${lbl:b_store_date}' />
+
+	</sheet>
+	
+	</excel>
+
+</config>

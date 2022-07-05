@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_prestacion_servicio_medico_cabecera_id' type='integer' required='false' label='${lbl:b_header_medic_provider_services}' maxlen='10'/>
+	<parameter id='smn_mov_caja_detalle_id' type='integer' required='true' label='${lbl:b_movement_caj_detail}' maxlen='10'/>
+	<parameter id='smn_ingresos_mov_id' type='integer' required='false' label='${lbl:b_appointment_movement}' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_rf' type='integer' required='true' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='smn_almacen_rf' type='integer' required='false' label='${lbl:b_store_code}' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='integer' required='false' label='${lbl:b_services}' maxlen='10'/>
+	<parameter id='psd_tipo_componentes' type='varchar' required='true' label='${lbl:b_components_types}' maxlen='2'/>
+	<parameter id='smn_componentes_rf' type='integer' required='true' label='${lbl:b_component}' maxlen='10'/>
+	<parameter id='smn_item_rf' type='integer' required='false' label='${lbl:b_item}' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='true' label='${lbl:b_service_provider}' maxlen='10'/>
+	<parameter id='psd_cantidad' type='double' required='true' label='${lbl:b_quantity}' maxlen='10'/>
+	<parameter id='psd_precio_propuesto_ml' type='double' required='true' label='${lbl:b_price_ml}' maxlen='10'/>
+	<parameter id='psd_monto_propuesto_ml' type='double' required='true' label='${lbl:b_amount_ml}' maxlen='10'/>
+	<parameter id='smn_descuento_ml_rf' type='integer' required='false' label='${lbl:b_discount_ml}' maxlen='10'/>
+	<parameter id='smn_moneda_rf' type='integer' required='false' label='${lbl:b_coins}' maxlen='10'/>
+	<parameter id='psd_precio_propuesto_ma' type='double' required='false' label='${lbl:b_price_ma}' maxlen='10'/>
+	<parameter id='psd_monto_propuesto_ma' type='double' required='false' label='${lbl:b_amount_ma}' maxlen='10'/>
+	<parameter id='psd_monto_descuento_propuesto_ml' type='integer' required='true' label='${lbl:b_discount_amount_ml}' maxlen='10'/>
+	<parameter id='psd_monto_descuento_propuesto_ma' type='integer' required='false' label='${lbl:b_discount_amount_ma}' maxlen='10'/>
+	<parameter id='psd_monto_neto_propuesto_ml' type='integer' required='true' label='${lbl:b_net_amount_ml}' maxlen='10'/>
+	<parameter id='psd_monto_neto_propuesto_ma' type='integer' required='false' label='${lbl:b_net_amount_ma}' maxlen='10'/>
+	<parameter id='psd_estatus' type='varchar' required='false' label='${lbl:b_status}' maxlen='2'/>
+	<parameter id='psd_agregado_usuario' type='varchar' required='true' label='${lbl:b_user_add}' maxlen='2'/>
+	<parameter id='psd_observaciones_rf' type='integer' required='false' label='${lbl:b_observations}' maxlen='10'/>
+	<parameter id='smn_rol_id' type='integer' required='false' label='${lbl:b_rol}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_detail_medic_provider_services}' maxlen='10'/>
+
+
+</validator>

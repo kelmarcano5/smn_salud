@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/crud'>
+	<parameter id='cts_num_control' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='cts_num_doc_oficial' type='varchar' required='false' label='${lbl:b_official_document_number}' maxlen='12'/>
+	<parameter id='cts_clase_auxiliar' type='integer' required='false' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='cts_auxiliar' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='cts_ordenante' type='integer' required='false' label='${lbl:b_applicant}' maxlen='10'/>
+	<parameter id='cts_tipo_orden' type='varchar' required='false' label='${lbl:b_order_type}' maxlen='2'/>
+	<parameter id='cts_titular' type='integer' required='false' label='${lbl:${lbl:b_titular}' maxlen='56'/>
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="cts_num_control" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="cts_num_doc_oficial" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="cts_tipo_orden" rule="contains" />
+</validator>

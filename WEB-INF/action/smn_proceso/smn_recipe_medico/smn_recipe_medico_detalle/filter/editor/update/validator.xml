@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_recipe_medico_id_name' type='varchar' required='true' label='${lbl:b_prescription_medic}'/>
+	<parameter id='smn_recipe_medico_id' type='integer' required='false' label='${lbl:b_prescription_medic}' maxlen='10'/>
+	<parameter id='smn_principio_activo_rf' type='integer' required='true' label='${lbl:b_active_ingredient}' maxlen='10'/>
+	<parameter id='smn_item_rf' type='integer' required='true' label='${lbl:b_item}' maxlen='10'/>
+	<parameter id='smn_presentacion_rf' type='integer' required='true' label='${lbl:b_presentacion}' maxlen='10'/>
+	<parameter id='smn_unidad_medida_rf' type='integer' required='true' label='${lbl:b_measurement_unit}' maxlen='10'/>
+	<parameter id='rmd_dosis' type='double' required='true' label='${lbl:b_dose}' maxlen='10'/>
+	<parameter id='rmd_frecuencia' type='integer' required='false' label='${lbl:b_frecuency}' maxlen='10'/>
+	<parameter id='rmd_tiempo_frecuencia' type='varchar' required='false' label='${lbl:b_frecuency_time}' maxlen='2'/>
+	<parameter id='rmd_especificacion' type='varchar' required='false' label='${lbl:b_especification}' maxlen='200'/>
+	<parameter id='rmd_dias_tratamiento' type='integer' required='false' label='${lbl:b_treatment_day}' maxlen='10'/>
+	<parameter id='rmd_dosis_total' type='integer' required='false' label='${lbl:b_total_dose}' maxlen='10'/>
+	<parameter id='rmd_observacion' type='varchar' required='false' label='${lbl:b_observation}' maxlen='200'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_detail_prescription_medic}' maxlen='10'/>
+
+
+</validator>

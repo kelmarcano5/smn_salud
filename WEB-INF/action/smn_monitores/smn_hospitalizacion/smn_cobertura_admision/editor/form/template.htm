@@ -1,0 +1,649 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_cobertura_admision}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+	<!--campos-->
+	<tr>
+		<td>${lbl:b_ingreso}*</td>
+		<td>
+			<select class="ingreso" name="smn_ingreso_id" id="smn_ingreso_id" onchange="chgCombo(smn_ingreso_id.options[smn_ingreso_id.selectedIndex].text,'smn_ingreso_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_ingreso_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_ingreso_id_rows>
+			</select> 
+			<input id="smn_ingreso_id_name" name="smn_ingreso_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_presupuesto}*</td>
+		<td>
+			<select class="presupuesto" name="smn_presupuesto_id" id="smn_presupuesto_id" onchange="chgCombo(smn_presupuesto_id.options[smn_presupuesto_id.selectedIndex].text,'smn_presupuesto_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_presupuesto_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_presupuesto_id_rows>
+			</select> 
+			<input id="smn_presupuesto_id_name" name="smn_presupuesto_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>Pagador*</td>
+		<td>
+			<select class="pagador" name="smn_auxiliar_rf" id="smn_auxiliar_rf" onchange="chgCombo(smn_auxiliar_rf.options[smn_auxiliar_rf.selectedIndex].text,'smn_auxiliar_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_auxiliar_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_auxiliar_rf_rows>
+			</select> 
+			<input id="smn_auxiliar_rf_name" name="smn_auxiliar_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>Ejecutivo Pagador</td>
+		<td>
+			<input id="coa_ejecutivo_atencion_pagador" name="coa_ejecutivo_atencion_pagador" type="text" maxlength="100">
+		</td>
+	</tr>
+	<tr id="hora_solicitud">
+		<td>${lbl:b_solicited_hours}</td>
+		<td>
+			<input id="coa_hora_solicitada" name="coa_hora_solicitada" type="text" maxlength="8">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_coins}*</td>
+		<td>
+			<select class="moneda" name="smn_moneda_rf" id="smn_moneda_rf" onchange="chgCombo30(smn_moneda_rf.options[smn_moneda_rf.selectedIndex].text,'smn_moneda_rf_name');cambiarmoneda();">
+				<option value="">[Cualquiera]</option>
+				<smn_moneda_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_moneda_rf_rows>
+			</select> 
+			<input id="smn_moneda_rf_name" name="smn_moneda_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr id="tasa">
+		<td>${lbl:b_exchange_rate}*</td>
+		<td>
+			<select class="tasa" name="smn_tasa_rf" id="smn_tasa_rf" onchange="chgCombo(smn_tasa_rf.options[smn_tasa_rf.selectedIndex].text,'smn_tasa_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_tasa_rf_rows>
+				<option value="${fld:id}">${fld:tasa_cambio}</option>
+
+				</smn_tasa_rf_rows>
+			</select> 
+			<input id="smn_tasa_rf_name" name="smn_tasa_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr id="maml1">
+		<td>${lbl:b_monto_solicitado_sc_ml}</td>
+		<td>
+			<input id="coa_monto_solicitado_servicios_clinicos_ml" name="coa_monto_solicitado_servicios_clinicos_ml" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr  id="maml2">
+		<td>${lbl:b_monto_solicitado_mm_ml}</td>
+		<td>
+			<input id="coa_monto_solicitado_medicinas_y_mmq_ml" name="coa_monto_solicitado_medicinas_y_mmq_ml" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr  id="maml3">
+		<td>${lbl:b_monto_solicitado_ho_ml}</td>
+		<td>
+			<input id="coa_monto_solicitado_honorarios_ml" name="coa_monto_solicitado_honorarios_ml" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_monto_solicitado_total_ml}</td>
+		<td>
+			<input id="coa_monto_total_solicitado_ml" name="coa_monto_total_solicitado_ml" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr  id="maml5">
+		<td>${lbl:b_monto_aprobado_sc_ml}</td>
+		<td>
+			<input id="coa_monto_aprobado_servicios_medicos_ml" name="coa_monto_aprobado_servicios_medicos_ml" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr  id="maml6">
+		<td>${lbl:b_monto_aprobado_mm_ml}</td>
+		<td>
+			<input id="coa_monto_aprobado_medicinas_y_mmq_ml" name="coa_monto_aprobado_medicinas_y_mmq_ml" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr id="maml7">
+		<td>${lbl:b_monto_aprobado_ho_ml}</td>
+		<td>
+			<input id="coa_monto_aprobado_honorarios_ml" name="coa_monto_aprobado_honorarios_ml" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_monto_aprobado_total_ml}</td>
+		<td>
+			<input id="coa_monto_total_aprobado_ml" name="coa_monto_total_aprobado_ml" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr id="m1">
+		<td>${lbl:b_monto_solicitado_sc_ma}</td>
+		<td>
+			<input id="coa_monto_solicitado_servicios_clinicos_ma" name="coa_monto_solicitado_servicios_clinicos_ma" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr id="m2">
+		<td>${lbl:b_monto_solicitado_mm_ma}</td>
+		<td>
+			<input id="coa_monto_solicitado_medicinas_y_mmq_ma" name="coa_monto_solicitado_medicinas_y_mmq_ma" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr id="m3">
+		<td>${lbl:b_monto_solicitado_ho_ma}</td>
+		<td>
+			<input id="coa_monto_solicitado_honorarios_ma" name="coa_monto_solicitado_honorarios_ma" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr id="m4">
+		<td>${lbl:b_monto_solicitado_total_ma}</td>
+		<td>
+			<input id="coa_monto_total_solicitado_ma" name="coa_monto_total_solicitado_ma" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr id="fecha_aprob">
+		<td>${lbl:b_aprobation_date}</td>
+		<td>
+			<input id="coa_fecha_aprobacion" name="coa_fecha_aprobacion" type="text" class="date" maxlength="30">
+			<img src="${def:context}/images/dropdown.png" title="${lbl:b_deploy_calendar}" onclick="calendarOpen('coa_fecha_aprobacion')">
+		</td>
+	</tr>
+	<tr id="hora_aprob">
+		<td>${lbl:b_aprobation_hour}</td>
+		<td>
+			<input id="coa_hora_aprobacion" name="coa_hora_aprobacion" type="text" maxlength="8" >
+		</td>
+	</tr>
+	<tr id="m5">
+		<td>${lbl:b_monto_aprobado_sc_ma}</td>
+		<td>
+			<input id="coa_monto_aprobado_servicios_medicos_ma" name="coa_monto_aprobado_servicios_medicos_ma" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr id="m6">
+		<td>${lbl:b_monto_aprobado_mm_ma}</td>
+		<td>
+			<input id="coa_monto_aprobado_medicinas_y_mmq_ma" name="coa_monto_aprobado_medicinas_y_mmq_ma" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr id="m7">
+		<td>${lbl:b_monto_aprobado_ho_ma}</td>
+		<td>
+			<input id="coa_monto_aprobado_honorarios_ma" name="coa_monto_aprobado_honorarios_ma" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr id="m8">
+		<td>${lbl:b_monto_aprobado_total_ma}</td>
+		<td>
+			<input id="coa_monto_total_aprobado_ma" name="coa_monto_total_aprobado_ma" type="text" maxlength="30" class="numeric">
+		</td>
+	</tr>
+	<tr id="estatusp">
+		<td>${lbl:b_status_proceso}</td>
+		<td>
+			<select class="estatusp" name="coa_estatus_proceso" id="coa_estatus_proceso">
+			<option value="RE">${lbl:b_registrada}</option>
+			<option value="SO">${lbl:b_solicitada}</option>
+			<option value="AP">${lbl:b_aprobado}</option>
+
+			</select> 
+		</td>
+	</tr>
+	<tr id="estatusf">
+		<td>${lbl:b_status_financiero}</td>
+		<td>
+			<select class="estatusf" name="coa_estatus_financiero" id="coa_estatus_financiero">
+			<option value="PE">${lbl:b_pending}</option>
+			<option value="PA">Pagada</option>
+			<option value="AN">Anulada</option>
+
+			</select> 
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_observation_init}</td>
+		<td>
+			<input id="coa_observacion_inicial" name="coa_observacion_inicial" type="text" maxlength="200">
+		</td>
+	</tr>
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+<input type="hidden" name="divisa" id="divisa">
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+
+		var montoml = '${fld:montoingml}';
+		var montml = parseFloat(montoml); //.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
+		// $('#coa_monto_solicitado_servicios_clinicos_ml').val(formatear_monto('${fld:montoingml@#,###,##0.00}'));
+		// $('#coa_monto_solicitado_medicinas_y_mmq_ml').val(formatear_monto('${fld:montoingml@#,###,##0.00}'));
+		// $('#coa_monto_solicitado_honorarios_ml').val(formatear_monto('${fld:montoingml@#,###,##0.00}'));
+		$('#coa_monto_total_solicitado_ml').val(montml);
+		// $('#coa_monto_aprobado_servicios_medicos_ml').val(formatear_monto('${fld:montoingml@#,###,##0.00}'));
+		// $('#coa_monto_aprobado_medicinas_y_mmq_ml').val(formatear_monto('${fld:montoingml@#,###,##0.00}'));
+		// $('#coa_monto_aprobado_honorarios_ml').val(formatear_monto('${fld:montoingml@#,###,##0.00}'));
+		$('#coa_monto_total_aprobado_ml').val(montml);
+
+		$('#coa_monto_total_solicitado_ml').prop('disabled','true');
+		$('#coa_monto_total_aprobado_ml').prop('disabled','true');
+			
+		$('#smn_ingreso_id').val('${fld:id_ingreso}').change();
+		$('#smn_ingreso_id').prop('disabled','true');
+
+		$('#smn_presupuesto_id').val('${fld:presupuesto_id}').change();
+		$('#smn_presupuesto_id').prop('disabled','true');
+
+		$('#smn_auxiliar_rf').val('${fld:paciente_pagador}').change();
+		$('#smn_auxiliar_rf').prop('disabled','true');
+
+		 
+
+		inic();
+
+		
+		if (id!="")
+			edit(id);
+	} 
+
+	 function formatear_monto(monto){
+		var base = monto;
+		base1 = base.replace('.','');
+		base = base1.replace('.','');
+		base1 = base.replace(',','.');
+		
+		return base1;
+}
+
+	function inic() {
+
+		$('#maml1').hide();
+		$('#maml2').hide();
+		$('#maml3').hide();
+		$('#maml5').hide();
+		$('#maml6').hide();
+		$('#maml7').hide();
+
+		$('.pagador').select2();
+		$('.ejecutivo').select2();
+		$('.moneda').select2();
+		$('.tasa').select2();
+		$('.estatusp').select2();
+		$('.estatusf').select2();
+		$('.ingreso').select2();
+		$('.presupuesto').select2();
+
+
+
+		$('#m1').hide();
+		$('#m2').hide();
+		$('#m3').hide();
+		$('#m4').hide();
+		$('#m5').hide();
+		$('#m6').hide();
+		$('#m7').hide();
+		$('#m8').hide();
+		$('#tasa').hide();
+
+		if ('${fld:montoingma}' != '') {
+		//	alert('${fld:montoingma@#,###,##0.00}');
+			$('#m1').hide();
+			$('#m2').hide();
+			$('#m3').hide();
+			$('#m4').show();
+			$('#m5').hide();
+			$('#m6').hide();
+			$('#m7').hide();
+			$('#m8').show();
+			$('#tasa').show();
+
+			var montoma = '${fld:montoingma}';
+			var montma = parseFloat(montoma); //.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1.").toString();
+			// $('#coa_monto_solicitado_servicios_clinicos_ma').val(formatear_monto('${fld:montoingma@#,###,##0.00}'));
+			// $('#coa_monto_solicitado_medicinas_y_mmq_ma').val(formatear_monto('${fld:montoingma@#,###,##0.00}'));
+			// $('#coa_monto_solicitado_honorarios_ma').val(formatear_monto('${fld:montoingma@#,###,##0.00}'));
+			$('#coa_monto_total_solicitado_ma').val(montma);
+			// $('#coa_monto_aprobado_servicios_medicos_ma').val(formatear_monto('${fld:montoingma@#,###,##0.00}'));
+			// $('#coa_monto_aprobado_medicinas_y_mmq_ma').val(formatear_monto('${fld:montoingma@#,###,##0.00}'));
+			// $('#coa_monto_aprobado_honorarios_ma').val(formatear_monto('${fld:montoingma@#,###,##0.00}'));
+			$('#coa_monto_total_aprobado_ma').val(montma);
+
+			$('#coa_monto_total_solicitado_ma').prop('disabled','true');
+			$('#coa_monto_total_aprobado_ma').prop('disabled','true');
+
+		}
+
+		$('#estatusp').hide();
+		$('#estatusf').hide();
+		$('#hora_solicitud').hide();
+		$('#fecha_aprob').hide();
+		$('#hora_aprob').hide();
+	}
+
+	function cambiarmoneda() {
+		var moneda = $('#smn_moneda_rf').val();
+
+		if (moneda=="") {
+			$('#m1').hide();
+			$('#m2').hide();
+			$('#m3').hide();
+			$('#m4').hide();
+			$('#m5').hide();
+			$('#m6').hide();
+			$('#m7').hide();
+			$('#m8').hide();
+			$('#tasa').hide();
+		}else{
+
+			$('#m1').hide();
+			$('#m2').hide();
+			$('#m3').hide();
+			$('#m4').show();
+			$('#m5').hide();
+			$('#m6').hide();
+			$('#m7').hide();
+			$('#m8').show();
+			$('#tasa').show();
+		}
+	}
+	
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id){
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update(){		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndex(code, combo, description) {
+		//alert(code, combo, descripcion);
+		//alert('text = ' + combo.options[i].text + ' value = ' + combo.options[i].value)
+	    for (var i = 0; i < combo.options.length; i++){
+			var valueText = code;
+			if (description != null)
+			{
+				valueText = valueText + ' - ' + description;
+			}
+    	    if (combo.options[i].text == valueText) 
+			{
+        	//alert('text = ' + combo.options[i].text + ' value = ' + combo.options[i].value)
+        	combo.options[i].selected = true;
+			return;
+        	}
+    	}  
+	}
+
+	//Author     : SIMONE
+	//Description: Set first element as selected value
+	//Return     : None
+	function setElementFirstIndex(id){
+		var combo = document.getElementById(id); combo.selectedIndex = 0;
+	}
+
+	//Author     : SIMONE
+	 //Description: Insert new value into combo box
+	 //Return     : None
+	 function insertComboBox(code, combo, description, field) {
+	 	var valueText = code;
+		if (description != null){
+			valueText = valueText + ' - ' + description;
+		}
+		var option = document.createElement("option");
+		option.text = valueText; 
+		option.value = bdID;
+		//alert(field)		
+		if (field == 'smn_presupuesto_id'){
+			document.form1.smn_presupuesto_id.add(option, combo.options.length); 
+		}							
+	}
+	 
+	//Author     : SIMONE
+	//Description: Add new value to combo box
+	//Return     : None
+	function addValueToCombo(code, description, field) {	
+		var combo = document.getElementById(field);	    
+		insertComboBox(code, combo, description, field); 
+	}
+	
+		
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndexValue(value, combo) {
+		for (var i = 0; i < combo.options.length; i++) {					
+			if (combo.options[i].text == value){
+				combo.options[i].selected = true;
+				return;
+			}
+		} 
+	}
+	
+	//Author     : SIMONE
+	//Description: Get text valueof selected index
+	//Return     : Text associated to index
+	function getSelectedIndex(combo) {
+		for (var i = 0; i < combo.options.length; i++) {
+			if (combo.options[i].selected == true){
+				return combo.options[i].text; 
+			}
+		} 	
+	}
+	
+	function getIDSelectedIndex(combo) {
+		for (var i = 0; i < combo.options.length; i++)  {
+			if (combo.options[i].selected == true) {
+				return combo.options[i].value; 
+			} 
+		}
+	}
+	
+	var bdID;
+	function setID(id){
+		bdID = id; 
+	}
+
+	//Author     : SIMONE
+	//Description: Set value to combo box
+	//Parameters: 	code 		– (it is code associated into each database table) 
+	//             	description 	- it is description associated into each database table 
+	//             	field 		- name combo field
+	//             	id 		- identifier retrieved after transaction
+	//             	linked 		- flag indicates 'true' when combos are linked.
+	//Return     : None
+	function setValueComboBox(code, description, field, linked){
+		//add value text to combo
+		addValueToCombo(code,description,field);
+		//get select object 
+		var combo = document.getElementById(field);
+		//set element selected to field referenced
+		setSelectedIndex(code,combo, description);
+		//set text value to combo field
+		var valueText = getSelectedIndex(combo);		
+		//get hidden field in order to set any value
+		var combo = document.getElementById(field+'_name');
+
+		combo.text  = valueText;
+		combo.value = bdID; 
+	}
+
+
+	//Este codigo fue creado por SIMONE y ajustado en este crud por Kelvin Marcano
+	var geo_idt = null;
+	function chgCombo30(text,id){				
+		document.form1.smn_tasa_rf.disabled=false;
+		var combo = document.form1.smn_moneda_rf;
+		var valueCombo = getIDSelectedIndex(combo);
+		//geo_idt = valueCombo.split("-").pop().trim();
+		//alert(valueCombo);
+		var uri="${def:actionroot}/gettasa?id=" + valueCombo;
+		console.log("COMBO MONEDA OBTENIDO LA TASA Y EL TIPO"+uri);
+		if (id!=null && id!=""){	
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_tasa_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null); 				
+		}
+	}
+
+	function seteartasa(text, id) {
+		//Este codigo fue creado por SIMONE y ajustado en este crud por Kelvin Marcano
+		//document.form1.smn_tasa_rf.disabled=false;
+		var combo = document.getElementById('smn_tasa_rf');
+		var valueCombo = getIDSelectedIndex(combo);
+		//alert(valueCombo);
+		if (id!=null && id!=""){	
+			return ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/gettasa_value?id=" + valueCombo, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null); 				
+		}
+	}
+
+	
+</script>	
+</body>
+</html>

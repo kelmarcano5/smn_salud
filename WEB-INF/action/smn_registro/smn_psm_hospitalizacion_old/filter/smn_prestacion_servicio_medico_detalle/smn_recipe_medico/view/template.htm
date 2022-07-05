@@ -1,0 +1,68 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='12%'/>
+	<col width='3%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="15" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th>RP</th>
+		<th></th>
+		<th>GE</th>
+		<th class='sortable' onclick='sortBy("rec_fecha","query-smnrecipemedico.sql")'>${lbl:b_prescription_date}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf","query-smnrecipemedico.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("smn_patologia_id","query-smnrecipemedico.sql")'>Sintoma</th>
+		<th class='sortable' onclick='sortBy("smn_prestador_servicio_rf","query-smnrecipemedico.sql")'>Medico</th>
+		<th class='sortable' onclick='sortBy("smn_farmaceuta_prestador_servicio_rf","query-smnrecipemedico.sql")'>Medico Farmaceuta</th>
+		<th class='sortable' onclick='sortBy("rec_fecha_aprobacion","query-smnrecipemedico.sql")'>${lbl:b_aprobated_date}</th>
+		<th class='sortable' onclick='sortBy("rec_estatus","query-smnrecipemedico.sql")'>${lbl:b_estatus}</th>
+		<th class='sortable' onclick='sortBy("rec_fecha_registro","query-smnrecipemedico.sql")'>${lbl:b_store_date}</th>
+		<th>DT</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_recipe_medico_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_recipe_medico_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_recipe_medico_id}')" title="${lbl:b_edit_button}"></td>
+		<td><img src="${def:context}/images/search.png"  onclick="reporte('${fld:smn_recipe_medico_id}')" title="Generar Recipe Medico"></td>
+		<td><img src="${def:context}/images/email.png"  onclick="openEmails('${fld:smn_ordenes_medicas_id}')" title="Enviar Correo"></td>
+		<td><img src="${def:context}/images/icongrid/Generar.png"  onclick="generar('${fld:smn_recipe_medico_id}')" title="Generar"></td>
+		<td>${fld:rec_fecha@dd-MM-yyyy}</td>
+		<td>${fld:smn_auxiliar_rf}</td>
+		<td>${fld:smn_patologia_id}</td>
+		<td>${fld:smn_prestador_servicio_rf}</td>
+		<td>${fld:smn_farmaceuta_prestador_servicio_rf}</td>
+		<td>${fld:rec_fecha_aprobacion@dd-MM-yyyy}</td>
+		<td align='left'>${fld:rec_estatus}</td>
+		<td>${fld:rec_fecha_registro@dd-MM-yyyy}</td>
+		<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="detalle('${fld:smn_recipe_medico_id}')" title="${lbl:b_detail_prescription_medic}"></td>
+
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,58 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='12%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='9%'/>
+	<col width='12%'/>
+	<col width='9%'/>
+	<col width='14%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="11" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_area_servicio_rf_combo","query-smnrelacionunidadpaso.sql")'>${lbl:b_service_area}</th>
+		<th class='sortable' onclick='sortBy("smn_unidad_servicio_rf_combo","query-smnrelacionunidadpaso.sql")'>${lbl:b_service_units}</th>
+		<th class='sortable' onclick='sortBy("smn_paso_rf_combo","query-smnrelacionunidadpaso.sql")'>${lbl:b_paso}</th>
+		<th class='sortable' onclick='sortBy("smn_serie_id_combo","query-smnrelacionunidadpaso.sql")'>${lbl:b_serie}</th>
+		<th class='sortable' onclick='sortBy("rup_secuencia","query-smnrelacionunidadpaso.sql")'>${lbl:b_rel_uni_paso_sec}</th>
+		<th class='sortable' onclick='sortBy("rup_unidad_administrativa","query-smnrelacionunidadpaso.sql")'>${lbl:b_united_administrative}</th>
+		<th class='sortable' onclick='sortBy("rup_estatus_combo","query-smnrelacionunidadpaso.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("rup_fecha_registro","query-smnrelacionunidadpaso.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_rel_unidad_paso}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_rel_unidad_paso}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_unidad_paso}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_area_servicio_rf_combo}</td>
+		<td>${fld:smn_unidad_servicio_rf_combo}</td>
+		<td>${fld:smn_paso_rf_combo}</td>
+		<td>${fld:smn_serie_id_combo}</td>
+		<td>${fld:rup_secuencia}</td>
+		<td>${fld:rup_unidad_administrativa}</td>
+		<td align='center'>${fld:rup_estatus_combo}</td>
+		<td>${fld:rup_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

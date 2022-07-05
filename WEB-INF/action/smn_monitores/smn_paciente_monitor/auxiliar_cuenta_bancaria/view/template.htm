@@ -1,0 +1,52 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='16%'/>
+	<col width='16%'/>
+	<col width='16%'/>
+	<col width='16%'/>
+	<col width='16%'/>
+	<col width='16%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="9" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_clase_auxiliar_rf","query-smnauxiliarcuentabancaria.sql")'>${lbl:b_class_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf","query-smnauxiliarcuentabancaria.sql")'>${lbl:b_auxiliary}</th>
+		<th class='sortable' onclick='sortBy("acb_num_cuenta","query-smnauxiliarcuentabancaria.sql")'>${lbl:b_account_number}</th>
+		<th class='sortable' onclick='sortBy("tcb_descripcion","query-smnauxiliarcuentabancaria.sql")'>${lbl:b_account_bank_type}</th>
+		<th class='sortable' onclick='sortBy("efi_nombre","query-smnauxiliarcuentabancaria.sql")'>${lbl:b_bank}</th>
+		<th class='sortable' onclick='sortBy("acb_fecha_registro","query-smnauxiliarcuentabancaria.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_auxiliar_cuenta_bancaria_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_auxiliar_cuenta_bancaria_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_auxiliar_cuenta_bancaria_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_clase_auxiliar_rf}</td>
+		<td>${fld:smn_auxiliar_rf}</td>
+		<td align='left'>${fld:acb_num_cuenta}</td>
+		<td>${fld:tcb_descripcion}</td>
+		<td>${fld:efi_nombre}</td>
+		<td>${fld:acb_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

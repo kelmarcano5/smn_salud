@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<title>${lbl:b_security_system}.</title>
+</head>
+
+<body>
+
+	<div class="welcome" style="padding-right:50px; margin-top: 20px;"><br>
+	<b>${lbl:b_welcome}</b> ${fld:fname} ${fld:lname}
+	<div class="" style="width: 100%; border-bottom: solid 6px #1d61a0; border-radius: 30px; margin-top: 4px;">
+	</div>
+	</div>
+<br>
+<div class="modulo">
+		<div class="tituloModulo">
+				<div class="tittlModContenedor">
+						<div class="ttlModTop">
+								<h2>${lbl:b_tax_module}</h2>
+								<div class="ttlModTopImg"><img src="${def:context}/images/mainFolder/talentoHumanoImg.jpg"></div><!--ttlModTopImg-->
+						</div><!--ttlModTop-->
+						<div class="ttlModBottom"><h3>Atenci&oacute;n primaria salud</h3></div><!--ttlModTop-->
+						<div class="rightImg"><img src="${def:context}/images/mainFolder/modContAsis.png"></div><!--rightImg-->
+				</div><!--tittlModContenedor-->
+		</div><!--tituloModulo-->
+</div><!--modulo-->
+
+
+<br>
+
+<!--include al menu iconografico-->
+${inc:${def:actionroot}/panel/view}
+
+<!--tabla de ultimos logins-->
+<!--
+<table class="datagrid" width="50%">
+
+	<tr>
+		<th colspan="4" style="font-weight:bold; font-size:10pt;">${lbl:b_last_access_to_server}</th>
+	</tr>
+
+	<tr>
+		<th width="25%">${lbl:s_loginhist_col1}</th>
+		<th width="25%">${lbl:s_loginhist_col2}</th>
+		<th width="25%">${lbl:s_loginhist_col3}</th>
+		<th width="25%">${lbl:s_loginhist_col4}</th>
+	</tr>
+
+	<rows>
+	<tr ${fld:_rowStyle}>
+		<td align="center">${fld:login_date}</td>
+		<td align="center">${fld:login_time}</td>
+		<td align="center">${fld:remote_addr}</td>
+		<td align="center">${fld:context}</td>
+	</tr>
+	</rows>
+
+</table>
+
+<br/>
+
+<table class="datagrid" width="50%">
+
+	<tr>
+		<th colspan="4" style="color:red; font-weight:bold; font-size:10pt;">${lbl:s_loginhist_failed}</th>
+	</tr>
+
+	<tr>
+		<th width="25%">${lbl:s_loginhist_col1}</th>
+		<th width="25%">${lbl:s_loginhist_col2}</th>
+		<th width="25%">${lbl:s_loginhist_col3}</th>
+		<th width="25%">${lbl:s_loginhist_col4}</th>
+	</tr>
+
+	<rows2>
+	<tr ${fld:_rowStyle}>
+		<td align="center">${fld:login_date}</td>
+		<td align="center">${fld:login_time}</td>
+		<td align="center">${fld:remote_addr}</td>
+		<td align="center">${fld:context}</td>
+	</tr>
+	</rows2>
+
+</table>
+-->
+</body>
+
+</html>

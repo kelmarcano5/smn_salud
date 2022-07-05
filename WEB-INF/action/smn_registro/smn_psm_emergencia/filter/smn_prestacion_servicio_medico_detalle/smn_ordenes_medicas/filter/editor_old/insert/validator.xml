@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_ingreso_id' type='integer' required='true' label='${lbl:b_ingreso}' maxlen='10'/>
+	<parameter id='omd_numero_orden' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='omd_descripcion' type='varchar' required='true' label='${lbl:b_description}' maxlen='256'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_service_providers}' maxlen='10'/>
+	<parameter id='omd_clase_auxiliar' type='integer' required='true' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='omd_auxiliar' type='integer' required='true' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<!-- <parameter id='omd_num_doc_oficial' type='varchar' required='true' label='${lbl:b_budget_number}' maxlen='12'/> -->
+	<parameter id='omd_tipo_orden' type='varchar' required='true' label='${lbl:b_order_type}' maxlen='2'/>
+	<parameter id='omd_indicaciones' type='varchar' required='true' label='${lbl:b_indications}' maxlen='500'/>
+	<parameter id='smn_servicios_rf' type='integer' required='true' label='${lbl:b_service}' maxlen='10'/>
+    <parameter id='smn_grupo_prestador_servicio_rf' type='integer' required='true' label='${lbl:b_grupo_prestador_servicio}' maxlen='10'/>
+
+	<!-- <custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='omd_descripcion'/> -->
+
+	<!-- <parameter id='smn_servicios_id' type='varchar' required='false' label='Ítems'/>
+	<custom-validator classname='dinamica.validators.StringToRecordset' paramName='smn_servicios_id' recordsetId='query-smn_servicios.sql' separatorChar=';' colName='smn_servicios_id' colType='integer'/> -->
+		<parameter id='omd_estatus' type='varchar' required='false' label='${lbl:b_estatus}' maxlen='2'/>
+
+</validator>

@@ -1,0 +1,7 @@
+var orden = $('#orden').val();
+var baremos = $('#baremo').val();
+console.log("ID DE ORDEN DESDE INSERT ORDEN: "+orden);
+generarOrdenMedica(orden, baremos);
+addNew();
+alertBox ('${lbl:b_record_added}: ${fld:id}', '${lbl:b_continue_button}', null, 'search(); setFocusOnForm("form1");');
+

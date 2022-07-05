@@ -1,0 +1,1 @@
+select smn_salud.smn_tipo_documento.smn_tipo_documento_id as id, smn_salud.smn_tipo_documento.tdc_codigo || ' - ' || smn_salud.smn_tipo_documento.tdc_descripcion as item from smn_salud.smn_tipo_documento order by smn_salud.smn_tipo_documento.tdc_descripcion asc

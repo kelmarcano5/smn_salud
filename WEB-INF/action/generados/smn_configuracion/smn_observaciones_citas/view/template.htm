@@ -1,0 +1,40 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='16%'/>
+	<col width='16%'/>
+	<col width='16%'/>
+	<col width='16%'/>
+	<col width='16%'/>
+	<col width='16%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="6">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th class='sortable' onclick='sortBy("obc_codigo","query-smnobservacionescitas.sql")'>${lbl:b_code}</th>
+		<th class='sortable' onclick='sortBy("obc_descripcion","query-smnobservacionescitas.sql")'>${lbl:b_description}</th>
+		<th class='sortable' onclick='sortBy("obc_idioma","query-smnobservacionescitas.sql")'>${lbl:s_profile_lang}</th>
+		<th class='sortable' onclick='sortBy("obc_usuario","query-smnobservacionescitas.sql")'>${lbl:b_users}</th>
+		<th class='sortable' onclick='sortBy("obc_fecha_registro","query-smnobservacionescitas.sql")'>${lbl:b_store_date}</th>
+		<th class='sortable' onclick='sortBy("obc_hora","query-smnobservacionescitas.sql")'>${lbl:s_loginhist_col2}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td align='left'>${fld:obc_codigo}</td>
+		<td align='left'>${fld:obc_descripcion}</td>
+		<td align='left'>${fld:obc_idioma}</td>
+		<td align='left'>${fld:obc_usuario}</td>
+		<td>${fld:obc_fecha_registro@dd-MM-yyyy}</td>
+		<td align='left'>${fld:obc_hora}</td>
+	</tr>
+	</rows>
+
+</table>

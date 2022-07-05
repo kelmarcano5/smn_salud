@@ -1,0 +1,1 @@
+select smn_base.smn_municipios.smn_municipios_id as id, smn_base.smn_municipios.mun_codigo || ' - ' || smn_base.smn_municipios.mun_nombre_corto as item from smn_base.smn_municipios order by smn_base.smn_municipios.mun_nombre_corto

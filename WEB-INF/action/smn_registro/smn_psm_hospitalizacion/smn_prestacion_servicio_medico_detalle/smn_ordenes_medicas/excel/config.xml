@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnordenesmedicas.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="5" cellStep="0" name="${lbl:b_orders_medics}"/>
+	
+	<excel 
+		recordset='query-smnordenesmedicas.sql' 
+		sheetname='${lbl:b_orders_medics}' 
+		filename='${lbl:b_orders_medics}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_ingreso_id' label='${lbl:b_ingreso}' />
+		<col id='omd_numero_orden' label='${lbl:b_code}' />
+		<col id='omd_descripcion' label='${lbl:b_description}' />
+		<col id='smn_prestador_servicio_rf' label='${lbl:b_service_providers}' />
+		<col id='omd_clase_auxiliar' label='${lbl:b_auxiliary_class}' />
+		<col id='omd_auxiliar' label='${lbl:b_auxiliary}' />
+		<col id='omd_tipo_orden' label='${lbl:b_order_type}' />
+		<col id='omd_indicaciones' label='${lbl:b_indications}' />
+		<col id='omd_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

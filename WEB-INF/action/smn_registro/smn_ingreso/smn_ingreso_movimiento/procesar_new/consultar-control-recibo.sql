@@ -1,0 +1,16 @@
+select
+	smn_caja.smn_control_recibo.smn_control_recibo_id,
+	smn_caja.smn_control_recibo.smn_caja_id,
+	smn_caja.smn_control_recibo.rcr_serie,
+	smn_caja.smn_control_recibo.rcr_numero_control_inicial,
+	smn_caja.smn_control_recibo.rcr_numero_control_final,
+	smn_caja.smn_control_recibo.rcr_estatus,
+	smn_caja.smn_control_recibo.rcr_vigencia,
+	smn_caja.smn_control_recibo.rcr_idioma,
+	smn_caja.smn_control_recibo.rcr_usuario,
+	smn_caja.smn_control_recibo.rcr_fecha_registro,
+	smn_caja.smn_control_recibo.rcr_hora  
+from
+	smn_caja.smn_control_recibo  
+where
+	smn_caja_id=${fld:smn_caja_id}

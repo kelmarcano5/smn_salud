@@ -1,0 +1,82 @@
+<!--data grid-->
+<table class="datagrid display" style="width:95%;">
+
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='2%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='2%'/>
+	<col width='2%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="20" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th>VI</th>
+		<th>PA</th>
+		<th>TH</th>
+		<th>GP</th>
+		<th>AA</th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("igs_num_ingreso","query-smningreso.sql")'>Num. Ingreso</th>
+		<th class='sortable' onclick='sortBy("medico","query-smningreso.sql")'>Medico</th>
+		<th class='sortable' onclick='sortBy("cubiculo","query-smningreso.sql")'>Cubiculo</th>
+		<th class='sortable' onclick='sortBy("paciente","query-smningreso.sql")'>Paciente</th>
+		<th class='sortable' onclick='sortBy("monto_ingreso_ml","query-smningreso.sql")'>Monto Ingreso ML</th>
+		<th class='sortable' onclick='sortBy("monto_ingreso_ma","query-smningreso.sql")'>Monto Ingreso MA</th>
+		<th class='sortable' onclick='sortBy("monto_cobertura_ml","query-smningreso.sql")'>Monto Cobertura ML</th>
+		<th class='sortable' onclick='sortBy("monto_cobertura_ma","query-smningreso.sql")'>Monto Cobertura MA</th>
+		<th class='sortable' onclick='sortBy("monto_saldo_ml","query-smningreso.sql")'>Monto Saldo ML</th>
+		<th class='sortable' onclick='sortBy("monto_saldo_ma","query-smningreso.sql")'>Monto Saldo MA</th>
+		<th class='sortable' onclick='sortBy("igs_estatus_financiero","query-smningreso.sql")'>Estatus</th>
+		<th class='sortable' onclick='sortBy("igs_fecha_registro","query-smningreso.sql")'>${lbl:b_store_date}</th>
+		<th>DT</th>
+		<th>CA</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+		<tr>
+			<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_ingreso_id}')" title="${lbl:b_view_detail}"></td>
+			<td><img src="${def:context}/images/icongrid/smn_documento oficial.png"  onclick="getPaciente('${fld:smn_ingreso_id}','${fld:paciente2}')" title="Datos del Paciente"></td>
+			<td><img src="${def:context}/images/icongrid/cambiodehab.png"  onclick="getCambiarHabDoc('${fld:smn_ingreso_id}','${fld:igs_estatus_financiero}')" title="Transferencia Hospitalizacion"></td>
+			<td><img src="${def:context}/images/icongrid/Generar.png"  onclick="generarEmerg('${fld:smn_ingreso_id}','${fld:igs_estatus_financiero}','${fld:smn_contratante_id}','${fld:paciente2}','${fld:smn_presupuesto_id}','${fld:monto_ingreso_ml}','${fld:monto_saldo_ml}')" title="Procesar"></td>
+			<td><img src="${def:context}/images/icongrid/Comprobante-diario.png"  onclick="alta_administrativa('${fld:smn_ingreso_id}','${fld:igs_estatus_financiero}','${fld:igs_fecha_registro}','${fld:igs_hora_salida}')" title="Alta Administratia"></td>
+			<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_ingreso_id}','${fld:igs_estatus_financiero}','${fld:igs_fecha_registro}','${fld:igs_hora_salida}')" title="${lbl:b_edit_button}"></td>
+			<td align="center">${fld:igs_num_ingreso}</td>
+			<td align="left">${fld:medico}</td>
+			<td align="left" >${fld:cubiculo}</td>
+			<td align="left">${fld:paciente}</td>
+			<td align="right">${fld:monto_ingreso_ml@#,###,##0.00}</td>
+			<td align="right">${fld:monto_ingreso_ma@#,###,##0.00}</td>
+			<td align="right">${fld:monto_cobertura_ml@#,###,##0.00}</td>
+			<td align="right">${fld:monto_cobertura_ma@#,###,##0.00}</td>
+			<td align="right">${fld:monto_saldo_ml@#,###,##0.00}</td>
+			<td align="right">${fld:monto_saldo_ma@#,###,##0.00}</td>
+			<td align="center">${fld:igs_estatus_financiero}</td>
+			<td align="center">${fld:igs_fecha_registro}</td>
+			<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png"  onclick="detalleingreso('${fld:smn_ingreso_id}','${fld:smn_areas_servicios_rf}','${fld:igs_num_ingreso}','${fld:igs_estatus_financiero}','${fld:igs_fecha_registro}','${fld:rta_estatus}','${fld:rta_secuencia}')" title="${lbl:b_ingreso_mov}"></td>
+			<td><img src="${def:context}/images/icongrid/Detalle-impuesto.png"  onclick="cobertura_admision('${fld:smn_ingreso_id}','${fld:igs_num_ingreso}','${fld:igs_estatus_financiero}','${fld:igs_fecha_registro}','${fld:smn_presupuesto_id}','${fld:paciente2}','${fld:monto_ingreso_ml}','${fld:monto_ingreso_ma}')" title="Cobertura Admisi&oacute;n"></td>
+		</tr>
+	</rows>
+
+</table>

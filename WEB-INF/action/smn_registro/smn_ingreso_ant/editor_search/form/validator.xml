@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert">
+	<parameter id="id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="usuario" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="entidad_prestador" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="sucursal_prestador" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="area_prestador" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="unidad_prestador" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="ruta_id" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="auxiliar_id" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="ticket" type="integer" required="false" label="ID" maxlen="10" />
+ 	<parameter id="fecha_ingreso" type="varchar" required="false" label="ID" maxlen="10" />
+</validator>

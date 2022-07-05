@@ -1,0 +1,18 @@
+SELECT
+	case 
+		when smn_base.smn_grupo_prestador_servicio_frecuencia.smn_grupos_prestadores_id  is null then smn_salud.smn_ingreso_movimiento.smn_grupo_prestador_servicio_rf else smn_base.smn_grupo_prestador_servicio_frecuencia.smn_grupos_prestadores_id 
+	end as smn_grupo_prestador_servicio_rf,
+	case
+		when smn_base.smn_grupos_prestadores.gpp_is_pull = 'SI' then NULL else smn_salud.smn_ingreso_movimiento.smn_prestador_servicio_rf
+	end as smn_prestador_servicio_rf,
+	smn_salud.smn_ingreso_movimiento.smn_unidades_servicios_rf,
+	${fld:id_ingreso}  as smn_ingresos_id
+FROM
+	smn_salud.smn_ingresos
+	INNER JOIN smn_salud.smn_ingreso_movimiento ON smn_salud.smn_ingresos.smn_ingresos_id = smn_salud.smn_ingreso_movimiento.smn_ingreso_id 
+	LEFT JOIN smn_caja.smn_mov_caja_cabecera ON smn_caja.smn_mov_caja_cabecera.smn_num_doc_origen_rf = smn_salud.smn_ingresos.igs_num_ingreso
+	INNER JOIN smn_base.smn_grupo_prestador_servicio_frecuencia ON smn_base.smn_grupo_prestador_servicio_frecuencia.smn_servicios_id = smn_salud.smn_ingreso_movimiento.smn_servicios_rf
+	INNER JOIN smn_base.smn_grupos_prestadores on smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id = smn_base.smn_grupo_prestador_servicio_frecuencia.smn_grupos_prestadores_id  
+WHERE
+	smn_salud.smn_ingresos.smn_ingresos_id = ${fld:id_ingreso} 
+GROUP BY smn_salud.smn_ingreso_movimiento.smn_unidades_servicios_rf, smn_base.smn_grupo_prestador_servicio_frecuencia.smn_grupos_prestadores_id, smn_base.smn_grupos_prestadores.gpp_is_pull, smn_salud.smn_ingreso_movimiento.smn_prestador_servicio_rf, smn_salud.smn_ingreso_movimiento.smn_grupo_prestador_servicio_rf

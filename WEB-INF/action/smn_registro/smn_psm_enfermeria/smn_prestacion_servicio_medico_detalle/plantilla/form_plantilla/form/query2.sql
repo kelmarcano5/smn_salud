@@ -1,0 +1,17 @@
+SELECT
+	smn_salud.smn_ingresos.smn_auxiliar_rf,
+	smn_salud.smn_ingresos.smn_ingresos_id,
+	smn_salud.smn_prestacion_servicio_medico_detalle.smn_prestador_servicio_rf,
+	smn_salud.smn_prestacion_servicio_medico_detalle.smn_servicios_rf
+FROM
+	smn_salud.smn_ingresos
+INNER JOIN
+	smn_salud.smn_prestacion_servicio_medico_cabecera 
+	ON
+	smn_salud.smn_prestacion_servicio_medico_cabecera.smn_ingresos_id = smn_salud.smn_ingresos.smn_ingresos_id
+INNER JOIN
+	smn_salud.smn_prestacion_servicio_medico_detalle
+	ON
+	smn_salud.smn_prestacion_servicio_medico_detalle.smn_prestacion_servicio_medico_cabecera_id  = smn_salud.smn_prestacion_servicio_medico_cabecera.smn_prestacion_servicio_medico_cabecera_id
+WHERE
+	smn_salud.smn_prestacion_servicio_medico_detalle.smn_prestacion_servicio_medico_detalle_id = ${fld:smn_prestacion_servicio_medico_detalle_id}

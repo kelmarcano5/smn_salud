@@ -1,0 +1,48 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="8" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_ordenes_medicas_id","query-smnrelordenmedicaservicios.sql")'>${lbl:b_orders_medics}</th>
+		<th class='sortable' onclick='sortBy("smn_servicios_rf_combo","query-smnrelordenmedicaservicios.sql")'>${lbl:b_services}</th>
+		<th class='sortable' onclick='sortBy("ros_observacion","query-smnrelordenmedicaservicios.sql")'>${lbl:b_observations}</th>
+		<th class='sortable' onclick='sortBy("smn_grupo_prestador_rf_combo","query-smnrelordenmedicaservicios.sql")'>${lbl:b_grupo_prestador_servicio}</th>
+		<th class='sortable' onclick='sortBy("smn_prestador_servicio_referido_rf_combo","query-smnrelordenmedicaservicios.sql")'>${lbl:b_service_providers}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_rel_orden_medica_servicios_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_rel_orden_medica_servicios_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_orden_medica_servicios_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_ordenes_medicas_id}</td>
+		<td>${fld:smn_servicios_rf_combo}</td>
+		<td align='left'>${fld:ros_observacion}</td>
+		<td>${fld:smn_grupo_prestador_rf_combo}</td>
+		<td>${fld:smn_prestador_servicio_referido_rf_combo}</td>
+
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+
+	<parameter id='ctm_observaciones_id' type='varchar' required='false' label='${lbl:b_appointment_comment}' maxlen='100'/>
+	<parameter id='igs_fecha_salida' type='date' required='false' label='Fecha Salida' maxlen='10'/>
+
+	<parameter id='igs_hora_salida' type='varchar' required='false' label='Hora Salida' maxlen='11'/>
+
+	<parameter id='id' type='integer' required='true' label='${lbl:b_income}' maxlen='10'/>
+
+
+</validator>

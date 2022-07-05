@@ -1,0 +1,46 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='22%'/>
+	<col width='22%'/>
+	<col width='22%'/>
+	<col width='22%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="7" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('ori_codigo','query-smnorigen.sql')" >${lbl:b_code}</th>
+		<th class='sortable' onclick="sortBy('ori_descripcion','query-smnorigen.sql')" >${lbl:b_description} (CallCenter, Internet, ...)</th>
+		<th class='sortable' onclick="sortBy('ori_tipo_combo','query-smnorigen.sql')" >${lbl:b_type}</th>
+		<th class='sortable' onclick="sortBy('ori_fecha_registro','query-smnorigen.sql')" >${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_origen_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_origen_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_origen_id}')" title="${lbl:b_edit_button}"></td>
+		<td align="left">${fld:ori_codigo}</td>
+		<td align="left">${fld:ori_descripcion}</td>
+		<td align="left">${fld:ori_tipo_combo}</td>
+		<td align="center">${fld:ori_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

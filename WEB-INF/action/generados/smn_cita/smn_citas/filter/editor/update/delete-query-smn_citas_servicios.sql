@@ -1,0 +1,1 @@
+delete from smn_salud.smn_citas_servicios WHERE smn_citas_id= ${fld:id}

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='pla_codigo' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='pla_descripcion' type='varchar' required='true' label='${lbl:b_description}' maxlen='56'/>
+	<parameter id='pla_vigencia_desde' type='date' required='true' label='${lbl:b_validation_date_from}
+' maxlen='10'/>
+	<parameter id='pla_vigencia_hasta' type='date' required='true' label='${lbl:b_validation_date_until}
+' maxlen='10'/>
+	<parameter id='pla_inactivo' type='varchar' required='true' label='${lbl:b_inactive}' maxlen='1'/>
+	<parameter id='pla_modelo_contrato' type='integer' required='false' label='${lbl:b_contrato_modulo}' maxlen='10'/>
+	<parameter id='pla_empresa' type='integer' required='false' label='${lbl:b_entity}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.ArrayNotEmptyValidator' on-error-label='Seleccione al menos un ítem.' parameter-name='smn_contrato_modulo_id' id='smn_contrato_modulo_id'/>
+	<custom-validator classname='dinamica.validators.ArrayToRecordset' paramName='smn_contrato_modulo_id' recordsetId='query-smn_contrato_modulo.sql' colName='smn_contrato_modulo_id' colType='integer'/>
+</validator>

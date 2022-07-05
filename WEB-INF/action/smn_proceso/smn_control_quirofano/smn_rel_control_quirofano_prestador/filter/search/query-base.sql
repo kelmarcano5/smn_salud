@@ -1,0 +1,20 @@
+select
+		smn_salud.smn_rel_control_quirofano_prestador.smn_rel_control_quirofano_prestador_id,
+	smn_salud.smn_rel_control_quirofano_prestador.smn_control_quirofano_id,
+	smn_base.smn_servicios.svc_descripcion as smn_servicios_rf,
+	smn_base.smn_componentes.cmp_descripcion as smn_componente_rf,
+	smn_base.smn_grupos_prestadores.gpp_descripcion as smn_grupo_prestador_servicio_rf,
+	smn_salud.smn_rel_control_quirofano_prestador.smn_prestador_servicio_rf
+	
+from
+	smn_salud.smn_rel_control_quirofano_prestador
+	inner join smn_salud.smn_control_quirofano on smn_salud.smn_control_quirofano.smn_control_quirofano_id = smn_salud.smn_rel_control_quirofano_prestador.smn_control_quirofano_id
+	inner join smn_base.smn_servicios on smn_base.smn_servicios.smn_servicios_id = smn_salud.smn_control_quirofano.smn_servicios_rf
+	inner join smn_base.smn_componentes on smn_base.smn_componentes.smn_componentes_id = smn_salud.smn_rel_control_quirofano_prestador.smn_componente_rf
+	left join smn_base.smn_grupos_prestadores on smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id =	smn_salud.smn_rel_control_quirofano_prestador.smn_grupo_prestador_servicio_rf
+	left join smn_base.smn_prestadores_servicios on smn_prestadores_servicios.smn_prestadores_servicios_id = smn_salud.smn_rel_control_quirofano_prestador.smn_prestador_servicio_rf
+where
+	smn_rel_control_quirofano_prestador_id is not null
+	${filter}
+order by
+		smn_rel_control_quirofano_prestador_id

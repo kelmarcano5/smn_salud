@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="session" scope="transaction" />
+
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_ingreso}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_ingreso}.pdf</pdf-file-name>
+
+	<pdf-report pageSize="letter" rotate="false" footer="true" header="true">
+		<record recordset='query.sql' title='${lbl:b_ingreso}' width='60' spacingBefore='40'>
+			<col name='smn_doc_orig' title='${lbl:b_doc_orig}' align='left' format='######' />
+			<col name='smn_documento_id_combo' title='${lbl:b_document}' align='left' format='######' />
+			<col name='igs_doc_origen' title='${lbl:b_num_doc_orig}' align='left' format='######' />
+			<col name='igs_num_ingreso' title='${lbl:b_num_ingreso}' align='left' format='######' />
+			<col name='smn_entidades_rf_combo' title='${lbl:b_entities}' align='left' format='######' />
+			<col name='smn_sucursales_rf_combo' title='${lbl:b_subsidiaries}' align='left' format='######' />
+			<col name='smn_areas_servicios_rf_combo' title='${lbl:b_service_area}' align='left' format='######' />
+			<col name='smn_unidades_servicios_rf_combo' title='${lbl:b_service_units}' align='left' format='######' />
+			<col name='ctm_observaciones_id' title='${lbl:b_appointment_comment}' align='left' />
+			<col name='igs_ticket' title='${lbl:b_num_ticket}' align='left' format='######' />
+			<col name='smn_clase_rf' title='${lbl:b_auxiliary_class_pa}@(select smn_base.smn_clase_auxiliar.smn_clase_auxiliar_id as id, smn_base.smn_clase_auxiliar.cla_codigo|| ' - ' || smn_base.smn_clase_auxiliar.cla_nombre as item from smn_base.smn_clase_auxiliar where smn_base.smn_clase_auxiliar.cla_codigo = 'PA')' align='left' format='######' />
+			<col name='smn_auxiliar_rf' title='${lbl:b_auxiliary_pa}@(select smn_base.smn_auxiliar_persona_natural.smn_auxiliar_persona_natural_id as id, smn_base.smn_auxiliar_persona_natural.ant_num_doc_oficial || ' - ' || smn_base.smn_auxiliar_persona_natural.ant_nombres || ' - ' || smn_base.smn_auxiliar_persona_natural.ant_apellidos as item from smn_base.smn_auxiliar_persona_natural where smn_base.smn_auxiliar_persona_natural.smn_clase_auxiliar_id = 26 order by smn_base.smn_auxiliar_persona_natural.ant_num_doc_oficial)' align='left' format='######' />
+			<col name='smn_contratante_id_combo' title='${lbl:b_contratante_aux}' align='left' format='######' />
+			<col name='smn_auxiliar_sucursales_rf' title='${lbl:b_aux_suc}' align='left' format='######' />
+			<col name='smn_auxiliar_areas_servicios_rf' title='${lbl:b_cont_area}' align='left' format='######' />
+			<col name='smn_auxilia_unidad_servicio_rf' title='${lbl:b_cont_uni_serv}' align='left' format='######' />
+			<col name='smn_motivos_id_combo' title='${lbl:b_reason}' align='left' format='######' />
+			<col name='smn_observaciones_ingresos_id' title='${lbl:b_obs_ingresos}' align='left' format='######' />
+			<col name='igs_monto_moneda_local' title='${lbl:b_monto_mop}' align='left' format='#,###,##0.00' />
+			<col name='smn_moneda_rf' title='${lbl:b_mon_alt}' align='left' format='######' />
+			<col name='igs_monto_moneda_alterna' title='${lbl:b_mon_mon_alt}' align='left' format='######' />
+			<col name='smn_sintoma_id_combo' title='${lbl:b_symptom}' align='left' format='######' />
+			<col name='igs_estatus_financiero' title='${lbl:b_estFinan_mop}' align='left' />
+			<col name='igs_idioma' title='${lbl:s_profile_lang}' align='left' />
+			<col name='igs_usuario' title='${lbl:b_users}' align='left' />
+			<col name='igs_fecha_registro' title='${lbl:b_store_date}' align='left' format='dd-MM-yyyy' />
+			<col name='igs_hora' title='${lbl:s_loginhist_col2}' align='left' />
+		</record>
+
+
+	</pdf-report>
+</config>

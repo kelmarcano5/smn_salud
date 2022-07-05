@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert">	
+	<parameter id='id2' type='integer' required='false' label='ID Prestacion Cabecera' maxlen='10'/>
+	<parameter id='smn_pedido_cabecera_id' type='integer' required='false' label='ID Prestacion Cabecera' maxlen='10'/>
+	<parameter id='smn_mov_caja_cabecera_id' type='integer' required='false' label='ID Prestacion Cabecera' maxlen='10'/>
+	<parameter id='ingresoid' type='integer' required='false' label='ID Prestacion Cabecera' maxlen='10'/>
+	<parameter id='smn_despacho_id' type='integer' required='false' label='ID INGRESO' maxlen='10'/>
+		<parameter id='prestador' type='integer' required='false' label='ID INGRESO' maxlen='10'/>
+			<parameter id='smn_pedido_detalle_id' type='integer' required='false' label='ID Prestacion Cabecera' maxlen='10'/>
+			<parameter id='smn_servicios_rf' type='integer' required='false' label='ID Prestacion Cabecera' maxlen='10'/>
+			<parameter id='smn_item_rf' type='integer' required='false' label='ID Prestacion Cabecera' maxlen='10'/>
+			<parameter id='smn_prestacion_servicio_medico_cabecera_id' type='integer' required='false' label='ID Prestacion Cabecera' maxlen='10'/>
+	
+
+</validator>

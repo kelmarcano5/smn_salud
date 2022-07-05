@@ -1,0 +1,1 @@
+select smn_salud.smn_ingreso_movimiento.smn_ingresos_mov_id, smn_salud.smn_ingreso_movimiento.smn_servicios_rf, ${fld:smn_pedido_detalle_id} as smn_pedido_detalle_id from smn_salud.smn_ingreso_movimiento where smn_salud.smn_ingreso_movimiento.smn_ingreso_id=${fld:id_ingreso} ORDER BY smn_salud.smn_ingreso_movimiento.smn_ingresos_mov_id asc

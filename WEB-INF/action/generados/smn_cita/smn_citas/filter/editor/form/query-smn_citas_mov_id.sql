@@ -1,0 +1,1 @@
+select smn_salud.smn_citas_mov.smn_citas_mov_id as id, smn_salud.smn_citas_mov.ctm_num_control_cita || ' - ' || smn_salud.smn_citas_mov.ctm_localidad as item from smn_salud.smn_citas_mov order by smn_salud.smn_citas_mov.ctm_localidad

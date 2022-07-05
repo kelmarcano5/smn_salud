@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnseries.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_serie}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_serie}.pdf</pdf-file-name>
+
+	<pdf-report 
+		pageSize="letter" 
+		rotate="false"
+		footer="false" 
+		header="true">
+		<record recordset='query-smnseries.sql' width='100' spacingBefore='40'>
+			<col name='sri_codigo' title='${lbl:b_codigo_serie}' width='16' align='left' />
+			<col name='sri_nombre' title='${lbl:b_nombre_serie}' width='16' align='left' />
+			<col name='sri_estatus_combo' title='${lbl:b_status_serie}' width='16' align='left' />
+			<col name='sri_ultimo_numero' title='${lbl:b_ultimo_numero}' width='16' align='left' format='######' />
+			<col name='sri_reinicio_combo' title='${lbl:b_reinicio}' width='16' align='left' />
+			<col name='ctm_fecha_registro' title='${lbl:b_store_date}' width='16' align='left' format='dd-MM-yyyy' />
+
+		</record>
+
+	</pdf-report>
+</config>

@@ -1,0 +1,10 @@
+select
+		smn_salud.smn_campos_visualizacion_monitores_dispositivos.smn_campos_visualizacion_monitores_dispositivos_id,
+	${field}
+from
+	smn_salud.smn_campos_visualizacion_monitores_dispositivos
+where
+		smn_salud.smn_campos_visualizacion_monitores_dispositivos.smn_campos_visualizacion_monitores_dispositivos_id is not null
+	${filter}
+	
+	

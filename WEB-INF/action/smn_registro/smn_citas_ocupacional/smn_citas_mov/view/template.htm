@@ -1,0 +1,55 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("ctm_num_control_cita","query-smncitasmov.sql")'>${lbl:b_num_control_citas}</th>
+		<th class='sortable' onclick='sortBy("smn_servicios_rf_combo","query-smncitasmov.sql")'>${lbl:b_service}</th>
+		<th class='sortable' onclick='sortBy("smn_prestador_servicio_rf_combo","query-smncitasmov.sql")'>${lbl:b_service_providers}</th>
+		<th class='sortable' onclick='sortBy("ctm_fecha_cita","query-smncitasmov.sql")'>${lbl:b_appointment_date}</th>
+		<th class='sortable' onclick='sortBy("ctm_turno_cita","query-smncitasmov.sql")'>${lbl:b_turno_cita}</th>
+		<th class='sortable' onclick='sortBy("ctm_estatus_id","query-smncitasmov.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("ctm_fecha_registro","query-smncitasmov.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_citas_mov_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_citas_mov_id}','${fld:ctm_estatus_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_citas_mov_id}','${fld:smn_citas_id}','${fld:smn_documento_id}','${fld:ctm_estatus_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:ctm_num_control_cita}</td>
+		<td>${fld:smn_servicios_rf}</td>
+		<td>${fld:smn_prestador_servicio_rf}</td>
+		<td>${fld:ctm_fecha_cita@dd-MM-yyyy}</td>
+		<td>${fld:ctm_turno_cita}</td>
+		<td>${fld:ctm_estatus_id}</td>
+		<td>${fld:ctm_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

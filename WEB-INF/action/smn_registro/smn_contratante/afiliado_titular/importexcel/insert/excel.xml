@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_documento_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='afi_numero_control' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_contratante_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_auxiliar_unidades_negocios_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_auxiliar_sucursales_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_auxiliar_areas_servicios_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_auxiliar_unidades_servicios_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='afi_clase_auxiliar_rf_desc_ref' type='varchar' required='true' maxlen='10'/>
+	<parameter id='afi_auxiliar_rf_desc_ref' type='varchar' required='true' maxlen='10'/>
+	<parameter id='afi_fecha_de_registro' type='date' required='true' maxlen='10'/>
+	<parameter id='afi_fecha_de_inicio' type='date' required='true' maxlen='10'/>
+	<parameter id='afi_estatus' type='varchar' required='true' maxlen='1'/>
+	<parameter id='afi_fecha_desafiliado' type='date' required='false' maxlen='10'/>
+
+	<parameter id='afi_clase_auxiliar_rf_ref' type='integer' required='false' maxlen='10'/>
+	<parameter id='afi_auxiliar_rf_ref' type='integer' required='false' maxlen='10'/>
+
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: afi_clase_auxiliar_rf' 
+		parameter='afi_clase_auxiliar_rf_ref' 
+		sql='afi_clase_auxiliar_rf.sql' 
+		id='afi_clase_auxiliar_rf_ref'/>
+
+	<custom-validator 
+		classname='dinamica.validators.GetColValueValidator' 
+		on-error-label='${lbl:b_field_does_not_registered}: afi_auxiliar_rf' 
+		parameter='afi_auxiliar_rf_ref' 
+		sql='afi_auxiliar_rf.sql' 
+		id='afi_auxiliar_rf_ref'/>
+
+</validator>

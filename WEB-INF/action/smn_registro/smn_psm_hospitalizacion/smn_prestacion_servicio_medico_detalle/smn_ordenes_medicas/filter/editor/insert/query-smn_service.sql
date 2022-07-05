@@ -1,0 +1,2 @@
+select * from smn_salud.smn_rel_orden_medica_servicios
+inner join smn_base.smn_servicios on smn_base.smn_servicios.smn_servicios_id = smn_salud.smn_rel_orden_medica_servicios.smn_servicios_rf

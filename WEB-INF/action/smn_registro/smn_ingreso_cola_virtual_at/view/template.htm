@@ -1,0 +1,52 @@
+<!--data grid-->
+<table class="datagrid display" style="width:95%;">
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th class='sortable' onclick='sortBy("icv_numero_documento_identidad","query-smningreso.sql")'>N&deg; Identidad</th>
+		<th class='sortable' onclick='sortBy("icv_numero_ticket","query-smningreso.sql")'>${lbl:b_num_ticket}</th>
+		<th class='sortable' onclick='sortBy("smn_contratante_id","query-smningreso.sql")'>Contratante</th>
+		<th class='sortable' onclick='sortBy("smn_grupo_prestador_rf","query-smningreso.sql")'>Grupo Prestador</th>
+		<th class='sortable' onclick='sortBy("smn_unidad_servicio_rf_pres","query-smningreso.sql")'>Und Servicio Prestador</th>
+		<th class='sortable' onclick='sortBy("ejecutivo_asignado","query-smningreso.sql")'>Ejecutivo Asignado</th>
+		<th class='sortable' onclick='sortBy("rta_estatus","query-smningreso.sql")'>Estatus</th>
+		<th class='sortable' onclick='sortBy("hora_llegada","query-smningreso.sql")'>Hora Llegada</th>
+		<th class='sortable' onclick='sortBy("icv_fecha_registro","query-smningreso.sql")'>${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+		<tr>
+			<td><img src="${def:context}/images/edit.png"  onclick="estatus('${fld:smn_ruta_id}','${fld:rta_estatus}')" title="Cambiar Estatus"></td>
+			<td>${fld:icv_numero_documento_identidad}</td>
+			<td>${fld:icv_numero_ticket}</td>
+			<td>${fld:smn_contratante_id}</td>
+			<td>${fld:smn_grupo_prestador_rf}</td>
+			<td>${fld:smn_unidad_servicio_rf_pres}</td>
+			<td>${fld:ejecutivo_asignado}</td>
+			<td>${fld:rta_estatus}</td>
+			<td>${fld:hora_llegada}</td>
+			<td>${fld:icv_fecha_registro@dd-MM-yyyy}</td>
+		</tr>
+	</rows>
+
+</table>

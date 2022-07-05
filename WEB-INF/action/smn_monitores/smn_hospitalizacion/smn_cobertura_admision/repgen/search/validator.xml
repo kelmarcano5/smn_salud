@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	
+	<parameter id='smn_ingreso_id' type='integer' required='false' label='${lbl:b_ingreso}' maxlen='10'/>
+	<parameter id='smn_presupuesto_id' type='integer' required='false' label='${lbl:b_presupuesto}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='coa_hora_solicitada' type='integer' required='false' label='${lbl:b_solicited_hours}' maxlen='10'/>
+	<parameter id='coa_ejecutivo_atencion_pagador' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='coa_observacion_inicial' type='integer' required='false' label='${lbl:b_observation_init}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_servicios_clinicos_ml' type='double' required='false' label='${lbl:b_monto_solicitado_sc_ml}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_medicinas_y_mmq_ml' type='double' required='false' label='${lbl:b_monto_solicitado_mm_ml}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_honorarios_ml' type='double' required='false' label='${lbl:b_monto_solicitado_ho_ml}' maxlen='10'/>
+	<parameter id='coa_monto_total_solicitado_ml' type='double' required='false' label='${lbl:b_monto_solicitado_total_ml}' maxlen='10'/>
+	<parameter id='smn_moneda_rf' type='integer' required='false' label='${lbl:b_coins}' maxlen='10'/>
+	<parameter id='smn_tasa_rf' type='integer' required='false' label='${lbl:b_exchange_rate}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_servicios_clinicos_ma' type='double' required='false' label='${lbl:b_monto_solicitado_sc_ma}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_medicinas_y_mmq_ma' type='double' required='false' label='${lbl:b_monto_solicitado_mm_ma}' maxlen='10'/>
+	<parameter id='coa_monto_solicitado_honorarios_ma' type='double' required='false' label='${lbl:b_monto_solicitado_ho_ma}' maxlen='10'/>
+	<parameter id='coa_monto_total_solicitado_ma' type='double' required='false' label='${lbl:b_monto_solicitado_total_ma}' maxlen='10'/>
+	<parameter id='coa_fecha_aprobacion' type='date' required='false' label='${lbl:b_aprobation_date}' maxlen='10'/>
+	<parameter id='coa_hora_aprobacion' type='varchar' required='false' label='${lbl:b_aprobation_hour}' maxlen='8'/>
+	<parameter id='coa_monto_aprobado_servicios_medicos_ml' type='double' required='false' label='${lbl:b_monto_aprobado_sc_ml}' maxlen='10'/>
+	<parameter id='coa_monto_aprobado_medicinas_y_mmq_ml' type='double' required='false' label='${lbl:b_monto_aprobado_mm_ml}' maxlen='10'/>
+	<parameter id='coa_monto_aprobado_honorarios_ml' type='double' required='false' label='${lbl:b_monto_aprobado_ho_ml}' maxlen='10'/>
+	<parameter id='coa_monto_total_aprobado_ml' type='double' required='false' label='${lbl:b_monto_aprobado_total_ml}' maxlen='10'/>
+	<parameter id='coa_monto_aprobado_servicios_medicos_ma' type='double' required='false' label='${lbl:b_monto_aprobado_sc_ma}' maxlen='10'/>
+	<parameter id='coa_monto_aprobado_medicinas_y_mmq_ma' type='double' required='false' label='${lbl:b_monto_aprobado_mm_ma}' maxlen='10'/>
+	<parameter id='coa_monto_aprobado_honorarios_ma' type='double' required='false' label='${lbl:b_monto_aprobado_ho_ma}' maxlen='10'/>
+	<parameter id='coa_monto_total_aprobado_ma' type='double' required='false' label='${lbl:b_monto_aprobado_total_ma}' maxlen='10'/>
+	<parameter id='coa_estatus_proceso' type='varchar' required='false' label='${lbl:b_status_proceso}' maxlen='2'/>
+	<parameter id='coa_estatus_financiero' type='varchar' required='false' label='${lbl:b_status_financiero}' maxlen='2'/>
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='coa_hora_aprobacion'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='coa_estatus_proceso'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='coa_estatus_financiero'
+		rule='contains' />
+
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generación del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

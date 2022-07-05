@@ -1,0 +1,22 @@
+document.form1.smn_recipe_medico_id_name.value='${fld:rec_estatus_pl0@js}';
+document.form1.smn_recipe_medico_id.value='${fld:smn_recipe_medico_id@#,###,###}';
+document.form1.smn_principio_activo_rf.value='${fld:smn_principio_activo_rf@#,###,###}';
+setComboValue('smn_item_rf','${fld:smn_item_rf}','form1');
+setComboValue('smn_presentacion_rf','${fld:smn_presentacion_rf}','form1');
+setComboValue('smn_unidad_medida_rf','${fld:smn_unidad_medida_rf}','form1');
+document.form1.rmd_dosis.value='${fld:rmd_dosis@#,###,##0.00}';
+document.form1.rmd_frecuencia.value='${fld:rmd_frecuencia@#,###,###}';
+setComboValue('rmd_tiempo_frecuencia','${fld:rmd_tiempo_frecuencia}','form1');
+document.form1.rmd_especificacion.value='${fld:rmd_especificacion@js}';
+document.form1.rmd_dias_tratamiento.value='${fld:rmd_dias_tratamiento@#,###,###}';
+document.form1.rmd_dosis_total.value='${fld:rmd_dosis_total@#,###,###}';
+document.form1.rmd_observacion.value='${fld:rmd_observacion@js}';
+document.form1.id.value='${fld:smn_recipe_medico_detalle_id@#,###,###}';
+ 
+document.getElementById("formTitle").innerHTML = "${lbl:b_edit_record}";
+document.getElementById("grabar").disabled=false;
+setFocusOnForm("form1");
+
+
+ 
+

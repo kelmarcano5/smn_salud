@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert" id='smn_honorarios'>
+	<parameter id="id2" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="nombre" type="varchar" required="false" label="ID" maxlen="60" />
+	<parameter id="codigopaciente" type="varchar" required="false" label="ID" maxlen="60" />
+	<parameter id="id_prestacion" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="num_ingreso" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id="nombre_paciente" type="varchar" required="false" label="ID" maxlen="50" />
+	<parameter id="cedula" type="varchar" required="false" label="ID" maxlen="20" />
+	<parameter id="sexo" type="varchar" required="false" label="ID" maxlen="20" />
+	<parameter id="edad" type="integer" required="false" label="ID" maxlen="50" />
+	<parameter id="fecha_ingreso" type="date" required="false" label="ID" maxlen="10" />
+	<parameter id="estatus" type="varchar" required="false" label="ID" maxlen="20" />
+	<parameter id="auxiliar" type="integer" required="true" label="ID" maxlen="10" />
+</validator>

@@ -1,0 +1,28 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='50%'/>
+	<col width='50%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="2">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th class='sortable' onclick='sortBy("smn_tipo_documento_id_combo","query-smnreltipodocpatologia.sql")'>${lbl:b_document_type}</th>
+		<th class='sortable' onclick='sortBy("smn_patologia_id_combo","query-smnreltipodocpatologia.sql")'>${lbl:b_pathology}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td>${fld:smn_tipo_documento_id_combo}</td>
+		<td>${fld:smn_patologia_id_combo}</td>
+	</tr>
+	</rows>
+
+</table>

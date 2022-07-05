@@ -1,0 +1,3 @@
+<rows>
+smn_patologia_id="${fld:smn_patologia_id}"    smn_tipo_documento_id="${fld:smn_tipo_documento_id}"    
+</rows>

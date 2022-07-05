@@ -1,0 +1,3 @@
+<rows>
+nfi_fecha_registro="${fld:nfi_fecha_registro}"    nfi_email="${fld:nfi_email}"    nfi_telefono_movil="${fld:nfi_telefono_movil}"    nfi_telefono_fijo="${fld:nfi_telefono_fijo}"    nfi_sexo="${fld:nfi_sexo}"    nfi_nombres="${fld:nfi_nombres}"    nfi_apellidos="${fld:nfi_apellidos}"    nfi_num_control="${fld:nfi_num_control}"    
+</rows>

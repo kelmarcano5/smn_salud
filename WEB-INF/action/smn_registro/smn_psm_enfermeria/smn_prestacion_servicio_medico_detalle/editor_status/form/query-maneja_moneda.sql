@@ -1,0 +1,1 @@
+select smn_salud.smn_documento.doc_maneja_moneda_alt as alterna from smn_salud.smn_documento where  smn_salud.smn_documento.doc_codigo = 'IN01'

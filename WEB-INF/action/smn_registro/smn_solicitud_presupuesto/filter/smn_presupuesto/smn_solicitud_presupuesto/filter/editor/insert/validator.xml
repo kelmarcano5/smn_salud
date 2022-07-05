@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='spr_solicitud' type='integer' required='false' label='${lbl:b_request_number}' maxlen='10'/>
+	<parameter id='smn_auxiliar' type='integer' required='true' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_contratante_id' type='integer' required='false' label='${lbl:b_contratante_aux}' maxlen='10'/>
+	<parameter id='smn_patologia_id' type='integer' required='true' label='${lbl:b_pathology}' maxlen='10'/>
+	<parameter id='spr_dias_hospitalizacion' type='integer' required='true' label='${lbl:b_hospitalization_day}' maxlen='10'/>
+	<parameter id='spr_horas_quirofano' type='integer' required='true' label='${lbl:b_operating_room_hours}' maxlen='10'/>
+	<parameter id='spr_instrumentales' type='varchar' required='false' label='${lbl:b_instrumentals}' maxlen='250'/>
+	<parameter id='spr_honorarios' type='integer' required='true' label='${lbl:b_schedules}' maxlen='10'/>
+	<parameter id='spr_estatus' type='varchar' required='false' label='${lbl:b_estatus}' maxlen='2'/>
+	<parameter id='smn_presupuesto_id' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_documento_id' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+
+
+</validator>

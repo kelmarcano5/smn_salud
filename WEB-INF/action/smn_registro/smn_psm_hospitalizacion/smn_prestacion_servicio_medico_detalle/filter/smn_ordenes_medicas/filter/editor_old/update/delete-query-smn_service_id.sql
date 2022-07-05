@@ -1,0 +1,1 @@
+delete from smn_salud.smn_rel_orden_medica_servicios WHERE smn_ordenes_medicas_id= ${fld:id}

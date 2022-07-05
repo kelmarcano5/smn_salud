@@ -1,0 +1,49 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="8" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_areas_servicios_rf_combo","query-smncapacidadesunidad.sql")'>${lbl:b_area_servicio}</th>
+		<th class='sortable' onclick='sortBy("smn_unidad_servicio_rf_combo","query-smncapacidadesunidad.sql")'>${lbl:b_unidad_servicio}</th>
+		<th class='sortable' onclick='sortBy("cap_cant_max_pacientes","query-smncapacidadesunidad.sql")'>${lbl:b_max_pacientes}</th>
+		<th class='sortable' onclick='sortBy("cap_cant_min_pacientes","query-smncapacidadesunidad.sql")'>${lbl:b_min_pacientes}</th>
+		<th class='sortable' onclick='sortBy("cap_fecha_registro","query-smncapacidadesunidad.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_capacidades_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_capacidades_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_capacidades_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_areas_servicios_rf_combo}</td>
+		<td>${fld:smn_unidad_servicio_rf_combo}</td>
+		<td>${fld:cap_cant_max_pacientes}</td>
+		<td>${fld:cap_cant_min_pacientes}</td>
+		<td>${fld:cap_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

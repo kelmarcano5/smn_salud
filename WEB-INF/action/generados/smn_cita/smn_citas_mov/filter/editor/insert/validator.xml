@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='ctm_num_control_cita' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='ctm_fecha' type='date' required='true' label='${lbl:b_appointment_date}' maxlen='10'/>
+	<parameter id='ctm_localidad' type='varchar' required='true' label='${lbl:b_location}' maxlen='56'/>
+	<parameter id='ctm_servicio' type='integer' required='true' label='${lbl:b_service}' maxlen='10'/>
+	<parameter id='ctm_componente' type='integer' required='true' label='${lbl:b_component}' maxlen='10'/>
+	<parameter id='ctm_prestador_servicio' type='integer' required='true' label='${lbl:b_service_providers}' maxlen='10'/>
+	<parameter id='ctm_tipo_componente' type='varchar' required='false' label='${lbl:b_component_type}' maxlen='10'/>
+	<parameter id='ctm_estatus' type='integer' required='true' label='${lbl:b_status}' maxlen='10'/>
+	<parameter id='ctm_observ_cita' type='integer' required='true' label='${lbl:${lbl:b_appointment_comment}}' maxlen='10'/>
+</validator>

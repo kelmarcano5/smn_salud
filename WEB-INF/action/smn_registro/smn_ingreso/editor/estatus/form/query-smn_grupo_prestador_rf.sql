@@ -1,0 +1,1 @@
+SELECT smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id AS ID, smn_base.smn_grupos_prestadores.gpp_codigo ||'-'|| smn_base.smn_grupos_prestadores.gpp_descripcion AS ITEM FROM smn_base.smn_grupos_prestadores

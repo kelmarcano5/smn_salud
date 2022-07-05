@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	
+	<script type="text/javascript" src="${def:context}/action/script">
+	</script>
+
+	<script type="text/javascript">
+		//invoca la generacion de un PDF en un popup
+		function openPDF()
+		{
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/pdf?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a excel
+		function openExcel() {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/excel?random=" + Math.random();
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a xml
+		function openXml(id) {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/xml/search?id=" + id;
+			var w = window.open(url, null, features);
+		}
+		
+		//exportar a texto
+		function openTxt(id) {
+			var features = "height=500,width=800,status=no,toolbar=no,menubar=no,location=no,scrollbars=yes,resizable=yes";
+			var url = "${def:context}${def:actionroot}/txt/search?id=" + id;
+			var w = window.open(url, null, features);
+		}
+		
+		//envio de emails
+		function openEmails() {
+			var uri = "${def:context}${def:actionroot}/email/form";					
+			openDialog("editor0", uri, 980, 600);	
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<!--banner-->
+	<div class="bannerDialog" id="encabezado_tabla">
+		${lbl:b_budget_request}
+		<img src="${def:context}/images/pdf.png" onclick="openPDF()" title="${lbl:b_export_pdf}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/excel.png" onclick="openExcel()" title="${lbl:b_export_excel}" style="cursor:pointer; margin-left:3px;"/>
+		<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog()" title="${lbl:b_close_button}" style="float:right; cursor:pointer;"/>
+	</div>
+
+	<table class="record" style="width:500px;">
+		<tr>
+			<td width="40%">${lbl:b_request_number}</td>
+			<td style="background-color: white">${fld:spr_solicitud}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_auxiliary}</td>
+			<td style="background-color: white">${fld:smn_auxiliar}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_contratante_aux}</td>
+			<td style="background-color: white">${fld:smn_contratante_id}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_pathology}</td>
+			<td style="background-color: white">${fld:smn_patologia_id}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_hospitalization_day}</td>
+			<td style="background-color: white">${fld:spr_dias_hospitalizacion}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_operating_room_hours}</td>
+			<td style="background-color: white">${fld:spr_horas_quirofano}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_instrumentals}</td>
+			<td style="background-color: white">${fld:spr_instrumentales}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_schedules}</td>
+			<td style="background-color: white">${fld:spr_honorarios}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_estatus}</td>
+			<td style="background-color: white">${fld:spr_estatus}</td>
+		</tr>
+		<tr>
+			<td width="40%">${lbl:b_store_date}</td>
+			<td style="background-color: white">${fld:spr_fecha_registro@dd-MM-yyyy}</td>
+		</tr>
+
+	</table>
+
+	<br>
+	<div  align="center">
+		<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog()" class="button">
+	</div>
+
+</body>
+
+</html>

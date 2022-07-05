@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_paciente>
+	<detail>
+		<rows>		
+		<record smn_promotor_rf="${fld:smn_promotor_rf}"    pac_requiere_aut_previa="${fld:pac_requiere_aut_previa}"    smn_condicion_financiera_rf="${fld:smn_condicion_financiera_rf}"    smn_forma_pago_rf="${fld:smn_forma_pago_rf}"    pac_fecha_registro="${fld:pac_fecha_registro}"    pac_estatus="${fld:pac_estatus}"    pac_vigencia="${fld:pac_vigencia}"    pac_nacional_ext="${fld:pac_nacional_ext}"    smn_sector_economico_rf="${fld:smn_sector_economico_rf}"    smn_clasificacion_abc_rf="${fld:smn_clasificacion_abc_rf}"    smn_auxiliar_rf="${fld:smn_auxiliar_rf}"    smn_clase_auxiliar_rf="${fld:smn_clase_auxiliar_rf}"    smn_clasificacion_paciente_id="${fld:smn_clasificacion_paciente_id}"    />
+		</rows>
+	</detail>
+</smn_paciente>

@@ -1,0 +1,30 @@
+INSERT INTO smn_salud.smn_no_registrados
+(
+	smn_no_registrados_id,
+	nfi_num_control,
+	nfi_apellidos,
+	nfi_nombres,
+	nfi_sexo,
+	nfi_telefono_fijo,
+	nfi_telefono_movil,
+	nfi_email,
+	nfi_idioma,
+	nfi_usuario,
+	nfi_fecha_registro,
+	nfi_hora
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_no_registrados},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

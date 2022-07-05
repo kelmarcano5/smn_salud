@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='sec_codigo' type='varchar' required='true' maxlen='16'/>
+	<parameter id='sec_descripcion' type='varchar' required='true' maxlen='48'/>
+	<parameter id='smn_pais_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_entidades_federales_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_ciudades_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_municipios_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_parroquias_rf' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_zonas_postales_rf' type='integer' required='false' maxlen='10'/>
+
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='sec_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarDescripcion.sql'
+			id='sec_descripcion'/>
+
+
+</validator>

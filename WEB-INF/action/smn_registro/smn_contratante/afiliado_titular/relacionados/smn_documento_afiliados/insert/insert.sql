@@ -1,0 +1,32 @@
+INSERT INTO smn_salud.smn_documento_afiliados
+(
+	smn_documento_afiliados_id,
+	smn_tipo_documento_afiliado_id,
+	smn_afiliados_id,
+	doc_archivo,
+	doc_descripcion,
+	doc_tamano,
+	doc_datos,
+	doc_desc_documento,
+	doc_contenido,
+	doc_idioma,
+	doc_usuario,
+	doc_fecha_registro,
+	doc_hora
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_documento_afiliados},
+	${fld:smn_tipo_documento_afiliado_id},
+	${fld:smn_afiliados_id},
+	${fld:doc_archivo},
+	${fld:doc_descripcion},
+	${fld:_filesize},
+	?,
+	${fld:_filename},
+	${fld:_contenttype},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

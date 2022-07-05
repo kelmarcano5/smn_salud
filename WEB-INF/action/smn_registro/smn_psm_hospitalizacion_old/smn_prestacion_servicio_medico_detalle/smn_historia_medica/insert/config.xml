@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Insertar registro 
+	</summary>
+
+	<log>false</log>
+
+
+	<!--soporte de auditoria-->
+	<audit>
+		<!--de donde saca los datos, por defecto es "_request"-->
+		<recordset></recordset>
+		<!--que campos extrae para el registro descriptivo-->
+		<cols>
+			<colname>smn_auxiliar_rf</colname>
+			<colname>him_fecha</colname>
+			<colname>him_hora</colname>
+			<colname>him_entrevistador</colname>
+			<colname>rango_edad</colname>
+			<colname>grupo_etnico</colname>
+			<colname>enfermedades_hd</colname>
+			<colname>alergias</colname>
+			<colname>vicio_error_hd</colname>
+			<colname>medicamentos_sistemicos</colname>
+			<colname>uso_de_esteroides</colname>
+			<colname>enfermedad_ocular</colname>
+			<colname>glaucoma_en_familiares_hd</colname>
+			<colname>ceguera_en_familiares_hd</colname>
+			<colname>paquimetria_hd</colname>
+			<colname>aguadeza_visual_hd</colname>
+			<colname>parpados_hd</colname>
+			<colname>otros_parpados</colname>
+			<colname>conjuntiva_hd</colname>
+			<colname>cornea_hd</colname>
+			<colname>camara_anterior_hd</colname>
+			<colname>iris_pupila_hd</colname>
+			<colname>cristalino_hd</colname>
+			<colname>gonioscopia_hd</colname>
+			<colname>disco_nervio_hd</colname>
+			<colname>excavacion_hd</colname>
+			<colname>rebote_neutral_hd</colname>
+			<colname>vasos_sanguineos_hd</colname>
+			<colname>retina</colname>
+			<colname>ojo_derecho</colname>
+			<colname>ojo_izquierdo</colname>
+			<colname>plan</colname>
+			<colname>observacion</colname>
+			<colname>estudios_complementarios_hd</colname>
+			<colname>tratamiento_hipotensor_hd</colname>
+			<colname>procedimiento_laser_hd</colname>
+			<colname>procedimiento_quirurgico_hd</colname>
+
+			<colname>presion_intraocular_oi</colname>
+			<colname>presion_intraocular_od</colname>
+			<colname>presion_intraocular_corregida_oi</colname>
+			<colname>presion_intraocular_corregida_od</colname>
+			<colname>astismagtismo</colname>
+			<colname>vicio_error_mayor</colname>
+			<colname>vicio_error_txt</colname>
+		
+		</cols>
+		<table>smn_salud.smn_historia_medica</table>
+		<oper>AÑADIR</oper>
+		<area>Carga de datos</area>
+		<!--
+			query para obtener el ID generado o nombre de 
+			la columna que contiene el pkey, si es query, 
+			el alias del campo debe ser "id"
+		-->
+		<pkey>select ${seq:currval@smn_salud.seq_smn_historia_medica} as id</pkey>
+	</audit>
+
+	<transaction>
+		<classname>dinamica.audit.AuditableTransaction</classname>
+		<validator>true</validator>
+		<transaction>true</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="nextval.sql" source="sql" scope="transaction" />
+	</transaction>
+
+	<query>insert.sql</query>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>script.js</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/javascript</content-type>
+		<expiration>0</expiration>
+		<print mode="form" recordset="_request" />
+		<print mode="form" recordset="nextval.sql" />
+	</output>
+	
+	<!-- Envio de email declarativo -->
+	<mail enabled="false">
+		<subject>Subject</subject>
+		<mail-to>martin.cordova@gmail.com</mail-to>
+		<body>body.txt</body>
+	</mail>
+
+</config>

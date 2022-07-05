@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator>
+	<!-- <parameter id='smn_historia_medica_id' type='integer' required='true' label='Historia Medica' maxlen='10'/> -->
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' label='Historia Medica' maxlen='10'/>
+	<parameter id='him_fecha' type='date' required='false' label='Historia Medica' maxlen='10'/>
+	<parameter id='him_hora' type='varchar' required='false' label='Historia Medica' maxlen='8'/>
+	<parameter id='him_entrevistador' type='integer' required='true' label='Historia Medica' maxlen='10'/>
+	<parameter id='rango_edad' type='integer' required='false' label='Historia Medica' maxlen='10'/>
+	<parameter id='grupo_etnico' type='integer' required='false' label='Historia Medica' maxlen='10'/>
+	<parameter id='enfermedades_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='alergias' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='vicio_error_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='medicamentos_sistemicos' type='varchar' required='false' label='Historia Medica' maxlen='50'/>
+	<parameter id='uso_de_esteroides' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='enfermedad_ocular' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='glaucoma_en_familiares_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='ceguera_en_familiares_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='paquimetria_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='aguadeza_visual_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='parpados_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='otros_parpados' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='conjuntiva_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='cornea_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='camara_anterior_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='iris_pupila_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='cristalino_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='gonioscopia_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='disco_nervio_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='excavacion_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='rebote_neutral_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='vasos_sanguineos_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='retina' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='ojo_derecho' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='ojo_izquierdo' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='plan' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='observacion' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='estudios_complementarios_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='tratamiento_hipotensor_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='procedimiento_laser_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='procedimiento_quirurgico_hd' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+
+	<parameter id='presion_intraocular_oi' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='presion_intraocular_od' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='presion_intraocular_corregida_oi' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='presion_intraocular_corregida_od' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>	
+	<!-- <parameter id='vicio_error_mayor' type='varchar' required='false' label='Historia Medica' maxlen='1000'/> -->
+	<parameter id='astismagtismo' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='vicio_error_mayor' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='vicio_error_txt' type='varchar' required='false' label='Historia Medica' maxlen='1000'/>
+	<parameter id='id_prestacion' type='integer' required='false' label='Historia Medica' maxlen='10'/>
+		<parameter id='id' type='integer' required='false' label='Historia Medica' maxlen='10'/>
+
+</validator>

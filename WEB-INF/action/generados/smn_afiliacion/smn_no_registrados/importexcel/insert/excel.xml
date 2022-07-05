@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='nfi_num_control' type='varchar' required='true' maxlen='16'/>
+	<parameter id='nfi_apellidos' type='varchar' required='true' maxlen='56'/>
+	<parameter id='nfi_nombres' type='varchar' required='true' maxlen='56'/>
+	<parameter id='nfi_sexo' type='varchar' required='true' maxlen='2'/>
+	<parameter id='nfi_telefono_fijo' type='varchar' required='true' maxlen='24'/>
+	<parameter id='nfi_telefono_movil' type='varchar' required='false' maxlen='24'/>
+	<parameter id='nfi_email' type='varchar' required='true' maxlen='96'/>
+</validator>

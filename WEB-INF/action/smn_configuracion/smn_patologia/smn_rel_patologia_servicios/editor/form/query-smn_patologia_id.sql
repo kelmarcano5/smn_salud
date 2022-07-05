@@ -1,0 +1,1 @@
+select smn_salud.smn_patologia.smn_patologia_id as id, smn_salud.smn_patologia.pat_descripcion as item  from smn_salud.smn_patologia order by smn_salud.smn_patologia.pat_descripcion

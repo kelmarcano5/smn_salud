@@ -1,0 +1,7 @@
+select 
+smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id as id, 
+smn_base.smn_prestadores_servicios.prs_codigo || ' - ' || smn_base.smn_prestadores_servicios.prs_descripcion as item 
+from smn_base.smn_prestadores_servicios 
+inner join smn_base.smn_rel_grupo_prestador_servicio on smn_base.smn_rel_grupo_prestador_servicio.smn_prestadores_servicios_id = smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id
+where smn_base.smn_rel_grupo_prestador_servicio.smn_grupos_prestadores_id = ${fld:id}
+order by smn_base.smn_prestadores_servicios.prs_descripcion

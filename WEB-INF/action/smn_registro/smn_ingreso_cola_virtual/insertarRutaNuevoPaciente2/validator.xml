@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/ajax" id="ingresocola">
+	<parameter id="serie" type="varchar" required="true" label="ID ${lbl:b_paciente_clase}" />
+	<parameter id="cedula" type="varchar" required="true" label="ID ${lbl:b_paciente_clase}" />
+	<!--<parameter id='smn_entidades_rf' type='integer' required='true' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='smn_sucursales_rf' type='integer' required='true' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='true' label='${lbl:b_auxiliary}' maxlen='10'/>-->
+	<parameter id='smn_unidades_servicios_id' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>	
+	<parameter id='secuencia' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>	
+	 <parameter id="entidad_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="sucursal_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="smn_area_servicio" type="integer" required="true" label="ID" maxlen="10" />
+ 	
+
+</validator>

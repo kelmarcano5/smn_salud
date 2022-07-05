@@ -1,0 +1,4 @@
+select DISTINCT smn_base.smn_especialidad.smn_especialidad_id as id, smn_base.smn_especialidad.esp_descripcion as item from smn_base.smn_especialidad
+inner join smn_base.smn_rel_sucursal_especialidad on smn_base.smn_rel_sucursal_especialidad.smn_especialidad_id = smn_base.smn_especialidad.smn_especialidad_id
+where smn_base.smn_rel_sucursal_especialidad.smn_sucursales_id=${fld:id}
+order by smn_base.smn_especialidad.smn_especialidad_id asc

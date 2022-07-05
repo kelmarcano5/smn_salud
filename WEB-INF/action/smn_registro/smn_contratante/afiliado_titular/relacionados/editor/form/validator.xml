@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror="/action/error/validation/alert">
+	<parameter id="id" type="integer" required="false" label="ID" maxlen="10" />
+	<parameter id='id_afiliado' type='integer' required='true' label='${lbl:b_afiliado}' maxlen='10'/>
+	<parameter id='num_control_afi' type='integer' required='true' label='${lbl:b_num_control}' maxlen='10'/>
+	<parameter id='documento' type='varchar' required='true' label='${lbl:b_num_control}' maxlen='100'/>
+</validator>

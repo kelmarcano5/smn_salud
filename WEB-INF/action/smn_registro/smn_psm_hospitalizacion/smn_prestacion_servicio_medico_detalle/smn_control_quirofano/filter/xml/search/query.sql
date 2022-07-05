@@ -1,0 +1,23 @@
+select
+		smn_salud.smn_control_quirofano.smn_control_quirofano_id,
+select
+		smn_salud.smn_control_quirofano.smn_control_quirofano_id,
+select
+		smn_salud.smn_control_quirofano.smn_control_quirofano_id,
+select
+		smn_salud.smn_control_quirofano.smn_control_quirofano_id,
+select
+		smn_salud.smn_control_quirofano.smn_control_quirofano_id,
+	smn_salud.smn_control_quirofano.smn_agenda_rf,
+	smn_salud.smn_control_quirofano.smn_presupuesto_id,
+	smn_salud.smn_control_quirofano.smn_ingreso_id,
+	smn_salud.smn_control_quirofano.smn_servicios_rf,
+	smn_salud.smn_control_quirofano.ccq_hora_entrada,
+	smn_salud.smn_control_quirofano.ccq_hora_salida,
+	smn_salud.smn_control_quirofano.ccq_fecha_quirofano,
+	smn_salud.smn_control_quirofano.smn_habitaciones_id,
+	smn_salud.smn_control_quirofano.ccq_cantidad_horas,
+	smn_salud.smn_control_quirofano.ccq_fecha_registro
+	
+from
+	smn_salud.smn_control_quirofano

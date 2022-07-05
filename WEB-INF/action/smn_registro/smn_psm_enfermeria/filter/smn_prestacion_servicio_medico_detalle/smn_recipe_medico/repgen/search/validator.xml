@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='repgen.filter' onerror='/action/error/validation/ajax'>
+
+	<parameter id='fdesde' type='date' required='false' label='Fecha desde'/>
+	<parameter id='fhasta' type='date' required='false' label='Fecha hasta'/>
+	
+	<parameter id='rec_fecha' type='date' required='false' label='${lbl:b_prescription_date}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_patologia_id' type='integer' required='false' label='${lbl:b_pathology}' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_service_providers}' maxlen='10'/>
+	<parameter id='rec_ordenante_nombre' type='integer' required='false' label='${lbl:b_applicant}' maxlen='10'/>
+	<parameter id='smn_contratante_id' type='integer' required='false' label='${lbl:b_contratante}' maxlen='10'/>
+	<parameter id='smn_farmaceuta_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_service_providers}' maxlen='10'/>
+	<parameter id='rec_fecha_aprobacion' type='date' required='false' label='${lbl:b_aprobated_date}' maxlen='10'/>
+	<parameter id='rec_estatus' type='varchar' required='false' label='${lbl:b_estatus}' maxlen='2'/>
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='rec_ordenante_nombre'
+		rule='contains' />
+
+	<custom-validator
+		classname='dinamica.validators.SQLPatternTransformer'
+		parameter='rec_estatus'
+		rule='contains' />
+
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarNombre.sql'
+			id='rec_ordenante_nombre'/>
+
+
+	<custom-validator
+			classname='dinamica.validators.ArrayNotEmptyValidator'
+			on-error-label='Seleccione al menos un campo para la generación del reporte.'
+			parameter-name='field_id' 
+			id='field_id' />
+
+	<custom-validator 
+			classname='dinamica.validators.ArrayToRecordset'
+			paramName='field_id' 
+			recordsetId='fields' 
+			colName='field_id' 
+			colType='integer' />
+				
+</validator>

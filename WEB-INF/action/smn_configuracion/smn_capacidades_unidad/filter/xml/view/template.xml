@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_capacidades_unidad>
+	<detail>
+		<rows>		
+		<record cap_fecha_registro="${fld:cap_fecha_registro}"    cap_cant_min_pacientes="${fld:cap_cant_min_pacientes}"    cap_cant_max_pacientes="${fld:cap_cant_max_pacientes}"    smn_unidad_servicio_rf="${fld:smn_unidad_servicio_rf}"    smn_areas_servicios_rf="${fld:smn_areas_servicios_rf}"    smn_capacidades_id="${fld:smn_capacidades_id}"    />
+		</rows>
+	</detail>
+</smn_capacidades_unidad>

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnreltipodocpatologia.sql" source="session" scope="transaction" />
+		<recordset id="filter.params" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_relacion_tipodoc_patologia}</pdf-title>
+	<pdf-logo url='/images/logo-dinamica.png' scale='100' />
+
+	<pdf-report pageSize="letter" rotate="false">
+		<record recordset='filter.params' title='Filtro de Búsqueda' noFilterMsg='-- Sin filtro de búsqueda --' width='55' spacingBefore='15'>
+			<col name='smn_tipo_documento_id' title='${lbl:b_document_type}'  format='######' align='center' />
+			<col name='smn_patologia_id' title='${lbl:b_pathology}'  format='######' align='center' />
+		</record>
+		<table recordset='query-smnreltipodocpatologia.sql' width='100' spacingBefore='10'>
+			<col name='smn_tipo_documento_id_combo' title='${lbl:b_document_type}' width='50' align='center' format='######' />
+			<col name='smn_patologia_id_combo' title='${lbl:b_pathology}' width='50' align='center' format='######' />
+		</table>
+
+	</pdf-report>
+</config>

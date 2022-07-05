@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+	<script type="text/javascript" src="${def:context}/action/momentjs"></script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_ingreso} Pendientes
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" style="width:500px;">
+	<!-- titulo -->
+	<h1 id="formTitle">"Seleccione su opcion a procesar"</h1>
+	<table>
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+		<!--campos-->
+		<tr>
+			<td>${lbl:b_num_ticket}</td>
+			<td>
+				<input id="igs_ticket" name="igs_ticket" type="text" maxlength="20" class="numeric">
+			</td>
+		</tr>
+
+		<tr>
+			<td>Fecha Registro*</td>
+			<td>
+				<input id="igs_fecha_registro" name="igs_fecha_registro" type="date" maxlength="20">
+			</td>
+		</tr> 
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="button" value="Procesar" class="button" onclick="save();">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	<!-- PK-->
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function(){ 
+		addNew();
+	} 
+	
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew(){
+		document.getElementById("formTitle").innerHTML = "Seleccione su opcion a procesar";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() {
+		_goBackFn()			
+	}
+	
+	function insert(){
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert?entidad_prestador=${fld:entidad_prestador}&sucursal_prestador=${fld:sucursal_prestador}", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+
+	function save(){
+
+		//var fecha_ingreso = moment().format('YYYY-MM-DD');
+		var ticket = $('#igs_ticket').val();
+		var fch_ing = $('#igs_fecha_registro').val();
+		//alert("TICKET: "+ticket+" fechaingreso: "+fch_ing);
+		
+		 var uri = "${def:actionroot}/proximo?usuario=${fld:usuario}&entidad_prestador=${fld:entidad_prestador}&sucursal_prestador=${fld:sucursal_prestador}&area_prestador=${fld:area_prestador}&unidad_prestador=${fld:unidad_prestador}&ticket="+ticket+"&fecha_ingreso="+fch_ing;
+				//alert(uri);
+				ajaxCall(	
+						httpMethod="GET", 
+						uri, 
+						divResponse=null, 
+						divProgress=null, 
+						formName=null, 
+						afterResponseFn=null,
+						onErrorFn=null);
+	}
+
+	function edit(id){
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	function update(){
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	function setElementFirstIndex(id){
+		var combo = document.getElementById(id);
+		combo.selectedIndex = 0;
+	}
+
+	function setSelectedIndexDes(code, combo) {
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+			var valueText = code;
+			
+	        if (combo.options[i].text == valueText) 
+	        {
+	        	combo.options[i].selected = true;
+	            return;
+	        }
+	    }
+	}
+
+	function setSelectedIndexValue(value, combo) {
+		for (var i = 0; i < combo.options.length; i++) {			
+			if (combo.options[i].value == value) {
+				combo.options[i].selected = true;
+				return;
+			}
+		} 
+	}
+	
+	function getSelectedIndex(combo) {
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].text;
+	        }
+	    }
+	}
+
+	function getIDSelectedIndex(combo) {
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].value;
+	        }
+	    }
+	}
+
+	function addValueToCombo(code, description, field) {
+	    var combo = document.getElementById(field);	    
+	    insertComboBox(code, combo, description);
+	}
+
+	function insertComboBox(code, combo, description) {
+		var valueText = code;
+		if (description != null)
+		{
+			valueText = valueText + ' - ' + description;
+		}
+		//alert("Insert Combo: "+valueText);
+        combo.options[combo.options.length] = new Option(valueText);
+	}
+
+	function setSelectedIndex(code, combo, description) {
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+			var valueText = code;
+			if (description != null)
+			{
+				valueText = valueText + ' - ' + description;
+			}
+	        if (combo.options[i].text == valueText) 
+	        {
+	        	combo.options[i].selected = true;
+	            return;
+	        }
+	    }
+	}
+	
+	function setValueComboBox(code, description, field, linked){
+		//add valur text to combo
+		addValueToCombo(code,description,field);
+
+		//get select object 
+		var combo = document.getElementById(field);
+		
+		//set element selected to field referenced
+		setSelectedIndex(code,combo, description);
+		
+		//set text value to combo field
+		var valueText = getSelectedIndex(combo);		
+		
+		//get hidden field in order to set any value
+		var combo = document.getElementById(field+'_name');
+		
+		combo.text  = valueText;
+		combo.value = bdID;
+	}
+
+	function addValueToComboAux(code, description, field) {
+	    var combo = document.getElementById(field);	    
+
+	    insertComboBoxAux(code, combo, description);
+	}
+
+	function insertComboBoxAux(code, combo, description, field) {
+		var bdID = code;
+		var valueText = description;
+
+		if (description != null)
+		{
+			 bdID = bdID;
+			valueText = description;
+			//valueText = valueText + '' + description;
+		}
+		var option = document.createElement("option");
+		option.text = valueText; 
+		option.value = bdID;
+			console.log("VALUE: "+bdID);
+			//alert('Añadiendo a prospectos en llamadas')
+			document.form1.cts_auxiliar.add(option, combo.options.length);
+			 $("#cts_auxiliar option[value="+ bdID +"]").attr("selected",true);
+			document.form1.cts_auxiliar.disabled=true;	
+	}
+
+	function setSelectedIndexAux(code, combo, description) {
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+			var valueText = code;
+			if (description != null)
+			{
+				valueText = valueText + ' - ' + description;
+			}
+	        if (combo.options[i].text == valueText) 
+	        {
+	        	combo.options[i].selected = true;
+	            return;
+	        }
+	    }
+	}
+	
+	function getSelectedIndexAux(combo) {
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].text;
+	        }
+	    }
+	}
+
+	function getIDSelectedIndexAux(combo) {
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].value;
+	        }
+	    }
+	}
+	
+	function setValueComboBoxAux(code, description, field, linked){
+		//add valur text to combo
+		addValueToComboAux(code,description,field);
+		//get select object 
+		var combo = document.getElementById(field);
+		var valueText = getSelectedIndexAux(combo);		
+		setSelectedIndexAux(bdID, combo, valueText); 
+	}
+</script>	
+</body>
+</html>

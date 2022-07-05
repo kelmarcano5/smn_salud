@@ -1,0 +1,3 @@
+<rows>
+ccq_fecha_registro="${fld:ccq_fecha_registro}"    smn_unidad_medida_rf="${fld:smn_unidad_medida_rf}"    smn_habitaciones_id="${fld:smn_habitaciones_id}"    ccq_fecha_quirofano="${fld:ccq_fecha_quirofano}"    smn_servicios_rf="${fld:smn_servicios_rf}"    smn_prestación_servicio_medico_detalle_id="${fld:smn_prestación_servicio_medico_detalle_id}"    smn_prestacion_servicio_cabecera_id="${fld:smn_prestacion_servicio_cabecera_id}"    smn_ingreso_id="${fld:smn_ingreso_id}"    smn_presupuesto_id="${fld:smn_presupuesto_id}"    smn_agenda_rf="${fld:smn_agenda_rf}"    
+</rows>

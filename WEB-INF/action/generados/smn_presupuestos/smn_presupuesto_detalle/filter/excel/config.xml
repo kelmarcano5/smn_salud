@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnpresupuestodetalle.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericExcelOutput</classname>
+	</output>
+	
+	<excel recordset='query-smnpresupuestodetalle.sql' sheetname='${lbl:b_presupuesto}' filename='filter.xls'>
+		<col id='smn_presupuesto_id' label='${lbl:smn_presupuesto}' />
+		<col id='prd_servicio_combo' label='${lbl:b_service}' />
+		<col id='prd_cantidad' label='${lbl:b_amount}' />
+		<col id='prd_monto' label='${lbl:b_monto_presupuesto}' />
+		<col id='prd_fecha_registro' label='${lbl:b_store_date}' />
+	</excel>
+
+</config>

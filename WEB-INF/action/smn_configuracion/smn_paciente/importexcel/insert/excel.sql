@@ -1,0 +1,34 @@
+INSERT INTO smn_salud.smn_paciente
+(
+	smn_paciente_id,
+	smn_clasificacion_paciente_id,
+	smn_clase_auxiliar_rf,
+	smn_auxiliar_rf,
+	smn_clasificacion_abc_rf,
+	smn_sector_economico_rf,
+	pac_nacional_ext,
+	pac_vigencia,
+	pac_estatus,
+	pac_fecha_registro,
+	smn_forma_pago_rf,
+	smn_condicion_financiera_rf,
+	pac_requiere_aut_previa,
+	smn_promotor_rf
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_paciente},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	{d '${def:date}'},
+	?,
+	?,
+	?,
+	?
+)

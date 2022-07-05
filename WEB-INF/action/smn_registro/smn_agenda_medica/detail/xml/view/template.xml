@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_agenda_medica>
+	<detail>
+		<rows>		
+		<record agm_fecha_registro="${fld:agm_fecha_registro}"    agm_estatus="${fld:agm_estatus}"    agm_cantidad_frecuencia="${fld:agm_cantidad_frecuencia}"    agm_frecuencia="${fld:agm_frecuencia}"    age_descripcion="${fld:age_descripcion}"    smn_especialidad_rf="${fld:smn_especialidad_rf}"    smn_prestador_servicio_rf="${fld:smn_prestador_servicio_rf}"    smn_grupo_prestador_servicio_rf="${fld:smn_grupo_prestador_servicio_rf}"    smn_unidades_servicios_rf="${fld:smn_unidades_servicios_rf}"    smn_areas_servicios_rf="${fld:smn_areas_servicios_rf}"    smn_sucursales_rf="${fld:smn_sucursales_rf}"    smn_entidades_rf="${fld:smn_entidades_rf}"    smn_agenda_id="${fld:smn_agenda_id}"    />
+		</rows>
+	</detail>
+</smn_agenda_medica>

@@ -1,0 +1,1 @@
+SELECT smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id AS ID, smn_base.smn_prestadores_servicios.prs_codigo||'-'|| smn_base.smn_prestadores_servicios.prs_descripcion AS ITEM FROM smn_base.smn_prestadores_servicios

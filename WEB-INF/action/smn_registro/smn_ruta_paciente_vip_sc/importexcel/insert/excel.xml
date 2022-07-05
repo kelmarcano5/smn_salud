@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_ingreso_cola_virtual_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='rta_numero_documento_identidad' type='varchar' required='true' maxlen='20'/>
+	<parameter id='smn_serie_id' type='varchar' required='true' maxlen='8'/>
+	<parameter id='rta_ticket' type='integer' required='true' maxlen='10'/>
+
+
+
+</validator>

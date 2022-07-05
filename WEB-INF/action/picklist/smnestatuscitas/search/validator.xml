@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/crud'>
+	<parameter id='eci_num_secuencia' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='eci_descripcion' type='varchar' required='false' label='${lbl:b_description}' maxlen='56'/>
+	<parameter id='eci_aplica' type='varchar' required='false' label='${lbl:b_apply}' maxlen='2'/>
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="eci_num_secuencia" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="eci_descripcion" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="eci_aplica" rule="contains" />
+</validator>

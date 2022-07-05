@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="session" scope="transaction" />
+
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_appointment_movement}</pdf-title>
+	<pdf-logo url='/images/logo-simone-pdf.png' scale='100' />
+	<pdf-file-name>${lbl:b_appointment_movement}.pdf</pdf-file-name>
+
+	<pdf-report pageSize="letter" rotate="false" footer="true" header="true">
+		<record recordset='query.sql' title='${lbl:b_appointment_movement}' width='60' spacingBefore='40'>
+			<col name='smn_citas_id_combo' title='${lbl:smn_citas}' align='left'  />
+			<col name='smn_documento_id_combo' title='${lbl:b_document}' align='left'  />
+			<col name='ctm_num_control_cita' title='${lbl:b_num_control_citas}' align='left'  />
+			<col name='ctm_consecutivo' title='${lbl:b_consecutivo}' align='left'  />
+			<col name='smn_servicios_rf_combo' title='${lbl:b_service}' align='left'  />
+			<col name='smn_componente_rf_combo' title='${lbl:b_component}' align='left'  />
+			<col name='ctm_accion' title='${lbl:b_accion}' align='left' />
+			<col name='smn_tipo_consulta_id_combo' title='${lbl:b_tipo_consulta}' align='left'  />
+			<col name='smn_grupo_prestador_servicio_rf_combo' title='${lbl:b_grupo_prestador_servicio}' align='left'  />
+			<col name='smn_prestador_servicio_rf_combo' title='${lbl:b_service_providers}' align='left'  />
+			<col name='ctm_fecha_cita' title='${lbl:b_appointment_date}' align='left' format='dd-MM-yyyy' />
+			<col name='ctm_turno_cita' title='${lbl:b_turno_cita}' align='left'  />
+			<col name='ctm_hora_cita' title='${lbl:b_hora_cita}' align='left' />
+			<col name='ctm_estatus_id' title='${lbl:b_status}' align='left'  />
+			<col name='smn_motivos_id_combo' title='${lbl:b_reason}' align='left'  />
+			<col name='smn_clase_auxiliar_rf_combo' title='${lbl:b_auxiliary_class_mov_cita}' align='left'  />
+			<col name='smn_auxiliar_rf_combo' title='${lbl:b_auxiliary_mov_citas}' align='left'  />
+			<col name='cts_ordenante_descripcion' title='${lbl:b_ordenante_descripcion}' align='left' />
+			<col name='smn_sintoma_id_combo' title='${lbl:b_symptom}' align='left'  />
+			<col name='cts_tipo_orden_combo' title='${lbl:b_tipo_orden}' align='left' />
+			<col name='cts_num_orden_medica' title='${lbl:b_orden_medica}' align='left'  />
+			<col name='smn_entidades_rf_combo' title='${lbl:b_entities}' align='left'  />
+			<col name='smn_sucursales_rf_combo' title='${lbl:b_subsidiaries}' align='left'  />
+			<col name='smn_areas_servicios_rf_combo' title='${lbl:b_service_area}' align='left'  />
+			<col name='smn_unidades_servicios_rf_combo' title='${lbl:b_service_units}' align='left'  />
+			<col name='ctm_observaciones_id' title='${lbl:b_observation}' align='left'  />
+			<col name='ctm_idioma' title='${lbl:s_profile_lang}' align='left' />
+			<col name='ctm_usuario' title='${lbl:b_users}' align='left' />
+			<col name='ctm_fecha_registro' title='${lbl:b_store_date}' align='left' format='dd-MM-yyyy' />
+			<col name='ctm_hora' title='${lbl:s_loginhist_col2}' align='left' />
+		</record>
+
+
+	</pdf-report>
+</config>

@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/crud'>
+	<parameter id='pla_codigo' type='varchar' required='false' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='pla_descripcion' type='varchar' required='false' label='${lbl:b_description}' maxlen='56'/>
+	<parameter id='pla_vigencia_desde' type='date' required='false' label='${lbl:b_validation_date_from}
+' maxlen='10'/>
+	<parameter id='pla_vigencia_hasta' type='date' required='false' label='${lbl:b_validation_date_until}
+' maxlen='10'/>
+	<parameter id='pla_inactivo' type='varchar' required='false' label='${lbl:b_inactive}' maxlen='1'/>
+	<parameter id='pla_modelo_contrato' type='integer' required='false' label='${lbl:b_contract_model}' maxlen='10'/>
+	<parameter id='pla_empresa' type='integer' required='false' label='${lbl:b_entity}' maxlen='10'/>
+	<parameter id='pla_clase_auxiliar' type='integer' required='false' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='pla_auxiliar' type='integer' required='false' label='${lbl:b_outsourced_company}' maxlen='10'/>
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="pla_codigo" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="pla_descripcion" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="pla_inactivo" rule="contains" />
+</validator>

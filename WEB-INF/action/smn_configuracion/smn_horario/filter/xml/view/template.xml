@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_horario>
+	<detail>
+		<rows>		
+		<record hor_fecha_registro="${fld:hor_fecha_registro}"    hor_status="${fld:hor_status}"    hor_descripcion="${fld:hor_descripcion}"    hor_codigo="${fld:hor_codigo}"    />
+		</rows>
+	</detail>
+</smn_horario>

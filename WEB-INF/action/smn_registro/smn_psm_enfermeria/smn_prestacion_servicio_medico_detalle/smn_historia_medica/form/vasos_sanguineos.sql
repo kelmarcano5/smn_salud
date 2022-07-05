@@ -1,0 +1,1 @@
+SELECT smn_base.smn_variable.smn_variable_id as id, smn_base.smn_variable.var_descripcion as item FROM smn_base.smn_variable WHERE smn_tipo_variable_id = '21'

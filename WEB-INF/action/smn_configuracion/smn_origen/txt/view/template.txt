@@ -1,0 +1,3 @@
+<rows>
+ori_fecha_registro="${fld:ori_fecha_registro}"    ori_tipo="${fld:ori_tipo}"    ori_descripcion="${fld:ori_descripcion}"    ori_codigo="${fld:ori_codigo}"    
+</rows>

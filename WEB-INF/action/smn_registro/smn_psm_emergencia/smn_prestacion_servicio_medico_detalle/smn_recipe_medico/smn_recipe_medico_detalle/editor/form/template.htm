@@ -1,0 +1,524 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_detail_prescription_medic}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+	<tr>
+		<td>${lbl:b_prescription_medic}*</td>
+		<td>
+			<!--almacena el ID del item seleccionado--> 
+			<!-- <input type="hidden" name="smn_recipe_medico_id" id="smn_recipe_medico_id" />  -->
+			<!--almacena el nombre del item seleccionado-->
+			<input type="text" name="smn_recipe_medico_id" id="smn_recipe_medico_id" style="width: 80%;" readonly /> 
+			<!--boton del picklist--> 
+			<!-- <img src="${def:context}/images/dropdown.png" onclick="pickSmnRecipeMedicoId();" title="Seleccionar item" />  -->
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_active_ingredient}*</td>
+		<td>
+			<select class="principio" name="smn_principio_activo_rf" id="smn_principio_activo_rf" onchange="chgCombo(smn_principio_activo_rf.options[smn_principio_activo_rf.selectedIndex].text,'smn_principio_activo_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_principio_activo_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_principio_activo_rf_rows>
+			</select> 
+			<input id="smn_principio_activo_rf_name" name="smn_principio_activo_rf_name" type="hidden">
+		</td>
+	</tr>
+		<!-- <tr>
+			<td>${lbl:b_active_ingredient}*</td>
+			<td>
+				<input id="smn_principio_activo_rf" name="smn_principio_activo_rf" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr> -->
+	<tr id="item">
+		<td>${lbl:b_item}*</td>
+		<td>
+			<select class="item" name="smn_item_rf" id="smn_item_rf" onchange="chgCombo(smn_item_rf.options[smn_item_rf.selectedIndex].text,'smn_item_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_item_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_item_rf_rows>
+			</select> 
+			<input id="smn_item_rf_name" name="smn_item_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_dose}(Tomar):*</td>
+		<td>
+			<input id="rmd_dosis" name="rmd_dosis" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_presentacion}*</td>
+		<td>
+			<select class="presentacion" name="smn_presentacion_rf" id="smn_presentacion_rf" onchange="chgCombo(smn_presentacion_rf.options[smn_presentacion_rf.selectedIndex].text,'smn_presentacion_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_presentacion_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_presentacion_rf_rows>
+			</select> 
+			<input id="smn_presentacion_rf_name" name="smn_presentacion_rf_name" type="hidden">
+		</td>
+	</tr>
+
+	<tr>
+		<!-- <td>${lbl:b_frecuency} (Cada):</td> -->
+		<td>(Cada):</td>
+		<td>
+			<input id="rmd_frecuencia" name="rmd_frecuencia" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_frecuency}</td>
+		<td>
+			<select name="rmd_tiempo_frecuencia" id="rmd_tiempo_frecuencia" onchange="seleccionar();">
+				<option value="HO">${lbl:b_hours}</option>
+				<option value="DI">${lbl:b_days}</option>
+				<option value="ST">Stat</option>
+				<!-- <option value="ME">Meses</option> -->
+
+			</select> 
+		</td>
+	</tr>
+	
+	<tr>
+		<td>${lbl:b_treatment_day} (Por)</td>
+		<td>
+			<input id="rmd_dias_tratamiento" name="rmd_dias_tratamiento" type="text" maxlength="10" class="numeric" onchange="calculartotaldosis();">
+		</td>
+	</tr>
+
+	<tr>
+		<td>Tiempo </td>
+		<td>
+			<select name="rmd_tiempo_frecuencia_2" id="rmd_tiempo_frecuencia_2">
+				<option value="HO">${lbl:b_hours}</option>
+				<option value="DI">${lbl:b_days}</option>
+				<option value="ST">Unica</option>
+				<!-- <option value="ME">Meses</option> -->
+
+			</select> 
+		</td>
+	</tr>
+	
+	<tr>
+		<td>${lbl:b_indications}</td>
+		<td>
+			<textarea id="rmd_especificacion" name="rmd_especificacion" cols="30" rows="3"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_total_dose}</td>
+		<td>
+			<input id="rmd_dosis_total" name="rmd_dosis_total" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_observation}</td>
+		<td>
+			<textarea id="rmd_observacion" name="rmd_observacion" cols="30" rows="3"></textarea>
+		</td>
+	</tr>
+
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+		//alert('${fld:recipe_medico_id}');
+
+		$(document).ready(function() {
+	    	$('.principio').select2();
+	    	$('.item').select2();
+	    	$('.presentacion').select2();
+	    	$('.unidadmedida').select2();
+	    	$('#item').show();
+   
+		});
+
+		document.getElementById("smn_recipe_medico_id").value='${fld:recipe_medico_id}';
+		document.getElementById("smn_recipe_medico_id").disabled=true;
+
+		if (id!="")
+			edit(id);
+	} 
+
+	function seleccionar() {
+		var tipo = $('#rmd_tiempo_frecuencia').val(); 
+		var tipo1 = $('select[name="rmd_tiempo_frecuencia"] option:selected').text();
+		var dosis = $('#rmd_dosis').val();
+		var frecuencia = $('#rmd_frecuencia').val();
+		var presentacion = $('select[name="smn_presentacion_rf"] option:selected').text(); //$('#smn_presentacion_rf').text();
+	
+		var tipo2 = $('select[name="rmd_tiempo_frecuencia_2"] option:selected').text();
+		
+		var total = 0;
+
+
+		var fre = $('#rmd_tiempo_frecuencia').val(); 
+
+		if (fre == 'ST') {
+			$('#rmd_tiempo_frecuencia_2').val('ST').change(); 
+			var tipo2 = $('select[name="rmd_tiempo_frecuencia_2"] option:selected').text();
+			document.getElementById("rmd_dias_tratamiento").disabled=true;
+			$('#rmd_dias_tratamiento').val(1);
+
+			var dias = $('#rmd_dias_tratamiento').val(); 
+			total = dosis * 1 * dias;
+			$('#rmd_dosis_total').val(total);
+			document.getElementById("rmd_dosis_total").disabled=true;
+			console.log(total);
+			$('#rmd_especificacion').val("Tomar: "+dosis+" "+presentacion+" cada: "+frecuencia+" "+tipo1; //+" por "+dias+" " +tipo2);
+
+		}
+	}
+
+	function calculartotaldosis() {
+		var tipo = $('#rmd_tiempo_frecuencia').val(); 
+		var tipo1 = $('select[name="rmd_tiempo_frecuencia"] option:selected').text();
+		var dosis = $('#rmd_dosis').val();
+		var frecuencia = $('#rmd_frecuencia').val();
+		var presentacion = $('select[name="smn_presentacion_rf"] option:selected').text(); //$('#smn_presentacion_rf').text();
+		var dias = $('#rmd_dias_tratamiento').val(); 
+		var tipo2 = $('select[name="rmd_tiempo_frecuencia_2"] option:selected').text();
+		
+		var total = 0;
+
+		if (tipo == 'DI') {
+			total = dosis * frecuencia * dias;
+			$('#rmd_dosis_total').val(total);
+			document.getElementById("rmd_dosis_total").disabled=true;
+			console.log(total);
+			$('#rmd_especificacion').val("Tomar: "+dosis+" "+presentacion+" cada: "+frecuencia+" "+tipo1+" por "+dias+" " +tipo2);
+			//$('#rmd_especificacion').val("Tomar: "+dosis+" "+presentacion+" cada: "+frecuencia+" por "+dias+""+tipo2);
+
+		} 
+
+		if (tipo == 'HO') {
+			total = dosis * dias * (24 / frecuencia);
+			$('#rmd_dosis_total').val(total);
+			document.getElementById("rmd_dosis_total").disabled=true;
+			console.log(total);
+			$('#rmd_especificacion').val("Tomar: "+dosis+" "+presentacion+" cada: "+frecuencia+" "+tipo1+" por "+dias+" " +tipo2);
+			//$('#rmd_especificacion').val("Tomar: "+dosis+" "+presentacion+" cada: "+frecuencia+" por "+dias+"" +tipo2);
+		} 
+
+		if(tipo == 'ST'){
+			total = dosis * frecuencia * 1 * dias;
+			$('#rmd_dosis_total').val(total);
+			document.getElementById("rmd_dosis_total").disabled=true;
+			console.log(total);
+			$('#rmd_especificacion').val("Tomar: "+dosis+" "+presentacion+" cada: "+frecuencia+" "+tipo1+" por "+dias+" " +tipo2);
+		}
+
+	}
+	
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+
+		document.getElementById("smn_recipe_medico_id").value='${fld:recipe_medico_id}';
+		document.getElementById("smn_recipe_medico_id").disabled=true;
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+
+	//Author     : SIMONE
+	//Description: Set first element as selected value
+	//Return     : None
+	function setElementFirstIndex(id)
+	{
+		var combo = document.getElementById(id);
+		combo.selectedIndex = 0;
+	}
+
+	//Author     : SIMONE
+	//Description: Insert new value into combo box
+	//Return     : None
+	function insertComboBox(code, combo, description) {
+		var valueText = code;
+		if (description != null)
+		{
+			valueText = valueText + ' - ' + description;
+		}
+		//alert("Insert Combo: "+valueText);
+        combo.options[combo.options.length] = new Option(valueText);
+	}
+	
+	//Author     : SIMONE
+	//Description: Add new value to combo box
+	//Return     : None
+	function addValueToCombo(code, description, field) 
+	{
+	    var combo = document.getElementById(field);	    
+	    insertComboBox(code, combo, description);
+	}
+	
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+		function setSelectedIndex(code, combo, description) 
+		{
+			//alert(code, combo, descripcion);
+			//alert('text = ' + combo.options[i].text + ' value = ' + combo.options[i].value)
+		    for (var i = 0; i < combo.options.length; i++) 
+		    {
+				var valueText = code;
+				if (description != null)
+				{
+					valueText = valueText + ' - ' + description;
+				}
+	    	    if (combo.options[i].text == valueText) 
+				{
+	        	//alert('text = ' + combo.options[i].text + ' value = ' + combo.options[i].value)
+	        	combo.options[i].selected = true;
+				return;
+	        	}
+	    	}  
+		}
+		
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndexValue(value, combo) {
+
+		console.log("valor " + value);
+				for (var i = 0; i < combo.options.length; i++) 
+				{					
+					if (combo.options[i].value == value) 
+					{
+						combo.options[i].selected = true;
+						return;
+					}
+				} 
+			}
+	
+	
+	//Author     : SIMONE
+	//Description: Get text valueof selected index
+	//Return     : Text associated to index
+	function getSelectedIndex(combo) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].text;
+	        }
+	    }
+	}
+	
+	function getIDSelectedIndex(combo) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].value;
+	        }
+	    }
+	}
+	
+
+	//Author     : SIMONE
+	//Description: Set value to combo box
+	//Parameters : code - it is code associated into each database table 
+	//             descripcion - it is description associated into each database table 
+	//             field - name combo field
+	//             id - identifier retrieved after transaction
+	//             linked - flag indicates 'true' when combos are linked and 'false' otherwise
+	//Return     : None
+	function setValueComboBox(code, description, field, linked)
+	{
+		//add value text to combo
+		addValueToCombo(code,description,field);
+
+		//get select object 
+		var combo = document.getElementById(field);
+		
+		//set element selected to field referenced
+		setSelectedIndex(code,combo, description);
+		
+		//set text value to combo field
+		var valueText = getSelectedIndex(combo);		
+		
+		//get hidden field in order to set any value
+		var combo = document.getElementById(field+'_name');
+		
+		//alert("Text: "+valueText+" - bdID: "+bdID);
+		
+		combo.text  = valueText;
+		combo.value = bdID;
+		
+		//enable linked fields
+		if (linked)
+		{
+
+		}
+	}
+
+	var geo_id1 = null;
+	function chgCombo1(text,id)
+	{		
+		document.form1.smn_item_rf.disabled=false;
+		//debugger;
+		
+		var combo = document.getElementById('smn_principio_activo_rf');
+		var valueCombo = getIDSelectedIndex(combo);
+		geo_id1 = valueCombo.split("-").pop().trim();
+		
+		//findLocation(geo_id0, '');
+		
+		if (id!=null && id!="") 
+		{
+			
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/getItem?id=" + geo_id1, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_item_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}
+		
+		
+	}
+
+	
+</script>	
+</body>
+</html>

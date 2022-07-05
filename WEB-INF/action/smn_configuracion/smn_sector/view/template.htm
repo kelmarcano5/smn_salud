@@ -1,0 +1,55 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("sec_codigo","query-smnsector.sql")'>${lbl:b_cod_sector}</th>
+		<th class='sortable' onclick='sortBy("sec_descripcion","query-smnsector.sql")'>${lbl:b_desc_sector}</th>
+		<th class='sortable' onclick='sortBy("smn_pais_rf_combo","query-smnsector.sql")'>${lbl:b_pais_sector}</th>
+		<th class='sortable' onclick='sortBy("smn_entidades_federales_rf_combo","query-smnsector.sql")'>${lbl:b_entidad_sector}</th>
+		<th class='sortable' onclick='sortBy("smn_ciudades_rf_combo","query-smnsector.sql")'>${lbl:b_cdad_sector}</th>
+		<th class='sortable' onclick='sortBy("smn_municipios_rf_combo","query-smnsector.sql")'>${lbl:b_municipios_sector}</th>
+		<th class='sortable' onclick='sortBy("sec_fecha_registro","query-smnsector.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_sector_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_sector_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_sector_id}')" title="${lbl:b_edit_button}"></td>
+		<td align='left'>${fld:sec_codigo}</td>
+		<td align='left'>${fld:sec_descripcion}</td>
+		<td>${fld:smn_pais_rf_combo}</td>
+		<td>${fld:smn_entidades_federales_rf_combo}</td>
+		<td>${fld:smn_ciudades_rf_combo}</td>
+		<td>${fld:smn_municipios_rf_combo}</td>
+		<td>${fld:sec_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

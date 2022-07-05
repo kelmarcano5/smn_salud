@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='cob_codigo' type='varchar' required='false' label='${lbl:b_cob_code}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='cob_codigo' rule='like' />
+	<parameter id='cob_descripcion' type='varchar' required='false' label='${lbl:b_cob_des}' maxlen='56'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='cob_descripcion' rule='like' />
+	<parameter id='cob_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+</validator>

@@ -1,0 +1,1 @@
+select smn_salud.smn_familiar.smn_familiar_id as id,  smn_salud.smn_familiar.fam_nombres || ' - ' || smn_salud.smn_familiar.fam_apellidos as item from smn_salud.smn_familiar order by smn_salud.smn_familiar.fam_nombres

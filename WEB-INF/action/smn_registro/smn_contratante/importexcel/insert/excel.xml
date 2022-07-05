@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_documento_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='cnt_numero_control' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_plan_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='cnt_fecha_de_inicio' type='date' required='true' maxlen='10'/>
+	<parameter id='cnt_cantidad_citas' type='integer' required='false' maxlen='4'/>
+
+
+
+</validator>

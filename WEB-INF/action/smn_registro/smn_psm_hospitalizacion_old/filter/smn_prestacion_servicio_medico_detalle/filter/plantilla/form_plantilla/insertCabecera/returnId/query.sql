@@ -1,0 +1,6 @@
+SELECT
+	smn_salud_plantilla_cabecera_id
+FROM
+	smn_salud.smn_salud_plantilla_cabecera
+ORDER BY
+	smn_salud_plantilla_cabecera_id DESC LIMIT 1

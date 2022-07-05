@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='orden' type='integer' required='true' label='ID ORDEN' maxlen='10'/>
+	<parameter id='baremos' type='integer' required='true' label='ID BAREMOS' maxlen='10'/>
+
+</validator>

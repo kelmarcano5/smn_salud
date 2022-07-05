@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>${lbl:b_medical_order_report}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />	
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+   	<script type="text/javascript" src="${def:context}/action/jqueryi"></script>
+</head>
+<body>
+	<div id="prestacion" style="width:100%">
+		<br>
+		<div align="center"><img src="${def:context}/images/logo_vistacalifornia.png" border="0" alt="" vspace="0" hspace="0" width="250" height="100"></div></img>
+
+		<table style="margin-left: 5mm; margin: auto">
+			<thead>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_enterprise}:</td>
+					<td>${fld:smn_entidades_rf_combo}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_tax_id}:</td>
+					<td>${fld:ent_rif}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_auxiliary_pa}:</td>
+					<td>${fld:aux_nombre_paciente}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">${lbl:b_cedula}:</td>
+					<td>${fld:aux_cedula}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">Fecha Nac.:</td>
+					<td>${fld:fecha_nac@dd-MM-yyyy}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">Email:</td>
+					<td>${fld:correo}</td>
+				</tr>
+				<tr>
+					<td style=" font-weight: bold;">Telefono:</td>
+					<td>${fld:telefono}</td>
+				</tr>
+			</thead>
+		</table>
+		<br><br>
+		<table style="margin-left: 5mm; margin: auto" >
+			<thead>
+				<tr>
+					<td style=" font-weight: bold;" align="center">Tipo Servicio</td>
+					<td style=" font-weight: bold;" align="center">${lbl:b_service}</td>
+					<td style=" font-weight: bold;" align="center">Componente</td>
+					<td style=" font-weight: bold;" align="center">${lbl:b_date_request}</td>
+				</tr>
+			</thead>
+			<tbody>
+				<rows>
+					<tr>
+						<td align="left">${fld:psd_tipo_componentes_combo}</td>
+						<td align="left">${fld:servicio}</td>
+						<td align="left">${fld:componentes}</td>
+						<td align="center">${fld:psd_fecha_registro@dd-MM-yyyy}</td>
+					</tr>
+				</rows>
+			</tbody>
+		</table>
+		<br>
+		<br>
+	</div>
+</body>
+</html>
+
+<script type="text/javascript" >
+  	onload = function() {
+  		$('#prestacion').printThis();
+  	}
+</script>
+
+

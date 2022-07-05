@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config>
+
+	<summary>
+		Ejecutar consulta y enrutar dependiendo de que un recordset
+		tenga o no registros
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericSearch</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="total" source="total" params="query-viewchart.sql" totalCols="subtotal" scope="session" /> 
+	</transaction>
+	
+	<searchCols id="query-viewchart.sql">smn_entidad_rf;smn_sucursal_rf;smn_area_servicio_rf;tipo_unidad_rp;smn_unidad_servicio_rf;rta_ejecutivo_asignado;igs_fecha_ingreso_desde;igs_fecha_ingreso_hasta</searchCols>
+
+	<on-exit return-code="0" forward-to="${def:actionroot}/view" />
+	<on-exit return-code="1" forward-to="${def:actionroot}/notfound" />
+
+</config>

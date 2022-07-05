@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Generar reporte generico PDF
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smncitasmov.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.PDFGenericReport</classname>
+	</output>
+	
+	<pdf-title>${lbl:b_appointment_movement}</pdf-title>
+	<pdf-logo url='/images/logo-dinamica.png' scale='100' />
+
+	<pdf-report pageSize="letter" rotate="false">
+		<table recordset='query-smncitasmov.sql' width='100' spacingBefore='40'>
+			<col name='ctm_num_control_cita' title='${lbl:b_code}' width='7' align='left' />
+			<col name='ctm_fecha' title='${lbl:b_appointment_date}' width='7' align='center' format='dd-MM-yyyy' />
+			<col name='ctm_localidad' title='${lbl:b_location}' width='7' align='left' />
+			<col name='ctm_servicio_combo' title='${lbl:b_service}' width='7' align='center' format='######' />
+			<col name='ctm_componente_combo' title='${lbl:b_component}' width='7' align='center' format='######' />
+			<col name='ctm_prestador_servicio_combo' title='${lbl:b_service_providers}' width='7' align='center' format='######' />
+			<col name='ctm_tipo_componente_combo' title='${lbl:b_component_type}' width='7' align='left' />
+			<col name='ctm_estatus_combo' title='${lbl:b_status}' width='7' align='center' format='######' />
+			<col name='ctm_observ_cita_combo' title='${lbl:${lbl:b_appointment_comment}}' width='7' align='center' format='######' />
+			<col name='ctm_idioma' title='${lbl:s_profile_lang}' width='7' align='left' />
+			<col name='ctm_usuario' title='${lbl:b_users}' width='7' align='left' />
+			<col name='ctm_fecha_registro' title='${lbl:b_store_date}' width='7' align='center' format='dd-MM-yyyy' />
+			<col name='ctm_hora' title='${lbl:s_loginhist_col2}' width='7' align='left' />
+		</table>
+
+	</pdf-report>
+</config>

@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='cts_num_control' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='cts_num_doc_oficial' type='varchar' required='true' label='${lbl:b_official_document_number}' maxlen='12'/>
+	<parameter id='smn_motivos_id' type='integer' required='false' label='${lbl:b_reason}' maxlen='10'/>
+	<parameter id='cts_clase_auxiliar' type='integer' required='false' label='${lbl:b_auxiliary_class}' maxlen='10'/>
+	<parameter id='cts_auxiliar' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+	<parameter id='smn_origen_id' type='integer' required='false' label='${lbl:b_origin}' maxlen='2'/>
+	<parameter id='cts_ordenante' type='integer' required='false' label='${lbl:b_applicant}' maxlen='10'/>
+	<parameter id='cts_tipo_orden' type='varchar' required='false' label='${lbl:b_order_type}' maxlen='2'/>
+	<parameter id='cts_titular' type='integer' required='true' label='${lbl:${lbl:b_titular}' maxlen='56'/>
+	<parameter id='smn_estatus_citas_id' type='integer' required='false' label='${lbl:b_status_appointment}' maxlen='10'/>
+	<parameter id='smn_relacionados_id' type='integer' required='false' label='${lbl:b_relacionados}' maxlen='10'/>
+	<parameter id='smn_observaciones_citas_id' type='integer' required='false' label='${lbl:b_appointment_comment}' maxlen='10'/>
+	<parameter id='smn_citas_mov_id' type='integer' required='false' label='${lbl:b_appointment_movement}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.ArrayNotEmptyValidator' on-error-label='Seleccione al menos un ítem.' parameter-name='smn_servicios_id' id='smn_servicios_id'/>
+	<custom-validator classname='dinamica.validators.ArrayToRecordset' paramName='smn_servicios_id' recordsetId='query-smn_servicios.sql' colName='smn_servicios_id' colType='integer'/>
+</validator>

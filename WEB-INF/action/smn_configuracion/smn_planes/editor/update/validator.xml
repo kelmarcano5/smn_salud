@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='pla_codigo' type='varchar' required='true' label='${lbl:b_code}' maxlen='16'/>
+	<parameter id='pla_descripcion' type='varchar' required='true' label='${lbl:b_description}' maxlen='56'/>
+	<parameter id='pla_vigencia_desde' type='date' required='true' label='${lbl:b_validation_date_from}
+' maxlen='10'/>
+	<parameter id='pla_vigencia_hasta' type='date' required='true' label='${lbl:b_validation_date_until}
+' maxlen='10'/>
+	<parameter id='pla_inactivo' type='varchar' required='true' label='${lbl:b_inactive}' maxlen='1'/>
+	<parameter id='pla_empresa' type='integer' required='false' label='${lbl:b_entity}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_plan}' maxlen='10'/>
+
+	<parameter id='smn_coberturas_id' type='varchar' required='false' label='Ítems'/>
+	<custom-validator classname='dinamica.validators.StringToRecordset' paramName='smn_coberturas_id' recordsetId='query-smn_coberturas.sql' separatorChar=';' colName='smn_coberturas_id' colType='integer'/>
+</validator>
+

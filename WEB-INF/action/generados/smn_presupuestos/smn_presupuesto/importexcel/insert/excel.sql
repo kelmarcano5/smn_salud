@@ -1,0 +1,36 @@
+INSERT INTO smn_salud.smn_presupuesto
+(
+	smn_presupuesto_id,
+	pre_numero_control,
+	pre_fecha,
+	pre_titular,
+	pre_beneficiario,
+	pre_plan,
+	pre_clase_auxiliar,
+	pre_auxiliar,
+	pre_vigencia_hasta,
+	smn_ordenes_medicas_id,
+	smn_estado_presupuesto_id,
+	pre_idioma,
+	pre_usuario,
+	pre_fecha_registro,
+	pre_hora
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_presupuesto},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

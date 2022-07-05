@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_estado_presupuesto>
+	<detail>
+		<rows>		
+		<record epr_fecha_registro="${fld:epr_fecha_registro}"    epr_descripcion="${fld:epr_descripcion}"    epr_codigo="${fld:epr_codigo}"    />
+		</rows>
+	</detail>
+</smn_estado_presupuesto>

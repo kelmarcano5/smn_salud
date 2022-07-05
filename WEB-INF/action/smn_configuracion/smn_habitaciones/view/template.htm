@@ -1,0 +1,55 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+	<col width='14%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_activo_fijo_rf","query-smnhabitaciones.sql")'>${lbl:b_activo_fijo}</th>
+		<th class='sortable' onclick='sortBy("hab_codigo","query-smnhabitaciones.sql")'>${lbl:b_code}</th>
+		<th class='sortable' onclick='sortBy("hab_descripcion","query-smnhabitaciones.sql")'>${lbl:b_description}</th>
+		<th class='sortable' onclick='sortBy("hab_estatus","query-smnhabitaciones.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("hab_clase","query-smnhabitaciones.sql")'>${lbl:b_class}</th>
+		<th class='sortable' onclick='sortBy("tsr_descripcion","query-smnhabitaciones.sql")'>${lbl:b_types_services}</th>
+		<th class='sortable' onclick='sortBy("hab_fecha_registro","query-smnhabitaciones.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_habitaciones_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_habitaciones_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_habitaciones_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_activo_fijo_rf}</td>
+		<td align='left'>${fld:hab_codigo}</td>
+		<td align='left'>${fld:hab_descripcion}</td>
+		<td align='left'>${fld:hab_estatus}</td>
+		<td align='left'>${fld:hab_clase}</td>
+		<td>${fld:tsr_descripcion}</td>
+		<td>${fld:hab_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

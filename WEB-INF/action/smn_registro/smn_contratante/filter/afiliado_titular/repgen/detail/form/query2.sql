@@ -1,0 +1,20 @@
+select
+		smn_salud.smn_afiliado_titular.smn_afiliados_id,
+	smn_salud.smn_afiliado_titular.smn_documento_id,
+	smn_salud.smn_afiliado_titular.afi_numero_control,
+	smn_salud.smn_afiliado_titular.smn_contratante_id,
+	smn_salud.smn_afiliado_titular.smn_auxiliar_unidades_negocios_rf,
+	smn_salud.smn_afiliado_titular.smn_auxiliar_sucursales_rf,
+	smn_salud.smn_afiliado_titular.smn_auxiliar_areas_servicios_rf,
+	smn_salud.smn_afiliado_titular.smn_auxiliar_unidades_servicios_rf,
+	smn_salud.smn_afiliado_titular.afi_clase_auxiliar_rf,
+	smn_salud.smn_afiliado_titular.afi_auxiliar_rf,
+	smn_salud.smn_afiliado_titular.afi_fecha_de_registro,
+	smn_salud.smn_afiliado_titular.afi_fecha_de_inicio,
+	smn_salud.smn_afiliado_titular.afi_estatus,
+	smn_salud.smn_afiliado_titular.afi_fecha_desafiliado,
+	smn_salud.smn_afiliado_titular.afi_fecha_registro
+from
+	smn_salud.smn_afiliado_titular 
+where
+	smn_salud.smn_afiliado_titular.smn_afiliados_id = ${fld:id}

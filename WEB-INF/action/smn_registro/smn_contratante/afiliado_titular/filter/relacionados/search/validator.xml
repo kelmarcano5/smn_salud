@@ -1,0 +1,3 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+ <validator onerror="/action/error/validation/alert">
+ <parameter id="id_afiliado" type="integer" required="true" label='${lbl:b_afiliado}' maxlen="10" /> </validator>

@@ -1,0 +1,53 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+	<col width='13%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="10" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('smn_documento_id_combo','query-smnafiliadotitular.sql')" >${lbl:b_afi_documento}</th>
+		<th class='sortable' onclick="sortBy('afi_numero_control','query-smnafiliadotitular.sql')" >${lbl:b_num_control}</th>
+		<th class='sortable' onclick="sortBy('smn_contratante_id_combo','query-smnafiliadotitular.sql')" >${lbl:b_contratante}</th>
+		<th class='sortable' onclick="sortBy('smn_auxiliar_unidades_negocios_rf_combo','query-smnafiliadotitular.sql')" >${lbl:b_aux_unidad_neg}</th>
+		<th class='sortable' onclick="sortBy('smn_auxiliar_sucursales_rf_combo','query-smnafiliadotitular.sql')" >${lbl:b_aux_sucursales}</th>
+		<th class='sortable' onclick="sortBy('smn_auxiliar_areas_servicios_rf_combo','query-smnafiliadotitular.sql')" >${lbl:b_area_serv}</th>
+		<th class='sortable' onclick="sortBy('afi_fecha_registro','query-smnafiliadotitular.sql')" >${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_afiliados_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_afiliados_id}')" title="${lbl:b_delete_button}"></td>
+		
+		<td align="center">${fld:smn_documento_id_combo}</td>
+		<td align="center">${fld:afi_numero_control}</td>
+		<td align="center">${fld:smn_contratante_id_combo}</td>
+		<td align="center">${fld:smn_auxiliar_unidades_negocios_rf_combo}</td>
+		<td align="center">${fld:smn_auxiliar_sucursales_rf_combo}</td>
+		<td align="center">${fld:smn_auxiliar_areas_servicios_rf_combo}</td>
+		<td align="center">${fld:afi_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

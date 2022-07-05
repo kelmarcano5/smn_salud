@@ -1,0 +1,923 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
+	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
+	
+	<!--biblioteca generica JS/Dinamica-->
+	<script type="text/javascript" src="${def:context}/action/script"></script>
+	<script type="text/javascript" src="${def:context}/action/jquery"></script>
+	<script type="text/javascript" src="${def:context}/action/select2"></script>
+
+</head>
+
+<body>
+
+<!--banner-->
+<div class="bannerDialog" id="encabezado_tabla">
+	${lbl:b_ingreso}
+	<img src="${def:context}/images/close.png" class="button" onclick="parent.closeDialog(); parent.search();" title="${lbl:b_close_button}" style="float:right; cursor:pointer;">
+	${req:progress}
+</div>
+
+<!--formulario addnew/edit-->
+<form name="form1" onsubmit="return save()" style="width:500px;">
+
+	<!-- titulo -->
+	<h1 id="formTitle">${lbl:b_add_record}</h1>
+
+	<table>
+
+		<!--ancho de la columna de etiquetas-->
+		<col width="30%">
+
+		<!--campos-->
+		<tr>
+			<td>${lbl:b_num_ticket}</td>
+			<td>
+				<input id="igs_ticket" name="igs_ticket" type="hidden" maxlength="10" class="numeric" disabled>
+				<input id="igs_ticket_aux" name="igs_ticket_aux" type="text" maxlength="10" class="" disabled>
+			</td>
+		</tr>
+		<tr style="display:none">
+			<td>${lbl:b_auxiliary_class_pa}*</td>
+			<td>
+				<select name="cts_clase_auxiliar" id="cts_clase_auxiliar" onchange="chgCombo(cts_clase_auxiliar.options[cts_clase_auxiliar.selectedIndex].text,'cts_clase_auxiliar_name');">
+					<cts_clase_auxiliar_rows>
+					<option value="${fld:id}">${fld:item}</option>
+	
+					</cts_clase_auxiliar_rows>
+				</select> 
+				<input id="cts_clase_auxiliar_name" name="cts_clase_auxiliar_name" type="hidden">
+			</td>
+		</tr> 
+		<tr>
+			<td>${lbl:b_auxiliary_pa}*</td>
+			<td>
+			<input id="smn_auxiliar_rf" name="smn_auxiliar_rf" type="hidden">
+			<input id="ruta_id" name="ruta_id" type="hidden">
+			<input id="icv_numero_documento_identidad" name="icv_numero_documento_identidad" type="hidden" class="numeric">
+			<select name="cts_auxiliar" id="cts_auxiliar" onchange="chgCombo(cts_auxiliar.options[cts_auxiliar.selectedIndex].text,'cts_auxiliar_name');">
+				<option value="">[Cualquiera]</option>
+				<cts_auxiliar_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</cts_auxiliar_rows>
+			</select> 
+			<input id="cts_auxiliar_name" name="cts_auxiliar_name" type="hidden">
+		</td>
+		<td id="calendario_boton_editar" style="display:none">
+			<!-- Incorporado manualmente para mostrar icono de inclusion de elementos al combo -->
+			<img src="/smn_base/images/edit.png" align="left" class="button" onclick="add_aux_pa()" title="Paciente">
+		</td>
+		<td id="calendario_boton" style="display:none">
+			<!-- Incorporado manualmente para mostrar icono de inclusion de elementos al combo -->
+			<img src="/smn_base/images/list-add2.png" align="left" class="button" onclick="add_aux_pa()" title="Paciente">
+		</td>
+		<td id="boton_recuperar" style="display:none">
+			<!-- Incorporado manualmente para mostrar icono de inclusion de elementos al combo -->
+			<img src="/smn_base/images/search.png" align="left" class="button" onclick="recuperar_pa()" title="Paciente">
+		</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_doc_orig}</td>
+			<td>
+				<select name="smn_doc_orig" id="smn_doc_orig" onchange="chgCombo(smn_doc_orig.options[smn_doc_orig.selectedIndex].text,'smn_doc_orig_name');">
+					<option value="">[Ninguno]</option>
+					<smn_documento_origen_rows>
+					<option value="${fld:id}">${fld:item}</option>
+	
+					</smn_documento_origen_rows>
+				</select> 
+				<input id="smn_doc_orig_name" name="smn_doc_orig_name" type="hidden">
+			</td>
+		</tr>
+
+		<tr>
+			<td>${lbl:b_num_doc_orig}</td>
+			<td>
+				<input id="igs_doc_origen" name="igs_doc_origen" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+	<tr>
+		<td>${lbl:b_document}*</td>
+		<td>
+			<select name="smn_documento_id" id="smn_documento_id" onchange="chgCombo(smn_documento_id.options[smn_documento_id.selectedIndex].text,'smn_documento_id_name');">
+				<smn_documento_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_documento_id_rows>
+			</select> 
+			<input id="smn_documento_id_name" name="smn_documento_id_name" type="hidden">
+		</td>
+	</tr>		
+
+	<tr>
+		<td>${lbl:b_entities}</td>
+		<td>
+			<select name="smn_entidades_rf" id="smn_entidades_rf" onchange="chgCombo(smn_entidades_rf.options[smn_entidades_rf.selectedIndex].text,'smn_entidades_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_entidades_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_entidades_rf_rows>
+			</select> 
+			<input id="smn_entidades_rf_name" name="smn_entidades_rf_name" type="hidden">
+		</td>
+	</tr>
+	
+	<tr>
+		<td>${lbl:b_subsidiaries}</td>
+		<td>
+			<select name="smn_sucursales_rf" id="smn_sucursales_rf" onchange="chgCombo7(smn_sucursales_rf.options[smn_sucursales_rf.selectedIndex].text,'smn_sucursales_rf_name');">
+				<option value="0">[Cualquiera]</option>
+				<smn_sucursales_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_sucursales_rf_rows>
+			</select> 
+			<input id="smn_sucursales_rf_name" name="smn_sucursales_rf_name" type="hidden">
+		</td>
+	</tr>	
+		<tr>
+		<td>${lbl:b_service_area}*</td>
+		<td>
+			<select name="smn_areas_servicios_rf" id="smn_areas_servicios_rf" onchange="chgCombo3(smn_areas_servicios_rf.options[smn_areas_servicios_rf.selectedIndex].text,'smn_areas_servicios_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_areas_servicios_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_areas_servicios_rf_rows>
+			</select> 
+			<input id="smn_areas_servicios_rf_name" name="smn_areas_servicios_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_service_units}*</td>
+		<td>
+			<select name="smn_unidades_servicios_rf" id="smn_unidades_servicios_rf" onchange="chgCombo4(smn_unidades_servicios_rf.options[smn_unidades_servicios_rf.selectedIndex].text,'smn_unidades_servicios_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_unidades_servicios_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_unidades_servicios_rf_rows>
+			</select> 
+			<input id="smn_unidades_servicios_rf_name" name="smn_unidades_servicios_rf_name" type="hidden">
+		</td>
+	</tr>
+		<!-- <tr>
+			<td>${lbl:b_appointment_comment}</td>
+			<td>
+				<input id="ctm_observaciones_id" name="ctm_observaciones_id" type="text" maxlength="100" >
+			</td>
+		</tr>-->
+
+			<tr>
+		<td>${lbl:b_symptom}*</td>
+		<td>
+			<select name="smn_sintoma_id" id="smn_sintoma_id" onchange="chgCombo(smn_sintoma_id.options[smn_sintoma_id.selectedIndex].text,'smn_sintoma_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_sintoma_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_sintoma_id_rows>
+			</select> 
+			<input id="smn_sintoma_id_name" name="smn_sintoma_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_contratante_aux}</td>
+		<td>
+			<select name="smn_contratante_id" id="smn_contratante_id" onchange="chgCombo8(smn_contratante_id.options[smn_contratante_id.selectedIndex].index,'smn_contratante_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_contratante_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_contratante_id_rows>
+			</select> 
+			<input id="smn_contratante_id_name" name="smn_contratante_id_name" type="hidden">
+		</td>
+	</tr>
+	<tr id="contratante_aux_tr" style="display:none">
+		<td>${lbl:b_aux_suc}*</td>
+		<td>
+			<select name="smn_auxiliar_sucursales_rf" id="smn_auxiliar_sucursales_rf" onchange="chgCombo9(smn_auxiliar_sucursales_rf.options[smn_auxiliar_sucursales_rf.selectedIndex].text,'smn_auxiliar_sucursales_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_auxiliar_sucursales_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_auxiliar_sucursales_rf_rows>
+			</select> 
+		<input id="smn_auxiliar_sucursales_rf_name" name="smn_auxiliar_sucursales_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr id="cb_cont_area_tr" style="display:none">
+		<td>${lbl:b_cont_area}*</td>
+		<td>
+			<select name="smn_auxiliar_areas_servicios_rf" id="smn_auxiliar_areas_servicios_rf" onchange="chgCombo10(smn_auxiliar_areas_servicios_rf.options[smn_auxiliar_areas_servicios_rf.selectedIndex].text,'smn_auxiliar_areas_servicios_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_auxiliar_areas_servicios_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_auxiliar_areas_servicios_rf_rows>
+			</select> 
+		<input id="smn_auxiliar_areas_servicios_rf_name" name="smn_auxiliar_areas_servicios_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr id="cont_uni_serv_tr" style="display:none">
+		<td>${lbl:b_cont_uni_serv}*</td>
+		<td>
+			<select name="smn_auxilia_unidad_servicio_rf" id="smn_auxilia_unidad_servicio_rf" onchange="chgCombo(smn_auxilia_unidad_servicio_rf.options[smn_auxilia_unidad_servicio_rf.selectedIndex].text,'smn_auxilia_unidad_servicio_rf_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_auxilia_unidad_servicio_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_auxilia_unidad_servicio_rf_rows>
+			</select> 
+			<input id="smn_auxilia_unidad_servicio_rf_name" name="smn_auxilia_unidad_servicio_rf_name" type="hidden">
+		</td>
+	</tr>
+	<tr>
+		<td>${lbl:b_reason}</td>
+		<td>
+			<select name="smn_motivos_id" id="smn_motivos_id" onchange="chgCombo(smn_motivos_id.options[smn_motivos_id.selectedIndex].text,'smn_motivos_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_motivos_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_motivos_id_rows>
+			</select> 
+			<input id="smn_motivos_id_name" name="smn_motivos_id_name" type="hidden">
+		</td>
+	</tr>
+		<tr>
+			<td>${lbl:b_obs_ingresos}</td>
+			<td>
+				<input id="smn_observaciones_ingresos_id" name="smn_observaciones_ingresos_id" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<!--  <tr>
+			<td>${lbl:b_monto_mop}*</td>
+			<td>
+				<input id="igs_monto_moneda_local" name="igs_monto_moneda_local" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_mon_alt}</td>
+			<td>
+				<input id="smn_moneda_rf" name="smn_moneda_rf" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>
+		<tr>
+			<td>${lbl:b_mon_mon_alt}</td>
+			<td>
+				<input id="igs_monto_moneda_alterna" name="igs_monto_moneda_alterna" type="text" maxlength="10" class="numeric">
+			</td>
+		</tr>-->
+		
+
+	</table>
+
+	<!--botones-->
+	<input id="grabar" type="submit" value="${lbl:b_save_button}" class="button">
+	<input id="limpiar" type="button" value="${lbl:b_clean_button}" onclick="addNew()" class="button">	
+	<input id="copiar" type="button" value="${lbl:b_copy_button}" onclick="getFormValuesToCopy('form1')" class="button">
+	<input id="pegar" type="button" value="${lbl:b_paste_button}" onclick="getFormValuesToPaste('form1')" class="button">
+	<input id="salir" type="button" value="${lbl:s_exit}" onclick="parent.closeDialog(); parent.search();" class="button">	
+	
+	<!-- PK-->
+<input type="hidden" name="id" value="">
+<input type="hidden" name="bdID" id="bdID" value="">
+<input type="hidden" name="doc_id" id="doc_id" value="">
+
+</form>
+
+<!--codigo de soporte del template-->
+<script type="text/javascript">
+
+	onload = function()
+	{ 
+		addNew();
+		
+		//NOMBRE DEL COMBO 
+		//Disabled all combo linked 
+		document.form1.smn_doc_orig.disabled=true;
+		document.form1.igs_doc_origen.disabled=true;
+		// document.form1.smn_documento_id.disabled=true;
+		document.form1.smn_areas_servicios_rf.disabled=true;
+		document.form1.smn_unidades_servicios_rf.disabled=true;
+		document.form1.smn_sucursales_rf.disabled=true;
+		document.form1.smn_entidades_rf.disabled=true;
+		document.form1.igs_ticket.disabled=true; 
+		document.form1.cts_clase_auxiliar.disabled=true;
+		document.form1.cts_auxiliar.disabled=true;
+		
+		document.form1.smn_auxiliar_areas_servicios_rf.disabled=true;
+		document.form1.smn_auxilia_unidad_servicio_rf.disabled=true;
+
+		//Set first value for all combo linked
+		document.form1.igs_ticket.value="${fld:icv_numero_ticket}";
+		document.form1.igs_ticket_aux.value="${fld:icv_numero_documento_identidad} - ${fld:icv_numero_ticket}";
+		document.form1.igs_doc_origen.value="${fld:icv_numero_control}";
+		var combo_documento_origen = document.getElementById('smn_doc_orig');
+		setSelectedIndexValue("${fld:smn_documento_id}", combo_documento_origen);
+
+		document.form1.doc_id.value="${fld:icv_numero_documento_identidad}";
+		
+		var combo_area = document.getElementById('smn_areas_servicios_rf');
+		setSelectedIndexValue("${fld:area_prestador}",combo_area);
+		
+		var combo_unidades = document.getElementById('smn_unidades_servicios_rf');
+		setSelectedIndexValue("${fld:smn_unidad_servicio_rf}",combo_unidades);
+		
+		var combo_sucursal = document.getElementById('smn_sucursales_rf');
+		setSelectedIndexValue("${fld:sucursal_prestador}",combo_sucursal);
+		
+		var combo_entidad = document.getElementById('smn_entidades_rf');
+		setSelectedIndexValue("${fld:entidad_prestador}",combo_entidad);
+		
+		document.form1.smn_auxiliar_rf.value='${fld:smn_auxiliar_rf}';
+		document.form1.ruta_id.value='${fld:ruta_id}';
+		//alert('${fld:ruta_id}');
+		document.form1.icv_numero_documento_identidad.value='${fld:icv_numero_documento_identidad}';
+		
+		var combo_paciente = document.getElementById('cts_auxiliar');
+		setSelectedIndexValue("${fld:smn_auxiliar_rf}",combo_paciente);
+		
+		var aux = getIDSelectedIndex(combo_paciente);
+		
+		if (aux == "${fld:smn_auxiliar_rf}" && "${fld:smn_auxiliar_rf}" == ""){
+			document.getElementById('calendario_boton').style.display="";
+			document.getElementById('boton_recuperar').style.display="";
+		}else{
+			document.getElementById('boton_recuperar').style.display="";
+		}
+
+		
+		if (id!="")
+			edit(id);
+	} 
+	
+	function chgCombo(text,id)
+	{
+		document.getElementById(id).value = text;
+	}
+	
+	//configurar formulario para ingresar registro nuevo
+	function addNew()
+	{
+		document.getElementById("formTitle").innerHTML = "${lbl:b_add_record}";
+		document.getElementById("grabar").disabled=false;
+		clearForm("form1");
+		setFocusOnForm("form1");
+	}
+	
+	//retorna al estado previo que corresponde
+	//al estado actual de la pagina, cada llamada Ajax
+	//se encarga de definir cual es la funcion de goBack() que aplica
+	function goBack() 
+	{
+		_goBackFn()			
+	}
+	
+	
+	function add_aux_pa() 
+	{
+		var ced = '${fld:icv_numero_documento_identidad}';
+		console.log(ced);
+
+		var uri = "/smn_salud/action/smn_registro/smn_ingreso/editor_pa/form?reference=true&source=address&ced="+ced;
+		console.log(uri);
+		openDialog("editor_pa", uri, 850, 700);
+	}
+	
+	//mostrar la actualizacion de un registro
+	function insert()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/insert?entidad_prestador=${fld:entidad_prestador}&sucursal_prestador=${fld:sucursal_prestador}", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//restaurar el formulario en caso de error
+	function retryAddnewOrEdit() {
+		document.getElementById("grabar").disabled=false;
+		setFocusOnForm("form1");		
+	}
+	
+	var id = "${fld:id}"
+	
+	//grabar el formulario
+	function save()
+	{
+		//determina si es un insert o un update
+		if (document.form1.id.value=="")
+			return insert();
+		else
+			return update();
+	}
+	
+	//editar registro en formulario
+	function edit(id)
+	{
+			clearErrorMessages();
+
+			//llamada Ajax...
+			ajaxCall(httpMethod="GET", 
+							uri="${def:actionroot}/edit?id=" + id , 
+							divResponse=null, 
+							divProgress="status", 
+							formName=null, 
+							afterResponseFn=null, 
+							onErrorFn=null);	
+	}
+	
+	//actualizar registro en BD
+	function update()
+	{		
+			clearErrorMessages();
+			document.getElementById("grabar").disabled=true;
+			
+			//llamada Ajax...
+			return ajaxCall(httpMethod="POST", 
+							uri="${def:actionroot}/update", 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, 
+							onErrorFn=retryAddnewOrEdit);	
+	}
+	
+	//Author     : SIMONE
+	//Description: Set first element as selected value
+	//Return     : None
+	function setElementFirstIndex(id)
+	{
+		var combo = document.getElementById(id);
+		combo.selectedIndex = 0;
+	}
+
+	
+
+	
+	function setSelectedIndexDes(code, combo) 	
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+			var valueText = code;
+			
+	        if (combo.options[i].text == valueText) 
+	        {
+	        	combo.options[i].selected = true;
+	            return;
+	        }
+	    }
+	}
+
+	function setSelectedIndexValue(value, combo) 
+			{
+
+				//console.log(value);
+
+				for (var i = 0; i < combo.options.length; i++) 
+				{			
+		
+					if (combo.options[i].value == value) 
+					{
+						combo.options[i].selected = true;
+						return;
+					}
+				} 
+			}
+	
+	//Author     : SIMONE
+	//Description: Get text valueof selected index
+	//Return     : Text associated to index
+	function getSelectedIndex(combo) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].text;
+	        }
+	    }
+	}
+	function getIDSelectedIndex(combo) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].value;
+	        }
+	    }
+	}
+
+	
+	//Author     : SIMONE
+	//Description: Add new value to combo box
+	//Return     : None
+	function addValueToCombo(code, description, field) 
+	{
+	    var combo = document.getElementById(field);	    
+	    insertComboBox(code, combo, description);
+	}
+
+
+	//Author     : SIMONE
+	//Description: Insert new value into combo box
+	//Return     : None
+	function insertComboBox(code, combo, description) {
+		var valueText = code;
+		if (description != null)
+		{
+			valueText = valueText + ' - ' + description;
+		}
+		//alert("Insert Combo: "+valueText);
+        combo.options[combo.options.length] = new Option(valueText);
+	}
+
+	//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndex(code, combo, description) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+			var valueText = code;
+			if (description != null)
+			{
+				valueText = valueText + ' - ' + description;
+			}
+	        if (combo.options[i].text == valueText) 
+	        {
+	        	combo.options[i].selected = true;
+	            return;
+	        }
+	    }
+	}
+	
+		//Author     : SIMONE
+	//Description: Set value to combo box
+	//Parameters : code - it is code associated into each database table 
+	//             descripcion - it is description associated into each database table 
+	//             field - name combo field
+	//             id - identifier retrieved after transaction
+	//             linked - flag indicates 'true' when combos are linked and 'false' otherwise
+	//Return     : None
+	function setValueComboBox(code, description, field, linked)
+	{
+		//add valur text to combo
+		addValueToCombo(code,description,field);
+
+		//get select object 
+		var combo = document.getElementById(field);
+		
+		//set element selected to field referenced
+		setSelectedIndex(code,combo, description);
+		
+		//set text value to combo field
+		var valueText = getSelectedIndex(combo);		
+		
+		//get hidden field in order to set any value
+		var combo = document.getElementById(field+'_name');
+		
+		combo.text  = valueText;
+		combo.value = bdID;
+	}
+
+		//Author     : SIMONE
+	//Description: Add new value to combo box
+	//Return     : None
+	function addValueToComboAux(code, description, field) 
+	{
+	    var combo = document.getElementById(field);	    
+
+	    insertComboBoxAux(code, combo, description);
+	}
+
+	//Author     : SIMONE
+	//Description: Insert new value into combo box
+	//Return     : None
+	/*function insertComboBox(code, combo, description, field) {
+		var valueText = description;
+		var bdID = code;	
+		var option = document.createElement("option");
+		option.text = valueText; 
+		option.value = bdID;
+		document.form1.cts_auxiliar.add(option, combo.options.length);	
+	}*/
+
+
+
+	// CODIGO NUEVOOOO VEHICULO 
+	//Author     : SIMONE
+	//Description: Insert new value into combo box
+	//Return     : None
+	function insertComboBoxAux(code, combo, description, field) {
+		var bdID = code;
+		var valueText = description;
+
+		if (description != null)
+		{
+			 bdID = bdID;
+			valueText = description;
+			//valueText = valueText + '' + description;
+		}
+       
+       //combo.options[combo.options.length] = new Option(valueText);
+		var option = document.createElement("option");
+		option.text = valueText; 
+		option.value = bdID;
+		//document.getElementById('cts_auxiliar').value = bdID;
+		// if (field == 'cts_auxiliar')
+		// {
+			console.log("VALUE: "+bdID);
+			//alert('Añadiendo a prospectos en llamadas')
+			document.form1.cts_auxiliar.add(option, combo.options.length);
+			 $("#cts_auxiliar option[value="+ bdID +"]").attr("selected",true);
+			//setElementFirstIndexVeh('cts_auxiliar');
+			document.form1.cts_auxiliar.disabled=true;
+		// }
+		
+	}
+
+		//Author     : SIMONE
+	//Description: Set selected index into combo box
+	//Return     : None
+	function setSelectedIndexAux(code, combo, description) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+			var valueText = code;
+			if (description != null)
+			{
+				valueText = valueText + ' - ' + description;
+			}
+	        if (combo.options[i].text == valueText) 
+	        {
+	        	combo.options[i].selected = true;
+	            return;
+	        }
+	    }
+	}
+	
+	//Author     : SIMONE
+	//Description: Get text valueof selected index
+	//Return     : Text associated to index
+	function getSelectedIndexAux(combo) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].text;
+	        }
+	    }
+	}
+
+	function getIDSelectedIndexAux(combo) 
+	{
+	    for (var i = 0; i < combo.options.length; i++) 
+	    {
+	        if (combo.options[i].selected == true) 
+	        {
+	            return combo.options[i].value;
+	        }
+	    }
+	}
+	
+
+		//Author     : SIMONE
+	//Description: Set value to combo box
+	//Parameters : code - it is code associated into each database table 
+	//             descripcion - it is description associated into each database table 
+	//             field - name combo field
+	//             id - identifier retrieved after transaction
+	//             linked - flag indicates 'true' when combos are linked and 'false' otherwise
+	//Return     : None
+	function setValueComboBoxAux(code, description, field, linked)
+	{
+		//add valur text to combo
+		addValueToComboAux(code,description,field);
+		//get select object 
+		var combo = document.getElementById(field);
+		//alert(combo)
+		//set element selected to field referenced
+		//setSelectedIndexVeh(code,combo, description);
+		//set text value to combo field
+		var valueText = getSelectedIndexAux(combo);		
+		//alert(valueText)
+		//get hidden field in order to set any value
+		//var combo = document.getElementById(field+'_name');
+
+	//	combo.text=valueText;
+		//combo.value=bdID;
+		setSelectedIndexAux(bdID, combo, valueText); 
+	}
+	
+
+	
+	
+	var geo_id3 = null;
+	function chgCombo3(text,id)
+	{		
+		document.form1.smn_unidades_servicios_rf.disabled=false;
+		var combo = document.getElementById('smn_areas_servicios_rf');
+		
+		var valueCombo = getIDSelectedIndex(combo);
+		
+		geo_id3 = valueCombo.split("-").pop().trim();
+		//console.log(geo_id3);
+
+		
+		//findLocation(geo_id0, '');
+		
+		if (id!=null && id!="") 
+		{
+			
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/getunidadservicio?id=" + geo_id3, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_unidades_servicios_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}
+
+			
+	}
+	
+	var geo_id4 = null;
+	function chgCombo4(text,id)
+	{		
+		document.form1.smn_sucursales_rf.disabled=false;
+		var combo = document.getElementById('smn_areas_servicios_rf');
+		//console.log('estoy aqui.. queriendote.. ');
+		var valueCombo = getIDSelectedIndex(combo);
+		//console.log(valueCombo);
+		geo_id4 = valueCombo.split("-").pop().trim();
+		//console.log(geo_id4);
+
+		
+		//findLocation(geo_id0, '');
+		
+		if (id!=null && id!="") 
+		{
+			
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/getsucursal?id=" + geo_id4, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_sucursales_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}
+	}
+	
+	var geo_id7 = null;
+	function chgCombo7(text,id)
+	{		
+		document.form1.smn_entidades_rf.disabled=false;
+		var combo = document.getElementById('smn_sucursales_rf');
+		var valueCombo = getIDSelectedIndex(combo);
+		//console.log(valueCombo);
+		geo_id7= valueCombo.split("-").shift().trim();
+
+		
+
+		//findLocation(geo_id0, '');
+		
+		if (id!=null && id!="") 
+		{
+			
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/getEntidad?id=" + geo_id7, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_entidades_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}	
+	}
+	
+	var geo_id8 = null;
+	function chgCombo8(text,id)
+	{		
+		
+		var combo = document.getElementById('smn_contratante_id');
+		var geo_id8 = getIDSelectedIndex(combo);
+		
+				
+		if (id!=null && id!="") 
+		{
+			
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/getInfoContratante?id=" + geo_id8, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null,setElementFirstIndex('smn_auxiliar_sucursales_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}	
+	}
+	
+	var geo_id9 = null;
+	function chgCombo9(text,id)
+	{		
+		document.form1.smn_auxiliar_areas_servicios_rf.disabled=false;
+		var combo = document.getElementById('smn_auxiliar_sucursales_rf');
+		var valueCombo = getIDSelectedIndex(combo);
+		//console.log(valueCombo);
+		geo_id9= valueCombo.split("-").shift().trim();
+
+		
+
+		//findLocation(geo_id0, '');
+		
+		if (id!=null && id!="") 
+		{
+			
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/getAreasServicio?id=" + geo_id9, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_auxiliar_areas_servicios_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}	
+	}
+
+	
+	var geo_id10 = null;
+	function chgCombo10(text,id)
+	{		
+		document.form1.smn_auxilia_unidad_servicio_rf.disabled=false;
+		var combo = document.getElementById('smn_auxiliar_areas_servicios_rf');
+		var valueCombo = getIDSelectedIndex(combo);
+		//console.log(valueCombo);
+		geo_id10= valueCombo.split("-").shift().trim();
+
+		
+
+		//findLocation(geo_id0, '');
+		
+		if (id!=null && id!="") 
+		{
+			
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri="${def:actionroot}/getUnidades?id=" + geo_id10, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=setElementFirstIndex('smn_auxilia_unidad_servicio_rf'), //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}	
+	}
+
+	function recuperar_pa() {
+		// body...
+		var auxiliar = $('#doc_id').val();
+		alert(auxiliar);
+		//var auxiliar = $('#cts_auxiliar').val();
+
+		if (auxiliar!=null && auxiliar!="") 
+		{
+			var uri="${def:actionroot}/getRecuperarPaciente?id=" + auxiliar;
+			console.log(uri);
+			return ajaxCall(	
+							httpMethod="GET", 
+							uri, 
+							divResponse=null, 
+							divProgress="status", 
+							formName="form1", 
+							afterResponseFn=null, //function 'setElementFirstIndex' select first element of combo list
+							onErrorFn=null);				
+		}	
+
+	}
+
+
+
+	
+</script>	
+</body>
+</html>

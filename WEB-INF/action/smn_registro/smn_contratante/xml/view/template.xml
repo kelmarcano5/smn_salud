@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_contratante>
+	<detail>
+		<rows>		
+		<record cnt_fecha_registro="${fld:cnt_fecha_registro}"    cnt_cantidad_citas="${fld:cnt_cantidad_citas}"    cnt_fecha_de_inicio="${fld:cnt_fecha_de_inicio}"    smn_plan_id="${fld:smn_plan_id}"    smn_auxiliar_rf="${fld:smn_auxiliar_rf}"    smn_clase_auxiliar_rf="${fld:smn_clase_auxiliar_rf}"    cnt_numero_control="${fld:cnt_numero_control}"    smn_documento_id="${fld:smn_documento_id}"    />
+		</rows>
+	</detail>
+</smn_contratante>

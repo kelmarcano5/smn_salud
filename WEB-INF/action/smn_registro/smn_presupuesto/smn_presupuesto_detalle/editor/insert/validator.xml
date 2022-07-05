@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_presupuesto_id' type='integer' required='true' label='smn_presupuesto_id' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='integer' required='true' label='smn_servicios_rf' maxlen='10'/>
+	<parameter id='prd_cantidad' type='double' required='true' label='prd_cantidad' maxlen='10'/>
+	<parameter id='prd_precio' type='double' required='true' label='prd_precio' maxlen='30'/>
+	<parameter id='smn_moneda_rf' type='integer' required='false' label='smn_moneda_rf' maxlen='10'/>
+	<parameter id='prd_precio_ma' type='double' required='false' label='prd_precio_ma' maxlen='30'/>
+	<parameter id='prd_monto_moneda_local' type='double' required='true' label='prd_monto_moneda_local' maxlen='30'/>
+	<parameter id='prd_moneda_alterna' type='double' required='false' label='prd_moneda_alterna' maxlen='30'/>
+	<parameter id='smn_tipo_componentes_rf' type='varchar' required='false' label='smn_tipo_componentes_rf' maxlen='2'/>
+	<parameter id='smn_componentes_rf' type='integer' required='false' label='smn_componentes_rf' maxlen='10'/>
+	<parameter id='smn_codigo_descuento_rf' type='integer' required='false' label='smn_codigo_descuento_rf' maxlen='10'/>
+	<parameter id='smn_tasa_rf' type='integer' required='false' label='Tasa' maxlen='10'/>
+	<parameter id='prd_observaciones' type='varchar' required='false' label='prd_observaciones' maxlen='255'/>
+	<parameter id='smn_item_rf' type='integer' required='false' label='Item' maxlen='10'/>
+	<parameter id='prd_monto_descuento_ml' type='double' required='false' label='Monto Descuento ML' maxlen='30'/>
+	<parameter id='prd_monto_neto_ml' type='double' required='false' label='Monto Neto ML' maxlen='30'/>
+	<parameter id='prd_monto_impuesto_ml' type='double' required='false' label='Monto Impuesto ML' maxlen='30'/>
+	<parameter id='prd_monto_descuento_ma' type='double' required='false' label='Monto Descuento MA' maxlen='30'/>
+	<parameter id='prd_monto_neto_ma' type='double' required='false' label='Monto Neto MA' maxlen='30'/>
+	<parameter id='prd_monto_impuesto_ma' type='double' required='false' label='Monto Impuesto MA' maxlen='30'/>
+	<parameter id='smn_prestadores_servicios_rf' type='integer' required='false' label='Prestadores de Servicios' maxlen='10'/>
+	<parameter id='smn_grupo_prestador_rf' type='integer' required='false' label='Grupo Prestador' maxlen='10'/>
+	<parameter id='prd_porcentaje_prestador' type='double' required='false' label='Porcentaje Prestador' maxlen='17'/>
+	<parameter id='prd_forma_calculo_rf' type='varchar' required='false' label='Forma Calculo' maxlen='2'/>
+	<parameter id='prd_visible_rf' type='varchar' required='false' label='Visible' maxlen='2'/>
+	<parameter id='prd_monto_incremento_ml' type='double' required='false' label='Monto Incremento ML' maxlen='30'/>
+	<parameter id='prd_monto_incremento_ma' type='double' required='false' label='Monto Incremento MA' maxlen='30'/>
+	<parameter id='smn_incrementos_rf' type='integer' required='false' label='Incremento' maxlen='10'/>
+	<parameter id='prd_estatus' type='varchar' required='false' label='Estas' maxlen='2'/>
+	<parameter id='prd_naturaleza' type='varchar' required='false' label='Naturaleza' maxlen='2'/>
+
+</validator>

@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='dis_codigo' type='varchar' required='true' label='${lbl:b_codigo_dis}' maxlen='10'/>
+	<parameter id='dis_nombre' type='varchar' required='true' label='${lbl:b_nombre_dis}' maxlen='100'/>
+	<parameter id='dis_tipo' type='varchar' required='true' label='${lbl:b_tipo_dispositivo}' maxlen='2'/>
+	<parameter id='dis_mac_address' type='varchar' required='true' label='${lbl:b_mac_address_dis}' maxlen='20'/>
+	<parameter id='smn_usuario_id' type='integer' required='true' label='${lbl:b_user}' maxlen='10'/>
+	<parameter id='smn_entidades_rf' type='integer' required='true' label='${lbl:b_entidades}' maxlen='10'/>
+	<parameter id='smn_sucursales_rf' type='integer' required='false' label='${lbl:b_sucursales}' maxlen='10'/>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='false' label='${lbl:b_area_servicio}' maxlen='10'/>
+	<parameter id='smn_unidad_servicio_rf' type='integer' required='false' label='${lbl:b_service_unit}@' maxlen='10'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarCodigo.sql'
+			id='dis_codigo'/>
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:b_record_not_duplicated}.'
+			sql='buscarNombre.sql'
+			id='dis_nombre'/>
+
+
+</validator>

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='obs_codigo' type='varchar' required='false' label='${lbl:b_code_obs}' maxlen='16'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='obs_codigo' rule='like' />
+	<parameter id='obs_descripcion' type='varchar' required='false' label='${lbl:b_description_obs}' maxlen='56'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='obs_descripcion' rule='like' />
+	<parameter id='obs_tipo' type='varchar' required='false' label='${lbl:b_tipo_obs}' maxlen='2'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='obs_tipo' rule='like' />
+</validator>

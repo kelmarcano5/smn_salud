@@ -1,0 +1,1 @@
+select smn_salud.smn_planes.smn_planes_id as id, smn_salud.smn_planes.pla_codigo || ' - ' || smn_salud.smn_planes.pla_descripcion as item from smn_salud.smn_planes order by smn_planes.pla_descripcion

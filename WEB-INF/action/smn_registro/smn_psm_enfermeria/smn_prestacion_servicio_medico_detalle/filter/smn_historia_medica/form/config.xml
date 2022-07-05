@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="false">
+
+	<summary>
+		PagedView generic configuration
+	</summary>
+
+	<log>false</log>
+	
+	<set-request-attribute id="progress" value="file:/WEB-INF/action/progress/progress.htm"/>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>true</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="user-info.sql" source="sql" scope="session" />
+		<recordset id='camara_anterior.sql' source='sql' scope='transaction'/>
+		<recordset id='grupo_etnico.sql' source='sql' scope='transaction'/>
+		<recordset id='iris_pupila.sql' source='sql' scope='transaction'/>
+		<!-- <recordset id='medicamentos_sistemicos.sql' source='sql' scope='transaction'/> -->
+		<recordset id='paquimetria.sql' source='sql' scope='transaction'/>
+		<recordset id='rango_edad.sql' source='sql' scope='transaction'/>
+		<recordset id='conjuntiva.sql' source='sql' scope='transaction'/>
+		<recordset id='enfermedades.sql' source='sql' scope='transaction'/>
+		<recordset id='vicio_error.sql' source='sql' scope='transaction'/>
+		<recordset id='glaucoma_en_familiares.sql' source='sql' scope='transaction'/>
+		<recordset id='ceguera_en_familiares.sql' source='sql' scope='transaction'/>
+		<!-- <recordset id='mmhg.sql' source='sql' scope='transaction'/> -->
+		<recordset id='aguadeza_visual.sql' source='sql' scope='transaction'/>
+		<recordset id='parpados.sql' source='sql' scope='transaction'/>
+		<recordset id='cornea.sql' source='sql' scope='transaction'/>
+		<recordset id='cristalino.sql' source='sql' scope='transaction'/>
+		<recordset id='gonioscopia.sql' source='sql' scope='transaction'/>
+
+		<recordset id='query-smn_auxiliar_rf.sql' source='sql' scope='transaction'/>
+		<recordset id='query-him_entrevistador.sql' source='sql' scope='transaction'/>
+
+		<recordset id='disco_nervio.sql' source='sql' scope='transaction'/>
+		<recordset id='excavacion.sql' source='sql' scope='transaction'/>
+		<recordset id='rebote_neural.sql' source='sql' scope='transaction'/>
+		<recordset id='vasos_sanguineos.sql' source='sql' scope='transaction'/>
+		<recordset id='estudios_complementarios.sql' source='sql' scope='transaction'/>
+		<recordset id='tratamiento_hipotensor.sql' source='sql' scope='transaction'/>
+		<recordset id='procedimiento_laser.sql' source='sql' scope='transaction'/>
+		<recordset id='procedimiento_quirurgico.sql' source='sql' scope='transaction'/>
+		<recordset id="smn_honorarios" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>dinamica.GenericOutput</classname>
+		<template>template.htm</template>
+		<set-http-headers>true</set-http-headers>
+		<content-type>text/html</content-type>
+		<print mode="form" recordset="user-info.sql" />
+		<print mode='table' recordset='camara_anterior.sql' tag='camara_anterior_rows'/>
+		<print mode='table' recordset='grupo_etnico.sql' tag='grupo_etnico_rows'/>
+		<print mode='table' recordset='iris_pupila.sql' tag='iris_pupila_rows'/>
+		<!-- <print mode='table' recordset='medicamentos_sistemicos.sql' tag='medicamentos_sistemicos_rows'/> -->
+		<print mode='table' recordset='paquimetria.sql' tag='paquimetria_rows'/>
+		<print mode='table' recordset='rango_edad.sql' tag='rango_edad_rows'/>
+		<print mode='table' recordset='conjuntiva.sql' tag='conjuntiva_rows'/>
+		<print mode='table' recordset='enfermedades.sql' tag='enfermedades_rows'/>
+		<print mode='table' recordset='vicio_error.sql' tag='vicio_error_rows'/>
+		<print mode='table' recordset='glaucoma_en_familiares.sql' tag='glaucoma_en_familiares_rows'/>
+		<print mode='table' recordset='ceguera_en_familiares.sql' tag='ceguera_en_familiares_rows'/>
+		<!-- <print mode='table' recordset='mmhg.sql' tag='mmhg_rows'/> -->
+		<print mode='table' recordset='aguadeza_visual.sql' tag='aguadeza_visual_rows'/>
+		<print mode='table' recordset='parpados.sql' tag='parpados_rows'/>
+		<print mode='table' recordset='cornea.sql' tag='cornea_rows'/>
+		<print mode='table' recordset='cristalino.sql' tag='cristalino_rows'/>
+		<print mode='table' recordset='gonioscopia.sql' tag='gonioscopia_rows'/>
+
+		<print mode='table' recordset='query-smn_auxiliar_rf.sql' tag='smn_auxiliar_rf_rows'/>
+		<print mode='table' recordset='query-him_entrevistador.sql' tag='him_entrevistador_rows'/>
+		
+		<print mode='table' recordset='disco_nervio.sql' tag='disco_nervio_rows'/>
+		<print mode='table' recordset='excavacion.sql' tag='excavacion_rows'/>
+		<print mode='table' recordset='rebote_neural.sql' tag='rebote_neutral_rows'/>
+		<print mode='table' recordset='vasos_sanguineos.sql' tag='vasos_sanguineos_rows'/>
+		<print mode='table' recordset='estudios_complementarios.sql' tag='estudios_complementarios_rows'/>
+		<print mode='table' recordset='tratamiento_hipotensor.sql' tag='tratamiento_hipotensor_rows'/>
+		<print mode='table' recordset='procedimiento_laser.sql' tag='procedimiento_laser_rows'/>
+		<print mode='table' recordset='procedimiento_quirurgico.sql' tag='procedimiento_quirurgico_rows'/>
+		<print mode="form" recordset="smn_honorarios"/>
+	</output>
+
+</config>
+

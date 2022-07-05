@@ -1,0 +1,1 @@
+select smn_salud.smn_acciones.smn_acciones_id as id, smn_salud.smn_acciones.acc_codigo || ' - ' || smn_salud.smn_acciones.acc_descripcion as item from smn_salud.smn_acciones order by smn_salud.smn_acciones.smn_acciones_id asc

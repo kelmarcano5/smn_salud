@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<smn_sector>
+	<detail>
+		<rows>		
+		<record sec_fecha_registro="${fld:sec_fecha_registro}"    smn_zonas_postales_rf="${fld:smn_zonas_postales_rf}"    smn_parroquias_rf="${fld:smn_parroquias_rf}"    smn_municipios_rf="${fld:smn_municipios_rf}"    smn_ciudades_rf="${fld:smn_ciudades_rf}"    smn_entidades_federales_rf="${fld:smn_entidades_federales_rf}"    smn_pais_rf="${fld:smn_pais_rf}"    sec_descripcion="${fld:sec_descripcion}"    sec_codigo="${fld:sec_codigo}"    />
+		</rows>
+	</detail>
+</smn_sector>

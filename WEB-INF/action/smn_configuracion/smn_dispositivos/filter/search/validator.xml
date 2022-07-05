@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_sucursales_rf' type='integer' required='false' label='${lbl:b_sucursales}' maxlen='10'/>
+	<parameter id='smn_entidades_rf' type='integer' required='false' label='${lbl:b_entidades}' maxlen='10'/>
+	<parameter id='dis_nombre' type='varchar' required='false' label='${lbl:b_nombre_dis}' maxlen='100'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='dis_nombre' rule='contains' />
+	<parameter id='dis_codigo' type='varchar' required='false' label='${lbl:b_codigo_dis}' maxlen='10'/>
+	<custom-validator classname='dinamica.validators.SQLPatternTransformer' parameter='dis_codigo' rule='contains' />
+	<parameter id='dis_fecha_registro' type='date' required='false' label='${lbl:b_store_date}' maxlen='10'/>
+	<parameter id='smn_unidad_servicio_rf' type='integer' required='false' label='${lbl:b_service_unit}@' maxlen='10'/>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='false' label='${lbl:b_area_servicio}' maxlen='10'/>
+</validator>

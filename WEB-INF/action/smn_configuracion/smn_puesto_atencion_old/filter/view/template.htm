@@ -1,0 +1,43 @@
+<!--data grid-->
+<table class="datagrid" style="width:90%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='22%'/>
+	<col width='22%'/>
+	<col width='22%'/>
+	<col width='22%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="7">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick="sortBy('put_codigo','query-smnpuestoatencion.sql')" >${lbl:b_code}</th>
+		<th class='sortable' onclick="sortBy('put_descripcion','query-smnpuestoatencion.sql')" >${lbl:b_description}</th>
+		<th class='sortable' onclick="sortBy('put_estatus_combo','query-smnpuestoatencion.sql')" >${lbl:b_estatus}</th>
+		<th class='sortable' onclick="sortBy('put_fecha_registro','query-smnpuestoatencion.sql')" >${lbl:b_store_date}</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_puesto_atencion_id}')" title="Ver detalle"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_puesto_atencion_id}')" title="Eliminar"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_puesto_atencion_id}')" title="Editar"></td>
+		<td align="left">${fld:put_codigo}</td>
+		<td align="left">${fld:put_descripcion}</td>
+		<td align="left">${fld:put_estatus_combo}</td>
+		<td align="center">${fld:put_fecha_registro@dd-MM-yyyy}</td>
+	</tr>
+	</rows>
+
+</table>

@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_doc_orig' type='integer' required='false' label='${lbl:b_doc_orig}' maxlen='10'/>
+	<parameter id='smn_documento_id' type='integer' required='true' label='${lbl:b_document}' maxlen='10'/>
+	<parameter id='igs_doc_origen' type='integer' required='false' label='${lbl:b_num_doc_orig}' maxlen='10'/>
+	<parameter id='smn_entidades_rf' type='integer' required='false' label='${lbl:b_entities}' maxlen='10'/>
+	<parameter id='smn_sucursales_rf' type='integer' required='false' label='${lbl:b_subsidiaries}' maxlen='10'/>
+	<parameter id='smn_areas_servicios_rf' type='integer' required='true' label='${lbl:b_service_area}' maxlen='10'/>
+	<parameter id='smn_unidades_servicios_rf' type='integer' required='true' label='${lbl:b_service_units}' maxlen='10'/>
+	<parameter id='ctm_observaciones_id' type='varchar' required='false' label='${lbl:b_appointment_comment}' maxlen='100'/>
+	<parameter id='igs_ticket' type='integer' required='false' label='${lbl:b_num_ticket}' maxlen='10'/>
+	<parameter id='cts_clase_auxiliar' type='integer' required='true' label='${lbl:b_auxiliary_class_pa}' maxlen='10'/>
+	<parameter id='cts_auxiliar' type='integer' required='true' label='${lbl:b_auxiliary_pa}' maxlen='10'/>
+	<parameter id='icv_numero_documento_identidad' type='varchar' required='true' label='${lbl:b_auxiliary_pa}' maxlen='15'/>
+	<parameter id="ruta_id" type="integer" required="true" label="ID" maxlen="10" />
+	<parameter id='smn_contratante_id' type='integer' required='false' label='${lbl:b_contratante_aux}' maxlen='10'/>
+	<parameter id='smn_auxiliar_sucursales_rf' type='integer' required='false' label='${lbl:b_aux_suc}' maxlen='10'/>
+	<parameter id='smn_auxiliar_areas_servicios_rf' type='integer' required='false' label='${lbl:b_cont_area}' maxlen='10'/>
+	<parameter id='smn_auxilia_unidad_servicio_rf' type='integer' required='false' label='${lbl:b_cont_uni_serv}' maxlen='10'/>
+	<parameter id='smn_motivos_id' type='integer' required='false' label='${lbl:b_reason}' maxlen='10'/>
+	<parameter id='smn_observaciones_ingresos_id' type='integer' required='false' label='${lbl:b_obs_ingresos}' maxlen='10'/>
+	<parameter id='igs_monto_moneda_local' type='double' required='false' label='${lbl:b_monto_mop}' maxlen='10'/>
+	<parameter id='smn_moneda_rf' type='integer' required='false' label='${lbl:b_mon_alt}' maxlen='10'/>
+	<parameter id='igs_monto_moneda_alterna' type='integer' required='false' label='${lbl:b_mon_mon_alt}' maxlen='10'/>
+	<parameter id='smn_sintoma_id' type='integer' required='true' label='${lbl:b_symptom}' maxlen='10'/>
+	<parameter id="entidad_prestador" type="integer" required="true" label="ID" maxlen="10" />
+ 	<parameter id="sucursal_prestador" type="integer" required="false" label="ID" maxlen="10" />
+
+	<!-- <custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='Ya existe el Ingreso'
+			sql='buscarIngreso.sql'
+			id='igs_ticket_aux'/> -->
+
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:parameter_required}'
+			sql='afectaAuxiliar.sql'
+			id='smn_auxiliar_sucursales_rf'/>
+			
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:parameter_required}'
+			sql='afectaAuxiliar2.sql'
+			id='smn_auxiliar_areas_servicios_rf'/>
+	
+	<custom-validator
+		classname='dinamica.validators.DuplicatedKeyValidator'
+			on-error-label='${lbl:parameter_required}'
+			sql='afectaAuxiliar3.sql'
+			id='smn_auxilia_unidad_servicio_rf'/>
+			
+	<custom-validator
+		classname='dinamica.validators.NoRecordsFound'
+			on-error-label='Usuario diferente al que esta haciendo el ingreso'
+			sql='mismoPaciente.sql'
+			id='cts_auxiliar'/>
+
+</validator>
