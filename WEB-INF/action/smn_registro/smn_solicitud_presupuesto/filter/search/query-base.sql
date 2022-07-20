@@ -5,6 +5,7 @@ select
 	when smn_salud.smn_solicitud_presupuesto.spr_estatus='GE' then '${lbl:b_generado}'
 	when smn_salud.smn_solicitud_presupuesto.spr_estatus='AP' then '${lbl:b_aprobado}'
 	when smn_salud.smn_solicitud_presupuesto.spr_estatus='EN' then '${lbl:b_enviado}'
+	when smn_salud.smn_solicitud_presupuesto.spr_estatus='RE' then '${lbl:b_registrado}'
 	end as spr_estatus,
 	smn_salud.smn_solicitud_presupuesto.spr_solicitud,
 	smn_base.smn_auxiliar.aux_codigo||''|| smn_base.smn_auxiliar.aux_descripcion as smn_auxiliar,

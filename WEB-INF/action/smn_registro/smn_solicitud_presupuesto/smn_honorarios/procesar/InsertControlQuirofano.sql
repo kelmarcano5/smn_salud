@@ -1,0 +1,42 @@
+INSERT INTO smn_salud.smn_control_quirofano
+(
+	smn_control_quirofano_id,
+	smn_agenda_rf,
+	smn_presupuesto_id,
+	smn_ingreso_id,
+	smn_prestacion_servicio_cabecera_id,
+	smn_prestacion_servicio_medico_detalle_id,
+	smn_servicios_rf,
+	ccq_hora_entrada,
+	ccq_hora_salida,
+	ccq_fecha_quirofano,
+	smn_habitaciones_id,
+	ccq_cantidad_horas,
+	smn_unidad_medida_rf,
+	ccq_idioma,
+	ccq_usuario,
+	ccq_fecha_registro,
+	ccq_hora,
+	smn_plan_quirurgico_id
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_control_quirofano},
+	0,
+	${fld:smn_presupuesto_id},
+	0,
+	0,
+	0,
+	0,
+	${fld:plq_hora_inicial},
+	${fld:plq_hora_final},
+	${fld:plq_fecha_cirugia},
+	${fld:smn_habitaciones_id},
+	${fld:plq_cantidad_horas},
+	0,
+	'${def:locale}',
+	'${def:user}',
+	'${def:date}',
+	'${def:time}',
+	${fld:smn_plan_quirurgico_id}
+) RETURNING smn_control_quirofano_id;

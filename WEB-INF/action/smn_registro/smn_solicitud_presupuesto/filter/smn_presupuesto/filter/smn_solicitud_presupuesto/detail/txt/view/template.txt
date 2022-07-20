@@ -1,3 +1,0 @@
-<rows>
-spr_fecha_registro="${fld:spr_fecha_registro}"    spr_estatus="${fld:spr_estatus}"    spr_honorarios="${fld:spr_honorarios}"    spr_instrumentales="${fld:spr_instrumentales}"    spr_dias_hospitalizacion="${fld:spr_dias_hospitalizacion}"    smn_patologia_id="${fld:smn_patologia_id}"    smn_contratante_id="${fld:smn_contratante_id}"    smn_auxiliar="${fld:smn_auxiliar}"    spr_solicitud="${fld:spr_solicitud}"    
-</rows>

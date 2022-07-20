@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='ISO-8859-1'?>
-<validator onerror="/action/error/validation/alert">
-	<parameter id='smn_presupuesto_id' type='integer' required='true' label='ID PRESUPUESTO' maxlen='10'/>
-	<parameter id='smn_estado_presupuesto_id' type='integer' required='false' label='ID ESTATUS' maxlen='10'/>
-	<parameter id='smn_ingresos_id' type='integer' required='false' label='ID INGRESOS' maxlen='10'/>
-	<parameter id='smn_clase_rf' type='integer' required='false' label='ID CLASE' maxlen='10'/>
-	<parameter id='smn_auxiliar_rf' type='integer' required='false' label='ID AUXILIAR' maxlen='10'/>
-</validator>

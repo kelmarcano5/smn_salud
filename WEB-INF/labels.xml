@@ -14770,6 +14770,23 @@
         <value language="pt"></value>
         <value language="it"></value>
     </label>
+	<label id="b_budget_request_honorary">
+        <value language="es">Honorarios</value>
+        <value language="en">Honorary</value>
+        <value language="fr"></value>
+        <value language="de"></value>
+        <value language="pt"></value>
+        <value language="it"></value>
+    </label>
+	
+	<label id="b_tasa">
+        <value language="es">Tasa de Cambio</value>
+        <value language="en">Rate</value>
+        <value language="fr"></value>
+        <value language="de"></value>
+        <value language="pt"></value>
+        <value language="it"></value>
+    </label>
 	
 
 </labels>

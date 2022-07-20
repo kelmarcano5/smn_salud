@@ -962,19 +962,22 @@
 		// } else {
 		// 	$('#autorizacion').show();
 		// }
-		
-		if (id!=null && id!="") 
-		{
+		if (contratante==1) {
 			
-			return ajaxCall(	
-							httpMethod="GET", 
-							uri="${def:actionroot}/getdocumentoingreso?id=" + geo_id8, 
-							divResponse=null, 
-							divProgress="status", 
-							formName="form1", 
-							afterResponseFn=null,setElementFirstIndex('smn_auxiliar_sucursales_rf'), //function 'setElementFirstIndex' select first element of combo list
-							onErrorFn=null);				
-		}	
+		}else{
+			if (id!=null && id!="") 
+			{
+				
+				return ajaxCall(	
+								httpMethod="GET", 
+								uri="${def:actionroot}/getdocumentoingreso?id=" + geo_id8, 
+								divResponse=null, 
+								divProgress="status", 
+								formName="form1", 
+								afterResponseFn=null,setElementFirstIndex('smn_auxiliar_sucursales_rf'), //function 'setElementFirstIndex' select first element of combo list
+								onErrorFn=null);				
+			}	
+		}
 	}
 
 	function chgComboAux(){		

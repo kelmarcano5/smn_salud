@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_solicitud_presupuesto_id' type='integer' required='true' label='${lbl:b_budget_request_honorary}' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='integer' required='true' label='${lbl:b_services}' maxlen='10'/>
+	<parameter id='smn_componentes_rf' type='integer' required='true' label='${lbl:b_component}' maxlen='10'/>
+	<parameter id='smn_grupo_prestador_servicio_rf' type='integer' required='true' label='${lbl:b_grupo_prestador_servicio}' maxlen='10'/>
+	<parameter id='smn_prestador_serviciorf' type='integer' required='true' label='${lbl:b_service_provider}' maxlen='10'/>
+	<parameter id='rsh_monto_solicitado_ml' type='double' required='true' label='${lbl:b_amount_ml}' maxlen='10'/>
+	<parameter id='rsh_monto_solicitado_ma' type='double' required='true' label='${lbl:b_amount_ma}' maxlen='10'/>
+	<parameter id='smn_tasa_id' type='integer' required='false' label='${lbl:b_tasa}' maxlen='10'/>
+	<parameter id='smn_moneda_id' type='integer' required='false' label='${lbl:b_coins}' maxlen='10'/>
+	<parameter id='id' type='integer' required='true' label='${lbl:b_budget_request}' maxlen='10'/>
+</validator>
+

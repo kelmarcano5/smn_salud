@@ -1,1 +1,0 @@
-select smn_salud.smn_presupuesto.smn_presupuesto_id as id, smn_salud.smn_presupuesto.smn_documento_id || ' - ' || smn_salud.smn_presupuesto.pre_numero_control as item from smn_salud.smn_presupuesto order by smn_salud.smn_presupuesto.pre_numero_control

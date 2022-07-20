@@ -1,0 +1,2 @@
+ and
+ 	smn_salud.smn_rel_solicitud_pre_honorarios.smn_solicitud_presupuesto_id=${fld:smn_solicitud_presupuesto_id}

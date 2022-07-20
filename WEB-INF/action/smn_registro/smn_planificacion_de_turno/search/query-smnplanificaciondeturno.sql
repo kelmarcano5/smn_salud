@@ -4,8 +4,9 @@ select
 	smn_base.smn_entidades.ent_descripcion_corta as smn_entidades_rf,
 	smn_base.smn_sucursales.suc_nombre as smn_sucursales_rf,
 	smn_base.smn_areas_servicios.ase_descripcion as smn_areas_servicios_rf,
+	smn_base.smn_unidades_servicios.uns_descripcion as smn_unidades_servicios_rf,
 	usuario.aux_descripcion as smn_usuario_id,
-	smn_salud.smn_series.sri_nombre as smn_serie_id,
+	smn_salud.smn_series.sri_codigo ||' - '|| smn_salud.smn_series.sri_nombre as smn_serie_id,
 	case
 		when smn_salud.smn_planificacion_de_turno.ptu_estatus='AC' THEN '${lbl:b_active}' else '${lbl:b_inactive}'
 	end as ptu_estatus,

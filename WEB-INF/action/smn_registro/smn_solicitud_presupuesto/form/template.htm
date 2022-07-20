@@ -88,7 +88,7 @@
 			if (id == 'editor')
 			{					
 				var uri = "${def:context}${def:actionroot}/editor/form";					
-				openDialog("editor1", uri, 950, 610);					
+				openDialog("editor1", uri, 950, 750 );					
 			}
 			else if (id == 'filter')
 			{
@@ -118,13 +118,10 @@
 						alertBox('No se puede editar este registro', 'Continuar', null, null);
 					}else{
 						uri = "${def:context}${def:actionroot}/editor/form?id=" + id;
-						openDialog("editor5", uri, 650, 510);
-						
-					
+						openDialog("editor5", uri, 650, 750);
 					}
 				}
 					
-				
 			}
 			
 		}
@@ -174,6 +171,13 @@
 								afterResponseFn=null, 
 								onErrorFn=null);	
 		}
+
+		function honorarios(id_Spre) {
+			uri = "${def:context}${def:actionroot}/smn_rel_solicitud_pre_honorarios/form?id_solicitud="+ id_Spre;		
+			//uri = "${def:context}${def:actionroot}/smn_rel_solicitud_pre_honorarios/form?id="+ id_Spre + "&id_presupuesto=" + pre_id;		
+			//alert(uri);
+			openDialog("dialog", uri, 1350, 700);
+		}
 		
 	</script>
 
@@ -195,18 +199,6 @@
 	<!--incluir el menu iconografico de SIMONE-->
 	${inc:${def:actionroot}/panel/view}
 	
-	<!-- <div> -->
-		<!-- <div class="image_left"> -->
-			<!-- <a href="${def:httpserver}${def:context}/action/..." title=""> -->
-				<!-- <img src="${def:context}/images/arrow_left9.png" width="30" height="30"> -->
-			<!-- </a> -->
-		<!-- </div> -->
-		<!-- <div class="image_right"> -->
-			<!-- <a href="${def:httpserver}${def:context}/action/..." title=""> -->
-				<!-- <img src="${def:context}/images/arrow_right9.png" width="30" height="30"> -->
-			<!-- </a> -->
-		<!-- </div> -->
-	<!-- </div> -->
 	<br>
 	<br>
 	

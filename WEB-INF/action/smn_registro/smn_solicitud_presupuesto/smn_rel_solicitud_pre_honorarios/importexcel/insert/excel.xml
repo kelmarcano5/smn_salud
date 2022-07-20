@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator maxErrors='20'>
+	<parameter id='smn_solicitud_presupuesto_id' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_componentes_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_grupo_prestador_servicio_rf' type='integer' required='true' maxlen='10'/>
+	<parameter id='smn_prestador_serviciorf' type='integer' required='true' maxlen='10'/>
+	<parameter id='rsh_monto_solicitado_ml' type='double' required='true' maxlen='10'/>
+	<parameter id='rsh_monto_solicitado_ma' type='double' required='true' maxlen='10'/>
+	<parameter id='smn_tasa_id' type='integer' required='false' maxlen='10'/>
+	<parameter id='smn_moneda_id' type='integer' required='false' maxlen='10'/>
+
+
+
+</validator>

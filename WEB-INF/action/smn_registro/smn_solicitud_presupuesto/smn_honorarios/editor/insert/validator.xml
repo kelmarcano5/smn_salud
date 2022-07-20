@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/validation/ajax'>
+	<parameter id='smn_entidad_rf' type='integer' required='true' label='${lbl:b_entidades_rp}' maxlen='10'/>
+	<parameter id='smn_sucursal_rf' type='integer' required='true' label='${lbl:b_sucursal_rp}' maxlen='10'/>
+	<parameter id='smn_habitaciones_id' type='integer' required='true' label='${lbl:b_habitaciones}' maxlen='10'/>
+	<parameter id='smn_presupuesto_id' type='integer' required='false' label='${lbl:b_presupuesto}' maxlen='10'/>
+	<parameter id='smn_contratante_id' type='integer' required='false' label='${lbl:b_contratante}' maxlen='10'/>
+	<parameter id='smn_clase_auxiliar_rf' type='integer' required='false' label='${lbl:b_paciente_clase}' maxlen='10'/>
+	<parameter id='smn_auxiliar_rf' type='integer' required='true' label='${lbl:b_auxiliary_pa}' maxlen='10'/>
+	<parameter id='smn_patologia_rf' type='integer' required='false' label='${lbl:b_surgery}' maxlen='10'/>
+	<parameter id='plq_fecha_cirugia' type='date' required='false' label='${lbl:b_surgery_date}' maxlen='10'/>
+	<parameter id='plq_hora_inicial' type='varchar' required='false' label='${lbl:b_entry_hour}' maxlen='8'/>
+	<parameter id='plq_hora_final' type='varchar' required='false' label='${lbl:b_exit_hour}' maxlen='8'/>
+	<parameter id='plq_cantidad_horas' type='integer' required='false' label='${lbl:b_quantity_hour}' maxlen='10'/>
+	<parameter id='plq_observaciones' type='varchar' required='false' label='${lbl:b_observations}' maxlen='200'/>
+	<parameter id='plq_estatus' type='varchar' required='true' label='${lbl:b_status}' maxlen='2'/>
+
+
+
+</validator>

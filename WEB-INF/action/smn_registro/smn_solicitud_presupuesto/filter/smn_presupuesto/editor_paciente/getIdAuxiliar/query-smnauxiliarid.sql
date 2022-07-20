@@ -1,1 +1,0 @@
-select MAX(smn_base.smn_auxiliar.smn_auxiliar_id) as id from smn_base.smn_auxiliar 

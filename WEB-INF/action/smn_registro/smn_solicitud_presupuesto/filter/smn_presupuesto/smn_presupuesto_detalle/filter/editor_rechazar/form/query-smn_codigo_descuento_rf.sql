@@ -1,1 +1,0 @@
-select smn_base.smn_descuento.smn_descuento_id as id, smn_base.smn_descuento.dct_codigo ||' - '|| smn_base.smn_descuento.dct_nombre as item from smn_base.smn_descuento

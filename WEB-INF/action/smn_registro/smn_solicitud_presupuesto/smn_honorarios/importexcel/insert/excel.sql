@@ -1,0 +1,38 @@
+INSERT INTO smn_salud.smn_plan_quirurgico
+(
+	smn_plan_quirurgico_id,
+	smn_entidad_rf,
+	smn_sucursal_rf,
+	smn_habitaciones_id,
+	smn_presupuesto_id,
+	smn_contratante_id,
+	smn_clase_auxiliar_rf,
+	smn_auxiliar_rf,
+	smn_patologia_rf,
+	plq_fecha_cirugia,
+	plq_hora_inicial,
+	plq_hora_final,
+	plq_cantidad_horas,
+	plq_observaciones,
+	plq_estatus,
+	plq_fecha_registro
+)
+VALUES
+(
+	${seq:nextval@smn_salud.seq_smn_plan_quirurgico},
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	?,
+	{d '${def:date}'}
+)

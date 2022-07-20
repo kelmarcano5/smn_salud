@@ -12,7 +12,8 @@ INSERT INTO smn_salud.smn_relacion_unidad_paso
 	rup_idioma,
 	rup_usuario_id,
 	rup_fecha_registro,
-	rup_hora
+	rup_hora,
+	smn_unidad_servicio_caja_rf
 )
 VALUES
 (
@@ -28,5 +29,6 @@ VALUES
 	'${def:locale}',
 	'${def:user}',
 	{d '${def:date}'},
-	'${def:time}'
+	'${def:time}',
+	${fld:smn_unidad_servicio_caja_rf}
 )

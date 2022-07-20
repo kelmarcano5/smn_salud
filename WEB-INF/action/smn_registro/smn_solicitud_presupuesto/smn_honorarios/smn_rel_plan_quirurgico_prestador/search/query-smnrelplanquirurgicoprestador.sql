@@ -1,0 +1,17 @@
+select
+	smn_salud.smn_rel_plan_quirurgico_prestador.smn_rel_plan_quirurgico_prestador_id,
+	smn_salud.smn_rel_plan_quirurgico_prestador.smn_plan_quirurgico_id,
+	smn_base.smn_servicios.svc_descripcion as smn_servicios_rf,
+	smn_base.smn_componentes.cmp_descripcion as smn_componentes_rf,
+	smn_base.smn_grupos_prestadores.gpp_descripcion as smn_grupo_prestador_servicio_rf,
+	smn_base.smn_prestadores_servicios.prs_descripcion as smn_prestador_servicio_rf
+	
+from
+	smn_salud.smn_rel_plan_quirurgico_prestador
+	inner join smn_salud.smn_plan_quirurgico on smn_salud.smn_plan_quirurgico.smn_plan_quirurgico_id = smn_salud.smn_rel_plan_quirurgico_prestador.smn_plan_quirurgico_id
+	inner join smn_base.smn_servicios on smn_base.smn_servicios.smn_servicios_id = smn_salud.smn_rel_plan_quirurgico_prestador.smn_servicios_rf
+	inner join smn_base.smn_componentes on smn_base.smn_componentes.smn_componentes_id = smn_salud.smn_rel_plan_quirurgico_prestador.smn_componentes_rf
+	left join smn_base.smn_grupos_prestadores on smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id = smn_salud.smn_rel_plan_quirurgico_prestador.smn_grupo_prestador_servicio_rf
+	left join smn_base.smn_prestadores_servicios on smn_prestadores_servicios.smn_prestadores_servicios_id = smn_salud.smn_rel_plan_quirurgico_prestador.smn_prestador_servicio_rf
+where
+	smn_salud.smn_rel_plan_quirurgico_prestador.smn_plan_quirurgico_id=${fld:id_plan}

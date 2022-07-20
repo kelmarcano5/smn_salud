@@ -1,0 +1,49 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+	<col width='20%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="8" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_plan_quirurgico_id","query-smnrelplanquirurgicoprestador.sql")'>${lbl:b_plan_quirurgico}</th>
+		<th class='sortable' onclick='sortBy("smn_servicios_rf","query-smnrelplanquirurgicoprestador.sql")'>${lbl:b_services}</th>
+		<th class='sortable' onclick='sortBy("smn_componentes_rf","query-smnrelplanquirurgicoprestador.sql")'>${lbl:b_component}</th>
+		<th class='sortable' onclick='sortBy("smn_grupo_prestador_servicio_rf","query-smnrelplanquirurgicoprestador.sql")'>${lbl:b_grupo_prestador_servicio}</th>
+		<th class='sortable' onclick='sortBy("smn_prestador_servicio_rf","query-smnrelplanquirurgicoprestador.sql")'>${lbl:b_service_provider}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_rel_plan_quirurgico_prestador_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_rel_plan_quirurgico_prestador_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_plan_quirurgico_prestador_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_plan_quirurgico_id}</td>
+		<td>${fld:smn_servicios_rf}</td>
+		<td>${fld:smn_componentes_rf}</td>
+		<td>${fld:smn_grupo_prestador_servicio_rf}</td>
+		<td>${fld:smn_prestador_servicio_rf}</td>
+
+	</tr>
+	</rows>
+
+</table>

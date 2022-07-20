@@ -288,7 +288,7 @@
 	}
 	
 	function presupuesto_detalle(id_pre, numero_control_pre, baremos_pre, estatus, tipotasa, moneda_alterna) {
-		uri = "${def:context}${def:actionroot}/smn_presupuesto_detalle/form?id_pre="+ id_pre + "&numero_control_pre=" + numero_control_pre +"&smn_baremos_id="+baremos_pre+"&estatus="+estatus+"&tipotasa="+tipotasa+"&moneda_alterna="+moneda_alterna;		
+		uri = "${def:context}${def:actionroot}/../smn_presupuesto_detalle/form?id_pre="+ id_pre + "&numero_control_pre=" + numero_control_pre +"&smn_baremos_id="+baremos_pre+"&estatus="+estatus+"&tipotasa="+tipotasa+"&moneda_alterna="+moneda_alterna;		
 		//alert(uri);
 		openDialog("dialog", uri, 1350, 700);
 	}
@@ -550,7 +550,7 @@
 	}
 
 	function solicitud_presupuesto(id_pre, numero_control_pre, baremos_pre, estatus, tipotasa, moneda_alterna) {
-		uri = "${def:context}${def:actionroot}/smn_solicitud_presupuesto/form?id2="+ id_pre + "&numero_control_pre=" + numero_control_pre +"&smn_baremos_id="+baremos_pre+"&estatus="+estatus+"&tipotasa="+tipotasa+"&moneda_alterna="+moneda_alterna;		
+		uri = "${def:context}${def:actionroot}/../smn_solicitud_presupuesto/form?id2="+ id_pre + "&numero_control_pre=" + numero_control_pre +"&smn_baremos_id="+baremos_pre+"&estatus="+estatus+"&tipotasa="+tipotasa+"&moneda_alterna="+moneda_alterna;		
 		//alert(uri);
 		openDialog("dialog", uri, 1350, 700);
 	}

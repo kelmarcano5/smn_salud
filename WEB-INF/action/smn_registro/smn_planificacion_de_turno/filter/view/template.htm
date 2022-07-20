@@ -4,18 +4,18 @@
 	<col width='3%'/>
 	<col width='3%'/>
 	<col width='3%'/>
-	<col width='14%'/>
-	<col width='14%'/>
-	<col width='14%'/>
-	<col width='14%'/>
-	<col width='14%'/>
-	<col width='14%'/>
-	<col width='14%'/>
-
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
 
 	<!--toolbar-->
 	<tr>
-		<th colspan="10" id="encabezado_tabla">
+		<th colspan="11" id="encabezado_tabla">
 			${req:controls} 
 		</th>
 	</tr>
@@ -31,6 +31,7 @@
 		<th class='sortable' onclick='sortBy("smn_entidades_id","query-smnplanificaciondeturno.sql")'>${lbl:b_entities}</th>
 		<th class='sortable' onclick='sortBy("smn_sucursales_id","query-smnplanificaciondeturno.sql")'>${lbl:b_subsidiaries}</th>
 		<th class='sortable' onclick='sortBy("smn_areas_servicios_id","query-smnplanificaciondeturno.sql")'>${lbl:b_service_area}</th>
+		<th class='sortable' onclick='sortBy("smn_unidades_servicios_rf","query-smnplanificaciondeturno.sql")'>${lbl:b_service_unit}</th>
 		<th class='sortable' onclick='sortBy("ptu_fecha_registro","query-smnplanificaciondeturno.sql")'>${lbl:b_store_date}</th>
 
 	</tr>
@@ -47,6 +48,7 @@
 		<td>${fld:smn_entidades_rf}</td>
 		<td>${fld:smn_sucursales_rf}</td>
 		<td>${fld:smn_areas_servicios_rf}</td>
+		<td>${fld:smn_unidades_servicios_rf}</td>
 		<td>${fld:ptu_fecha_registro@dd-MM-yyyy}</td>
 
 	</tr>

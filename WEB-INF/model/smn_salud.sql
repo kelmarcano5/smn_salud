@@ -1768,9 +1768,9 @@ CREATE TABLE smn_salud.smn_control_quirofano(
   smn_ingreso_id INTEGER NOT NULL,
   smn_prestacion_servicio_cabecera_id INTEGER NOT NULL,
   smn_prestación_servicio_medico_detalle_id INTEGER NOT NULL,
-  smn_servicios_rf CHARACTER(8) NOT NULL,
-  ccq_hora_entrada CHARACTER(8),
-  ccq_hora_salida INTEGER,
+  smn_servicios_rf INTEGER NOT NULL,
+  ccq_hora_entrada CHARACTER(10),
+  ccq_hora_salida CHARACTER(10),
   ccq_fecha_quirofano DATE NOT NULL,
   smn_habitaciones_id INTEGER NOT NULL,
   ccq_cantidad_horas INTEGER NOT NULL,
@@ -1807,8 +1807,8 @@ CREATE TABLE smn_salud.smn_plan_quirurgico(
   smn_auxiliar_rf INTEGER,
   smn_patologia_rf INTEGER,
   plq_fecha_cirugia DATE,
-  plq_hora_inicial CHARACTER(8),
-  plq_hora_final CHARACTER(8),
+  plq_hora_inicial CHARACTER(10),
+  plq_hora_final CHARACTER(10),
   plq_cantidad_horas INTEGER,
   plq_observaciones VARCHAR(200),
   plq_estatus CHARACTER(2) NOT NULL,
@@ -1831,6 +1831,82 @@ CREATE TABLE smn_salud.smn_rel_plan_quirurgico_prestador(
 );
 
 CREATE SEQUENCE smn_salud.seq_smn_rel_plan_quirurgico_prestador;
+
+
+CREATE TABLE smn_salud.smn_rel_plan_quirurgico_servicios(
+  smn_rel_plan_quirurgico_servicios_id INTEGER NOT NULL,
+  smn_plan_quirurgico_id INTEGER NOT NULL,
+  smn_servicios_rf INTEGER NOT NULL,
+  smn_componente_rf INTEGER NOT NULL,
+  smn_grupo_prestador_servicio_rf INTEGER NOT NULL
+);
+
+CREATE SEQUENCE smn_salud.seq_smn_rel_plan_quirurgico_servicios;
+
+
+CREATE TABLE smn_salud.smn_rel_plan_quirurgico_activo_fijo(
+  smn_rel_plan_quirurgico_activo_fijo_id INTEGER NOT NULL,
+  smn_plan_quirurgico_id INTEGER NOT NULL,
+  smn_activo_fijo_rf INTEGER NOT NULL
+);
+
+CREATE SEQUENCE smn_salud.seq_smn_rel_plan_quirurgico_activo_fijo;
+
+
+CREATE TABLE smn_salud.smn_rel_plan_quirurgico_patologia(
+  smn_rel_plan_quirurgico_patologia_id INTEGER NOT NULL,
+  smn_plan_quirurgico_id INTEGER NOT NULL,
+  smn_patologias_id INTEGER NOT NULL
+);
+
+CREATE SEQUENCE smn_salud.seq_smn_rel_plan_quirurgico_patologia;
+
+
+CREATE TABLE smn_salud.smn_rel_solicitud_pre_servicios(
+  smn_rel_solicitud_pre_servicios_id INTEGER NOT NULL,
+  smn_solicitud_presupuesto_id INTEGER NOT NULL,
+  smn_servicios_rf INTEGER NOT NULL
+);
+
+CREATE SEQUENCE smn_salud.seq_smn_rel_solicitud_pre_servicios;
+
+
+CREATE TABLE smn_salud.smn_rel_solicitud_pre_equipos(
+  smn_rel_solicitud_pre_equipos_id INTEGER NOT NULL,
+  smn_solicitud_presupuesto_id INTEGER NOT NULL,
+  smn_activo_fijo_rf INTEGER NOT NULL
+);
+
+CREATE SEQUENCE smn_salud.seq_smn_rel_solicitud_pre_equipos;
+
+
+CREATE TABLE smn_salud.smn_rel_solicitud_pre_patologias(
+  smn_rel_solicitud_pre_patologias_id INTEGER NOT NULL,
+  smn_solicitud_presupuesto_id INTEGER NOT NULL,
+  smn_patologias_id INTEGER NOT NULL
+);
+
+CREATE SEQUENCE smn_salud.seq_smn_rel_solicitud_pre_patologias;
+
+
+CREATE TABLE smn_salud.smn_rel_solicitud_pre_honorarios(
+  smn_rel_solicitud_pre_honorarios_id INTEGER NOT NULL,
+  smn_solicitud_presupuesto_id INTEGER NOT NULL,
+  smn_servicios_rf INTEGER NOT NULL,
+  smn_componentes_rf INTEGER NOT NULL,
+  smn_grupo_prestador_servicio_rf INTEGER NOT NULL,
+  smn_prestador_serviciorf INTEGER NOT NULL,
+  rsh_monto_solicitado_ml DOUBLE PRECISION NOT NULL,
+  rsh_monto_solicitado_ma DOUBLE PRECISION NOT NULL,
+  smn_tasa_id INTEGER,
+  smn_moneda_id INTEGER,
+  rsh_idioma CHARACTER(2) NOT NULL,
+  rsh_usuario CHARACTER(10) NOT NULL,
+  rsh_fecha_registro DATE NOT NULL,
+  rsh_hora CHARACTER(8) NOT NULL
+);
+
+CREATE SEQUENCE smn_salud.seq_smn_rel_solicitud_pre_honorarios;
 
 
 
@@ -1927,9 +2003,15 @@ ALTER TABLE smn_salud.smn_ordenes_medicas ADD PRIMARY KEY (smn_ordenes_medicas_i
 
 ALTER TABLE smn_salud.smn_origen ADD PRIMARY KEY (smn_origen_id);
 
+ALTER TABLE smn_salud.smn_patologia ADD PRIMARY KEY (smn_patologia_id);
+
 ALTER TABLE smn_salud.smn_planes_coberturas ADD PRIMARY KEY (smn_planes_coberturas_id);
 ALTER TABLE smn_salud.smn_planes_coberturas ADD CONSTRAINT FK_smn_planes_coberturas_0 FOREIGN KEY (smn_planes_id) REFERENCES smn_salud.smn_planes (smn_planes_id) ON DELETE NO ACTION;
 ALTER TABLE smn_salud.smn_planes_coberturas ADD CONSTRAINT FK_smn_planes_coberturas_1 FOREIGN KEY (smn_coberturas_id) REFERENCES smn_salud.smn_coberturas (smn_coberturas_id) ON DELETE NO ACTION;
+
+ALTER TABLE smn_salud.smn_planificacion_de_turno ADD PRIMARY KEY (smn_plan_turno_id);
+
+ALTER TABLE smn_salud.smn_prestacion_servicio_medico_detalle ADD PRIMARY KEY (smn_prestacion_servicio_medico_detalle_id);
 
 ALTER TABLE smn_salud.smn_presupuesto ADD PRIMARY KEY (smn_presupuesto_id);
 
@@ -2021,4 +2103,18 @@ ALTER TABLE smn_salud.smn_plan_quirurgico ADD PRIMARY KEY (smn_plan_quirurgico_i
 
 ALTER TABLE smn_salud.smn_rel_plan_quirurgico_prestador ADD PRIMARY KEY (smn_rel_plan_quirurgico_prestador_id);
 ALTER TABLE smn_salud.smn_rel_plan_quirurgico_prestador ADD CONSTRAINT FK_smn_rel_plan_quirurgico_prestador_0 FOREIGN KEY (smn_plan_quirurgico_id) REFERENCES smn_salud.smn_plan_quirurgico (smn_plan_quirurgico_id) ON DELETE NO ACTION;
+
+ALTER TABLE smn_salud.smn_rel_plan_quirurgico_servicios ADD PRIMARY KEY (smn_rel_plan_quirurgico_servicios_id);
+
+ALTER TABLE smn_salud.smn_rel_plan_quirurgico_activo_fijo ADD PRIMARY KEY (smn_rel_plan_quirurgico_activo_fijo_id);
+
+ALTER TABLE smn_salud.smn_rel_plan_quirurgico_patologia ADD PRIMARY KEY (smn_rel_plan_quirurgico_patologia_id);
+
+ALTER TABLE smn_salud.smn_rel_solicitud_pre_servicios ADD PRIMARY KEY (smn_rel_solicitud_pre_servicios_id);
+
+ALTER TABLE smn_salud.smn_rel_solicitud_pre_equipos ADD PRIMARY KEY (smn_rel_solicitud_pre_equipos_id);
+
+ALTER TABLE smn_salud.smn_rel_solicitud_pre_patologias ADD PRIMARY KEY (smn_rel_solicitud_pre_patologias_id);
+
+ALTER TABLE smn_salud.smn_rel_solicitud_pre_honorarios ADD PRIMARY KEY (smn_rel_solicitud_pre_honorarios_id);
 

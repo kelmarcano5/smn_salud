@@ -100,6 +100,19 @@
 		</td>
 	</tr>
 	<tr>
+		<td>${lbl:b_budget_request}</td>
+		<td>
+			<select class="pre" name="smn_solicitud_presupuesto_id" id="smn_solicitud_presupuesto_id" onchange="chgCombo(smn_solicitud_presupuesto_id.options[smn_solicitud_presupuesto_id.selectedIndex].text,'smn_solicitud_presupuesto_id_name');">
+				<option value="">[Cualquiera]</option>
+				<smn_solicitud_presupuesto_id_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_solicitud_presupuesto_id_rows>
+			</select> 
+			<input id="smn_solicitud_presupuesto_id_name" name="smn_solicitud_presupuesto_id_name" type="hidden">
+		</td>
+	</tr>
+	<!-- <tr>
 		<td>${lbl:b_presupuesto}</td>
 		<td>
 			<select class="pre" name="smn_presupuesto_id" id="smn_presupuesto_id" onchange="chgCombo(smn_presupuesto_id.options[smn_presupuesto_id.selectedIndex].text,'smn_presupuesto_id_name');">
@@ -111,7 +124,7 @@
 			</select> 
 			<input id="smn_presupuesto_id_name" name="smn_presupuesto_id_name" type="hidden">
 		</td>
-	</tr>
+	</tr> -->
 	<tr>
 		<td>${lbl:b_surgery}</td>
 		<td>

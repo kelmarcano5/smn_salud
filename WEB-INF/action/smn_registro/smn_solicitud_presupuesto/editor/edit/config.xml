@@ -14,6 +14,9 @@
 		<transaction>false</transaction>
 		<jdbc-log>false</jdbc-log>
 		<recordset id="query.sql" source="sql" scope="transaction" />
+		<recordset id="query-smnrelsolicitudpreequipos.sql" source="sql" scope="session" />
+		<recordset id="query-smnrelsolicitudpreservicios.sql" source="sql" scope="session" />
+		<recordset id="query-smnrelsolicitudprepatologias.sql" source="sql" scope="session" />
 	</transaction>
 
 	<output>
@@ -23,6 +26,9 @@
 		<content-type>text/javascript; charset=iso-8859-1</content-type>
 		<expiration>0</expiration>
 		<print mode="form" recordset="query.sql" />
+		<print mode="table" recordset="query-smnrelsolicitudpreequipos.sql" tag="rows3" />
+		<print mode="table" recordset="query-smnrelsolicitudpreservicios.sql" tag="rows2" />
+		<print mode="table" recordset="query-smnrelsolicitudprepatologias.sql" tag="rows" />
 	</output>
 
 </config>

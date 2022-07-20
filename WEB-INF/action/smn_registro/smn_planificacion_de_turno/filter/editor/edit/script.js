@@ -21,28 +21,28 @@ if (smn_serie_id == '' || smn_serie_id == 0)  {
 
 var smn_entidades_rf = '${fld:smn_entidades_rf}';
 if (smn_entidades_rf == '' || smn_entidades_rf == 0)  {
-
+	$('#smn_sucursales_rf').val(0).change();
 }else{
 	$('#smn_entidades_rf').val(smn_entidades_rf).change();
 }
 
 var smn_sucursales_rf = '${fld:smn_sucursales_rf}';
 if (smn_sucursales_rf == '' || smn_sucursales_rf == 0)  {
-
+	$('#smn_sucursales_rf').val(0).change();
 }else{
 	$('#smn_sucursales_rf').val(smn_sucursales_rf).change();
 }
 
 var smn_areas_servicios_rf = '${fld:smn_areas_servicios_rf}';
 if (smn_areas_servicios_rf == '' || smn_areas_servicios_rf == 0)  {
-
+	$('#smn_areas_servicios_rf').val(0).change();
 }else{
 	$('#smn_areas_servicios_rf').val(smn_areas_servicios_rf).change();
 }
 
 var smn_unidad_servicio_rf = '${fld:smn_unidad_servicio_rf}';
 if (smn_unidad_servicio_rf == '' || smn_unidad_servicio_rf == 0)  {
-
+	$('#smn_unidad_servicio_rf').val(0).change();
 }else{
 	$('#smn_unidad_servicio_rf').val(smn_unidad_servicio_rf).change();
 }

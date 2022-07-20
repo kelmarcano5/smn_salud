@@ -16,8 +16,8 @@
 		<jdbc-log>false</jdbc-log>
 		<recordset id='query-smn_auxiliar.sql' source='sql' scope='transaction'/>
 		<recordset id='query-smn_contratante_id.sql' source='sql' scope='transaction'/>
-		<recordset id='query-smn_patologia_id.sql' source='sql' scope='transaction'/>
-			<recordset id='query-smn_documento_id.sql' source='sql' scope='transaction'/>
+		<!-- <recordset id='query-smn_patologia_id.sql' source='sql' scope='transaction'/> -->
+		<recordset id='query-smn_documento_id.sql' source='sql' scope='transaction'/>
 	</transaction>
 
 	<output>
@@ -27,7 +27,7 @@
 		<content-type>text/html</content-type>
 		<print mode='table' recordset='query-smn_auxiliar.sql' tag='smn_auxiliar_rows'/>
 		<print mode='table' recordset='query-smn_contratante_id.sql' tag='smn_contratante_id_rows'/>
-		<print mode='table' recordset='query-smn_patologia_id.sql' tag='smn_patologia_id_rows'/>
+		<!-- <print mode='table' recordset='query-smn_patologia_id.sql' tag='smn_patologia_id_rows'/> -->
 		<print mode='table' recordset='query-smn_documento_id.sql' tag='smn_documento_id_rows'/>
 		<print mode="form" recordset="_request" /> 
 	</output>

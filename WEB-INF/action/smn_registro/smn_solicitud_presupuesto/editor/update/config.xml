@@ -16,7 +16,7 @@
 			<colname>spr_solicitud</colname>
 			<colname>smn_auxiliar</colname>
 			<colname>smn_contratante_id</colname>
-			<colname>smn_patologia_id</colname>
+			<!-- <colname>smn_patologia_id</colname> -->
 			<colname>spr_dias_hospitalizacion</colname>
 			<colname>spr_horas_quirofano</colname>
 			<colname>spr_instrumentales</colname>
@@ -42,9 +42,20 @@
 		<validator>true</validator>
 		<transaction>true</transaction>
 		<jdbc-log>false</jdbc-log>
+		<recordset id="query-smnactivo.sql" source="request" scope="transaction" />
+		<recordset id="query-smnservicios.sql" source="request" scope="transaction" />
+		<recordset id="query-smnpatologia.sql" source="request" scope="transaction" />
 	</transaction>
 
 	<query>update.sql</query>
+    <query>delete-query-smn_rel_solicitud_pre_equipos.sql</query>
+	<query params="query-smnactivo.sql">insert-query-smn_rel_solicitud_pre_equipos.sql</query>
+
+	<query>delete-query-smn_rel_solicitud_pre_servicios.sql</query>
+	<query params="query-smnservicios.sql">insert-query-smn_rel_solicitud_pre_servicios.sql</query>
+
+	<query>delete-query-smn_rel_solicitud_pre_patologias.sql</query>
+	<query params="query-smnpatologia.sql">insert-query-smn_rel_solicitud_pre_patologias.sql</query>
 
 	<output>
 		<classname>dinamica.GenericOutput</classname>

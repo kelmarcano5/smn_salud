@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<config nodb="true">
+
+	<summary>
+		Exportar documento excel directo al browser
+	</summary>
+
+	<log>false</log>
+
+	<transaction>
+		<classname>dinamica.GenericTransaction</classname>
+		<validator>false</validator>
+		<transaction>false</transaction>
+		<jdbc-log>false</jdbc-log>
+		<recordset id="query.sql" source="session" scope="transaction" />
+	</transaction>
+
+	<output>
+		<classname>domain.ExcelReportOutput</classname>
+	</output>
+	
+	<excel-logo scale="60" url="/images/logo-simone-pdf.png"/>
+	<title cellPosY="1" cellPosX="6" cellStep="0" name="${lbl:b_plan_quirurgico}"/>
+	
+	<excel 
+		recordset='query.sql' 
+		sheetname='${lbl:b_plan_quirurgico}' 
+		filename='${lbl:b_plan_quirurgico}.xls' 
+		date-format='dd-MM-yyyy'
+		header-background='true'>
+		<col id='smn_entidad_rf' label='${lbl:b_entidades_rp}' />
+		<col id='smn_sucursal_rf' label='${lbl:b_sucursal_rp}' />
+		<col id='smn_habitaciones_id' label='${lbl:b_habitaciones}' />
+		<col id='smn_contratante_id' label='${lbl:b_contratante}' />
+		<col id='smn_clase_auxiliar_rf' label='${lbl:b_paciente_clase}' />
+		<col id='smn_auxiliar_rf' label='${lbl:b_auxiliary_pa}' />
+		<col id='smn_patologia_rf' label='${lbl:b_surgery}' />
+		<col id='plq_fecha_cirugia' label='${lbl:b_surgery_date}' />
+		<col id='plq_hora_inicial' label='${lbl:b_entry_hour}' />
+		<col id='plq_hora_final' label='${lbl:b_exit_hour}' />
+		<col id='plq_cantidad_horas' label='${lbl:b_quantity_hour}' />
+		<col id='plq_estatus' label='${lbl:b_status}' />
+		<col id='plq_fecha_registro' label='${lbl:b_store_date}' />
+
+	</excel>
+
+</config>

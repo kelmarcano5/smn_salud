@@ -81,10 +81,7 @@ INSERT INTO smn_salud.smn_ruta_paciente
     ${fld:entidad_prestador},
     ${fld:sucursal_prestador},
     ${fld:smn_area_servicio},
-	(select smn_salud.smn_relacion_unidad_paso.smn_unidad_servicio_rf from smn_salud.smn_relacion_unidad_paso
-    LEFT OUTER JOIN smn_salud.smn_series on smn_salud.smn_series.smn_series_id = smn_salud.smn_relacion_unidad_paso.smn_serie_id
-    where smn_salud.smn_relacion_unidad_paso.smn_area_servicio_rf=${fld:smn_area_servicio} and smn_salud.smn_series.sri_codigo=${fld:serie} 
-    and smn_salud.smn_relacion_unidad_paso.rup_unidad_administrativa='AD' and smn_salud.smn_relacion_unidad_paso.rup_secuencia=1 limit 1),
+	${fld:unidad},
     'PE',
     (select smn_salud.smn_relacion_unidad_paso.rup_secuencia from smn_salud.smn_relacion_unidad_paso
     LEFT OUTER JOIN smn_salud.smn_series on smn_salud.smn_series.smn_series_id = smn_salud.smn_relacion_unidad_paso.smn_serie_id
@@ -129,15 +126,12 @@ VALUES
     ${fld:entidad_prestador},
     ${fld:sucursal_prestador},
     ${fld:smn_area_servicio},
-  	(select smn_salud.smn_relacion_unidad_paso.smn_unidad_servicio_rf from smn_salud.smn_relacion_unidad_paso
-    LEFT OUTER JOIN smn_salud.smn_series on smn_salud.smn_series.smn_series_id = smn_salud.smn_relacion_unidad_paso.smn_serie_id
-    where smn_salud.smn_relacion_unidad_paso.smn_area_servicio_rf=${fld:smn_area_servicio} and smn_salud.smn_series.sri_codigo=${fld:serie} 
-    and smn_salud.smn_relacion_unidad_paso.rup_unidad_administrativa='AD' and smn_salud.smn_relacion_unidad_paso.rup_secuencia=2 limit 1),
+  	(select smn_salud.smn_relacion_unidad_paso.smn_unidad_servicio_caja_rf from smn_salud.smn_relacion_unidad_paso
+   inner JOIN smn_salud.smn_series on smn_salud.smn_series.smn_series_id = smn_salud.smn_relacion_unidad_paso.smn_serie_id
+   where smn_salud.smn_relacion_unidad_paso.smn_area_servicio_rf=${fld:smn_area_servicio} and smn_salud.smn_relacion_unidad_paso.smn_unidad_servicio_rf=${fld:unidad} and smn_salud.smn_series.sri_codigo=${fld:serie} 
+    and smn_salud.smn_relacion_unidad_paso.rup_unidad_administrativa='AD' limit 1),
     'PE',
-  	(select smn_salud.smn_relacion_unidad_paso.rup_secuencia from smn_salud.smn_relacion_unidad_paso
-    LEFT OUTER JOIN smn_salud.smn_series on smn_salud.smn_series.smn_series_id = smn_salud.smn_relacion_unidad_paso.smn_serie_id
-    where smn_salud.smn_relacion_unidad_paso.smn_area_servicio_rf=${fld:smn_area_servicio} and smn_salud.smn_series.sri_codigo=${fld:serie} 
-    and smn_salud.smn_relacion_unidad_paso.rup_unidad_administrativa='AD' and smn_salud.smn_relacion_unidad_paso.rup_secuencia=2 limit 1),
+  	2,
     ${fld:serie},
     (select sri_ultimo_numero from smn_salud.smn_series where sri_codigo = ${fld:serie}),
     '${def:locale}',

@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator onerror='/action/error/crud'>
+	<parameter id='pat_codigo' type='varchar' required='false' label='${lbl:b_code}' maxlen='48'/>
+	<parameter id='pat_descripcion' type='varchar' required='false' label='${lbl:b_description}' maxlen='100'/>
+	<parameter id='pat_estatus' type='varchar' required='false' label='${lbl:b_estatus}' maxlen='2'/>
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="pat_codigo" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="pat_descripcion" rule="contains" />
+	<custom-validator classname="dinamica.validators.SQLPatternTransformer" parameter="pat_estatus" rule="contains" />
+</validator>

@@ -1,8 +1,19 @@
 var area = '${fld:smn_area_servicio_rf}';
 $('#smn_area_servicio_rf').val(area).change();
 
-//var uni = '${fld:smn_unidad_servicio_rf}';
-//$('#smn_unidad_servicio_rf').val(uni).change();
+var caja = '${fld:smn_unidad_servicio_rf}';
+if (caja == '' || caja == 0)  {
+	$('#smn_unidad_servicio_rf').val(0).change();
+}else{
+	$('#smn_unidad_servicio_rf').val(caja).change();
+}
+
+var caja3 = '${fld:smn_unidad_servicio_caja_rf}';
+if (caja3 == '' || caja3 == 0)  {
+	$('#smn_unidad_servicio_caja_rf').val(0).change();
+}else{
+	$('#smn_unidad_servicio_caja_rf').val(caja3).change();
+}
 
 var paso = '${fld:smn_paso_rf}';
 $('#smn_paso_rf').val(paso).change();

@@ -1,8 +1,6 @@
 <!doctype html>
 <html>
-
 <head>
-
 	<link rel="stylesheet" type="text/css" href="${def:context}/dinamica_bkp.css" />
 	<link rel="stylesheet" type="text/css" href="${def:context}/main.css" />
 	<link rel="stylesheet" type="text/css" href="${def:context}/select2.min.css" />
@@ -11,9 +9,7 @@
 	<script type="text/javascript" src="${def:context}/action/script"></script>
 	<script type="text/javascript" src="${def:context}/action/jquery"></script>
 	<script type="text/javascript" src="${def:context}/action/select2"></script>
-
 </head>
-
 <body>
 
 <!--banner-->
@@ -32,7 +28,7 @@
 	<table>
 
 		<!--ancho de la columna de etiquetas-->
-		<col width="30%">
+	<col width="30%">
 
 		<!--campos-->
 	<tr id="numerosolicitud">
@@ -83,7 +79,7 @@
 			<input id="smn_contratante_id_name" name="smn_contratante_id_name" type="hidden">
 		</td>
 	</tr>
-	<tr>
+	<!-- <tr>
 		<td>${lbl:b_pathology}*</td>
 		<td>
 			<select class="patologia" name="smn_patologia_id" id="smn_patologia_id" onchange="chgCombo(smn_patologia_id.options[smn_patologia_id.selectedIndex].text,'smn_patologia_id_name');">
@@ -95,46 +91,127 @@
 			</select> 
 			<input id="smn_patologia_id_name" name="smn_patologia_id_name" type="hidden">
 		</td>
+	</tr> -->
+	<tr>
+		<td>${lbl:b_hospitalization_day}*</td>
+		<td>
+			<input id="spr_dias_hospitalizacion" name="spr_dias_hospitalizacion" type="text" maxlength="10" class="numeric">
+		</td>
 	</tr>
-		<tr>
-			<td>${lbl:b_hospitalization_day}*</td>
-			<td>
-				<input id="spr_dias_hospitalizacion" name="spr_dias_hospitalizacion" type="text" maxlength="10" class="numeric">
-			</td>
-		</tr>
-		<tr>
-			<td>${lbl:b_operating_room_hours}*</td>
-			<td>
-				<input id="spr_horas_quirofano" name="spr_horas_quirofano" type="text" maxlength="10" class="numeric">
-			</td>
-		</tr>
-		<tr>
-			<td>Material e Instrumental</td>
-			<td>
-				<textarea id="spr_instrumentales" name="spr_instrumentales" cols="30" rows="3"></textarea>
-			</td>
-		</tr>
-		<tr>
-			<td>Monto ${lbl:b_schedules}*</td>
-			<td>
-				<input id="spr_honorarios" name="spr_honorarios" type="text" maxlength="10" class="numeric">
-			</td>
-		</tr>
-		<tr id="estatus">
-			<td>${lbl:b_estatus}*</td>
-			<td>
-				<select name="spr_estatus" id="spr_estatus">
-					<option value="RE">Registrado</option>
-					<option value="SO">${lbl:b_solicitado}</option>
-					<option value="NA">Nivel Aprobacion</option>
-					<option value="GE">${lbl:b_generado}</option>
-					<option value="AP">${lbl:b_aprobado}</option>
-					<option value="EN">${lbl:b_enviado}</option>
-					<option value="IN">Ingresado</option>
-					<option value="CE">Cerrado</option>
-				</select> 
-			</td>
-		</tr>
+	<tr>
+		<td>${lbl:b_operating_room_hours}*</td>
+		<td>
+			<input id="spr_horas_quirofano" name="spr_horas_quirofano" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr>
+		<td>Material e Instrumental</td>
+		<td>
+			<textarea id="spr_instrumentales" name="spr_instrumentales" cols="30" rows="3"></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td>Monto ${lbl:b_schedules}*</td>
+		<td>
+			<input id="spr_honorarios" name="spr_honorarios" type="text" maxlength="10" class="numeric">
+		</td>
+	</tr>
+	<tr id="estatus">
+		<td>${lbl:b_estatus}*</td>
+		<td>
+			<select name="spr_estatus" id="spr_estatus">
+				<option value="RE">Registrado</option>
+				<option value="SO">${lbl:b_solicitado}</option>
+				<option value="NA">Nivel Aprobacion</option>
+				<option value="GE">${lbl:b_generado}</option>
+				<option value="AP">${lbl:b_aprobado}</option>
+				<option value="EN">${lbl:b_enviado}</option>
+				<option value="IN">Ingresado</option>
+				<option value="CE">Cerrado</option>
+			</select> 
+		</td>
+	</tr>
+	   
+    <!--control picklist de seleccion múltiple-->
+    <tr style="display: flex;margin-left: 10px;">
+    	<td> <h4>REGISTRAR</h4></td>
+    </tr>
+	<tr>
+
+		<td>${lbl:b_services}</td>
+		<td>
+			<!--listbox--> 
+			<select id="smn_servicios_rf_name" name="smn_servicios_rf_name" size="5" style="width: 95%;">
+			</select>
+			<br>
+			<!--comandos del listbox-->
+			<div style="float: right; margin-right: 12px; padding-top: 7px">
+			<a href="javascript:pickSmnServiciosId()" title="Añadir items a la lista">A&ntilde;adir</a>
+			<a href="javascript:removeSmnServiciosId()" title="Remover un item de la lista">Remover</a>
+			</div>
+			<!--almacena los IDs de los items separados por ";"--> 
+			<input type="hidden" name="smn_servicios_rf" id="smn_servicios_rf" />
+			<input type="hidden" name="smn_servicios_rf_text" id="smn_servicios_rf_text" />
+		</td>
+	</tr>
+
+		<!--control picklist de seleccion múltiple-->
+
+	<tr>
+		<td>Equipos</td>
+		<td>
+			<!--listbox--> 
+			<select id="smn_activo_fijo_rf_name" name="smn_activo_fijo_rf_name" size="5" style="width: 95%;">
+			</select>
+			<br>
+			<!--comandos del listbox-->
+			<div style="float: right; margin-right: 12px; padding-top: 7px">
+			<a href="javascript:pickSmnEquiposId()" title="Añadir items a la lista">A&ntilde;adir</a>
+			<a href="javascript:removeSmnEquiposId()" title="Remover un item de la lista">Remover</a>
+			</div>
+			<!--almacena los IDs de los items separados por ";"--> 
+			<input type="hidden" name="smn_activo_fijo_rf" id="smn_activo_fijo_rf" />
+			<input type="hidden" name="smn_activo_fijo_rf_text" id="smn_activo_fijo_rf_text" />
+		</td>
+	</tr>
+
+	<tr>
+		<td>Cirugias</td>
+		<td>
+			<!--listbox--> 
+			<select id="smn_patologia_id_name" name="smn_patologia_id_name" size="5" style="width: 95%;">
+			</select>
+			<br>
+			<!--comandos del listbox-->
+			<div style="float: right; margin-right: 12px; padding-top: 7px">
+			<a href="javascript:pickSmnPatologiasId()" title="Añadir items a la lista">A&ntilde;adir</a>
+			<a href="javascript:removeSmnPatologiasId()" title="Remover un item de la lista">Remover</a>
+			</div>
+			<!--almacena los IDs de los items separados por ";"--> 
+			<input type="hidden" name="smn_patologia_id" id="smn_patologia_id" />
+			<input type="hidden" name="smn_patologia_id_text" id="smn_patologia_id_text" />
+		</td>
+	</tr>
+
+	<tr id="honorarios">
+		<td>Honorarios</td>
+		<td>
+			<!--listbox--> 
+			<select id="smn_honorarios_id_name" name="smn_honorarios_id_name" size="5" style="width: 95%;">
+			</select>
+			<br>
+			<!--comandos del listbox-->
+			<div style="float: right; margin-right: 12px; padding-top: 7px">
+			<a href="javascript:pickSmnHonorariosId()" title="Añadir items a la lista">A&ntilde;adir</a>
+			<a href="javascript:removeSmnHonorariosId()" title="Remover un item de la lista">Remover</a>
+			</div>
+			<!--almacena los IDs de los items separados por ";"--> 
+			<input type="hidden" name="smn_honorarios_id" id="smn_honorarios_id" />
+			<input type="hidden" name="smn_honorarios_id_text" id="smn_honorarios_id_text" />
+		</td>
+	</tr>
+	
+	
 
 
 	</table>
@@ -160,11 +237,12 @@
 
 		$('.auxiliar').select2();
 		$('.contratante').select2();
-		$('.patologia').select2();
+		//$('.patologia').select2();
 		$('.documento').select2();
 
 		$('#estatus').hide();
 		$('#numerosolicitud').hide();
+		$('#honorarios').show();
 
 		if (id!="")
 			edit(id);
@@ -195,6 +273,11 @@
 	//mostrar la actualizacion de un registro
 	function insert()
 	{		
+			document.getElementById("smn_servicios_rf").value = listboxGetItemValues("smn_servicios_rf_name");
+			document.getElementById("smn_activo_fijo_rf").value = listboxGetItemValues("smn_activo_fijo_rf_name");
+			document.getElementById("smn_patologia_id").value = listboxGetItemValues("smn_patologia_id_name");
+			document.getElementById("smn_honorarios_id").value = listboxGetItemValues("smn_honorarios_id_name");
+
 			clearErrorMessages();
 			document.getElementById("grabar").disabled=true;
 			
@@ -341,10 +424,69 @@
 	}
 
 	function add_aux_pa(){
-
 		var uri = "/smn_salud/action/smn_registro/smn_solicitud_presupuesto/editor_pa/form?reference=true&source=address";
 		console.log(uri);
 		openDialog("editor_pa", uri, 850, 700);
+	}
+
+	//desplegar picklist de seleccion multiple
+	function pickSmnServiciosId(){
+		var url = "${def:context}/action/picklist/smnservicios/form";
+		pickOpen ('smn_servicios_rf_name','smn_servicios_rf',url, 500, 700);	
+	}	
+
+	//llamada por el picklist para añadir un item al listbox
+	function selectSmnServiciosId(id, title) {
+		listboxAddItem("smn_servicios_rf_name", id, title);
+	}
+	
+	//remover un item del listbox
+	function removeSmnServiciosId() {
+		if (document.getElementById("smn_servicios_rf_name").selectedIndex == -1) {
+			alertBox("Por favor seleccione el item de la lista que desea remover.","Continuar");
+			return;
+		}
+		listboxRemoveItem("smn_servicios_rf_name");
+	}
+
+	//desplegar picklist de seleccion multiple
+	function pickSmnEquiposId(){
+		var url = "${def:context}/action/picklist/smnactivo/form";
+		pickOpen ('smn_activo_fijo_rf_name','smn_activo_fijo_rf',url, 500, 700);	
+	}	
+
+	//llamada por el picklist para añadir un item al listbox
+	function selectSmnEquiposId(id, title) {
+		listboxAddItem("smn_activo_fijo_rf_name", id, title);
+	}
+	
+	//remover un item del listbox
+	function removeSmnEquiposId() {
+		if (document.getElementById("smn_activo_fijo_rf_name").selectedIndex == -1) {
+			alertBox("Por favor seleccione el item de la lista que desea remover.","Continuar");
+			return;
+		}
+		listboxRemoveItem("smn_activo_fijo_rf_name");
+	}
+
+	//desplegar picklist de seleccion multiple
+	function pickSmnPatologiasId(){
+		var url = "${def:context}/action/picklist/smnpatologia/form";
+		pickOpen ('smn_patologia_id_name','smn_patologia_id',url, 500, 700);	
+	}	
+
+	//llamada por el picklist para añadir un item al listbox
+	function selectSmnPatologiasId(id, title) {
+		listboxAddItem("smn_patologia_id_name", id, title);
+	}
+	
+	//remover un item del listbox
+	function removeSmnPatologiasId() {
+		if (document.getElementById("smn_patologia_id_name").selectedIndex == -1) {
+			alertBox("Por favor seleccione el item de la lista que desea remover.","Continuar");
+			return;
+		}
+		listboxRemoveItem("smn_patologia_id_name");
 	}
 
 	

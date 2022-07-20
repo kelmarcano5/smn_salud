@@ -1,0 +1,1 @@
+select * from smn_salud.smn_plan_quirurgico where smn_salud.smn_plan_quirurgico.smn_plan_quirurgico_id=${fld:smn_plan_quirurgico_id} AND smn_salud.smn_plan_quirurgico.plq_estatus='AC'

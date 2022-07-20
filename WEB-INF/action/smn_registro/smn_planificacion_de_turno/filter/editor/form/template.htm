@@ -87,8 +87,8 @@
 	<tr>
 		<td>${lbl:b_entities}*</td>
 		<td>
-			<select class="entidad" name="smn_entidades_rf" id="smn_entidades_rf" onchange="chgCombo1(smn_entidades_rf.options[smn_entidades_rf.selectedIndex].text,'smn_entidades_rf_name');chgCombo6(smn_entidades_rf.options[smn_entidades_rf.selectedIndex].text,'smn_entidades_rf_name');">
-				<option value="">[Cualquiera]</option>
+			<select class="entidad" name="smn_entidades_rf" id="smn_entidades_rf" onchange="chgCombo1(smn_entidades_rf.options[smn_entidades_rf.selectedIndex].text,'smn_entidades_rf_name');">
+				<option value="0">[Cualquiera]</option>
 				<smn_entidades_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
@@ -101,7 +101,7 @@
 		<td>${lbl:b_subsidiaries}*</td>
 		<td>
 			<select class="sucursal" name="smn_sucursales_rf" id="smn_sucursales_rf" onchange="chgCombo(smn_sucursales_rf.options[smn_sucursales_rf.selectedIndex].text,'smn_sucursales_rf_name');">
-				<option value="">[Cualquiera]</option>
+				<option value="0">[Cualquiera]</option>
 				<smn_sucursales_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
@@ -113,8 +113,8 @@
 	<tr>
 		<td>${lbl:b_service_area}*</td>
 		<td>
-			<select class="area" name="smn_areas_servicios_rf" id="smn_areas_servicios_rf" onchange="chgCombo3(smn_areas_servicios_rf.options[smn_areas_servicios_rf.selectedIndex].text,'smn_areas_servicios_rf_name');">
-				<option value="">[Cualquiera]</option>
+			<select class="area" name="smn_areas_servicios_rf" id="smn_areas_servicios_rf" onchange="chgCombo(smn_areas_servicios_rf.options[smn_areas_servicios_rf.selectedIndex].text,'smn_areas_servicios_rf_name');">
+				<option value="0">[Cualquiera]</option>
 				<smn_areas_servicios_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
@@ -127,7 +127,7 @@
 		<td>${lbl:b_service_unit}*</td>
 		<td>
 			<select class="unidad" name="smn_unidad_servicio_rf" id="smn_unidad_servicio_rf" onchange="chgCombo(smn_unidad_servicio_rf.options[smn_unidad_servicio_rf.selectedIndex].text,'smn_unidad_servicio_rf_name');">
-				<option value="">[Cualquiera]</option>
+				<option value="0">[Cualquiera]</option>
 				<smn_unidad_servicio_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
 

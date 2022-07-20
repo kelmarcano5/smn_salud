@@ -1,0 +1,26 @@
+select
+	smn_salud.smn_rel_solicitud_pre_honorarios.smn_rel_solicitud_pre_honorarios_id,
+	smn_salud.smn_rel_solicitud_pre_honorarios.smn_solicitud_presupuesto_id,
+	smn_base.smn_servicios.svc_descripcion as smn_servicios_rf,
+	smn_base.smn_componentes.cmp_descripcion as smn_componentes_rf,
+	smn_base.smn_grupos_prestadores.gpp_descripcion as smn_grupo_prestador_servicio_rf,
+	smn_base.smn_prestadores_servicios.prs_descripcion as smn_prestador_serviciorf,
+	smn_salud.smn_rel_solicitud_pre_honorarios.rsh_monto_solicitado_ml,
+	smn_salud.smn_rel_solicitud_pre_honorarios.rsh_monto_solicitado_ma,
+	smn_base.smn_tasas_de_cambio.tca_descripcion ||' - '|| smn_base.smn_tasas_de_cambio.tca_tasa_cambio as smn_tasa_id,
+	smn_base.smn_monedas.mon_nombre as smn_moneda_id,
+	smn_salud.smn_rel_solicitud_pre_honorarios.rsh_fecha_registro
+	
+from
+	smn_salud.smn_rel_solicitud_pre_honorarios
+	inner join smn_base.smn_servicios on smn_base.smn_servicios.smn_servicios_id = smn_salud.smn_rel_solicitud_pre_honorarios.smn_servicios_rf
+	inner join smn_base.smn_componentes on smn_base.smn_componentes.smn_componentes_id = smn_salud.smn_rel_solicitud_pre_honorarios.smn_componentes_rf
+	inner join smn_base.smn_grupos_prestadores on smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id = smn_salud.smn_rel_solicitud_pre_honorarios.smn_grupo_prestador_servicio_rf
+	inner join smn_base.smn_prestadores_servicios on smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id = smn_salud.smn_rel_solicitud_pre_honorarios.smn_prestador_serviciorf
+	left join smn_base.smn_monedas on smn_base.smn_monedas.smn_monedas_id = smn_salud.smn_rel_solicitud_pre_honorarios.smn_moneda_id
+	left join smn_base.smn_tasas_de_cambio on smn_base.smn_tasas_de_cambio.smn_tasas_de_cambio_id = smn_salud.smn_rel_solicitud_pre_honorarios.smn_tasa_id
+where
+	smn_rel_solicitud_pre_honorarios_id is not null
+	${filter}
+order by
+		smn_rel_solicitud_pre_honorarios_id

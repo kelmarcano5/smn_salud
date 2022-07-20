@@ -1,0 +1,77 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='7%'/>
+	<col width='3%'/>
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="18" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th>GE</th>
+		<th class='sortable' onclick='sortBy("smn_entidad_rf","query-smnplanquirurgico.sql")'>${lbl:b_entidades_rp}</th>
+		<th class='sortable' onclick='sortBy("smn_sucursal_rf","query-smnplanquirurgico.sql")'>${lbl:b_sucursal_rp}</th>
+		<th class='sortable' onclick='sortBy("smn_habitaciones_id","query-smnplanquirurgico.sql")'>${lbl:b_habitaciones}</th>
+		<th class='sortable' onclick='sortBy("smn_contratante_id","query-smnplanquirurgico.sql")'>${lbl:b_contratante}</th>
+		<th class='sortable' onclick='sortBy("smn_clase_auxiliar_rf","query-smnplanquirurgico.sql")'>${lbl:b_paciente_clase}</th>
+		<th class='sortable' onclick='sortBy("smn_auxiliar_rf","query-smnplanquirurgico.sql")'>${lbl:b_auxiliary_pa}</th>
+		<th class='sortable' onclick='sortBy("smn_patologia_rf","query-smnplanquirurgico.sql")'>${lbl:b_surgery}</th>
+		<th class='sortable' onclick='sortBy("plq_fecha_cirugia","query-smnplanquirurgico.sql")'>${lbl:b_surgery_date}</th>
+		<th class='sortable' onclick='sortBy("plq_hora_inicial","query-smnplanquirurgico.sql")'>${lbl:b_entry_hour}</th>
+		<th class='sortable' onclick='sortBy("plq_hora_final","query-smnplanquirurgico.sql")'>${lbl:b_exit_hour}</th>
+		<th class='sortable' onclick='sortBy("plq_cantidad_horas","query-smnplanquirurgico.sql")'>${lbl:b_quantity_hour}</th>
+		<th class='sortable' onclick='sortBy("plq_estatus","query-smnplanquirurgico.sql")'>${lbl:b_status}</th>
+		<th class='sortable' onclick='sortBy("plq_fecha_registro","query-smnplanquirurgico.sql")'>${lbl:b_store_date}</th>
+		<th>RE</th>
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_plan_quirurgico_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_plan_quirurgico_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_plan_quirurgico_id}')" title="${lbl:b_edit_button}"></td>
+		<td><img src="${def:context}/images/icongrid/Generar.png"  onclick="procesar('${fld:smn_plan_quirurgico_id}')" title="Generar Orden Medica"></td>
+		<td>${fld:smn_entidad_rf}</td>
+		<td>${fld:smn_sucursal_rf}</td>
+		<td>${fld:smn_habitaciones_id}</td>
+		<td>${fld:smn_contratante_id}</td>
+		<td>${fld:smn_clase_auxiliar_rf}</td>
+		<td>${fld:smn_auxiliar_rf}</td>
+		<td>${fld:smn_patologia_rf}</td>
+		<td>${fld:plq_fecha_cirugia@dd-MM-yyyy}</td>
+		<td align='left'>${fld:plq_hora_inicial}</td>
+		<td align='left'>${fld:plq_hora_final}</td>
+		<td>${fld:plq_cantidad_horas}</td>
+		<td align='left'>${fld:plq_estatus}</td>
+		<td>${fld:plq_fecha_registro@dd-MM-yyyy}</td>
+	    <td><img src="${def:context}/images/icongrid/Detalle-impuesto.png" onclick="relacion('${fld:smn_plan_quirurgico_id}','${fld:servicios_id}')" title="${lbl:b_relacion_plan_quirurgico_prest}"></td>
+
+	</tr>
+	</rows>
+
+</table>

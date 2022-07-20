@@ -1,0 +1,4 @@
+select * from smn_salud.smn_rel_solicitud_pre_equipos
+inner join smn_activo_fijo.smn_activo on smn_activo_fijo.smn_activo.smn_activo_id = smn_salud.smn_rel_solicitud_pre_equipos.smn_activo_fijo_rf
+inner join smn_salud.smn_solicitud_presupuesto on smn_salud.smn_solicitud_presupuesto.smn_solicitud_presupuesto_id = smn_salud.smn_rel_solicitud_pre_equipos.smn_solicitud_presupuesto_id
+WHERE smn_salud.smn_rel_solicitud_pre_equipos.smn_solicitud_presupuesto_id = ${fld:id}

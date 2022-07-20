@@ -1,0 +1,34 @@
+INSERT INTO smn_salud.smn_rel_solicitud_pre_honorarios
+(
+	smn_rel_solicitud_pre_honorarios_id,
+	smn_solicitud_presupuesto_id,
+	smn_servicios_rf,
+	smn_componentes_rf,
+	smn_grupo_prestador_servicio_rf,
+	smn_prestador_serviciorf,
+	rsh_monto_solicitado_ml,
+	rsh_monto_solicitado_ma,
+	smn_tasa_id,
+	smn_moneda_id,
+	rsh_idioma,
+	rsh_usuario,
+	rsh_fecha_registro,
+	rsh_hora
+)
+VALUES
+(
+	${seq:currval@smn_salud.seq_smn_rel_solicitud_pre_honorarios},
+	${fld:smn_solicitud_presupuesto_id},
+	${fld:smn_servicios_rf},
+	${fld:smn_componentes_rf},
+	${fld:smn_grupo_prestador_servicio_rf},
+	${fld:smn_prestador_serviciorf},
+	${fld:rsh_monto_solicitado_ml},
+	${fld:rsh_monto_solicitado_ma},
+	${fld:smn_tasa_id},
+	${fld:smn_moneda_id},
+	'${def:locale}',
+	'${def:user}',
+	{d '${def:date}'},
+	'${def:time}'
+)

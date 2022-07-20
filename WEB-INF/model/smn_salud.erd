@@ -32,6 +32,7 @@
       <linkedPath></linkedPath>
       <tableName>aad_estado_presupuesto</tableName>
       <logicalName></logicalName>
+      <description></description>
       <columns>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>smn_estado_presupuesto_id</columnName>
@@ -146,8 +147,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>456</x>
-        <y>40</y>
+        <x>824</x>
+        <y>58</y>
       </constraint>
       <sourceConnections/>
       <targetConnections/>
@@ -361,7 +362,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>9042</x>
+        <x>9452</x>
         <y>40</y>
       </constraint>
       <sourceConnections>
@@ -389,7 +390,7 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>9447</x>
+              <x>9857</x>
               <y>955</y>
             </constraint>
             <sourceConnections/>
@@ -418,7 +419,7 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>14199</x>
+                    <x>15359</x>
                     <y>40</y>
                   </constraint>
                   <sourceConnections>
@@ -447,7 +448,7 @@
                         <constraint>
                           <height>-1</height>
                           <width>-1</width>
-                          <x>18620</x>
+                          <x>19822</x>
                           <y>955</y>
                         </constraint>
                         <sourceConnections/>
@@ -475,7 +476,7 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>21299</x>
+                                <x>22605</x>
                                 <y>40</y>
                               </constraint>
                               <sourceConnections>
@@ -503,7 +504,7 @@
                                     <constraint>
                                       <height>-1</height>
                                       <width>-1</width>
-                                      <x>21290</x>
+                                      <x>22596</x>
                                       <y>955</y>
                                     </constraint>
                                     <sourceConnections/>
@@ -685,7 +686,7 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>22520</x>
+                                <x>23814</x>
                                 <y>40</y>
                               </constraint>
                               <sourceConnections>
@@ -714,7 +715,7 @@
                                     <constraint>
                                       <height>-1</height>
                                       <width>-1</width>
-                                      <x>24729</x>
+                                      <x>26213</x>
                                       <y>955</y>
                                     </constraint>
                                     <sourceConnections/>
@@ -743,7 +744,7 @@
                                           <constraint>
                                             <height>-1</height>
                                             <width>-1</width>
-                                            <x>26917</x>
+                                            <x>28590</x>
                                             <y>40</y>
                                           </constraint>
                                           <sourceConnections>
@@ -771,7 +772,7 @@
                                                 <constraint>
                                                   <height>-1</height>
                                                   <width>-1</width>
-                                                  <x>26929</x>
+                                                  <x>28602</x>
                                                   <y>955</y>
                                                 </constraint>
                                                 <sourceConnections/>
@@ -1145,7 +1146,7 @@
                               <constraint>
                                 <height>-1</height>
                                 <width>-1</width>
-                                <x>16480</x>
+                                <x>17529</x>
                                 <y>40</y>
                               </constraint>
                               <sourceConnections>
@@ -1173,7 +1174,7 @@
                                     <constraint>
                                       <height>-1</height>
                                       <width>-1</width>
-                                      <x>14985</x>
+                                      <x>15900</x>
                                       <y>955</y>
                                     </constraint>
                                     <sourceConnections/>
@@ -1201,7 +1202,7 @@
                                           <constraint>
                                             <height>-1</height>
                                             <width>-1</width>
-                                            <x>13478</x>
+                                            <x>14258</x>
                                             <y>40</y>
                                           </constraint>
                                           <sourceConnections>
@@ -1229,7 +1230,7 @@
                                                 <constraint>
                                                   <height>-1</height>
                                                   <width>-1</width>
-                                                  <x>13466</x>
+                                                  <x>14246</x>
                                                   <y>955</y>
                                                 </constraint>
                                                 <sourceConnections/>
@@ -1892,7 +1893,7 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>9394</x>
+                    <x>9804</x>
                     <y>40</y>
                   </constraint>
                   <sourceConnections>
@@ -2955,7 +2956,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>3815</x>
+        <x>4203</x>
         <y>40</y>
       </constraint>
       <sourceConnections>
@@ -2983,7 +2984,7 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>4052</x>
+              <x>4440</x>
               <y>955</y>
             </constraint>
             <sourceConnections/>
@@ -3012,7 +3013,7 @@
                   <constraint>
                     <height>-1</height>
                     <width>-1</width>
-                    <x>4240</x>
+                    <x>4628</x>
                     <y>40</y>
                   </constraint>
                   <sourceConnections>
@@ -3605,7 +3606,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>4622</x>
+        <x>3815</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -3813,7 +3814,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>5042</x>
+        <x>5055</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -4146,7 +4147,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>5485</x>
+        <x>5543</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -4209,7 +4210,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>5872</x>
+        <x>5974</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -4574,7 +4575,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>6410</x>
+        <x>6556</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -4757,7 +4758,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>6859</x>
+        <x>7049</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -5010,7 +5011,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>7319</x>
+        <x>7553</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -5123,7 +5124,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>7727</x>
+        <x>8005</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -5296,7 +5297,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>8140</x>
+        <x>8462</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -5480,8 +5481,8 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>873</x>
-        <y>40</y>
+        <x>666</x>
+        <y>417</y>
       </constraint>
       <sourceConnections>
         <net.java.amateras.db.visual.model.ForeignKeyModel>
@@ -5627,6 +5628,7 @@
       <linkedPath></linkedPath>
       <tableName>smn_documento_afiliados</tableName>
       <logicalName></logicalName>
+      <description></description>
       <columns>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>smn_documento_afiliados_id</columnName>
@@ -5721,6 +5723,7 @@
           <size>2</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
+          <description></description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
@@ -5777,7 +5780,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>8579</x>
+        <x>8945</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -5880,7 +5883,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>9837</x>
+        <x>10247</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -6003,7 +6006,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>10178</x>
+        <x>10588</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -6116,7 +6119,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>10551</x>
+        <x>10961</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -6279,7 +6282,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>10920</x>
+        <x>11330</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -6412,7 +6415,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>11360</x>
+        <x>11770</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -6926,7 +6929,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>11772</x>
+        <x>12182</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -7189,7 +7192,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>12198</x>
+        <x>12608</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -7525,7 +7528,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>12636</x>
+        <x>13046</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -7940,7 +7943,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>13057</x>
+        <x>13467</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -8343,7 +8346,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>13829</x>
+        <x>13888</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -8408,7 +8411,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>14566</x>
+        <x>14609</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -8511,7 +8514,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>14910</x>
+        <x>14953</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -8614,7 +8617,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>15316</x>
+        <x>15726</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -8767,7 +8770,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>15700</x>
+        <x>16110</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -8880,7 +8883,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>16081</x>
+        <x>16491</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -9053,7 +9056,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>16849</x>
+        <x>16890</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -9166,7 +9169,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>17184</x>
+        <x>17225</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -9239,7 +9242,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>17488</x>
+        <x>17898</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -9248,84 +9251,113 @@
       <linkedPath></linkedPath>
       <tableName>smn_patologia</tableName>
       <logicalName></logicalName>
+      <description>${lbl:b_pathology}</description>
       <columns>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>smn_patologia_id</columnName>
           <logicalName></logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel/columns/net.java.amateras.db.visual.model.ColumnModel/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>INTEGER</name>
+            <logicalName>Integer</logicalName>
+            <supportSize>false</supportSize>
+            <type>4</type>
+          </columnType>
           <size>10</size>
           <notNull>true</notNull>
-          <primaryKey>false</primaryKey>
+          <primaryKey>true</primaryKey>
+          <description>${lbl:b_pathology}</description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>pat_codigo</columnName>
           <logicalName></logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>VARCHAR</name>
+            <logicalName>String</logicalName>
+            <supportSize>true</supportSize>
+            <type>12</type>
+          </columnType>
           <size>48</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
+          <description>${lbl:b_code}</description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>pat_descripcion</columnName>
           <logicalName></logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
           <size>100</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
+          <description>${lbl:b_description}</description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>pat_estatus</columnName>
           <logicalName></logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>CHARACTER</name>
+            <logicalName>Character</logicalName>
+            <supportSize>true</supportSize>
+            <type>1</type>
+          </columnType>
           <size>2</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
+          <description>${lbl:b_estatus}@{AC=${lbl:b_active}|IN=${lbl:b_inactive}}</description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>pat_idioma</columnName>
           <logicalName></logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
           <size>2</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
+          <description>${lbl:s_profile_lang}@{${def:locale}}</description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>pat_usuario</columnName>
           <logicalName></logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
           <size>10</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
+          <description>${lbl:b_users}@{${def:user}}</description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>pat_fecha_registro</columnName>
           <logicalName></logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel/columns/net.java.amateras.db.visual.model.ColumnModel[6]/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>DATE</name>
+            <logicalName>Date</logicalName>
+            <supportSize>false</supportSize>
+            <type>91</type>
+          </columnType>
           <size>13</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
+          <description>${lbl:b_store_date}@{${def:date}}</description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>pat_hora</columnName>
           <logicalName></logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
           <size>8</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
+          <description>${lbl:s_loginhist_col2}@{${def:time}}</description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
@@ -9354,7 +9386,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>17814</x>
+        <x>18247</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -9363,14 +9395,16 @@
       <linkedPath></linkedPath>
       <tableName>smn_planificacion_de_turno</tableName>
       <logicalName></logicalName>
+      <description></description>
       <columns>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>smn_plan_turno_id</columnName>
           <logicalName></logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel/columns/net.java.amateras.db.visual.model.ColumnModel/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[44]/columns/net.java.amateras.db.visual.model.ColumnModel/columnType"/>
           <size>10</size>
           <notNull>true</notNull>
-          <primaryKey>false</primaryKey>
+          <primaryKey>true</primaryKey>
+          <description></description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
@@ -9527,7 +9561,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>18167</x>
+        <x>18605</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -9536,14 +9570,16 @@
       <linkedPath></linkedPath>
       <tableName>smn_prestacion_servicio_medico_detalle</tableName>
       <logicalName></logicalName>
+      <description></description>
       <columns>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>smn_prestacion_servicio_medico_detalle_id</columnName>
           <logicalName></logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel/columns/net.java.amateras.db.visual.model.ColumnModel/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[44]/columns/net.java.amateras.db.visual.model.ColumnModel/columnType"/>
           <size>10</size>
           <notNull>true</notNull>
-          <primaryKey>false</primaryKey>
+          <primaryKey>true</primaryKey>
+          <description></description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
@@ -9870,7 +9906,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>18661</x>
+        <x>19127</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -10284,7 +10320,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>19123</x>
+        <x>19589</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -10617,7 +10653,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>19594</x>
+        <x>20060</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -11000,7 +11036,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>20032</x>
+        <x>20498</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -11243,7 +11279,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>20454</x>
+        <x>20920</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -11436,7 +11472,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>20885</x>
+        <x>21351</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -11641,7 +11677,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>21680</x>
+        <x>21765</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -11704,7 +11740,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>22139</x>
+        <x>22224</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -11767,7 +11803,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>22904</x>
+        <x>22986</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -11880,7 +11916,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>23305</x>
+        <x>23387</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -11994,7 +12030,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>23732</x>
+        <x>24198</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -12057,7 +12093,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>24120</x>
+        <x>24586</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -12152,7 +12188,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>24493</x>
+        <x>24959</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -12275,7 +12311,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>24922</x>
+        <x>25388</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -12448,7 +12484,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>25312</x>
+        <x>25778</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -12511,7 +12547,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>25718</x>
+        <x>26184</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -12704,7 +12740,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>26087</x>
+        <x>26553</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -12927,7 +12963,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>26511</x>
+        <x>26977</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -13090,7 +13126,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>27280</x>
+        <x>27383</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -13368,7 +13404,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>27693</x>
+        <x>27796</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -13631,7 +13667,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>29666</x>
+        <x>31286</x>
         <y>955</y>
       </constraint>
       <sourceConnections/>
@@ -13659,7 +13695,7 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>29666</x>
+              <x>31286</x>
               <y>40</y>
             </constraint>
             <sourceConnections>
@@ -13976,7 +14012,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>28106</x>
+        <x>28209</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -14120,7 +14156,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>28487</x>
+        <x>28953</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -14223,7 +14259,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>28831</x>
+        <x>29297</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -14232,6 +14268,7 @@
       <linkedPath></linkedPath>
       <tableName>smn_solicitud_presupuesto</tableName>
       <logicalName></logicalName>
+      <description></description>
       <columns>
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>smn_solicitud_presupuesto_id</columnName>
@@ -14341,6 +14378,7 @@
           <size>2</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
+          <description></description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
@@ -14361,6 +14399,7 @@
           <size>13</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
+          <description></description>
           <autoIncrement>false</autoIncrement>
           <defaultValue></defaultValue>
         </net.java.amateras.db.visual.model.ColumnModel>
@@ -14448,7 +14487,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>29279</x>
+        <x>29745</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -14551,7 +14590,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>30098</x>
+        <x>30132</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -14654,7 +14693,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>30471</x>
+        <x>30505</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -14769,7 +14808,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>30860</x>
+        <x>30894</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -14883,7 +14922,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>31252</x>
+        <x>31718</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -15024,7 +15063,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>31606</x>
+        <x>32072</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -15133,7 +15172,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>32496</x>
+        <x>32519</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -15205,7 +15244,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>32877</x>
+        <x>32900</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -15391,7 +15430,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>33347</x>
+        <x>33370</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -15543,7 +15582,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>33738</x>
+        <x>34204</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -15600,7 +15639,12 @@
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>mac_idioma</columnName>
           <logicalName>Columna4</logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[92]/columns/net.java.amateras.db.visual.model.ColumnModel[5]/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>CHARACTER</name>
+            <logicalName>Character</logicalName>
+            <supportSize>true</supportSize>
+            <type>1</type>
+          </columnType>
           <size>2</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
@@ -15611,7 +15655,12 @@
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>mac_usuario_id</columnName>
           <logicalName>Columna5</logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[92]/columns/net.java.amateras.db.visual.model.ColumnModel[6]/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>VARCHAR</name>
+            <logicalName>String</logicalName>
+            <supportSize>true</supportSize>
+            <type>12</type>
+          </columnType>
           <size>10</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
@@ -15622,7 +15671,12 @@
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>mac_fecha_registro</columnName>
           <logicalName>Columna6</logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[92]/columns/net.java.amateras.db.visual.model.ColumnModel[7]/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>DATE</name>
+            <logicalName>Date</logicalName>
+            <supportSize>false</supportSize>
+            <type>91</type>
+          </columnType>
           <size>10</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
@@ -15633,7 +15687,7 @@
         <net.java.amateras.db.visual.model.ColumnModel>
           <columnName>mac_hora</columnName>
           <logicalName>Columna7</logicalName>
-          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[92]/columns/net.java.amateras.db.visual.model.ColumnModel[5]/columnType"/>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
           <size>8</size>
           <notNull>true</notNull>
           <primaryKey>false</primaryKey>
@@ -15664,7 +15718,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>34562</x>
+        <x>34597</x>
         <y>40</y>
       </constraint>
       <sourceConnections/>
@@ -15774,7 +15828,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>32042</x>
+        <x>33750</x>
         <y>955</y>
       </constraint>
       <sourceConnections/>
@@ -15802,7 +15856,7 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>32053</x>
+              <x>33761</x>
               <y>40</y>
             </constraint>
             <sourceConnections>
@@ -16174,7 +16228,7 @@
       <constraint>
         <height>-1</height>
         <width>-1</width>
-        <x>34151</x>
+        <x>35498</x>
         <y>955</y>
       </constraint>
       <sourceConnections/>
@@ -16202,7 +16256,7 @@
             <constraint>
               <height>-1</height>
               <width>-1</width>
-              <x>34131</x>
+              <x>35478</x>
               <y>40</y>
             </constraint>
             <sourceConnections>
@@ -16240,7 +16294,12 @@
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>smn_servicios_rf</columnName>
                 <logicalName>Columna3</logicalName>
-                <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../../../../net.java.amateras.db.visual.model.TableModel[95]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[3]/columnType"/>
+                <columnType class="net.java.amateras.db.dialect.ColumnType">
+                  <name>INTEGER</name>
+                  <logicalName>Integer</logicalName>
+                  <supportSize>false</supportSize>
+                  <type>4</type>
+                </columnType>
                 <size>10</size>
                 <notNull>true</notNull>
                 <primaryKey>false</primaryKey>
@@ -16251,7 +16310,12 @@
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>smn_componentes_rf</columnName>
                 <logicalName>Columna4</logicalName>
-                <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../../../../net.java.amateras.db.visual.model.TableModel[95]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[3]/columnType"/>
+                <columnType class="net.java.amateras.db.dialect.ColumnType">
+                  <name>INTEGER</name>
+                  <logicalName>Integer</logicalName>
+                  <supportSize>false</supportSize>
+                  <type>4</type>
+                </columnType>
                 <size>10</size>
                 <notNull>true</notNull>
                 <primaryKey>false</primaryKey>
@@ -16262,7 +16326,7 @@
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>smn_grupo_prestador_servicio_rf</columnName>
                 <logicalName>Columna5</logicalName>
-                <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../../../../net.java.amateras.db.visual.model.TableModel[95]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[5]/columnType"/>
+                <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
                 <size>10</size>
                 <notNull>true</notNull>
                 <primaryKey>false</primaryKey>
@@ -16273,7 +16337,7 @@
               <net.java.amateras.db.visual.model.ColumnModel>
                 <columnName>smn_prestador_servicio_rf</columnName>
                 <logicalName>Columna6</logicalName>
-                <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../../../../net.java.amateras.db.visual.model.TableModel[95]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[3]/columnType"/>
+                <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
                 <size>10</size>
                 <notNull>true</notNull>
                 <primaryKey>false</primaryKey>
@@ -16523,6 +16587,643 @@
       <isSP>false</isSP>
     </net.java.amateras.db.visual.model.TableModel>
     <net.java.amateras.db.visual.model.TableModel reference="../net.java.amateras.db.visual.model.TableModel[97]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source"/>
+    <net.java.amateras.db.visual.model.TableModel>
+      <listeners serialization="custom">
+        <java.beans.PropertyChangeSupport>
+          <default>
+            <source class="net.java.amateras.db.visual.model.TableModel" reference="../../../.."/>
+            <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
+          </default>
+          <null/>
+        </java.beans.PropertyChangeSupport>
+      </listeners>
+      <constraint>
+        <height>-1</height>
+        <width>-1</width>
+        <x>35051</x>
+        <y>40</y>
+      </constraint>
+      <sourceConnections/>
+      <targetConnections/>
+      <error></error>
+      <linkedPath></linkedPath>
+      <tableName>smn_rel_plan_quirurgico_servicios</tableName>
+      <logicalName>Tabla99</logicalName>
+      <description></description>
+      <columns>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_rel_plan_quirurgico_servicios_id</columnName>
+          <logicalName>Columna1</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>INTEGER</name>
+            <logicalName>Integer</logicalName>
+            <supportSize>false</supportSize>
+            <type>4</type>
+          </columnType>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>true</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_plan_quirurgico_id</columnName>
+          <logicalName>Columna2</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>INTEGER</name>
+            <logicalName>Integer</logicalName>
+            <supportSize>false</supportSize>
+            <type>4</type>
+          </columnType>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_servicios_rf</columnName>
+          <logicalName>Columna3</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_componente_rf</columnName>
+          <logicalName>Columna4</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_grupo_prestador_servicio_rf</columnName>
+          <logicalName>Columna5</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+      </columns>
+      <indices/>
+      <backgroundColor>
+        <red>224</red>
+        <green>224</green>
+        <blue>224</blue>
+      </backgroundColor>
+      <sql></sql>
+      <isSP>false</isSP>
+    </net.java.amateras.db.visual.model.TableModel>
+    <net.java.amateras.db.visual.model.TableModel>
+      <listeners serialization="custom">
+        <java.beans.PropertyChangeSupport>
+          <default>
+            <source class="net.java.amateras.db.visual.model.TableModel" reference="../../../.."/>
+            <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
+          </default>
+          <null/>
+        </java.beans.PropertyChangeSupport>
+      </listeners>
+      <constraint>
+        <height>-1</height>
+        <width>-1</width>
+        <x>35909</x>
+        <y>40</y>
+      </constraint>
+      <sourceConnections/>
+      <targetConnections/>
+      <error></error>
+      <linkedPath></linkedPath>
+      <tableName>smn_rel_plan_quirurgico_activo_fijo</tableName>
+      <logicalName>Tabla100</logicalName>
+      <description></description>
+      <columns>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_rel_plan_quirurgico_activo_fijo_id</columnName>
+          <logicalName>Columna1</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[99]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>true</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_plan_quirurgico_id</columnName>
+          <logicalName>Columna2</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[99]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_activo_fijo_rf</columnName>
+          <logicalName>Columna3</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[99]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+      </columns>
+      <indices/>
+      <backgroundColor>
+        <red>224</red>
+        <green>224</green>
+        <blue>224</blue>
+      </backgroundColor>
+      <sql></sql>
+      <isSP>false</isSP>
+    </net.java.amateras.db.visual.model.TableModel>
+    <net.java.amateras.db.visual.model.TableModel>
+      <listeners serialization="custom">
+        <java.beans.PropertyChangeSupport>
+          <default>
+            <source class="net.java.amateras.db.visual.model.TableModel" reference="../../../.."/>
+            <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
+          </default>
+          <null/>
+        </java.beans.PropertyChangeSupport>
+      </listeners>
+      <constraint>
+        <height>-1</height>
+        <width>-1</width>
+        <x>36340</x>
+        <y>40</y>
+      </constraint>
+      <sourceConnections/>
+      <targetConnections/>
+      <error></error>
+      <linkedPath></linkedPath>
+      <tableName>smn_rel_plan_quirurgico_patologia</tableName>
+      <logicalName>Tabla101</logicalName>
+      <description></description>
+      <columns>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_rel_plan_quirurgico_patologia_id</columnName>
+          <logicalName>Columna1</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[99]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>true</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_plan_quirurgico_id</columnName>
+          <logicalName>Columna2</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[99]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_patologias_id</columnName>
+          <logicalName>Columna3</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[99]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+      </columns>
+      <indices/>
+      <backgroundColor>
+        <red>224</red>
+        <green>224</green>
+        <blue>224</blue>
+      </backgroundColor>
+      <sql></sql>
+      <isSP>false</isSP>
+    </net.java.amateras.db.visual.model.TableModel>
+    <net.java.amateras.db.visual.model.TableModel>
+      <listeners serialization="custom">
+        <java.beans.PropertyChangeSupport>
+          <default>
+            <source class="net.java.amateras.db.visual.model.TableModel" reference="../../../.."/>
+            <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
+          </default>
+          <null/>
+        </java.beans.PropertyChangeSupport>
+      </listeners>
+      <constraint>
+        <height>-1</height>
+        <width>-1</width>
+        <x>52</x>
+        <y>205</y>
+      </constraint>
+      <sourceConnections/>
+      <targetConnections/>
+      <error></error>
+      <linkedPath></linkedPath>
+      <tableName>smn_rel_solicitud_pre_servicios</tableName>
+      <logicalName>Tabla102</logicalName>
+      <description></description>
+      <columns>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_rel_solicitud_pre_servicios_id</columnName>
+          <logicalName>Columna1</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>INTEGER</name>
+            <logicalName>Integer</logicalName>
+            <supportSize>false</supportSize>
+            <type>4</type>
+          </columnType>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>true</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_solicitud_presupuesto_id</columnName>
+          <logicalName>Columna2</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>INTEGER</name>
+            <logicalName>Integer</logicalName>
+            <supportSize>false</supportSize>
+            <type>4</type>
+          </columnType>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_servicios_rf</columnName>
+          <logicalName>Columna3</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+      </columns>
+      <indices/>
+      <backgroundColor>
+        <red>224</red>
+        <green>224</green>
+        <blue>224</blue>
+      </backgroundColor>
+      <sql></sql>
+      <isSP>false</isSP>
+    </net.java.amateras.db.visual.model.TableModel>
+    <net.java.amateras.db.visual.model.TableModel>
+      <listeners serialization="custom">
+        <java.beans.PropertyChangeSupport>
+          <default>
+            <source class="net.java.amateras.db.visual.model.TableModel" reference="../../../.."/>
+            <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
+          </default>
+          <null/>
+        </java.beans.PropertyChangeSupport>
+      </listeners>
+      <constraint>
+        <height>-1</height>
+        <width>-1</width>
+        <x>57</x>
+        <y>298</y>
+      </constraint>
+      <sourceConnections/>
+      <targetConnections/>
+      <error></error>
+      <linkedPath></linkedPath>
+      <tableName>smn_rel_solicitud_pre_equipos</tableName>
+      <logicalName>Tabla103</logicalName>
+      <description></description>
+      <columns>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_rel_solicitud_pre_equipos_id</columnName>
+          <logicalName>Columna1</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[102]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>true</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_solicitud_presupuesto_id</columnName>
+          <logicalName>Columna2</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[102]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_activo_fijo_rf</columnName>
+          <logicalName>Columna3</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[102]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+      </columns>
+      <indices/>
+      <backgroundColor>
+        <red>224</red>
+        <green>224</green>
+        <blue>224</blue>
+      </backgroundColor>
+      <sql></sql>
+      <isSP>false</isSP>
+    </net.java.amateras.db.visual.model.TableModel>
+    <net.java.amateras.db.visual.model.TableModel>
+      <listeners serialization="custom">
+        <java.beans.PropertyChangeSupport>
+          <default>
+            <source class="net.java.amateras.db.visual.model.TableModel" reference="../../../.."/>
+            <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
+          </default>
+          <null/>
+        </java.beans.PropertyChangeSupport>
+      </listeners>
+      <constraint>
+        <height>-1</height>
+        <width>-1</width>
+        <x>55</x>
+        <y>388</y>
+      </constraint>
+      <sourceConnections/>
+      <targetConnections/>
+      <error></error>
+      <linkedPath></linkedPath>
+      <tableName>smn_rel_solicitud_pre_patologias</tableName>
+      <logicalName>Tabla104</logicalName>
+      <description></description>
+      <columns>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_rel_solicitud_pre_patologias_id</columnName>
+          <logicalName>Columna1</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[102]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>true</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_solicitud_presupuesto_id</columnName>
+          <logicalName>Columna2</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[102]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_patologias_id</columnName>
+          <logicalName>Columna3</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[102]/columns/net.java.amateras.db.visual.model.ColumnModel[2]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description></description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+      </columns>
+      <indices/>
+      <backgroundColor>
+        <red>224</red>
+        <green>224</green>
+        <blue>224</blue>
+      </backgroundColor>
+      <sql></sql>
+      <isSP>false</isSP>
+    </net.java.amateras.db.visual.model.TableModel>
+    <net.java.amateras.db.visual.model.TableModel>
+      <listeners serialization="custom">
+        <java.beans.PropertyChangeSupport>
+          <default>
+            <source class="net.java.amateras.db.visual.model.TableModel" reference="../../../.."/>
+            <propertyChangeSupportSerializedDataVersion>2</propertyChangeSupportSerializedDataVersion>
+          </default>
+          <null/>
+        </java.beans.PropertyChangeSupport>
+      </listeners>
+      <constraint>
+        <height>-1</height>
+        <width>-1</width>
+        <x>61</x>
+        <y>505</y>
+      </constraint>
+      <sourceConnections/>
+      <targetConnections/>
+      <error></error>
+      <linkedPath></linkedPath>
+      <tableName>smn_rel_solicitud_pre_honorarios</tableName>
+      <logicalName>Tabla105</logicalName>
+      <description>${lbl:b_budget_request_honorary}</description>
+      <columns>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_rel_solicitud_pre_honorarios_id</columnName>
+          <logicalName>Columna1</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[97]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>true</primaryKey>
+          <description>${lbl:b_budget_request}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_solicitud_presupuesto_id</columnName>
+          <logicalName>Columna2</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[97]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:b_budget_request_honorary}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_servicios_rf</columnName>
+          <logicalName>Columna3</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[97]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[3]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:b_services}@{select smn_base.smn_servicios.smn_servicios_id as id, smn_base.smn_servicios.svc_descripcion as item from smn_base.smn_servicios order by smn_base.smn_servicios.svc_descripcion}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_componentes_rf</columnName>
+          <logicalName>Columna4</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[97]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:b_component}@{select smn_base.smn_componentes.smn_componentes_id as id, smn_base.smn_componentes.cmp_codigo ||&apos; - &apos;|| smn_base.smn_componentes.cmp_descripcion as item from smn_base.smn_componentes}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_grupo_prestador_servicio_rf</columnName>
+          <logicalName>Columna5</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[97]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:b_grupo_prestador_servicio}@{select smn_base.smn_grupos_prestadores.smn_grupos_prestadores_id as id, smn_base.smn_grupos_prestadores.gpp_codigo || &apos; - &apos; || smn_base.smn_grupos_prestadores.gpp_descripcion as item from smn_base.smn_grupos_prestadores order by smn_base.smn_grupos_prestadores.gpp_descripcion}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_prestador_serviciorf</columnName>
+          <logicalName>Columna6</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[97]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:b_service_provider}@{select smn_base.smn_prestadores_servicios.smn_prestadores_servicios_id as id, smn_base.smn_prestadores_servicios.prs_codigo || &apos; - &apos; || smn_base.smn_prestadores_servicios.prs_descripcion as item from smn_base.smn_prestadores_servicios order by smn_base.smn_prestadores_servicios.prs_descripcion}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>rsh_monto_solicitado_ml</columnName>
+          <logicalName>Columna7</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType">
+            <name>DOUBLE PRECISION</name>
+            <logicalName>Real</logicalName>
+            <supportSize>false</supportSize>
+            <type>8</type>
+          </columnType>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:b_amount_ml}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>rsh_monto_solicitado_ma</columnName>
+          <logicalName>Columna8</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../net.java.amateras.db.visual.model.ColumnModel[7]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:b_amount_ma}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_tasa_id</columnName>
+          <logicalName>Columna9</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[97]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <size>10</size>
+          <notNull>false</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:b_tasa}@{select smn_base.smn_tasas_de_cambio.smn_tasas_de_cambio_id as id, smn_base.smn_tasas_de_cambio.tca_fecha_vigencia ||&apos; TASA: &apos;|| smn_base.smn_tasas_de_cambio.tca_descripcion as item,  smn_base.smn_tasas_de_cambio.tca_tasa_cambio as tasa_cambio from smn_base.smn_tasas_de_cambio}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>smn_moneda_id</columnName>
+          <logicalName>Columna10</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[97]/targetConnections/net.java.amateras.db.visual.model.ForeignKeyModel/source/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <size>10</size>
+          <notNull>false</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:b_coins}@{select smn_base.smn_monedas.smn_monedas_id as id, smn_base.smn_monedas.mon_codigo|| &apos; - &apos; || smn_base.smn_monedas.mon_nombre as item from smn_base.smn_monedas}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>rsh_idioma</columnName>
+          <logicalName>Columna11</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[93]/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <size>2</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:s_profile_lang}@{${def:locale}}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>rsh_usuario</columnName>
+          <logicalName>Columna12</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[93]/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:b_users}@{${def:user}}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>rsh_fecha_registro</columnName>
+          <logicalName>Columna13</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[93]/columns/net.java.amateras.db.visual.model.ColumnModel[6]/columnType"/>
+          <size>10</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:b_store_date}@{${def:date}}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+        <net.java.amateras.db.visual.model.ColumnModel>
+          <columnName>rsh_hora</columnName>
+          <logicalName>Columna14</logicalName>
+          <columnType class="net.java.amateras.db.dialect.ColumnType" reference="../../../../net.java.amateras.db.visual.model.TableModel[93]/columns/net.java.amateras.db.visual.model.ColumnModel[4]/columnType"/>
+          <size>8</size>
+          <notNull>true</notNull>
+          <primaryKey>false</primaryKey>
+          <description>${lbl:s_loginhist_col2}@{${def:time}}</description>
+          <autoIncrement>false</autoIncrement>
+          <defaultValue></defaultValue>
+        </net.java.amateras.db.visual.model.ColumnModel>
+      </columns>
+      <indices/>
+      <backgroundColor>
+        <red>224</red>
+        <green>224</green>
+        <blue>224</blue>
+      </backgroundColor>
+      <sql></sql>
+      <isSP>false</isSP>
+    </net.java.amateras.db.visual.model.TableModel>
   </children>
   <dommains/>
   <dialectName>PostgreSQL</dialectName>

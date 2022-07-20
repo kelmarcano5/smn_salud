@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<validator id='filter.params' onerror='/action/error/validation/ajax'>
+	<parameter id='smn_plan_quirurgico_id' type='integer' required='false' label='${lbl:b_plan_quirurgico}' maxlen='10'/>
+	<parameter id='smn_servicios_rf' type='integer' required='false' label='${lbl:b_services}' maxlen='10'/>
+	<parameter id='smn_componentes_rf' type='integer' required='false' label='${lbl:b_component}' maxlen='10'/>
+	<parameter id='smn_grupo_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_grupo_prestador_servicio}' maxlen='10'/>
+	<parameter id='smn_prestador_servicio_rf' type='integer' required='false' label='${lbl:b_service_provider}' maxlen='10'/>
+</validator>

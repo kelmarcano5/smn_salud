@@ -16,14 +16,13 @@
 	<col width='10%'/>
 	<col width='10%'/>
     <col width='3%'/>
-
+    <col width='3%'/>
 	<!--toolbar-->
 	<tr>
-		<th colspan="15" id="encabezado_tabla">
+		<th colspan="16" id="encabezado_tabla">
 			${req:controls} 
 		</th>
 	</tr>
-
 	<!--encabezados-->
 	<tr>
 		<th></th>
@@ -41,8 +40,8 @@
 		<th class='sortable' onclick='sortBy("spr_estatus","query-smnsolicitudpresupuesto.sql")'>${lbl:b_estatus}</th>
 		<th class='sortable' onclick='sortBy("spr_fecha_registro","query-smnsolicitudpresupuesto.sql")'>${lbl:b_store_date}</th>
         <th>PR</th>
+        <th>HO</th>
 	</tr>
-
 	<!--data-->
 	<rows>
 	<tr>
@@ -61,7 +60,7 @@
 		<td align='center'>${fld:spr_estatus}</td>
 		<td>${fld:spr_fecha_registro@dd-MM-yyyy}</td>
         <td><img src="${def:context}/images/icongrid/Detalle-impuesto.png"  onclick="presupuesto('${fld:smn_solicitud_presupuesto_id}','${fld:smn_presupuesto_id}')" title="Ver Presupuesto"></td>
+        <td><img src="${def:context}/images/icongrid/Detalle-impuesto.png"  onclick="honorarios('${fld:smn_solicitud_presupuesto_id}','${fld:smn_presupuesto_id}')" title="Ver Honorarios"></td>
 	</tr>
 	</rows>
-
 </table>

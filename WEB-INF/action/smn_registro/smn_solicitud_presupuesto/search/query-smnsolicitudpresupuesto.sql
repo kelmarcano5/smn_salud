@@ -5,6 +5,7 @@ select
 	when smn_salud.smn_solicitud_presupuesto.spr_estatus='GE' then '${lbl:b_generado}'
 	when smn_salud.smn_solicitud_presupuesto.spr_estatus='AP' then '${lbl:b_aprobado}'
 	when smn_salud.smn_solicitud_presupuesto.spr_estatus='EN' then '${lbl:b_enviado}'
+	when smn_salud.smn_solicitud_presupuesto.spr_estatus='RE' then '${lbl:b_registrado}'
 	end as spr_estatus,
 	smn_salud.smn_solicitud_presupuesto.spr_solicitud,
 	smn_base.smn_auxiliar.aux_codigo||''|| smn_base.smn_auxiliar.aux_descripcion as smn_auxiliar,
@@ -19,10 +20,10 @@ select
 	smn_salud.smn_documento.doc_codigo ||' - '|| smn_salud.smn_documento.doc_nombre as documento
 from
 	smn_salud.smn_solicitud_presupuesto
-	inner join smn_salud.smn_patologia on smn_salud.smn_patologia.smn_patologia_id = smn_salud.smn_solicitud_presupuesto.smn_patologia_id
+	left join smn_salud.smn_patologia on smn_salud.smn_patologia.smn_patologia_id = smn_salud.smn_solicitud_presupuesto.smn_patologia_id
 	inner join smn_base.smn_auxiliar on smn_base.smn_auxiliar.smn_auxiliar_id = smn_salud.smn_solicitud_presupuesto.smn_auxiliar
 	left join smn_salud.smn_contratante on smn_salud.smn_contratante.smn_contratante_id = smn_salud.smn_solicitud_presupuesto.smn_contratante_id
 	inner join smn_base.smn_auxiliar contra on contra.smn_auxiliar_id = smn_salud.smn_contratante.smn_auxiliar_rf
 	inner join smn_salud.smn_documento on smn_salud.smn_documento.smn_documento_id = smn_salud.smn_solicitud_presupuesto.smn_documento_id
-where
-	smn_salud.smn_solicitud_presupuesto.spr_usuario='${def:user}'
+--where
+	--smn_salud.smn_solicitud_presupuesto.spr_usuario='${def:user}'

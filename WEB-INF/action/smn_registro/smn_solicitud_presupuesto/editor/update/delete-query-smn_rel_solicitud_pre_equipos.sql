@@ -1,0 +1,1 @@
+delete from smn_salud.smn_rel_solicitud_pre_equipos WHERE smn_solicitud_presupuesto_id= ${fld:id}

@@ -303,7 +303,7 @@
 		//if (estatus=='GE' || estatus=='Generado') {
 		//	alertBox('No se puede eliminar este registro', 'Continuar', null, null);
 		//}else{
-			alertBox('Desea generar este registro?', '${lbl:b_yes}', '${lbl:b_not}', 'generateRecordOK(' + id + ')');
+		alertBox('Desea generar este registro?', '${lbl:b_yes}', '${lbl:b_not}', 'generateRecordOK(' + id + ')');
 		//}		
 	}
 
@@ -316,6 +316,12 @@
 							formName=null, 
 							afterResponseFn=null, 
 							onErrorFn=null);	
+	}
+
+	function honorarios(id_Spre, pre_id) {
+		uri = "${def:context}${def:actionroot}/../smn_rel_solicitud_pre_honorarios/form?id_solicitud="+ id_Spre;		
+		//alert(uri);
+		openDialog("dialog", uri, 1350, 700);
 	}
 
 			

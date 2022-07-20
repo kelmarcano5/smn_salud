@@ -10,7 +10,8 @@ UPDATE smn_salud.smn_relacion_unidad_paso SET
 	rup_idioma='${def:locale}',
 	rup_usuario_id='${def:user}',
 	rup_fecha_registro={d '${def:date}'},
-	rup_hora='${def:time}'
+	rup_hora='${def:time}',
+	smn_unidad_servicio_caja_rf=${fld:smn_unidad_servicio_caja_rf}
 
 WHERE
 	smn_rel_unidad_paso=${fld:id}

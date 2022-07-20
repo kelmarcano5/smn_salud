@@ -16,7 +16,7 @@
 			<colname>spr_solicitud</colname>
 			<colname>smn_auxiliar</colname>
 			<colname>smn_contratante_id</colname>
-			<colname>smn_patologia_id</colname>
+			<!-- <colname>smn_patologia_id</colname> -->
 			<colname>spr_dias_hospitalizacion</colname>
 			<colname>spr_horas_quirofano</colname>
 			<colname>spr_instrumentales</colname>
@@ -43,9 +43,19 @@
 		<transaction>true</transaction>
 		<jdbc-log>false</jdbc-log>
 		<recordset id="nextval.sql" source="sql" scope="transaction" />
+		<recordset id="query-smnactivo.sql" source="request" scope="transaction" />
+		<recordset id="query-smnservicios.sql" source="request" scope="transaction" />
+		<recordset id="query-smnpatologias.sql" source="request" scope="transaction" />
+		<!-- <recordset id="query-smnhonorarios.sql" source="request" scope="transaction" /> -->
 	</transaction>
 
 	<query>insert.sql</query>
+	<query>insert_presupuesto.sql</query>
+	<query params="query-smnactivo.sql">insert-smn_rel_solicitud_pre_equipos.sql</query>
+	<query params="query-smnservicios.sql">insert-smn_rel_solicitud_pre_servicios.sql</query>
+	<query params="query-smnpatologias.sql">insert-smn_rel_solicitud_pre_patologias.sql</query>
+	<!-- <query params="query-smn_honorarios.sql">insert-smn_rel_solicitud_pre_honorarios.sql</query> -->
+
 
 	<output>
 		<classname>dinamica.GenericOutput</classname>

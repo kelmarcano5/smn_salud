@@ -3,7 +3,7 @@
 	<parameter id='spr_solicitud' type='integer' required='true' label='${lbl:b_request_number}' maxlen='10'/>
 	<parameter id='smn_auxiliar' type='integer' required='true' label='${lbl:b_auxiliary}' maxlen='10'/>
 	<parameter id='smn_contratante_id' type='integer' required='false' label='${lbl:b_contratante_aux}' maxlen='10'/>
-	<parameter id='smn_patologia_id' type='integer' required='true' label='${lbl:b_pathology}' maxlen='10'/>
+	<!-- <parameter id='smn_patologia_id' type='integer' required='true' label='${lbl:b_pathology}' maxlen='10'/> -->
 	<parameter id='spr_dias_hospitalizacion' type='integer' required='true' label='${lbl:b_hospitalization_day}' maxlen='10'/>
 	<parameter id='spr_horas_quirofano' type='integer' required='true' label='${lbl:b_operating_room_hours}' maxlen='10'/>
 	<parameter id='spr_instrumentales' type='varchar' required='false' label='${lbl:b_instrumentals}' maxlen='250'/>
@@ -12,6 +12,15 @@
 	<parameter id='id' type='integer' required='true' label='${lbl:b_budget_request}' maxlen='10'/>
 	<parameter id='smn_presupuesto_id' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
 	<parameter id='smn_documento_id' type='integer' required='false' label='${lbl:b_auxiliary}' maxlen='10'/>
+    
+    <parameter id='smn_servicios_rf' type='varchar' required='false' label='Ítems'/>
+	<custom-validator classname='dinamica.validators.StringToRecordset' paramName='smn_servicios_rf' recordsetId='query-smnservicios.sql' separatorChar=';' colName='smn_servicios_rf' colType='integer'/>
+	
+	<parameter id='smn_activo_fijo_rf' type='varchar' required='true' label='Ítems'/>
+	<custom-validator classname='dinamica.validators.StringToRecordset' paramName='smn_activo_fijo_rf' recordsetId='query-smnactivo.sql' separatorChar=';' colName='smn_activo_fijo_rf' colType='integer'/>
+
+    <parameter id='smn_patologia_id' type='varchar' required='false' label='Ítems'/>
+	<custom-validator classname='dinamica.validators.StringToRecordset' paramName='smn_patologia_id' recordsetId='query-smnpatologia.sql' separatorChar=';' colName='smn_patologia_id' colType='integer'/>
 
 
 </validator>

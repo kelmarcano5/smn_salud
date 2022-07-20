@@ -8,6 +8,7 @@
 	<col width='14%'/>
 	<col width='14%'/>
 	<col width='14%'/>
+	<col width='14%'/>
 	<col width='9%'/>
 	<col width='12%'/>
 	<col width='9%'/>
@@ -16,7 +17,7 @@
 
 	<!--toolbar-->
 	<tr>
-		<th colspan="11" id="encabezado_tabla">
+		<th colspan="12" id="encabezado_tabla">
 			${req:controls} 
 		</th>
 	</tr>
@@ -28,6 +29,7 @@
 		<th></th>
 		<th class='sortable' onclick='sortBy("smn_area_servicio_rf_combo","query-smnrelacionunidadpaso.sql")'>${lbl:b_service_area}</th>
 		<th class='sortable' onclick='sortBy("smn_unidad_servicio_rf_combo","query-smnrelacionunidadpaso.sql")'>${lbl:b_service_units}</th>
+		<th class='sortable' onclick='sortBy("smn_unidad_servicio_caja_rf_combo","query-smnrelacionunidadpaso.sql")'>${lbl:b_service_units} Caja</th>
 		<th class='sortable' onclick='sortBy("smn_paso_rf_combo","query-smnrelacionunidadpaso.sql")'>${lbl:b_paso}</th>
 		<th class='sortable' onclick='sortBy("smn_serie_id_combo","query-smnrelacionunidadpaso.sql")'>${lbl:b_serie}</th>
 		<th class='sortable' onclick='sortBy("rup_secuencia","query-smnrelacionunidadpaso.sql")'>${lbl:b_rel_uni_paso_sec}</th>
@@ -45,6 +47,7 @@
 		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_unidad_paso}')" title="${lbl:b_edit_button}"></td>
 		<td>${fld:smn_area_servicio_rf_combo}</td>
 		<td>${fld:smn_unidad_servicio_rf_combo}</td>
+		<td>${fld:smn_unidad_servicio_caja_rf_combo}</td>
 		<td>${fld:smn_paso_rf_combo}</td>
 		<td>${fld:smn_serie_id_combo}</td>
 		<td>${fld:rup_secuencia}</td>

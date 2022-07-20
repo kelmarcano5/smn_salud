@@ -1,0 +1,64 @@
+<!--data grid-->
+<table class="datagrid" style="width:95%;">
+
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='3%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+	<col width='10%'/>
+
+
+	<!--toolbar-->
+	<tr>
+		<th colspan="13" id="encabezado_tabla">
+			${req:controls} 
+		</th>
+	</tr>
+
+	<!--encabezados-->
+	<tr>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th class='sortable' onclick='sortBy("smn_solicitud_presupuesto_id","query-smnrelsolicitudprehonorarios.sql")'>${lbl:b_budget_request_honorary}</th>
+		<th class='sortable' onclick='sortBy("smn_servicios_rf_combo","query-smnrelsolicitudprehonorarios.sql")'>${lbl:b_services}</th>
+		<th class='sortable' onclick='sortBy("smn_componentes_rf_combo","query-smnrelsolicitudprehonorarios.sql")'>${lbl:b_component}</th>
+		<th class='sortable' onclick='sortBy("smn_grupo_prestador_servicio_rf_combo","query-smnrelsolicitudprehonorarios.sql")'>${lbl:b_grupo_prestador_servicio}</th>
+		<th class='sortable' onclick='sortBy("smn_prestador_serviciorf_combo","query-smnrelsolicitudprehonorarios.sql")'>${lbl:b_service_provider}</th>
+		<th class='sortable' onclick='sortBy("rsh_monto_solicitado_ml","query-smnrelsolicitudprehonorarios.sql")'>${lbl:b_amount_ml}</th>
+		<th class='sortable' onclick='sortBy("rsh_monto_solicitado_ma","query-smnrelsolicitudprehonorarios.sql")'>${lbl:b_amount_ma}</th>
+		<th class='sortable' onclick='sortBy("smn_tasa_id_combo","query-smnrelsolicitudprehonorarios.sql")'>${lbl:b_tasa}</th>
+		<th class='sortable' onclick='sortBy("smn_moneda_id_combo","query-smnrelsolicitudprehonorarios.sql")'>${lbl:b_coins}</th>
+		<th class='sortable' onclick='sortBy("rsh_fecha_registro","query-smnrelsolicitudprehonorarios.sql")'>${lbl:b_store_date}</th>
+
+	</tr>
+
+	<!--data-->
+	<rows>
+	<tr>
+		<td><img src="${def:context}/images/search.png"  onclick="getDetail('${fld:smn_rel_solicitud_pre_honorarios_id}')" title="${lbl:b_view_detail}"></td>
+		<td><img src="${def:context}/images/delete.png"  onclick="deleteRecord('${fld:smn_rel_solicitud_pre_honorarios_id}')" title="${lbl:b_delete_button}"></td>
+		<td><img src="${def:context}/images/edit.png"  onclick="showEditor('${fld:smn_rel_solicitud_pre_honorarios_id}')" title="${lbl:b_edit_button}"></td>
+		<td>${fld:smn_solicitud_presupuesto_id}</td>
+		<td>${fld:smn_servicios_rf_combo}</td>
+		<td>${fld:smn_componentes_rf_combo}</td>
+		<td>${fld:smn_grupo_prestador_servicio_rf_combo}</td>
+		<td>${fld:smn_prestador_serviciorf_combo}</td>
+		<td align='right'>${fld:rsh_monto_solicitado_ml@#,###,##0.00}</td>
+		<td align='right'>${fld:rsh_monto_solicitado_ma@#,###,##0.00}</td>
+		<td>${fld:smn_tasa_id_combo}</td>
+		<td>${fld:smn_moneda_id_combo}</td>
+		<td>${fld:rsh_fecha_registro@dd-MM-yyyy}</td>
+
+	</tr>
+	</rows>
+
+</table>

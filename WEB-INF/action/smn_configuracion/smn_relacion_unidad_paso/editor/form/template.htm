@@ -39,7 +39,7 @@
 			<tr>
 		<td>${lbl:b_service_area}*</td>
 		<td>
-			<select class="area" name="smn_area_servicio_rf" id="smn_area_servicio_rf" onchange="chgCombo0(smn_area_servicio_rf.options[smn_area_servicio_rf.selectedIndex].text,'smn_area_servicio_rf_name');">
+			<select class="area" name="smn_area_servicio_rf" id="smn_area_servicio_rf" onchange="chgCombo(smn_area_servicio_rf.options[smn_area_servicio_rf.selectedIndex].text,'smn_area_servicio_rf_name');">
 				<option value="">[Cualquiera]</option>
 				<smn_area_servicio_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
@@ -53,7 +53,7 @@
 		<td>${lbl:b_service_units}*</td>
 		<td>
 			<select class="unidad" name="smn_unidad_servicio_rf" id="smn_unidad_servicio_rf" onchange="chgCombo(smn_unidad_servicio_rf.options[smn_unidad_servicio_rf.selectedIndex].text,'smn_unidad_servicio_rf_name');">
-				<option value="">[Cualquiera]</option>
+				<option value="0">[Cualquiera]</option>
 				<smn_unidad_servicio_rf_rows>
 				<option value="${fld:id}">${fld:item}</option>
 
@@ -121,6 +121,19 @@
 			<img src="${def:context}/images/dropdown.png" title="Desplegar calendario" onclick="calendarOpen('rup_vigencia')">
 		</td>
 	</tr>
+	<tr>
+		<td>${lbl:b_service_units}*</td>
+		<td>
+			<select class="unidadcaja" name="smn_unidad_servicio_caja_rf" id="smn_unidad_servicio_caja_rf" onchange="chgCombo(smn_unidad_servicio_caja_rf.options[smn_unidad_servicio_caja_rf.selectedIndex].text,'smn_unidad_servicio_caja_rf_name');">
+				<option value="0">[Cualquiera]</option>
+				<smn_unidad_servicio_caja_rf_rows>
+				<option value="${fld:id}">${fld:item}</option>
+
+				</smn_unidad_servicio_caja_rf_rows>
+			</select> 
+			<input id="smn_unidad_servicio_caja_rf_name" name="smn_unidad_servicio_caja_rf_name" type="hidden">
+		</td>
+	</tr>
 
 
 	</table>
@@ -144,12 +157,13 @@
 	{ 
 		addNew();
 
-		document.form1.smn_unidad_servicio_rf.disabled=true;
+		document.form1.smn_unidad_servicio_rf.disabled=false;
 
 		$('.serie').select2();
 		$('.area').select2();
 		$('.unidad').select2();
 		$('.paso').select2();
+		$('.unidadcaja').select2();
 		$('.tip').select2();
 
 		setElementFirstIndex('smn_area_servicio_rf');

@@ -1,0 +1,1 @@
+select smn_base.smn_tasas_de_cambio.smn_tasas_de_cambio_id as id, smn_base.smn_tasas_de_cambio.tca_fecha_vigencia ||' TASA: '|| smn_base.smn_tasas_de_cambio.tca_descripcion as item,  smn_base.smn_tasas_de_cambio.tca_tasa_cambio as tasa_cambio from smn_base.smn_tasas_de_cambio
